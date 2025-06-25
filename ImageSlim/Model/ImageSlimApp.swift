@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+
 @main
 struct ImageSlimApp: App {
+    
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
