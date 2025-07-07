@@ -9,11 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text(" \(Bundle.main.displayName)")
+        HStack {
+            VStack {
+                VStack(alignment: .leading) {
+                    Text("\(Bundle.main.appName)")
+                        .font(.title)
+                    Spacer()
+                        .frame(height: 20)
+                    Text("Open source image compression tool")
+                        .foregroundColor(.gray)
+                }
+                Spacer()
+                Text("\(Bundle.main.version)")
+                    .foregroundColor(.gray)
+                    .font(.footnote)
+            }
+            Spacer()
         }
-        .frame(minWidth: 400,minHeight: 250)    // 限制最小尺寸
-        .frame(maxWidth: 600,maxHeight: 350) // 限制最大尺寸
+        .frame(minWidth: 600,minHeight: 250)    // 限制最小尺寸
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .padding(30)
     }
 }
 

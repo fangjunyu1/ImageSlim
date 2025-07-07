@@ -8,9 +8,21 @@
 import Foundation
 
 extension Bundle {
-    var displayName: String {
-        return object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
-            ?? object(forInfoDictionaryKey: "CFBundleName") as? String
-            ?? "App"
+    var appName: String {
+        object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+        ?? object(forInfoDictionaryKey: "CFBundleName") as? String
+        ?? "App"
+    }
+
+    var version: String {
+        object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+    }
+
+    var build: String {
+        object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
+    }
+
+    var bundleIdentifier: String {
+        bundleIdentifier ?? "Unknown"
     }
 }
