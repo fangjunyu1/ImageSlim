@@ -1,3 +1,10 @@
+//
+//  WindowManager.swift
+//  ImageSlim
+//
+//  Created by 方君宇 on 2025/6/30.
+//
+
 import AppKit
 import SwiftUI
 
@@ -9,38 +16,16 @@ class StatusBarController:ObservableObject {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = statusItem.button {
             button.image = NSImage(named: "templateIcon")
+            button.toolTip = Bundle.main.displayName
         }
         
         // 创建菜单
         let menu = NSMenu()
         
-        let openItem = NSMenuItem(title: "打开 App", action: #selector(openApp), keyEquivalent: "o")
-        openItem.target = self
-        menu.addItem(openItem)
-        
-        menu.addItem(NSMenuItem.separator())
-        
         let quitItem = NSMenuItem(title: "退出", action: #selector(NSApp.terminate(_:)), keyEquivalent: "q")
         menu.addItem(quitItem)
-        
-        let hideItem = NSMenuItem(title: "隐藏状态栏", action: #selector(removeStatusItem), keyEquivalent: "h")
-        hideItem.target = self
-        menu.addItem(hideItem)
         
         statusItem.menu = menu
         
     }
-    
-    @objc func openApp() {
-        print("打开 App")
-        NSApp.activate(ignoringOtherApps: true)
-    }
-    
-    @objc func removeStatusItem() {
-        if let item = statusItem {
-            NSStatusBar.system.removeStatusItem(item)
-            statusItem = nil
-        }
-    }
 }
-

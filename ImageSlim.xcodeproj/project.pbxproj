@@ -107,7 +107,6 @@
 				"en-GB",
 				fi,
 				fr,
-				"fr-CA",
 				de,
 				el,
 				gu,
@@ -134,9 +133,6 @@
 				ru,
 				sk,
 				sl,
-				es,
-				"es-419",
-				"es-US",
 				sv,
 				ta,
 				te,
@@ -145,6 +141,10 @@
 				uk,
 				ur,
 				vi,
+				"es-419",
+				"es-US",
+				"fr-CA",
+				es,
 			);
 			mainGroup = 1D0111062E02791C00D9718B;
 			minimizedProjectReferenceProxies = 1;
@@ -310,6 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = RRMSD743UQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -340,6 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = RRMSD743UQ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
