@@ -12,6 +12,6 @@ struct WindowsModifier: ViewModifier {
         content
             .padding(20)
             .frame(minWidth: 400, minHeight: 400)
-            .frame(maxWidth: .infinity,maxHeight: .infinity)
+            .frame(maxWidth: 650,maxHeight: 550)
     }
 }

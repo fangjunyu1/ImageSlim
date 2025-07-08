@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var data = TemporaryData.shared
+    @ObservedObject var tmpData = TemporaryData.shared
     var body: some View {
         VStack {
             Text("\(Bundle.main.appName)")
                 .font(.title)
+                .fontWeight(.bold)
             Spacer()
                 .frame(height: 14)
             Text("Open source image compression tool")
@@ -22,7 +23,7 @@ struct ContentView: View {
             
             VStack(alignment: .leading) {
                 Button(action: {
-                    data.selectedView = .compression
+                    tmpData.selectedView = .compression
                 }, label: {
                     Image(systemName: "photo")
                         .imageScale(.large)
@@ -33,12 +34,12 @@ struct ContentView: View {
                         .fontWeight(.semibold)
                 })
                 .buttonStyle(.plain)
-                .foregroundColor(data.selectedView == .compression ? .black : .gray)
+                .foregroundColor(tmpData.selectedView == .compression ? .black : .gray)
                 
                 Spacer().frame(height: 20)
                 
                 Button(action: {
-                    data.selectedView = .settings
+                    tmpData.selectedView = .settings
                 }, label: {
                     Image(systemName: "slider.vertical.3")
                         .imageScale(.large)
@@ -49,7 +50,7 @@ struct ContentView: View {
                         .fontWeight(.semibold)
                 })
                 .buttonStyle(.plain)
-                .foregroundColor(data.selectedView == .settings ? .black : .gray)
+                .foregroundColor(tmpData.selectedView == .settings ? .black : .gray)
             }
             .frame(width: 100,alignment: .leading)
             
@@ -59,6 +60,7 @@ struct ContentView: View {
                 // 清除队列
                 Button(action: {
                     print("清除队列")
+                    tmpData.images = []
                 }, label: {
                     ZStack {
                         Rectangle()

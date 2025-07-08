@@ -10,9 +10,17 @@ import Foundation
 class TemporaryData: ObservableObject {
     static var shared = TemporaryData()
     private init() {}
-    @Published var displayImageQueue = false    // 上传图片后，显示图片队列
     @Published var completeCompression = false  // 完成压缩，false为未完成，true为完成
     @Published var selectedView:SelectedView = .compression
+    @Published var images:[CustomImages] = [] {
+        didSet {
+            if images.isEmpty {
+                completeCompression = false
+            } else {
+                completeCompression = true
+            }
+        }
+    }
 }
 
 enum SelectedView {

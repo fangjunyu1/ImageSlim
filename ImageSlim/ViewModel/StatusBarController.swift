@@ -40,7 +40,6 @@ class StatusBarController:ObservableObject {
     }
     
     @objc func openApp() {
-        
         if let window = WindowManager.shared.mainWindow {
             window.makeKeyAndOrderFront(nil)
         } else {

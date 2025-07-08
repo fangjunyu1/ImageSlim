@@ -1,10 +1,13 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-%lld%%" : {
+
+    },
     "%@" : {
 
     },
-    "Change" : {
+    "%lld" : {
 
     },
     "Clear the queue" : {
@@ -27,6 +30,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "压缩"
+          }
+        }
+      }
+    },
+    "Download" : {
+      "comment" : "下载",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载"
           }
         }
       }
