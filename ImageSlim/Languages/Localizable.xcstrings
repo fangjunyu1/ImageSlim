@@ -4,6 +4,45 @@
     "%@" : {
 
     },
+    "Change" : {
+
+    },
+    "Clear the queue" : {
+      "comment" : "清除队列",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除队列"
+          }
+        }
+      }
+    },
+    "Compression" : {
+      "comment" : "压缩",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "压缩"
+          }
+        }
+      }
+    },
+    "Download All" : {
+      "comment" : "下载全部",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载全部"
+          }
+        }
+      }
+    },
     "Open" : {
       "comment" : "打开",
       "extractionState" : "manual",
@@ -36,6 +75,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出"
+          }
+        }
+      }
+    },
+    "Release the file and add compression" : {
+      "comment" : "释放文件，添加压缩",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "释放文件，添加压缩"
+          }
+        }
+      }
+    },
+    "Select up to 20 pictures, each no larger than 5MB." : {
+      "comment" : "最多选择 20 张图片，每张大小不超过 5MB。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最多选择 20 张图片，每张大小不超过 5MB。"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "设置",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        }
+      }
+    },
+    "Upload pictures and compress them instantly" : {
+      "comment" : "上传图片，即刻压缩",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上传图片，即刻压缩"
           }
         }
       }
