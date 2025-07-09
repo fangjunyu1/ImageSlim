@@ -10,10 +10,58 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import QuickLookUI
+import AppKit
 
 struct CompressionView: View {
+    @State private var previewer = ImagePreviewWindow()
     @ObservedObject var tmpData = TemporaryData.shared
     @State private var isHovering = false
+    @State private var hoveringIndex: Int? = nil
+    @State private var showImporter = false
+    
+    func previewImage(at url: URL) {
+        
+        guard let panel = QLPreviewPanel.shared() else { return }
+        let dataSource = PreviewDataSource(urls: [url])
+        panel.dataSource = dataSource
+        panel.makeKeyAndOrderFront(nil)
+    }
+    
+    func saveImageToTempFile(image: NSImage) -> URL? {
+        guard let tiffData = image.tiffRepresentation,
+              let bitmap = NSBitmapImageRep(data: tiffData),
+              let pngData = bitmap.representation(using: .png, properties: [:]) else {
+            return nil
+        }
+        
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
+        try? pngData.write(to: tempURL)
+        return tempURL
+    }
+    
+    func TranslateSize(fileSize: Int) -> String {
+        let num = 1000.0
+        let size = Double(fileSize)
+        if size < num {
+            return "\(size) B"
+        } else if size < pow(num,2.0) {
+            let sizeNum = size / pow(num,1.0)
+            return "\(ceil(sizeNum.rounded())) KB"
+        } else if size < pow(num,3.0) {
+            let sizeNum = size / pow(num,2.0)
+            return "\(String(format:"%.2f",sizeNum)) MB"
+        } else if size < pow(num,4.0) {
+            let sizeNum = size / pow(num,3.0)
+            return "\(String(format:"%.2f",sizeNum)) GB"
+        } else if size < pow(num,5.0) {
+            let sizeNum = size / pow(num,4.0)
+            return "\(String(format:"%.2f",sizeNum)) TB"
+        } else {
+            let sizeNum = num / pow(num,4.0)
+            return "\(String(format:"%.2f",sizeNum)) TB"
+        }
+    }
     
     var body: some View {
         VStack {
@@ -36,6 +84,7 @@ struct CompressionView: View {
                     }
                     Spacer()
                         .frame(width: 30)
+                    // 图像
                     ZStack {
                         Rectangle()
                             .frame(width: 150,height: 100)
@@ -46,6 +95,17 @@ struct CompressionView: View {
                             .scaledToFit()
                             .frame(width: 100)
                     }
+                    .onTapGesture {
+                        showImporter = true
+                    }
+                    .onHover(perform: { isHovering in
+                        if isHovering {
+                            NSCursor.pointingHand.set()
+                        } else {
+                            NSCursor.arrow.set()
+                        }
+                    })
+                    
                     Spacer()
                 }
                 .frame(height: 140)
@@ -53,18 +113,61 @@ struct CompressionView: View {
                 ScrollView(showsIndicators:false) {
                     ForEach(Array(tmpData.images.enumerated()),id: \.offset) { index,item in
                         HStack {
-                            item.image
-                                .resizable()
-                                .scaledToFit()
+                            ZStack {
+                                Image(nsImage: item.image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 35, height: 35)
+                                Group {
+                                    Color.gray.opacity(0.3)
+                                    Image(systemName:"plus.magnifyingglass")
+                                        .foregroundColor(.white)
+                                        .allowsHitTesting(false)
+                                }
                                 .frame(width: 35, height: 35)
-                                .cornerRadius(5)
+                                .zIndex(hoveringIndex == index ? 1 : -1)
+                            }
+                            
+                                .overlay {
+                                    
+//                                     .hidden(hoveringIndex != index) // 更推荐
+                                }
+//                            // 悬停显示放大按钮
+                                .onTapGesture {
+                                    // 使用 Quick 预览图片
+                                    if let url = saveImageToTempFile(image: item.image) {
+                                        previewImage(at: url)
+                                    }
+                                    // 使用新窗口预览图片
+                                    //                                    previewer.show(image: Image(nsImage:tmpData.images[index].image))
+                                }
+                                .onHover { isHovering in
+                                    // 当鼠标进入视图区域时 isHovering = true
+                                    // 当鼠标离开视图区域时 isHovering = false
+                                    if isHovering {
+                                        hoveringIndex = index
+                                    } else {
+                                        hoveringIndex = nil
+                                    }
+                                }
+                                .onHover { isHovering in
+                                    if isHovering {
+                                        print("进入悬浮状态 ")
+                                        NSCursor.pointingHand.set()
+                                    } else {
+                                        print("退出悬浮状态")
+                                        NSCursor.arrow.set()
+                                    }
+                                }
+                                .cornerRadius(4)
+                            
                             Spacer().frame(width:20)
-                            // 单个图片
+                            // 图片信息
                             VStack(alignment: .leading) {
                                 // 图片名称
-                                    Text("\(item.name)")
-                                        .frame(width: 150, alignment: .leading)
-                                        .lineLimit(1)
+                                Text("\(item.name)")
+                                    .frame(width: 150, alignment: .leading)
+                                    .lineLimit(1)
                                 Spacer().frame(height:3)
                                 // 图片信息
                                 HStack {
@@ -78,7 +181,7 @@ struct CompressionView: View {
                                             .foregroundColor(.white)
                                             .cornerRadius(5)
                                     }
-                                    Text("\(item.inputSize)")
+                                    Text(TranslateSize(fileSize:item.inputSize))
                                         .foregroundColor(.gray)
                                 }
                             }
@@ -91,7 +194,7 @@ struct CompressionView: View {
                                 Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
                                 Spacer().frame(height:3)
                                 // 输出图片大小
-                                 Text("\(item.outputSize ?? 0)")
+                                Text("\(item.outputSize ?? 0)")
                                     .font(.footnote)
                                     .foregroundColor(.gray)
                             }
@@ -127,6 +230,7 @@ struct CompressionView: View {
                 .background(.white)
                 .cornerRadius(10)
             } else {
+                
                 VStack {
                     if isHovering {
                         Text("Release the file and add compression")
@@ -154,6 +258,16 @@ struct CompressionView: View {
                             .scaledToFit()
                             .frame(width: 150)
                     }
+                    .onHover(perform: { isHovering in
+                        if isHovering {
+                            NSCursor.pointingHand.set()
+                        } else {
+                            NSCursor.arrow.set()
+                        }
+                    })
+                    .onTapGesture {
+                        showImporter = true
+                    }
                     Spacer().frame(height: 60)
                     
                 }
@@ -162,35 +276,68 @@ struct CompressionView: View {
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             for provider in providers {
-                provider.loadDataRepresentation(forTypeIdentifier: UTType.image.identifier) {data,error in
-                    if let data = data {
-                        if let nsImage = NSImage(data: data) {
-                            let image = Image(nsImage: nsImage)
+                if provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+                    print("图像类型")
+                    provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
+                        guard let fileURL = url else {
+                            print("获取文件失败: \(error?.localizedDescription ?? "未知错误")")
+                            return
+                        }
+                        let fileName = fileURL.lastPathComponent   // 文件名称
+                        let fileType = fileURL.pathExtension   // 文件类型
+                        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
+                        let fileSize = attributes ??  0
+                        if let nsImage = NSImage(contentsOf: fileURL) {
                             DispatchQueue.main.async {
-                                let customImage = CustomImages(id: UUID(), image: image, name: "测试", type: "png", inputSize: 3000)
+                                let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
                                 tmpData.images.append(customImage)
                             }
-                        } else {
-                            DispatchQueue.main.async {
-                                print("从 NSImage 获取的图片转换 Image 类型失败")
-                            }
                         }
-                        // 使用 image
-                    } else {
-                        print("加载失败: \(error?.localizedDescription ?? "未知错误")")
                     }
                 }
             }
             // 处理 NSItemProvider 列表
             return true // 返回是否接受了拖入内容
         }
+        .fileImporter(
+            isPresented: $showImporter,
+            allowedContentTypes: [.image],
+            allowsMultipleSelection: true
+        ) { result in
+            // 处理选择结果
+            do {
+                let selectedFiles: [URL] = try result.get()
+                
+                // 沙盒权限权限请求
+                for selectedFile in selectedFiles {
+                    guard selectedFile.startAccessingSecurityScopedResource() else {
+                        print("无文件访问权限")
+                        return
+                    }
+                    defer { selectedFile.stopAccessingSecurityScopedResource() }
+                    let fileURL = selectedFile
+                    let fileName = fileURL.lastPathComponent   // 文件名称
+                    let fileType = fileURL.pathExtension   // 文件类型
+                    let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
+                    let fileSize = attributes ??  0
+                    if let nsImage = NSImage(contentsOf: fileURL) {
+                        DispatchQueue.main.async {
+                            let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
+                            tmpData.images.append(customImage)
+                        }
+                    }
+                }
+            } catch {
+                print("导入图片失败！")
+            }
+        }
         // 测试图片
-//        .onAppear {
-//            for i in 0...2 {
-//                let customImage = CustomImages(id: UUID(), image: Image("upload"), name: "测试", type: "png", inputSize: 3000)
-//                images.append(customImage)
-//            }
-//        }
+        //        .onAppear {
+        //            for i in 0...2 {
+        //                let customImage = CustomImages(id: UUID(), image: NSImage(named:"upload")!, name: "测试", type: "png", inputSize: 3000)
+        //                tmpData.images.append(customImage)
+        //            }
+        //        }
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomImages {
     var id: UUID
-    var image: Image
+    var image: NSImage
     var name: String
     var type: String
     var inputSize: Int
