@@ -127,39 +127,28 @@ struct CompressionView: View {
                                 .frame(width: 35, height: 35)
                                 .zIndex(hoveringIndex == index ? 1 : -1)
                             }
-                            
-                                .overlay {
-                                    
-//                                     .hidden(hoveringIndex != index) // 更推荐
+                            //                            // 悬停显示放大按钮
+                            .onTapGesture {
+                                // 使用 Quick 预览图片
+                                if let url = saveImageToTempFile(image: item.image) {
+                                    previewImage(at: url)
                                 }
-//                            // 悬停显示放大按钮
-                                .onTapGesture {
-                                    // 使用 Quick 预览图片
-                                    if let url = saveImageToTempFile(image: item.image) {
-                                        previewImage(at: url)
-                                    }
-                                    // 使用新窗口预览图片
-                                    //                                    previewer.show(image: Image(nsImage:tmpData.images[index].image))
+                                // 使用新窗口预览图片
+                                //                                    previewer.show(image: Image(nsImage:tmpData.images[index].image))
+                            }
+                            .onHover { isHovering in
+                                // 当鼠标进入视图区域时 isHovering = true
+                                // 当鼠标离开视图区域时 isHovering = false
+                                if isHovering {
+                                    hoveringIndex = index
+                                } else {
+                                    hoveringIndex = nil
                                 }
-                                .onHover { isHovering in
-                                    // 当鼠标进入视图区域时 isHovering = true
-                                    // 当鼠标离开视图区域时 isHovering = false
-                                    if isHovering {
-                                        hoveringIndex = index
-                                    } else {
-                                        hoveringIndex = nil
-                                    }
-                                }
-                                .onHover { isHovering in
-                                    if isHovering {
-                                        print("进入悬浮状态 ")
-                                        NSCursor.pointingHand.set()
-                                    } else {
-                                        print("退出悬浮状态")
-                                        NSCursor.arrow.set()
-                                    }
-                                }
-                                .cornerRadius(4)
+                            }
+                            .onHover { isHovering in
+                                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                            }
+                            .cornerRadius(4)
                             
                             Spacer().frame(width:20)
                             // 图片信息
