@@ -12,7 +12,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarController: StatusBarController?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        statusBarController = StatusBarController()
+        
+        // 根据设置中的菜单栏选项，创建菜单栏
+        if AppStorage.shared.displayMenuBarIcon {
+            statusBarController = StatusBarController()
+        }
         
         let contentVC = NSHostingController(rootView: ContentView())
         let workspaceVC = NSHostingController(rootView: WorkspaceView())

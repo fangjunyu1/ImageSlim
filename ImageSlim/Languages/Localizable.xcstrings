@@ -46,6 +46,18 @@
         }
       }
     },
+    "Balanced" : {
+      "comment" : "均衡（压缩率）",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "均衡"
+          }
+        }
+      }
+    },
     "Clear the queue" : {
       "comment" : "清除队列",
       "extractionState" : "manual",
@@ -110,6 +122,18 @@
       "comment" : "GitHub",
       "extractionState" : "manual"
     },
+    "High Quality" : {
+      "comment" : "高品质（压缩率）",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高品质"
+          }
+        }
+      }
+    },
     "Image compression rate" : {
       "comment" : "图片压缩率",
       "extractionState" : "manual",
@@ -142,6 +166,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "问题反馈"
+          }
+        }
+      }
+    },
+    "Lossless" : {
+      "comment" : "无损（压缩率）",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无损"
+          }
+        }
+      }
+    },
+    "Low Quality" : {
+      "comment" : "低品质（压缩率）",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "低品质"
+          }
+        }
+      }
+    },
+    "Lowest" : {
+      "comment" : "最低（压缩率）",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最低"
           }
         }
       }
