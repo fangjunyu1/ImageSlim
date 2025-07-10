@@ -10,6 +10,42 @@
     "%lld" : {
 
     },
+    "About" : {
+      "comment" : "关于",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于"
+          }
+        }
+      }
+    },
+    "Always show" : {
+      "comment" : "始终显示",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "始终显示"
+          }
+        }
+      }
+    },
+    "Application" : {
+      "comment" : "应用程序",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "应用程序"
+          }
+        }
+      }
+    },
     "Clear the queue" : {
       "comment" : "清除队列",
       "extractionState" : "manual",
@@ -58,6 +94,70 @@
         }
       }
     },
+    "Email feedback" : {
+      "comment" : "邮件反馈",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "邮件反馈"
+          }
+        }
+      }
+    },
+    "GitHub" : {
+      "comment" : "GitHub",
+      "extractionState" : "manual"
+    },
+    "Image compression rate" : {
+      "comment" : "图片压缩率",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图片压缩率"
+          }
+        }
+      }
+    },
+    "Image preview method" : {
+      "comment" : "图片预览方式",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图片预览方式"
+          }
+        }
+      }
+    },
+    "Issue feedback" : {
+      "comment" : "问题反馈",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "问题反馈"
+          }
+        }
+      }
+    },
+    "Off" : {
+      "comment" : "关闭",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
+          }
+        }
+      }
+    },
     "Open" : {
       "comment" : "打开",
       "extractionState" : "manual",
@@ -70,6 +170,18 @@
         }
       }
     },
+    "Open source" : {
+      "comment" : "开源",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开源"
+          }
+        }
+      }
+    },
     "Open source image compression tool" : {
       "comment" : "开源压缩图片工具",
       "extractionState" : "manual",
@@ -78,6 +190,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开源压缩图片工具"
+          }
+        }
+      }
+    },
+    "Privacy policy" : {
+      "comment" : "隐私政策",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
           }
         }
       }
@@ -130,6 +254,30 @@
         }
       }
     },
+    "Show icon in menu bar" : {
+      "comment" : "在菜单栏中显示图标",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在菜单栏中显示图标"
+          }
+        }
+      }
+    },
+    "Terms of use" : {
+      "comment" : "使用条款",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用条款"
+          }
+        }
+      }
+    },
     "Upload pictures and compress them instantly" : {
       "comment" : "上传图片，即刻压缩",
       "extractionState" : "manual",
@@ -141,6 +289,45 @@
           }
         }
       }
+    },
+    "Use Quick Look to preview" : {
+      "comment" : "使用 Quick Look 预览",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用 Quick Look 预览"
+          }
+        }
+      }
+    },
+    "Web page (Chinese)" : {
+      "comment" : "网页（中文）",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网页（中文）"
+          }
+        }
+      }
+    },
+    "Window preview" : {
+      "comment" : "窗口预览",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "窗口预览"
+          }
+        }
+      }
+    },
+    "显示图标" : {
+
     }
   },
   "version" : "1.0"

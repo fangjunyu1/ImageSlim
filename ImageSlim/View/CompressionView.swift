@@ -15,6 +15,7 @@ import AppKit
 
 struct CompressionView: View {
     @State private var previewer = ImagePreviewWindow()
+    @ObservedObject var appStorage = AppStorage.shared
     @ObservedObject var tmpData = TemporaryData.shared
     @State private var isHovering = false
     @State private var hoveringIndex: Int? = nil
@@ -60,6 +61,32 @@ struct CompressionView: View {
         } else {
             let sizeNum = num / pow(num,4.0)
             return "\(String(format:"%.2f",sizeNum)) TB"
+        }
+    }
+    
+    // 根据获取的 URL，存储图像
+    func savePictures(url fileURL: URL) {
+        let fileName = fileURL.lastPathComponent   // 文件名称
+        let fileType = fileURL.pathExtension   // 文件类型
+        
+        // 获取 Finder 上的大小
+        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
+        let DiskSize = resourceValues?.totalFileAllocatedSize ?? 0
+        // 获取文件的实际大小
+        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
+        
+        // 当macOS上有图像大小，以macOS上图像字节为准。
+        // 如果macOS上没有图像大小，以获取的图像字节为准。
+        let fileSize = DiskSize > 0 ? DiskSize : attributes ?? 0
+        print("macOS显示的大小:\(DiskSize)")
+        print("获取的文件实际大小:\(attributes ?? 0)")
+        print("文件大小:\(fileSize)")
+        
+        if let nsImage = NSImage(contentsOf: fileURL) {
+            DispatchQueue.main.async {
+                let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
+                tmpData.images.append(customImage)
+            }
         }
     }
     
@@ -129,12 +156,16 @@ struct CompressionView: View {
                             }
                             //                            // 悬停显示放大按钮
                             .onTapGesture {
-                                // 使用 Quick 预览图片
-                                if let url = saveImageToTempFile(image: item.image) {
-                                    previewImage(at: url)
+                                // 根据 AppStorage 选项，选择图片打开方式：
+                                if appStorage.imagePreviewMode == .quickLook {
+                                    // 使用 Quick Look 预览图片
+                                    if let url = saveImageToTempFile(image: item.image) {
+                                        previewImage(at: url)
+                                    }
+                                } else if appStorage.imagePreviewMode == .window {
+                                    // 使用新窗口预览图片
+                                    previewer.show(image: Image(nsImage:tmpData.images[index].image))
                                 }
-                                // 使用新窗口预览图片
-                                //                                    previewer.show(image: Image(nsImage:tmpData.images[index].image))
                             }
                             .onHover { isHovering in
                                 // 当鼠标进入视图区域时 isHovering = true
@@ -272,16 +303,8 @@ struct CompressionView: View {
                             print("获取文件失败: \(error?.localizedDescription ?? "未知错误")")
                             return
                         }
-                        let fileName = fileURL.lastPathComponent   // 文件名称
-                        let fileType = fileURL.pathExtension   // 文件类型
-                        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-                        let fileSize = attributes ??  0
-                        if let nsImage = NSImage(contentsOf: fileURL) {
-                            DispatchQueue.main.async {
-                                let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
-                                tmpData.images.append(customImage)
-                            }
-                        }
+                        // 根据 fileURL 保存图像
+                        savePictures(url: fileURL)
                     }
                 }
             }
@@ -304,17 +327,8 @@ struct CompressionView: View {
                         return
                     }
                     defer { selectedFile.stopAccessingSecurityScopedResource() }
-                    let fileURL = selectedFile
-                    let fileName = fileURL.lastPathComponent   // 文件名称
-                    let fileType = fileURL.pathExtension   // 文件类型
-                    let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-                    let fileSize = attributes ??  0
-                    if let nsImage = NSImage(contentsOf: fileURL) {
-                        DispatchQueue.main.async {
-                            let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
-                            tmpData.images.append(customImage)
-                        }
-                    }
+                    // 根据 fileURL 保存图像
+                    savePictures(url: selectedFile)
                 }
             } catch {
                 print("导入图片失败！")
