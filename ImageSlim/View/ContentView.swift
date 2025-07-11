@@ -22,6 +22,7 @@ struct ContentView: View {
             Spacer().frame(height: 30)
             
             VStack(alignment: .leading) {
+                // 压缩菜单-按钮
                 Button(action: {
                     tmpData.selectedView = .compression
                 }, label: {
@@ -35,9 +36,13 @@ struct ContentView: View {
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(tmpData.selectedView == .compression ? .black : .gray)
+                .onHover { isHovering in
+                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                }
                 
                 Spacer().frame(height: 20)
                 
+                // 设置菜单-按钮
                 Button(action: {
                     tmpData.selectedView = .settings
                 }, label: {
@@ -51,6 +56,9 @@ struct ContentView: View {
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(tmpData.selectedView == .settings ? .black : .gray)
+                .onHover { isHovering in
+                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                }
             }
             .frame(width: 100,alignment: .leading)
             
@@ -72,6 +80,9 @@ struct ContentView: View {
                     }
                 })
                 .buttonStyle(.plain)
+                .onHover { isHovering in
+                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                }
                 
                 Spacer().frame(height: 20)
                 
@@ -89,6 +100,9 @@ struct ContentView: View {
                     }
                 })
                 .buttonStyle(.plain)
+                .onHover { isHovering in
+                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                }
                 
                 Spacer().frame(height: 20)
             }
