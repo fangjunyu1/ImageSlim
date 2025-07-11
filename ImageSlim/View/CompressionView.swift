@@ -389,14 +389,14 @@ struct CompressionView: View {
             do {
                 let selectedFiles: [URL] = try result.get()
                 
-                let maxNum = appStorage.inAppPurchaseMembership ? 1000 : 20
-                var maxAllowed = maxNum - appStorage.images.count
+                let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
+                var limitNum = appStorage.limitImageNum - appStorage.images.count
                 
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
                     
-                    // 如果最大接收大于0，就接收，否则就退出
-                    if maxAllowed <= 0 {
+                    // 非内购用户，判断图片是否为最大上传数量
+                    if islimitImagesNum && limitNum <= 0 {
                         print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
                         break
                     }
@@ -410,8 +410,8 @@ struct CompressionView: View {
                     // 根据 fileURL 保存图像
                     savePictures(url: selectedFile)
                     
-                    // 最大接收值 -1
-                    maxAllowed -= 1
+                    // 可上传图像数量 - 1
+                    limitNum -= 1
                 }
             } catch {
                 print("导入图片失败！")
