@@ -83,10 +83,3 @@ class AppStorage:ObservableObject {
         }
     }
 }
-
-enum PreviewMode:String, CaseIterable, Hashable, Identifiable {
-    var id: String { rawValue }
-    
-    case window
-    case quickLook
-}
