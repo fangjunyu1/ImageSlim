@@ -7,11 +7,12 @@
 
 import Foundation
 
-class TemporaryData: ObservableObject {
-    static var shared = TemporaryData()
+class CompressImagesData: ObservableObject {
+    static var shared = CompressImagesData()
     private init() {}
     @Published var completeCompression = false  // 完成压缩，false为未完成，true为完成
     @Published var selectedView:SelectedView = .compression
+    // 存储图片
     @Published var images:[CustomImages] = [] {
         didSet {
             if images.isEmpty {

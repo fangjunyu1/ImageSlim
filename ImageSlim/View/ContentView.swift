@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var tmpData = TemporaryData.shared
+    @ObservedObject var compressImages = CompressImagesData.shared
     var body: some View {
         VStack {
             Text("\(Bundle.main.appName)")
@@ -24,7 +24,7 @@ struct ContentView: View {
             VStack(alignment: .leading) {
                 // 压缩菜单-按钮
                 Button(action: {
-                    tmpData.selectedView = .compression
+                    compressImages.selectedView = .compression
                 }, label: {
                     Image(systemName: "photo")
                         .imageScale(.large)
@@ -35,7 +35,7 @@ struct ContentView: View {
                         .fontWeight(.semibold)
                 })
                 .buttonStyle(.plain)
-                .foregroundColor(tmpData.selectedView == .compression ? .black : .gray)
+                .foregroundColor(compressImages.selectedView == .compression ? .black : .gray)
                 .onHover { isHovering in
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }
@@ -44,7 +44,7 @@ struct ContentView: View {
                 
                 // 设置菜单-按钮
                 Button(action: {
-                    tmpData.selectedView = .settings
+                    compressImages.selectedView = .settings
                 }, label: {
                     Image(systemName: "slider.vertical.3")
                         .imageScale(.large)
@@ -55,7 +55,7 @@ struct ContentView: View {
                         .fontWeight(.semibold)
                 })
                 .buttonStyle(.plain)
-                .foregroundColor(tmpData.selectedView == .settings ? .black : .gray)
+                .foregroundColor(compressImages.selectedView == .settings ? .black : .gray)
                 .onHover { isHovering in
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }
@@ -64,11 +64,11 @@ struct ContentView: View {
             
             Spacer()
             
-            if TemporaryData.shared.completeCompression {
+            if compressImages.completeCompression {
                 // 清除队列
                 Button(action: {
                     print("清除队列")
-                    tmpData.images = []
+                    compressImages.images = []
                 }, label: {
                     ZStack {
                         Rectangle()

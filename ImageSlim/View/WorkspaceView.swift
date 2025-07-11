@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct WorkspaceView: View {
-    @ObservedObject var tmpData = TemporaryData.shared
+    @ObservedObject var compressImages = CompressImagesData.shared
     var body: some View {
-        if tmpData.selectedView == .compression {
+        if compressImages.selectedView == .compression {
             CompressionView()
-        } else if tmpData.selectedView == .settings {
+        } else if compressImages.selectedView == .settings {
             SettingsView()
         } else {
             
