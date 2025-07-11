@@ -56,30 +56,36 @@ class AppStorage:ObservableObject {
         // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
         if UserDefaults.standard.object(forKey: "displayMenuBarIcon") == nil {
             // 设置默认值为 true
+            print("菜单栏显示图标，默认值为 nil，设置为 displayMenuBarIcon")
             UserDefaults.standard.set(true, forKey: "displayMenuBarIcon")
             displayMenuBarIcon = true  // 菜单栏图标
         } else {
             displayMenuBarIcon = UserDefaults.standard.bool(forKey: "displayMenuBarIcon")
+            print("菜单栏显示图标，默认值为 \(displayMenuBarIcon)")
         }
         
         // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.6
         if UserDefaults.standard.object(forKey: "imageCompressionRate") == nil {
             // 设置默认值为 true
+            print("图片压缩率，默认值为 nil，设置为 0.6")
             UserDefaults.standard.set(0.6, forKey: "imageCompressionRate")
             imageCompressionRate = 0.6  // 菜单栏图标
         } else {
             imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate")
+            print("图片压缩率，默认值为 \(imageCompressionRate)")
         }
         
         // 如果 UserDefaults 中没有 imagePreviewMode 键，设置默认为 Quick Look
         if UserDefaults.standard.object(forKey: "imagePreviewMode") == nil {
             // 设置默认值为 true
+            print("图片预览方式，默认值为 nil，设置为 PreviewMode.quickLook")
             UserDefaults.standard.set(PreviewMode.quickLook.rawValue, forKey: "imagePreviewMode")
             imagePreviewMode = PreviewMode.quickLook  // 菜单栏图标
         } else {
             let modeString = UserDefaults.standard.object(forKey: "imagePreviewMode") as? String ?? "quickLook"
             let mode = PreviewMode(rawValue: modeString)
             imagePreviewMode = mode ?? PreviewMode.quickLook
+            print("图片预览方式，默认值为 \(imagePreviewMode)")
         }
     }
 }

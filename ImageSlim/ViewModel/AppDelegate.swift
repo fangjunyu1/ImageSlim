@@ -7,9 +7,11 @@
 
 import AppKit
 import SwiftUI
+import Combine
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarController: StatusBarController?
+    var cancellables = Set<AnyCancellable>()
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
@@ -17,6 +19,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if AppStorage.shared.displayMenuBarIcon {
             statusBarController = StatusBarController()
         }
+        
+        // 监听 displayMenuBarIcon 的变化
+        AppStorage.shared.$displayMenuBarIcon
+            .receive(on: RunLoop.main)
+            .sink { [weak self] showIcon in
+                guard let self = self else { return }
+                if showIcon {
+                    if self.statusBarController == nil {
+                        self.statusBarController = StatusBarController()
+                    }
+                } else {
+                    self.statusBarController?.removeFromStatusBar()
+                    self.statusBarController = nil
+                }
+            }
+            .store(in: &cancellables)
         
         let contentVC = NSHostingController(rootView: ContentView())
         let workspaceVC = NSHostingController(rootView: WorkspaceView())
@@ -55,5 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             WindowManager.shared.mainWindow?.makeKeyAndOrderFront(nil)
         }
         return true
+    }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        print("应用即将退出，清除状态栏图标")
+        statusBarController?.removeFromStatusBar()
+        statusBarController = nil
     }
 }

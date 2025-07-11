@@ -30,7 +30,11 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Form {
-                Section(header: Text("Application").font(.headline)) {
+                Section(header:
+                    Text("Application")
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading) // 强制左对齐
+                ) {
                     // 应用程序 - 功能模块
                     VStack(alignment: .leading, spacing: 10) {
                         // 在菜单栏中显示图标
@@ -95,6 +99,7 @@ struct SettingsView: View {
                     )
                 }
             }
+            Spacer()
         }
         .modifier(WindowsModifier())
         .frame(alignment: .leading)
