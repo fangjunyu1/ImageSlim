@@ -8,15 +8,24 @@
 import Foundation
 
 class AppStorage:ObservableObject {
+    
     static var shared = AppStorage()
     private init() {
         loadUserDefault()   // 加载 UserDefaults 中的数据
     }
     
-    // 完成压缩，false为未完成，true为完成
-    @Published var completeCompression = false
+    // 内购赞助后，关闭图片上传限制
+    @Published var inAppPurchaseMembership = false
+    
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
+    
+    // 完成压缩，false为未完成，true为完成
+    @Published var completeCompression = false
+    
+    // 非内购用户，限制 20 张图片
+    @Published var limitImageNum = 20
+    
     // 存储图片
     @Published var images:[CustomImages] = [] {
         didSet {

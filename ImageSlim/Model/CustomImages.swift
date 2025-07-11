@@ -9,10 +9,18 @@ import SwiftUI
 
 struct CustomImages {
     var id: UUID
+    // 图片 NSImage数据
     var image: NSImage
+    // 图片名称
     var name: String
+    // 图片类型
     var type: String
+    // 图片输入的大小
     var inputSize: Int
+    // 图片输出的大小
     var outputSize: Int?
+    // 图片实际压缩的比率
     var compressionRatio: Double?
+    // 图片输出的位置
+    var outputURL: URL?
 }

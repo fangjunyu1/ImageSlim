@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " : %lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : " : %1$lld / %2$lld"
+          }
+        }
+      }
+    },
     "-%lld%%" : {
 
     },
@@ -206,6 +216,18 @@
         }
       }
     },
+    "Number of uploaded pictures" : {
+      "comment" : "上传图片数量",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上传图片数量"
+          }
+        }
+      }
+    },
     "Off" : {
       "comment" : "关闭",
       "extractionState" : "manual",
@@ -322,6 +344,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在菜单栏中显示图标"
+          }
+        }
+      }
+    },
+    "Supports multiple formats such as .png, .jpeg, .gif, .bmp, .tiff, etc." : {
+      "comment" : "支持 .png, .jpeg, .gif, .bmp, .tiff 等多种格式。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持 .png, .jpeg, .gif, .bmp, .tiff 等多种格式。"
           }
         }
       }

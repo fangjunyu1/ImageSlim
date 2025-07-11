@@ -20,14 +20,12 @@ struct CompressionView: View {
     @State private var hoveringIndex: Int? = nil
     @State private var showImporter = false
     
-    func previewImage(at url: URL) {
-        
-        guard let panel = QLPreviewPanel.shared() else { return }
-        let dataSource = PreviewDataSource(urls: [url])
-        panel.dataSource = dataSource
-        panel.makeKeyAndOrderFront(nil)
+    // 压缩所有的图片
+    func compressImages() async {
+        // 处理没有被压缩的图片
     }
     
+    // 将图片存储到照片并返回URL
     func saveImageToTempFile(image: NSImage) -> URL? {
         guard let tiffData = image.tiffRepresentation,
               let bitmap = NSBitmapImageRep(data: tiffData),
@@ -40,6 +38,72 @@ struct CompressionView: View {
         return tempURL
     }
     
+    // 将图片存储到照片并返回URL,将临时文件路径存储到 Temporary 文件夹，并返回 URL
+    func saveURLToTempFile(fileURL: URL) -> URL? {
+        let fileManager = FileManager.default
+        let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileURL.lastPathComponent)
+        
+        // 如果目标已存在，删除旧的
+        try? fileManager.removeItem(at: destinationURL)
+        
+        do {
+            try fileManager.copyItem(at: fileURL, to: destinationURL)
+            return destinationURL
+        } catch {
+            print("复制失败: \(error)")
+            return destinationURL
+        }
+    }
+    
+    // 根据获取的 URL，存储图像到 CustomImages 数组中
+    func savePictures(url tmpURL: URL) {
+        
+        // 将临时 URL 转换为临时文件夹的 URL
+        guard let fileURL = saveURLToTempFile(fileURL: tmpURL) else { return }
+        
+        // 获取 Finder 上的大小
+        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
+        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
+        
+        // 获取文件的实际大小
+        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
+        
+        // 当macOS上有图像大小，以macOS上图像字节为准。
+        // 如果macOS上没有图像大小，以获取的图像字节为准。
+        let fileSize = diskSize > 0 ? diskSize : attributes ?? 0
+        
+        // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
+        if let nsImage = NSImage(contentsOf: fileURL) {
+            let customImage = CustomImages(id: UUID(), image: nsImage, name: fileURL.lastPathComponent, type: fileURL.pathExtension.uppercased(), inputSize: fileSize)
+            DispatchQueue.main.async {
+                appStorage.images.append(customImage)
+            }
+        }
+    }
+    
+    // 使用 NSbitmapimagerep 压缩图片，返回data
+    func compressImage(_ nsImage: NSImage) -> Data? {
+        guard let tiffData = nsImage.tiffRepresentation,
+              let bitmap = NSBitmapImageRep(data: tiffData) else {
+            return nil
+        }
+        
+        let properties: [NSBitmapImageRep.PropertyKey: Any] = [
+            .compressionFactor: appStorage.imageCompressionRate // 范围 0.0（最小质量）到 1.0（最大质量）
+        ]
+        
+        return bitmap.representation(using: .jpeg, properties: properties)
+    }
+    
+    // 调用 Quick Look 预览图片
+    func previewImage(at url: URL) {
+        guard let panel = QLPreviewPanel.shared() else { return }
+        let dataSource = PreviewDataSource(urls: [url])
+        panel.dataSource = dataSource
+        panel.makeKeyAndOrderFront(nil)
+    }
+    
+    // 根据图片的字节大小显示适配的存储大小。
     func TranslateSize(fileSize: Int) -> String {
         let num = 1000.0
         let size = Double(fileSize)
@@ -63,32 +127,6 @@ struct CompressionView: View {
         }
     }
     
-    // 根据获取的 URL，存储图像
-    func savePictures(url fileURL: URL) {
-        let fileName = fileURL.lastPathComponent   // 文件名称
-        let fileType = fileURL.pathExtension   // 文件类型
-        
-        // 获取 Finder 上的大小
-        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-        let DiskSize = resourceValues?.totalFileAllocatedSize ?? 0
-        // 获取文件的实际大小
-        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-        
-        // 当macOS上有图像大小，以macOS上图像字节为准。
-        // 如果macOS上没有图像大小，以获取的图像字节为准。
-        let fileSize = DiskSize > 0 ? DiskSize : attributes ?? 0
-        print("macOS显示的大小:\(DiskSize)")
-        print("获取的文件实际大小:\(attributes ?? 0)")
-        print("文件大小:\(fileSize)")
-        
-        if let nsImage = NSImage(contentsOf: fileURL) {
-            DispatchQueue.main.async {
-                let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
-                appStorage.images.append(customImage)
-            }
-        }
-    }
-    
     var body: some View {
         VStack {
             if !appStorage.images.isEmpty {
@@ -104,9 +142,22 @@ struct CompressionView: View {
                                 .font(.title)
                         }
                         Spacer().frame(height:20)
-                        Text("Select up to 20 pictures, each no larger than 5MB.")
+                        if appStorage.inAppPurchaseMembership {
+                            Text("Supports multiple formats such as .png, .jpeg, .gif, .bmp, .tiff, etc.")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        } else if !appStorage.images.isEmpty {
+                            HStack(spacing: 0) {
+                                Text("Number of uploaded pictures")
+                                Text(" : \(appStorage.images.count) / \(appStorage.limitImageNum)")
+                            }
                             .font(.footnote)
-                            .foregroundColor(.gray)
+                            .foregroundColor(appStorage.images.count >= appStorage.limitImageNum ? .red : .gray)
+                        } else {
+                            Text("Select up to 20 pictures, each no larger than 5MB.")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                        }
                     }
                     Spacer()
                         .frame(width: 30)
@@ -264,9 +315,15 @@ struct CompressionView: View {
                     
                     Spacer().frame(height:14)
                     
-                    Text("Select up to 20 pictures, each no larger than 5MB.")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                    if appStorage.inAppPurchaseMembership {
+                        Text("Supports multiple formats such as .png, .jpeg, .gif, .bmp, .tiff, etc.")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    } else {
+                        Text("Select up to 20 pictures, each no larger than 5MB.")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
                     
                     Spacer().frame(height:20)
                     
@@ -297,18 +354,28 @@ struct CompressionView: View {
         }
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
+            
+            let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
+            var limitNum = appStorage.limitImageNum - appStorage.images.count
+            
             for provider in providers {
+                
+                // 非内购用户，判断图片是否为最大上传数量
+                if islimitImagesNum && limitNum <= 0 {
+                    print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
+                    break
+                }
+                
                 if provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
-                    print("图像类型")
                     provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
                         guard let fileURL = url else {
                             print("获取文件失败: \(error?.localizedDescription ?? "未知错误")")
                             return
                         }
-                        // 根据 fileURL 保存图像
                         savePictures(url: fileURL)
                     }
                 }
+                limitNum -= 1
             }
             // 处理 NSItemProvider 列表
             return true // 返回是否接受了拖入内容
@@ -322,15 +389,29 @@ struct CompressionView: View {
             do {
                 let selectedFiles: [URL] = try result.get()
                 
+                let maxNum = appStorage.inAppPurchaseMembership ? 1000 : 20
+                var maxAllowed = maxNum - appStorage.images.count
+                
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
+                    
+                    // 如果最大接收大于0，就接收，否则就退出
+                    if maxAllowed <= 0 {
+                        print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
+                        break
+                    }
+                    
                     guard selectedFile.startAccessingSecurityScopedResource() else {
                         print("无文件访问权限")
                         return
                     }
                     defer { selectedFile.stopAccessingSecurityScopedResource() }
+                    
                     // 根据 fileURL 保存图像
                     savePictures(url: selectedFile)
+                    
+                    // 最大接收值 -1
+                    maxAllowed -= 1
                 }
             } catch {
                 print("导入图片失败！")
