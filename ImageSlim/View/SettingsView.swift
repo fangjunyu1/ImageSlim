@@ -11,6 +11,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var appStorage = AppStorage.shared
+    @Environment(\.openURL) var openURL
     
     var compressionLocalizedKey: LocalizedStringKey  {
         let rate = appStorage.imageCompressionRate
@@ -27,13 +28,27 @@ struct SettingsView: View {
         }
     }
     
+    func sendEmail() {
+        let email = "fangjunyu.com@gmail.com"
+        let subject = "ImageSlim"
+        let body = "Hi fangjunyu,\n\n"
+        
+        // URL 编码参数
+        let urlString = "mailto:\(email)?subject=\(subject)&body=\(body)"
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        if let url = URL(string: urlString ?? "") {
+            NSWorkspace.shared.open(url)
+        }
+    }
+    
     var body: some View {
-        VStack {
-            Form {
+        ScrollView(showsIndicators: false) {
+            // 应用程序
+            VStack(alignment: .leading) {
                 Section(header:
-                    Text("Application")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading) // 强制左对齐
+                            Text("Application")
+                    .font(.headline)
                 ) {
                     // 应用程序 - 功能模块
                     VStack(alignment: .leading, spacing: 10) {
@@ -65,11 +80,14 @@ struct SettingsView: View {
                             Slider(value: Binding(get: {
                                 appStorage.imageCompressionRate
                             }, set: {newValue,_ in
-                                appStorage.imageCompressionRate = newValue
-                                print("当前newValue:\(newValue)")
+                                // 处理 Slider 浮点数精度误差，如0.600000000001
+                                let rounded = round(newValue * 10) / 10
+                                appStorage.imageCompressionRate = rounded
+                                print("当前rounded:\(rounded)")
                             }),in: 0.2...1,step: 0.2)
                             .frame(width: 100)
                         }
+                        
                         Divider().padding(.leading,25)
                         
                         // 图片预览方式
@@ -98,11 +116,99 @@ struct SettingsView: View {
                             .stroke(.gray.opacity(0.3), lineWidth: 0.5) // 设置边框颜色和宽度
                     )
                 }
+                
+                Spacer().frame(height:20)
+                
+                // 关于
+                Section(header:
+                            Text("About")
+                    .font(.headline)
+                ) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        // 使用条例
+                        HStack {
+                            Image(systemName: "chart.bar.horizontal.page")
+                            Text("Terms of use")
+                            Spacer()
+                            Text("Web page (Chinese)")
+                                .foregroundColor(.gray)
+                        }
+                        .onTapGesture {
+                            if let url = URL(string: "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e4%bd%bf%e7%94%a8%e6%9d%a1%e6%ac%be/") {
+                                openURL(url)
+                            }
+                        }
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 隐私政策
+                        HStack {
+                            Image(systemName: "lock.document")
+                            Text("Privacy policy")
+                            Spacer()
+                            Text("Web page (Chinese)")
+                                .foregroundColor(.gray)
+                        }
+                        .onTapGesture {
+                            if let url = URL(string: "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e9%9a%90%e7%a7%81%e6%94%bf%e7%ad%96/") {
+                                openURL(url)
+                            }
+                        }
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 问题反馈
+                        HStack {
+                            Image(systemName: "exclamationmark.bubble")
+                            Text("Issue feedback")
+                            Spacer()
+                            Text("Email feedback")
+                                .foregroundColor(.gray)
+                        }
+                        .onTapGesture {
+                            sendEmail()
+                        }
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 开源
+                        HStack {
+                            Image(systemName: "checkmark.seal")
+                            Text("Open source")
+                            Spacer()
+                            Text("GitHub")
+                                .foregroundColor(.gray)
+                        }
+                        .onTapGesture {
+                            if let url = URL(string: "https://github.com/fangjunyu1/ImageSlim") {
+                                openURL(url)
+                            }
+                        }
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
+                    }
+                    .padding(14)
+                    .background(Color(hex: "EEEEEE"))
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.gray.opacity(0.3), lineWidth: 0.5) // 设置边框颜色和宽度
+                    )
+                }
             }
             Spacer()
         }
         .modifier(WindowsModifier())
-        .frame(alignment: .leading)
     }
 }
 
