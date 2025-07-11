@@ -13,6 +13,21 @@ class AppStorage:ObservableObject {
         loadUserDefault()   // 加载 UserDefaults 中的数据
     }
     
+    // 完成压缩，false为未完成，true为完成
+    @Published var completeCompression = false
+    // 选择的视图
+    @Published var selectedView:SelectedView = .compression
+    // 存储图片
+    @Published var images:[CustomImages] = [] {
+        didSet {
+            if images.isEmpty {
+                completeCompression = false
+            } else {
+                completeCompression = true
+            }
+        }
+    }
+    
     // 菜单栏显示图标，true为显示
     @Published var displayMenuBarIcon = true {
         willSet {

@@ -16,7 +16,6 @@ import AppKit
 struct CompressionView: View {
     @State private var previewer = ImagePreviewWindow()
     @ObservedObject var appStorage = AppStorage.shared
-    @ObservedObject var compressImages = CompressImagesData.shared
     @State private var isHovering = false
     @State private var hoveringIndex: Int? = nil
     @State private var showImporter = false
@@ -85,14 +84,14 @@ struct CompressionView: View {
         if let nsImage = NSImage(contentsOf: fileURL) {
             DispatchQueue.main.async {
                 let customImage = CustomImages(id: UUID(), image: nsImage, name: fileName, type: fileType.uppercased(), inputSize: fileSize)
-                compressImages.images.append(customImage)
+                appStorage.images.append(customImage)
             }
         }
     }
     
     var body: some View {
         VStack {
-            if !compressImages.images.isEmpty {
+            if !appStorage.images.isEmpty {
                 // 上传图片提示语
                 HStack {
                     Spacer()
@@ -138,7 +137,7 @@ struct CompressionView: View {
                 .frame(height: 140)
                 // 图片列表
                 ScrollView(showsIndicators:false) {
-                    ForEach(Array(compressImages.images.enumerated()),id: \.offset) { index,item in
+                    ForEach(Array(appStorage.images.enumerated()),id: \.offset) { index,item in
                         HStack {
                             ZStack {
                                 Image(nsImage: item.image)
@@ -164,7 +163,7 @@ struct CompressionView: View {
                                     }
                                 } else if appStorage.imagePreviewMode == .window {
                                     // 使用新窗口预览图片
-                                    previewer.show(image: Image(nsImage:compressImages.images[index].image))
+                                    previewer.show(image: Image(nsImage:appStorage.images[index].image))
                                 }
                             }
                             .onHover { isHovering in
@@ -244,7 +243,7 @@ struct CompressionView: View {
                         // 分割线
                         Divider()
                             .padding(.leading,55)
-                            .opacity(compressImages.images.count - 1 == index ? 0 : 1)
+                            .opacity(appStorage.images.count - 1 == index ? 0 : 1)
                     }
                 }
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
@@ -341,7 +340,7 @@ struct CompressionView: View {
         //        .onAppear {
         //            for i in 0...2 {
         //                let customImage = CustomImages(id: UUID(), image: NSImage(named:"upload")!, name: "测试", type: "png", inputSize: 3000)
-        //                compressImages.images.append(customImage)
+        //                appStorage.images.append(customImage)
         //            }
         //        }
     }
