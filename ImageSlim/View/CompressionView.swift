@@ -204,30 +204,32 @@ struct CompressionView: View {
             let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
             var limitNum = appStorage.limitImageNum - appStorage.images.count
             var imageURLs: [URL] = []
+            let group = DispatchGroup()
             
             for provider in providers {
                 
                 // 非内购用户，判断图片是否为最大上传数量
                 if islimitImagesNum && limitNum <= 0 {
-                    print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
                     break
                 }
                 
                 if provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
+                    group.enter()
                     provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
-                        guard let fileURL = url else {
-                            print("获取文件失败: \(error?.localizedDescription ?? "未知错误")")
-                            return
-                        }
-                        
-                        guard let imageURL = saveURLToTempFile(fileURL: fileURL) else { return }
+                        defer { group.leave() }
+                        guard let fileURL = url,
+                              let imageURL = saveURLToTempFile(fileURL: fileURL) else { return }
                         imageURLs.append(imageURL)
                     }
                 }
                 limitNum -= 1
             }
             
-            savePictures(url: imageURLs)
+            group.notify(queue: .main) {
+                print("所有图片加载完毕: \(imageURLs.count)")
+                savePictures(url: imageURLs)
+            }
+            
             // 处理 NSItemProvider 列表
             return true // 返回是否接受了拖入内容
         }
@@ -246,7 +248,6 @@ struct CompressionView: View {
                 
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
-                    
                     // 非内购用户，判断图片是否为最大上传数量
                     if islimitImagesNum && limitNum <= 0 {
                         print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
@@ -257,6 +258,7 @@ struct CompressionView: View {
                         print("无文件访问权限")
                         return
                     }
+                    
                     defer { selectedFile.stopAccessingSecurityScopedResource() }
                     
                     // 根据 fileURL 保存图像
@@ -266,8 +268,6 @@ struct CompressionView: View {
                     // 可上传图像数量 - 1
                     limitNum -= 1
                 }
-                
-                savePictures(url: imageURLs)
             } catch {
                 print("导入图片失败！")
             }
