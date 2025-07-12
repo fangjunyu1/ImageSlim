@@ -51,24 +51,25 @@ struct CompressionView: View {
     }
     
     // 根据获取的 URL，存储图像到 CustomImages 数组中
-    func savePictures(url tmpURL: URL) {
-        print("进入 savePictures 方法,任务中是否是主线程？", Thread.isMainThread)
-        // 将临时 URL 转换为临时文件夹的 URL
-        guard let fileURL = saveURLToTempFile(fileURL: tmpURL) else { return }
+    func savePictures(url tmpURL: [URL]) {
+        var compressImages: [CustomImages] = []
         
-        // 获取 Finder 上的大小
-        let fileSize = getFileSize(fileURL: fileURL)
-        
-        // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
-        if let nsImage = NSImage(contentsOf: fileURL) {
-            let customImage = CustomImages(image: nsImage, name: fileURL.lastPathComponent, type: fileURL.pathExtension.uppercased(), inputSize: fileSize)
-            DispatchQueue.main.async {
-                print("\(fileURL.lastPathComponent) 在主线程，将图片添加到images数组，并在UI界面显示,任务中是否是主线程？", Thread.isMainThread)
-                appStorage.images.append(customImage)
+        for url in tmpURL {
+            // 获取 Finder 上的大小
+            let fileSize = getFileSize(fileURL: url)
+            
+            // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
+            if let nsImage = NSImage(contentsOf: url) {
+                let customImage = CustomImages(image: nsImage, name: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize)
+                compressImages.append(customImage)
+                DispatchQueue.main.async {
+                    appStorage.images.append(customImage)
+                }
             }
-            print("开始压缩 \(fileURL.lastPathComponent) 图片,任务中是否是主线程？", Thread.isMainThread)
-            compressManager.enqueue(customImage)    // 立即压缩
         }
+        
+        // 显示全部上传的图片，开始压缩
+        compressManager.enqueue(compressImages)    // 立即压缩
     }
     
     var body: some View {
@@ -202,6 +203,7 @@ struct CompressionView: View {
             
             let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
             var limitNum = appStorage.limitImageNum - appStorage.images.count
+            var imageURLs: [URL] = []
             
             for provider in providers {
                 
@@ -217,11 +219,15 @@ struct CompressionView: View {
                             print("获取文件失败: \(error?.localizedDescription ?? "未知错误")")
                             return
                         }
-                        savePictures(url: fileURL)
+                        
+                        guard let imageURL = saveURLToTempFile(fileURL: fileURL) else { return }
+                        imageURLs.append(imageURL)
                     }
                 }
                 limitNum -= 1
             }
+            
+            savePictures(url: imageURLs)
             // 处理 NSItemProvider 列表
             return true // 返回是否接受了拖入内容
         }
@@ -236,6 +242,7 @@ struct CompressionView: View {
                 
                 let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
                 var limitNum = appStorage.limitImageNum - appStorage.images.count
+                var imageURLs: [URL] = []
                 
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
@@ -253,11 +260,14 @@ struct CompressionView: View {
                     defer { selectedFile.stopAccessingSecurityScopedResource() }
                     
                     // 根据 fileURL 保存图像
-                    savePictures(url: selectedFile)
+                    guard let fileURL = saveURLToTempFile(fileURL: selectedFile) else { return }
+                    imageURLs.append(fileURL)
                     
                     // 可上传图像数量 - 1
                     limitNum -= 1
                 }
+                
+                savePictures(url: imageURLs)
             } catch {
                 print("导入图片失败！")
             }

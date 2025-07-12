@@ -20,22 +20,11 @@ class AppStorage:ObservableObject {
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
     
-    // 完成压缩，false为未完成，true为完成
-    @Published var completeCompression = false
-    
     // 非内购用户，限制 20 张图片
     @Published var limitImageNum = 20
     
     // 存储图片
-    @Published var images:[CustomImages] = [] {
-        didSet {
-            if images.isEmpty {
-                completeCompression = false
-            } else {
-                completeCompression = true
-            }
-        }
-    }
+    @Published var images:[CustomImages] = []
     
     // 菜单栏显示图标，true为显示
     @Published var displayMenuBarIcon = true {

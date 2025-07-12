@@ -6,9 +6,46 @@
 //
 
 import SwiftUI
+import Zip
 
 struct ContentView: View {
     @ObservedObject var appStorage = AppStorage.shared
+    @State private var progress = 0.0
+    @State private var showDownloadsProgress = false
+    
+    func zipImages() {
+        showDownloadsProgress = true
+        progress = 0.0
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                print("zipImages 任务中是否是主线程？", Thread.isMainThread)
+                print("打包Zip")
+                let downloadsDirectory = FileManager.default.urls(for:.downloadsDirectory, in: .userDomainMask)[0]
+                let destinationURL = downloadsDirectory.appendingPathComponent("ImageSlim.zip")
+                var ImagesURL:[URL] {
+                    let urls = appStorage.images.compactMap { $0.outputURL }
+                    return urls
+                }
+                try Zip.zipFiles(paths: ImagesURL, zipFilePath: destinationURL, password: nil) { progress in
+                    DispatchQueue.main.async {
+                        self.progress = progress
+                        if progress == 1 {
+                            showDownloadsProgress = false
+                        }
+                    }
+                }
+                DispatchQueue.main.async {
+                    print("打包完成")
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.showDownloadsProgress = false
+                    print("打包失败")
+                }
+            }
+        }
+    }
+    
     var body: some View {
         VStack {
             Text("\(Bundle.main.appName)")
@@ -64,7 +101,7 @@ struct ContentView: View {
             
             Spacer()
             
-            if appStorage.completeCompression {
+            if !appStorage.images.isEmpty {
                 // 清除队列
                 Button(action: {
                     print("清除队列")
@@ -86,25 +123,35 @@ struct ContentView: View {
                 
                 Spacer().frame(height: 20)
                 
+                
                 // 下载全部
-//                Button(action: {
-//                    print("下载全部")
-//                }, label: {
-//                    ZStack {
-//                        Rectangle()
-//                            .frame(width: 120,height: 35)
-//                            .foregroundColor(Color(hex: "3960EA"))
-//                            .cornerRadius(10)
-//                        Text("Download All")
-//                            .foregroundColor(.white)
-//                    }
-//                })
-//                .buttonStyle(.plain)
-//                .onHover { isHovering in
-//                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-//                }
-//                
-//                Spacer().frame(height: 20)
+                Button(action: {
+                    Task {
+                        zipImages()
+                    }
+                }, label: {
+                    ZStack {
+                        if showDownloadsProgress {
+                            ProgressView(value: progress, total: 1.0)
+                                            .progressViewStyle(LinearProgressViewStyle())
+                                            .padding()
+                        } else {
+                            Rectangle()
+                                .frame(width: 120,height: 35)
+                                .foregroundColor(Color(hex: "3960EA"))
+                                .cornerRadius(10)
+                            Text("Download All")
+                                .foregroundColor(.white)
+                        }
+                    }
+                })
+                .buttonStyle(.plain)
+                .onHover { isHovering in
+                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                }
+                
+                Spacer().frame(height: 20)
+                
             }
             
             Text("\(Bundle.main.version)")

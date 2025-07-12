@@ -17,15 +17,9 @@ class CompressionManager:ObservableObject {
     private var isCompressing = false
     
     // 进入压缩队列，开始压缩
-    func enqueue(_ image: CustomImages) {
-        print("进入压缩队列 enqueue，任务中是否是主线程？", Thread.isMainThread)
-        // 防止重复压缩
-        guard image.compressionState == .pending else {
-            print("当前图片正在压缩/成功/失败，不再压缩该图片")
-            return
-        }
+    func enqueue(_ image: [CustomImages]) {
         // 将图片添加到任务队列
-        taskQueue.append(image)
+        taskQueue.append(contentsOf: image)
         compressionTask()
     }
 
@@ -34,7 +28,6 @@ class CompressionManager:ObservableObject {
     // 2、修改当前压缩状态和图片的压缩状态
     // 3、当压缩成功后，修改图片的压缩状态，移除任务队列中已经压缩图片，将当前压缩状态改为false，开始压缩下一个
     private func compressionTask() {
-        print("进入 compressionTask 方法，任务中是否是主线程？", Thread.isMainThread)
         // 如果当前没有被压缩的图片，获取任务队列的第一张图片，否则退出
         guard !isCompressing, let task = taskQueue.first else { return }
         
@@ -42,16 +35,15 @@ class CompressionManager:ObservableObject {
         isCompressing = true
         DispatchQueue.main.async {
             // 修改当前图片为压缩中
-            print("修改当前图片为压缩中，任务中是否是主线程？", Thread.isMainThread)
             task.compressionState = .compressing
         }
 
         compressImage(task) { success in
             DispatchQueue.main.async {
-                print("进入 compressImage 的闭包，任务中是否是主线程？", Thread.isMainThread)
                 task.compressionState = success ? .completed : .failed
                 self.taskQueue.removeFirst()
                 self.isCompressing = false
+                // 如果没有压缩的任务，就显示全部压缩完成
                 self.compressionTask() // 继续下一个
             }
         }
@@ -72,7 +64,6 @@ class CompressionManager:ObservableObject {
     
     // 使用 NSbitmapimagerep 压缩图片
     private func compressImage(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
-        print("进入 compressImage 使用 NSbitmapimagerep 压缩图片，任务中是否是主线程？", Thread.isMainThread)
         let nsImage = image.image
         guard let tiffData = nsImage.tiffRepresentation,
               let bitmap = NSBitmapImageRep(data: tiffData) else {
