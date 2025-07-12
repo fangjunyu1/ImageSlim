@@ -23,4 +23,6 @@ struct CustomImages {
     var compressionRatio: Double?
     // 图片输出的位置
     var outputURL: URL?
+    // 图片状态：.pending 等待压缩 .compressing 正在压缩 .completed 已压缩完成 .failed 压缩失败
+    var compressionState:CompressionState
 }

@@ -74,7 +74,7 @@ struct CompressionView: View {
         
         // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
         if let nsImage = NSImage(contentsOf: fileURL) {
-            let customImage = CustomImages(id: UUID(), image: nsImage, name: fileURL.lastPathComponent, type: fileURL.pathExtension.uppercased(), inputSize: fileSize)
+            let customImage = CustomImages(id: UUID(), image: nsImage, name: fileURL.lastPathComponent, type: fileURL.pathExtension.uppercased(), inputSize: fileSize,compressionState: .pending)
             DispatchQueue.main.async {
                 appStorage.images.append(customImage)
             }
@@ -258,34 +258,45 @@ struct CompressionView: View {
                             .frame(minWidth:40)
                             Spacer()
                             
-                            // 输出参数
-                            VStack(alignment: .trailing) {
-                                // 压缩占比
-                                Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
-                                Spacer().frame(height:3)
-                                // 输出图片大小
-                                Text("\(item.outputSize ?? 0)")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
-                            }
-                            
-                            Spacer().frame(width:10)
-                            
-                            // 下载按钮
-                            Button(action: {
+                            // 如果图片完成压缩，显示压缩图片的输出参数和下载按钮
+                            if item.compressionState == .completed {
+                                // 输出参数
+                                VStack(alignment: .trailing) {
+                                    // 压缩占比
+                                    Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
+                                    Spacer().frame(height:3)
+                                    // 输出图片大小
+                                    Text("\(item.outputSize ?? 0)")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
                                 
-                            }, label: {
-                                Text("Download")
-                                    .foregroundColor(Color(hex: "3679F6"))
-                                    .padding(.vertical,5)
-                                    .padding(.horizontal,20)
-                                    .background(Color(hex: "EEEEEE"))
-                                    .cornerRadius(20)
-                            })
-                            .frame(width: 70)
-                            .buttonStyle(.plain)
-                            .onHover { isHovering in
-                                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                Spacer().frame(width:10)
+                                
+                                // 下载按钮
+                                Button(action: {
+                                    
+                                }, label: {
+                                    Text("Download")
+                                        .foregroundColor(Color(hex: "3679F6"))
+                                        .padding(.vertical,5)
+                                        .padding(.horizontal,20)
+                                        .background(Color(hex: "EEEEEE"))
+                                        .cornerRadius(20)
+                                })
+                                .frame(width: 70)
+                                .buttonStyle(.plain)
+                                .onHover { isHovering in
+                                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                }
+                            } else if item.compressionState == .failed {
+                                    Text("压缩失败")
+                                        .foregroundColor(.red)
+                            } else {
+                                // 否则，显示加载状态。
+                                ProgressView("Loading...")
+                                    .scaleEffect(0.5)
+                                    .labelsHidden()
                             }
                             
                         }
