@@ -84,7 +84,7 @@ struct SettingsView: View {
                                 let rounded = round(newValue * 10) / 10
                                 appStorage.imageCompressionRate = rounded
                                 print("当前rounded:\(rounded)")
-                            }),in: 0.2...1,step: 0.2)
+                            }),in: 0...1,step: 0.25)
                             .frame(width: 100)
                         }
                         

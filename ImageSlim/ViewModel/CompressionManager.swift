@@ -116,7 +116,8 @@ class CompressionManager:ObservableObject {
                 image.outputSize = self.getFileSize(fileURL: tempURL)
                 image.outputURL = tempURL
                 if let outSize = image.outputSize {
-                    image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - Double(outSize / image.inputSize)
+                    let ratio = Double(outSize) / Double(image.inputSize)
+                    image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
                 } else {
                     image.compressionRatio = 0.0
                 }

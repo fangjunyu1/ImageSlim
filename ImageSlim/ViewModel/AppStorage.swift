@@ -50,7 +50,7 @@ class AppStorage:ObservableObject {
     }
     
     // 图片压缩率
-    @Published var imageCompressionRate = 0.6 {
+    @Published var imageCompressionRate = 0.5 {
         willSet {
             // 修改 USerDefault 中的值
             UserDefaults.standard.set(newValue, forKey: "imageCompressionRate")
