@@ -87,24 +87,24 @@ struct ContentView: View {
                 Spacer().frame(height: 20)
                 
                 // 下载全部
-                Button(action: {
-                    print("下载全部")
-                }, label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 120,height: 35)
-                            .foregroundColor(Color(hex: "3960EA"))
-                            .cornerRadius(10)
-                        Text("Download All")
-                            .foregroundColor(.white)
-                    }
-                })
-                .buttonStyle(.plain)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                }
-                
-                Spacer().frame(height: 20)
+//                Button(action: {
+//                    print("下载全部")
+//                }, label: {
+//                    ZStack {
+//                        Rectangle()
+//                            .frame(width: 120,height: 35)
+//                            .foregroundColor(Color(hex: "3960EA"))
+//                            .cornerRadius(10)
+//                        Text("Download All")
+//                            .foregroundColor(.white)
+//                    }
+//                })
+//                .buttonStyle(.plain)
+//                .onHover { isHovering in
+//                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+//                }
+//                
+//                Spacer().frame(height: 20)
             }
             
             Text("\(Bundle.main.version)")

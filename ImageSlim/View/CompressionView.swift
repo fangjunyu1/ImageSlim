@@ -9,33 +9,28 @@
 //
 
 import SwiftUI
-import UniformTypeIdentifiers
-import QuickLookUI
 import AppKit
+import UniformTypeIdentifiers
 
 struct CompressionView: View {
     @State private var previewer = ImagePreviewWindow()
     @ObservedObject var appStorage = AppStorage.shared
+    @ObservedObject var compressManager = CompressionManager.shared
     @State private var isHovering = false
-    @State private var hoveringIndex: Int? = nil
     @State private var showImporter = false
     
-    // 压缩所有的图片
-    func compressImages() async {
-        // 处理没有被压缩的图片
-    }
-    
-    // 将图片存储到照片并返回URL
-    func saveImageToTempFile(image: NSImage) -> URL? {
-        guard let tiffData = image.tiffRepresentation,
-              let bitmap = NSBitmapImageRep(data: tiffData),
-              let pngData = bitmap.representation(using: .png, properties: [:]) else {
-            return nil
-        }
+    // 将图片存储到照片并返回URL,将临时文件路径存储到 Temporary 文件夹，并返回 URL
+    func getFileSize(fileURL: URL) -> Int {
+        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
+        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
         
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
-        try? pngData.write(to: tempURL)
-        return tempURL
+        // 获取文件的实际大小
+        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
+        
+        // 当macOS上有图像大小，以macOS上图像字节为准。
+        // 如果macOS上没有图像大小，以获取的图像字节为准。
+        return diskSize > 0 ? diskSize : attributes ?? 0
+        
     }
     
     // 将图片存储到照片并返回URL,将临时文件路径存储到 Temporary 文件夹，并返回 URL
@@ -57,73 +52,22 @@ struct CompressionView: View {
     
     // 根据获取的 URL，存储图像到 CustomImages 数组中
     func savePictures(url tmpURL: URL) {
-        
+        print("进入 savePictures 方法,任务中是否是主线程？", Thread.isMainThread)
         // 将临时 URL 转换为临时文件夹的 URL
         guard let fileURL = saveURLToTempFile(fileURL: tmpURL) else { return }
         
         // 获取 Finder 上的大小
-        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
-        
-        // 获取文件的实际大小
-        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-        
-        // 当macOS上有图像大小，以macOS上图像字节为准。
-        // 如果macOS上没有图像大小，以获取的图像字节为准。
-        let fileSize = diskSize > 0 ? diskSize : attributes ?? 0
+        let fileSize = getFileSize(fileURL: fileURL)
         
         // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
         if let nsImage = NSImage(contentsOf: fileURL) {
-            let customImage = CustomImages(id: UUID(), image: nsImage, name: fileURL.lastPathComponent, type: fileURL.pathExtension.uppercased(), inputSize: fileSize,compressionState: .pending)
+            let customImage = CustomImages(image: nsImage, name: fileURL.lastPathComponent, type: fileURL.pathExtension.uppercased(), inputSize: fileSize)
             DispatchQueue.main.async {
+                print("\(fileURL.lastPathComponent) 在主线程，将图片添加到images数组，并在UI界面显示,任务中是否是主线程？", Thread.isMainThread)
                 appStorage.images.append(customImage)
             }
-        }
-    }
-    
-    // 使用 NSbitmapimagerep 压缩图片，返回data
-    func compressImage(_ nsImage: NSImage) -> Data? {
-        guard let tiffData = nsImage.tiffRepresentation,
-              let bitmap = NSBitmapImageRep(data: tiffData) else {
-            return nil
-        }
-        
-        let properties: [NSBitmapImageRep.PropertyKey: Any] = [
-            .compressionFactor: appStorage.imageCompressionRate // 范围 0.0（最小质量）到 1.0（最大质量）
-        ]
-        
-        return bitmap.representation(using: .jpeg, properties: properties)
-    }
-    
-    // 调用 Quick Look 预览图片
-    func previewImage(at url: URL) {
-        guard let panel = QLPreviewPanel.shared() else { return }
-        let dataSource = PreviewDataSource(urls: [url])
-        panel.dataSource = dataSource
-        panel.makeKeyAndOrderFront(nil)
-    }
-    
-    // 根据图片的字节大小显示适配的存储大小。
-    func TranslateSize(fileSize: Int) -> String {
-        let num = 1000.0
-        let size = Double(fileSize)
-        if size < num {
-            return "\(size) B"
-        } else if size < pow(num,2.0) {
-            let sizeNum = size / pow(num,1.0)
-            return "\(ceil(sizeNum.rounded())) KB"
-        } else if size < pow(num,3.0) {
-            let sizeNum = size / pow(num,2.0)
-            return "\(String(format:"%.2f",sizeNum)) MB"
-        } else if size < pow(num,4.0) {
-            let sizeNum = size / pow(num,3.0)
-            return "\(String(format:"%.2f",sizeNum)) GB"
-        } else if size < pow(num,5.0) {
-            let sizeNum = size / pow(num,4.0)
-            return "\(String(format:"%.2f",sizeNum)) TB"
-        } else {
-            let sizeNum = num / pow(num,4.0)
-            return "\(String(format:"%.2f",sizeNum)) TB"
+            print("开始压缩 \(fileURL.lastPathComponent) 图片,任务中是否是主线程？", Thread.isMainThread)
+            compressManager.enqueue(customImage)    // 立即压缩
         }
     }
     
@@ -189,117 +133,7 @@ struct CompressionView: View {
                 // 图片列表
                 ScrollView(showsIndicators:false) {
                     ForEach(Array(appStorage.images.enumerated()),id: \.offset) { index,item in
-                        HStack {
-                            ZStack {
-                                Image(nsImage: item.image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 35, height: 35)
-                                Group {
-                                    Color.gray.opacity(0.3)
-                                    Image(systemName:"plus.magnifyingglass")
-                                        .foregroundColor(.white)
-                                        .allowsHitTesting(false)
-                                }
-                                .frame(width: 35, height: 35)
-                                .zIndex(hoveringIndex == index ? 1 : -1)
-                            }
-                            //                            // 悬停显示放大按钮
-                            .onTapGesture {
-                                // 根据 AppStorage 选项，选择图片打开方式：
-                                if appStorage.imagePreviewMode == .quickLook {
-                                    // 使用 Quick Look 预览图片
-                                    if let url = saveImageToTempFile(image: item.image) {
-                                        previewImage(at: url)
-                                    }
-                                } else if appStorage.imagePreviewMode == .window {
-                                    // 使用新窗口预览图片
-                                    previewer.show(image: Image(nsImage:appStorage.images[index].image))
-                                }
-                            }
-                            .onHover { isHovering in
-                                // 当鼠标进入视图区域时 isHovering = true
-                                // 当鼠标离开视图区域时 isHovering = false
-                                if isHovering {
-                                    hoveringIndex = index
-                                } else {
-                                    hoveringIndex = nil
-                                }
-                            }
-                            .onHover { isHovering in
-                                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                            }
-                            .cornerRadius(4)
-                            
-                            Spacer().frame(width:20)
-                            // 图片信息
-                            VStack(alignment: .leading) {
-                                // 图片名称
-                                Text("\(item.name)")
-                                    .frame(width: 150, alignment: .leading)
-                                    .lineLimit(1)
-                                Spacer().frame(height:3)
-                                // 图片信息
-                                HStack {
-                                    ZStack {
-                                        Rectangle()
-                                            .foregroundColor(Color(hex: "91C9FF"))
-                                            .frame(width:50,height:16)
-                                            .cornerRadius(3)
-                                        Text("\(item.type)")
-                                            .font(.footnote)
-                                            .foregroundColor(.white)
-                                            .cornerRadius(5)
-                                    }
-                                    Text(TranslateSize(fileSize:item.inputSize))
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                            .frame(minWidth:40)
-                            Spacer()
-                            
-                            // 如果图片完成压缩，显示压缩图片的输出参数和下载按钮
-                            if item.compressionState == .completed {
-                                // 输出参数
-                                VStack(alignment: .trailing) {
-                                    // 压缩占比
-                                    Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
-                                    Spacer().frame(height:3)
-                                    // 输出图片大小
-                                    Text("\(item.outputSize ?? 0)")
-                                        .font(.footnote)
-                                        .foregroundColor(.gray)
-                                }
-                                
-                                Spacer().frame(width:10)
-                                
-                                // 下载按钮
-                                Button(action: {
-                                    
-                                }, label: {
-                                    Text("Download")
-                                        .foregroundColor(Color(hex: "3679F6"))
-                                        .padding(.vertical,5)
-                                        .padding(.horizontal,20)
-                                        .background(Color(hex: "EEEEEE"))
-                                        .cornerRadius(20)
-                                })
-                                .frame(width: 70)
-                                .buttonStyle(.plain)
-                                .onHover { isHovering in
-                                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                                }
-                            } else if item.compressionState == .failed {
-                                    Text("压缩失败")
-                                        .foregroundColor(.red)
-                            } else {
-                                // 否则，显示加载状态。
-                                ProgressView("Loading...")
-                                    .scaleEffect(0.5)
-                                    .labelsHidden()
-                            }
-                            
-                        }
+                        ImageRowView(item: item,index: index,previewer: previewer)
                         .frame(maxWidth: .infinity)
                         .frame(height:42)
                         // 分割线
@@ -428,13 +262,6 @@ struct CompressionView: View {
                 print("导入图片失败！")
             }
         }
-        // 测试图片
-        //        .onAppear {
-        //            for i in 0...2 {
-        //                let customImage = CustomImages(id: UUID(), image: NSImage(named:"upload")!, name: "测试", type: "png", inputSize: 3000)
-        //                appStorage.images.append(customImage)
-        //            }
-        //        }
     }
 }
 

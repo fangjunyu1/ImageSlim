@@ -17,9 +17,6 @@
     "%@" : {
 
     },
-    "%lld" : {
-
-    },
     "About" : {
       "comment" : "关于",
       "extractionState" : "manual",
@@ -128,6 +125,18 @@
         }
       }
     },
+    "Download Complete" : {
+      "comment" : "下载完成",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载完成"
+          }
+        }
+      }
+    },
     "Email feedback" : {
       "comment" : "邮件反馈",
       "extractionState" : "manual",
@@ -191,6 +200,9 @@
           }
         }
       }
+    },
+    "Loading..." : {
+
     },
     "Lossless" : {
       "comment" : "无损（压缩率）",
@@ -408,6 +420,18 @@
         }
       }
     },
+    "Waiting for compression" : {
+      "comment" : "等待压缩",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "等待压缩"
+          }
+        }
+      }
+    },
     "Web page (Chinese)" : {
       "comment" : "网页（中文）",
       "extractionState" : "manual",
@@ -432,7 +456,13 @@
         }
       }
     },
+    "压缩失败" : {
+
+    },
     "显示图标" : {
+
+    },
+    "等待压缩" : {
 
     }
   },
