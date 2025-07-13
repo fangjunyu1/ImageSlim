@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import ImageIO
+import UniformTypeIdentifiers
 
 class CompressionManager:ObservableObject {
     @ObservedObject var appStorage = AppStorage.shared
@@ -22,7 +24,7 @@ class CompressionManager:ObservableObject {
         taskQueue.append(contentsOf: image)
         compressionTask()
     }
-
+    
     // 压缩任务：
     // 1、判断压缩和任务队列
     // 2、修改当前压缩状态和图片的压缩状态
@@ -37,7 +39,7 @@ class CompressionManager:ObservableObject {
             // 修改当前图片为压缩中
             task.compressionState = .compressing
         }
-
+        
         compressImage(task) { success in
             DispatchQueue.main.async {
                 task.compressionState = success ? .completed : .failed
@@ -64,59 +66,82 @@ class CompressionManager:ObservableObject {
     
     // 使用 NSbitmapimagerep 压缩图片
     private func compressImage(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
-        let nsImage = image.image
-        guard let tiffData = nsImage.tiffRepresentation,
-              let bitmap = NSBitmapImageRep(data: tiffData) else {
-            // 如果转换失败，调用闭包
+        
+        // 将 NSImage 转换为 CGImage
+        guard let tiffData = image.image.tiffRepresentation,
+              let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
+              let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
             completion(false)
             return
         }
-        // 设置压缩率
-        let properties: [NSBitmapImageRep.PropertyKey: Any] = [
-            .compressionFactor: appStorage.imageCompressionRate // 范围 0.0（最小质量）到 1.0（最大质量）
-        ]
-        // 设置压缩格式
-        var compressType:NSBitmapImageRep.FileType {
-            switch image.type.uppercased() {
-                case "PNG":
-                    return .png
-                case "GIF":
-                    return .gif
-                case "JPG", "JPEG":
-                    return .jpeg
-                case "JP2":
-                    return .jpeg2000
-                case "TIFF", "TIF":
-                    return .tiff
-                case "BMP":
-                    return .bmp
-                default:
-                    return .png
-                }
-        }
-        // 压缩图片并获取压缩的 Data
-        let imageData = bitmap.representation(using: compressType, properties: properties)
-
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "." + image.type.lowercased())
         
-        do {
-            // 将压缩图片的 Data，写入临时文件
-            try imageData?.write(to: tempURL)
-            DispatchQueue.main.async {
-                // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                image.outputSize = self.getFileSize(fileURL: tempURL)
-                image.outputURL = tempURL
-                if let outSize = image.outputSize {
-                    let ratio = Double(outSize) / Double(image.inputSize)
-                    image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
-                } else {
-                    image.compressionRatio = 0.0
-                }
+        // 设置压缩格式
+        var type: CFString {
+            switch image.type.uppercased() {
+            case "JPG", "JPEG", "JP2":
+                return UTType.jpeg.identifier as CFString
+            case "HEIC":
+                return UTType.heic.identifier as CFString
+            case "PNG":
+                return UTType.png.identifier as CFString
+            case "GIF":
+                return UTType.gif.identifier as CFString
+            case "TIFF", "TIF":
+                return UTType.tiff.identifier as CFString
+            case "BMP":
+                return UTType.bmp.identifier as CFString
+            default:
+                // 所有不支持的类型强制转换为 JPEG 再压缩
+                return UTType.jpeg.identifier as CFString
             }
-            completion(true)
-        } catch {
-            print("数据写入失败")
-            completion(false)
         }
+        
+        // 创建用于接收压缩后数据的容器
+        let outputData = NSMutableData()
+        guard let destination = CGImageDestinationCreateWithData(outputData, type, 1, nil) else {
+            completion(false)
+            return
+        }
+        
+        // 压缩选项（0.0 = 最小质量，1.0 = 最佳质量）
+        let options: [CFString: Any] = [
+            kCGImageDestinationLossyCompressionQuality: appStorage.imageCompressionRate
+        ]
+        
+        // 添加图像到目标
+        CGImageDestinationAddImage(destination, cgImage, options as CFDictionary)
+        
+        // 完成写入
+        if CGImageDestinationFinalize(destination) {
+            // 压缩图片并获取压缩的 Data
+            let imageData = outputData as Data
+            
+            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "." + image.type.lowercased())
+            
+            do {
+                // 将压缩图片的 Data，写入临时文件
+                try imageData.write(to: tempURL)
+                DispatchQueue.main.async {
+                    // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
+                    image.outputSize = self.getFileSize(fileURL: tempURL)
+                    image.outputURL = tempURL
+                    if let outSize = image.outputSize {
+                        let ratio = Double(outSize) / Double(image.inputSize)
+                        image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
+                    } else {
+                        image.compressionRatio = 0.0
+                    }
+                }
+                completion(true)
+            } catch {
+                print("数据写入失败")
+                completion(false)
+            }
+            return
+        } else {
+            completion(false)
+            return
+        }
+        
     }
 }
