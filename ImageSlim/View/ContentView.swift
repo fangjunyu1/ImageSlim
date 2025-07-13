@@ -20,8 +20,23 @@ struct ContentView: View {
             do {
                 print("zipImages 任务中是否是主线程？", Thread.isMainThread)
                 print("打包Zip")
-                let downloadsDirectory = FileManager.default.urls(for:.downloadsDirectory, in: .userDomainMask)[0]
-                let destinationURL = downloadsDirectory.appendingPathComponent("ImageSlim.zip")
+                var directory:FileManager.SearchPathDirectory {
+                    switch appStorage.imageSaveDirectory {
+                    case .desktopDirectory:
+                        return .desktopDirectory
+                    case .downloadsDirectory:
+                        return .downloadsDirectory
+                    case .sharedPublicDirectory:
+                        return .sharedPublicDirectory
+                    case .documentDirectory:
+                        return .documentDirectory
+                    case .picturesDirectory:
+                        return .picturesDirectory
+                    }
+                }
+                
+                let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask)[0]
+                let destinationURL = directoryURL.appendingPathComponent("ImageSlim.zip")
                 var ImagesURL:[URL] {
                     let urls = appStorage.images.compactMap { $0.outputURL }
                     return urls

@@ -95,13 +95,36 @@ struct SettingsView: View {
                             Image(systemName: "plus.magnifyingglass")
                             Text("Show icon in menu bar")
                             Spacer()
-                            Picker("显示图标", selection: Binding(get: {
+                            Picker("预览方式", selection: Binding(get: {
                                 appStorage.imagePreviewMode
                             }, set: { value, _ in
                                 appStorage.imagePreviewMode = value
                             })) {
                                 Text("Window preview").tag(PreviewMode.window)
                                 Text("Use Quick Look to preview").tag(PreviewMode.quickLook)
+                            }
+                            .pickerStyle(.menu)
+                            .labelsHidden()
+                            .fixedSize() // 不随容器拉伸
+                        }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 图片保存目录
+                        HStack {
+                            Image(systemName: "square.and.arrow.down")
+                            Text("Image save directory")
+                            Spacer()
+                            Picker("选择目录", selection: Binding(get: {
+                                appStorage.imageSaveDirectory
+                            }, set: { value, _ in
+                                appStorage.imageSaveDirectory = value
+                            })) {
+                                Text("Desktop directory").tag(SaveDirectory.desktopDirectory)
+                                Text("Document directory").tag(SaveDirectory.documentDirectory)
+                                Text("Download directory").tag(SaveDirectory.downloadsDirectory)
+                                Text("Image directory").tag(SaveDirectory.picturesDirectory)
+                                Text("Public directory").tag(SaveDirectory.sharedPublicDirectory)
                             }
                             .pickerStyle(.menu)
                             .labelsHidden()

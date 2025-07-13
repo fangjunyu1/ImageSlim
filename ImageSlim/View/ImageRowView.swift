@@ -40,8 +40,22 @@ struct ImageRowView: View {
     
     // 下载图片到 Downloads 文件夹
     func saveToDownloads(file: CustomImages) {
-        let downloadsURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask).first!
-        let destinationURL = downloadsURL.appendingPathComponent(file.name)
+        var directory:FileManager.SearchPathDirectory {
+            switch appStorage.imageSaveDirectory {
+            case .desktopDirectory:
+                return .desktopDirectory
+            case .downloadsDirectory:
+                return .downloadsDirectory
+            case .sharedPublicDirectory:
+                return .sharedPublicDirectory
+            case .documentDirectory:
+                return .documentDirectory
+            case .picturesDirectory:
+                return .picturesDirectory
+            }
+        }
+        let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
+        let destinationURL = directoryURL.appendingPathComponent(file.name)
         
         do {
             if FileManager.default.fileExists(atPath: destinationURL.path) {
@@ -50,7 +64,7 @@ struct ImageRowView: View {
             if let outURL = file.outputURL {
                 try FileManager.default.copyItem(at: outURL, to: destinationURL)
             }
-            print("已保存到下载目录：\(destinationURL.path)")
+            print("已保存到 \(directory) 目录：\(destinationURL.path)")
         } catch {
             print("保存失败：\(error)")
         }

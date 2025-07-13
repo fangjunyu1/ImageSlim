@@ -54,11 +54,22 @@ class AppStorage:ObservableObject {
     @Published var imagePreviewMode:PreviewMode = .quickLook {
         willSet {
             // 修改 USerDefault 中的值
-            print("newValue type:\(type(of:newValue))")
             UserDefaults.standard.set(newValue.rawValue, forKey: "imagePreviewMode")
             // 修改 iCloud 中的值
             let store = NSUbiquitousKeyValueStore.default
             store.set(newValue.rawValue, forKey: "imagePreviewMode")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
+    // 图片保存目录
+    @Published var imageSaveDirectory: SaveDirectory = .downloadsDirectory {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(imageSaveDirectory.rawValue, forKey: "imageSaveDirectory")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue.rawValue, forKey: "imageSaveDirectory")
             store.synchronize() // 强制触发数据同步
         }
     }
@@ -99,6 +110,20 @@ class AppStorage:ObservableObject {
             let mode = PreviewMode(rawValue: modeString)
             imagePreviewMode = mode ?? PreviewMode.quickLook
             print("图片预览方式，默认值为 \(imagePreviewMode)")
+        }
+        
+        // 图片保存目录【同步UserDefaults】
+        // 如果 UserDefaults 中没有 imageSaveDirectory 键，设置默认为 DownloadsDirectory
+        if UserDefaults.standard.object(forKey: "imageSaveDirectory") == nil {
+            // 设置默认值为 true
+            print("图片保存目录，默认值为 nil，设置为 SaveDirectory.downloadsDirectory")
+            UserDefaults.standard.set(SaveDirectory.downloadsDirectory.rawValue, forKey: "imagePreviewMode")
+            imageSaveDirectory = SaveDirectory.downloadsDirectory  // 菜单栏图标
+        } else {
+            let directoryString = UserDefaults.standard.object(forKey: "imageSaveDirectory") as? String ?? "downloadsDirectory"
+            let directory = SaveDirectory(rawValue: directoryString)
+            imageSaveDirectory = directory ?? SaveDirectory.downloadsDirectory
+            print("图片保存目录，默认值为 \(imageSaveDirectory)")
         }
     }
 }

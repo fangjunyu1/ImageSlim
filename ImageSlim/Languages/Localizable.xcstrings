@@ -101,6 +101,30 @@
         }
       }
     },
+    "Desktop directory" : {
+      "comment" : "桌面目录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "桌面目录"
+          }
+        }
+      }
+    },
+    "Document directory" : {
+      "comment" : "文稿目录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "文稿目录"
+          }
+        }
+      }
+    },
     "Download" : {
       "comment" : "下载",
       "extractionState" : "manual",
@@ -133,6 +157,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下载完成"
+          }
+        }
+      }
+    },
+    "Download directory" : {
+      "comment" : "下载目录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载目录"
           }
         }
       }
@@ -177,6 +213,18 @@
         }
       }
     },
+    "Image directory" : {
+      "comment" : "图片目录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图片目录"
+          }
+        }
+      }
+    },
     "Image preview method" : {
       "comment" : "图片预览方式",
       "extractionState" : "manual",
@@ -185,6 +233,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "图片预览方式"
+          }
+        }
+      }
+    },
+    "Image save directory" : {
+      "comment" : "图片保存目录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图片保存目录"
           }
         }
       }
@@ -308,6 +368,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隐私政策"
+          }
+        }
+      }
+    },
+    "Public directory" : {
+      "comment" : "公共目录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公共目录"
           }
         }
       }
@@ -463,6 +535,12 @@
 
     },
     "等待压缩" : {
+
+    },
+    "选择目录" : {
+
+    },
+    "预览方式" : {
 
     }
   },
