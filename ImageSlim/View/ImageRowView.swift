@@ -42,14 +42,8 @@ struct ImageRowView: View {
     func saveToDownloads(file: CustomImages) {
         var directory:FileManager.SearchPathDirectory {
             switch appStorage.imageSaveDirectory {
-            case .desktopDirectory:
-                return .desktopDirectory
             case .downloadsDirectory:
                 return .downloadsDirectory
-            case .sharedPublicDirectory:
-                return .sharedPublicDirectory
-            case .documentDirectory:
-                return .documentDirectory
             case .picturesDirectory:
                 return .picturesDirectory
             }

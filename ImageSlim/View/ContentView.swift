@@ -22,14 +22,8 @@ struct ContentView: View {
                 print("打包Zip")
                 var directory:FileManager.SearchPathDirectory {
                     switch appStorage.imageSaveDirectory {
-                    case .desktopDirectory:
-                        return .desktopDirectory
                     case .downloadsDirectory:
                         return .downloadsDirectory
-                    case .sharedPublicDirectory:
-                        return .sharedPublicDirectory
-                    case .documentDirectory:
-                        return .documentDirectory
                     case .picturesDirectory:
                         return .picturesDirectory
                     }
