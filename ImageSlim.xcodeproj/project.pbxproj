@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D2BC9282E2261E1003484B5 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1D2BC9272E2261E1003484B5 /* Zip */; };
+		1DF1B92B2E2364C900FA59E6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1DF1B92A2E2364C900FA59E6 /* Zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D2BC9282E2261E1003484B5 /* Zip in Frameworks */,
+				1DF1B92B2E2364C900FA59E6 /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			);
 			name = ImageSlim;
 			packageProductDependencies = (
-				1D2BC9272E2261E1003484B5 /* Zip */,
+				1DF1B92A2E2364C900FA59E6 /* Zip */,
 			);
 			productName = ImageSlim;
 			productReference = 1D01110F2E02791C00D9718B /* ImageSlim.app */;
@@ -155,7 +155,7 @@
 			mainGroup = 1D0111062E02791C00D9718B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				1D2BC9262E2261E1003484B5 /* XCRemoteSwiftPackageReference "Zip" */,
+				1DF1B9292E2364C900FA59E6 /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1D0111102E02791C00D9718B /* Products */;
@@ -396,7 +396,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1D2BC9262E2261E1003484B5 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		1DF1B9292E2364C900FA59E6 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
 			requirement = {
@@ -407,9 +407,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1D2BC9272E2261E1003484B5 /* Zip */ = {
+		1DF1B92A2E2364C900FA59E6 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1D2BC9262E2261E1003484B5 /* XCRemoteSwiftPackageReference "Zip" */;
+			package = 1DF1B9292E2364C900FA59E6 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */

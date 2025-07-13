@@ -72,13 +72,16 @@ struct ContentView: View {
                 Button(action: {
                     appStorage.selectedView = .compression
                 }, label: {
-                    Image(systemName: "photo")
-                        .imageScale(.large)
-                        .frame(width: 20)
-                    Spacer().frame(width: 14)
-                    Text("Compression")
-                        .font(.title3)
-                        .fontWeight(.semibold)
+                    HStack {
+                        Image(systemName: "photo")
+                            .imageScale(.large)
+                            .frame(width: 20)
+                        Spacer().frame(width: 14)
+                        Text("Compression")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                    }
+                    .contentShape(Rectangle())
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(appStorage.selectedView == .compression ? .black : .gray)
@@ -92,13 +95,16 @@ struct ContentView: View {
                 Button(action: {
                     appStorage.selectedView = .settings
                 }, label: {
-                    Image(systemName: "slider.vertical.3")
-                        .imageScale(.large)
-                        .frame(width: 20)
-                    Spacer().frame(width: 14)
-                    Text("Settings")
-                        .font(.title3)
-                        .fontWeight(.semibold)
+                    HStack {
+                        Image(systemName: "slider.vertical.3")
+                            .imageScale(.large)
+                            .frame(width: 20)
+                        Spacer().frame(width: 14)
+                        Text("Settings")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                    }
+                    .contentShape(Rectangle())
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(appStorage.selectedView == .settings ? .black : .gray)

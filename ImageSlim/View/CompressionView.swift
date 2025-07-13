@@ -238,6 +238,7 @@ struct CompressionView: View {
             allowedContentTypes: [.image],
             allowsMultipleSelection: true
         ) { result in
+            print("开始导入图片")
             // 处理选择结果
             do {
                 let selectedFiles: [URL] = try result.get()
@@ -246,6 +247,7 @@ struct CompressionView: View {
                 var limitNum = appStorage.limitImageNum - appStorage.images.count
                 var imageURLs: [URL] = []
                 
+                print("获取的URL有:\(selectedFiles.count) 个")
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
                     // 非内购用户，判断图片是否为最大上传数量
@@ -263,11 +265,14 @@ struct CompressionView: View {
                     
                     // 根据 fileURL 保存图像
                     guard let fileURL = saveURLToTempFile(fileURL: selectedFile) else { return }
+                    print("插入一张图片")
                     imageURLs.append(fileURL)
                     
                     // 可上传图像数量 - 1
                     limitNum -= 1
                 }
+                
+                savePictures(url: imageURLs)
             } catch {
                 print("导入图片失败！")
             }
