@@ -123,11 +123,12 @@ struct ImageRowView: View {
             .cornerRadius(4)
             
             Spacer().frame(width:20)
+                .background(.green)
             // 图片信息
             VStack(alignment: .leading) {
                 // 图片名称
                 Text("\(item.name)")
-                    .frame(width: 150, alignment: .leading)
+                    .frame(maxWidth: 150, alignment: .leading)
                     .lineLimit(1)
                 Spacer().frame(height:3)
                 // 图片信息
@@ -138,7 +139,6 @@ struct ImageRowView: View {
                             .frame(width:50,height:16)
                             .cornerRadius(3)
                         Text("\(item.type)")
-                            .font(.footnote)
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }
@@ -146,7 +146,6 @@ struct ImageRowView: View {
                         .foregroundColor(.gray)
                 }
             }
-            .frame(minWidth:40)
             Spacer()
             
             // 如果图片完成压缩，显示压缩图片的输出参数和下载按钮
@@ -214,4 +213,9 @@ struct ImageRowView: View {
             
         }
     }
+}
+
+#Preview {
+    ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
+        .frame(width: 300,height:40)
 }
