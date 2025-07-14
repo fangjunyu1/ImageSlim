@@ -66,67 +66,35 @@ class CompressionManager:ObservableObject {
     
     // 使用 NSbitmapimagerep 压缩图片
     private func compressImage(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
-        
-        // MARK: 第三方库的变量
-        var quality: String {
-            if appStorage.imageCompressionRate >= 0.9 {
-                return "90-100"
-            } else if appStorage.imageCompressionRate >= 0.8 {
-                return "80-90"
-            } else if appStorage.imageCompressionRate >= 0.7 {
-                return "70-80"
-            } else if appStorage.imageCompressionRate >= 0.6 {
-                return "60-70"
-            } else if appStorage.imageCompressionRate >= 0.5 {
-                return "50-60"
-            } else if appStorage.imageCompressionRate >= 0.4 {
-                return "40-50"
-            } else if appStorage.imageCompressionRate >= 0.3 {
-                return "30-40"
-            } else if appStorage.imageCompressionRate >= 0.2 {
-                return "20-30"
-            } else if appStorage.imageCompressionRate >= 0.1 {
-                return "10-20"
-            } else {
-                return "0-1"
-            }
-        }
-        
-        // MARK: macOS原生压缩类CGImageDestination的变量
-        // 将 NSImage 转换为 CGImage
-        guard let tiffData = image.image.tiffRepresentation,
-              let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
-              let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
-            completion(false)
-            return
-        }
-        
-        // 设置压缩格式
-        var imageType: CFString {
-            switch image.type.uppercased() {
-            case "JPG", "JPEG", "JP2":
-                return UTType.jpeg.identifier as CFString
-            case "HEIC":
-                return UTType.heic.identifier as CFString
-            case "PNG":
-                return UTType.png.identifier as CFString
-            case "GIF":
-                return UTType.gif.identifier as CFString
-            case "TIFF", "TIF":
-                return UTType.tiff.identifier as CFString
-            case "BMP":
-                return UTType.bmp.identifier as CFString
-            default:
-                // 所有不支持的类型强制转换为 JPEG 再压缩
-                return UTType.jpeg.identifier as CFString
-            }
-        }
-        
         // MARK: 判断是否启用第三方库
         if appStorage.enableThirdPartyLibraries {
             // MARK: 当前启用第三方库，使用 pngquant 压缩
+            var quality: String {
+                if appStorage.imageCompressionRate >= 0.9 {
+                    return "90-100"
+                } else if appStorage.imageCompressionRate >= 0.8 {
+                    return "80-90"
+                } else if appStorage.imageCompressionRate >= 0.7 {
+                    return "70-80"
+                } else if appStorage.imageCompressionRate >= 0.6 {
+                    return "60-70"
+                } else if appStorage.imageCompressionRate >= 0.5 {
+                    return "50-60"
+                } else if appStorage.imageCompressionRate >= 0.4 {
+                    return "40-50"
+                } else if appStorage.imageCompressionRate >= 0.3 {
+                    return "30-40"
+                } else if appStorage.imageCompressionRate >= 0.2 {
+                    return "20-30"
+                } else if appStorage.imageCompressionRate >= 0.1 {
+                    return "10-20"
+                } else {
+                    return "0-1"
+                }
+            }
+            
             print("当前启用第三方库压缩")
-            guard let pngquant = Bundle.main.path(forResource: "pngquant", ofType: nil, inDirectory: "Packages") else {
+            guard let pngquant = Bundle.main.path(forResource: "pngquant", ofType: nil) else {
                 print("pngquant not found in app bundle.")
                 completion(false)
                 return
@@ -134,8 +102,39 @@ class CompressionManager:ObservableObject {
             print("找到pngquant文件，路径为:\(pngquant),类型为:\(type(of:pngquant))")
             completion(true)
             return
+            
+            
         } else {
-            print("使用Mac原生工具压缩")
+            // MARK: macOS原生压缩类CGImageDestination的变量
+            // 将 NSImage 转换为 CGImage
+            guard let tiffData = image.image.tiffRepresentation,
+                  let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
+                  let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
+                completion(false)
+                return
+            }
+            
+            // 设置压缩格式
+            var imageType: CFString {
+                switch image.type.uppercased() {
+                case "JPG", "JPEG", "JP2":
+                    return UTType.jpeg.identifier as CFString
+                case "HEIC":
+                    return UTType.heic.identifier as CFString
+                case "PNG":
+                    return UTType.png.identifier as CFString
+                case "GIF":
+                    return UTType.gif.identifier as CFString
+                case "TIFF", "TIF":
+                    return UTType.tiff.identifier as CFString
+                case "BMP":
+                    return UTType.bmp.identifier as CFString
+                default:
+                    // 所有不支持的类型强制转换为 JPEG 再压缩
+                    return UTType.jpeg.identifier as CFString
+                }
+            }
+            
             // MARK: 不启用第三方库时，使用 MacOS 原生 CGImageDestination 压缩图片
             // 创建用于接收压缩后数据的容器
             let outputData = NSMutableData()
