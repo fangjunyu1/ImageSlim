@@ -60,7 +60,7 @@ struct CompressionView: View {
             
             // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
             if let nsImage = NSImage(contentsOf: url) {
-                let customImage = CustomImages(image: nsImage, name: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize)
+                let customImage = CustomImages(image: nsImage, name: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
                 compressImages.append(customImage)
                 DispatchQueue.main.async {
                     appStorage.images.append(customImage)
@@ -247,7 +247,6 @@ struct CompressionView: View {
                 var limitNum = appStorage.limitImageNum - appStorage.images.count
                 var imageURLs: [URL] = []
                 
-                print("获取的URL有:\(selectedFiles.count) 个")
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
                     // 非内购用户，判断图片是否为最大上传数量

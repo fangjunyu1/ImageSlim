@@ -169,7 +169,7 @@ struct ContentView: View {
                 
             }
             
-            Text("\(Bundle.main.version)")
+            Text("\(Bundle.main.version) (\(Bundle.main.build))")
                 .foregroundColor(.gray)
                 .font(.footnote)
         }
