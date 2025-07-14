@@ -39,6 +39,18 @@
         }
       }
     },
+    "Acknowledgements" : {
+      "comment" : "鸣谢",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鸣谢"
+          }
+        }
+      }
+    },
     "Always show" : {
       "comment" : "始终显示",
       "extractionState" : "manual",
@@ -393,6 +405,9 @@
           }
         }
       }
+    },
+    "pngquant、Freepik、ChatGPT" : {
+      "extractionState" : "manual"
     },
     "Privacy policy" : {
       "comment" : "隐私政策",

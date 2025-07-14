@@ -231,6 +231,23 @@ struct SettingsView: View {
                         .onHover { isHovering in
                             isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                         }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 鸣谢
+                        HStack {
+                            Image(systemName: "leaf")
+                            Text("Acknowledgements")
+                            Spacer()
+                            Text("pngquant、Freepik、ChatGPT")
+                                .foregroundColor(.gray)
+                        }
+//                        .onTapGesture {
+//                            
+//                        }
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
                     }
                     .padding(14)
                     .background(Color(hex: "EEEEEE"))
