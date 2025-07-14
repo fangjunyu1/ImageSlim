@@ -67,6 +67,32 @@ class CompressionManager:ObservableObject {
     // 使用 NSbitmapimagerep 压缩图片
     private func compressImage(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
         
+        // MARK: 第三方库的变量
+        var quality: String {
+            if appStorage.imageCompressionRate >= 0.9 {
+                return "90-100"
+            } else if appStorage.imageCompressionRate >= 0.8 {
+                return "80-90"
+            } else if appStorage.imageCompressionRate >= 0.7 {
+                return "70-80"
+            } else if appStorage.imageCompressionRate >= 0.6 {
+                return "60-70"
+            } else if appStorage.imageCompressionRate >= 0.5 {
+                return "50-60"
+            } else if appStorage.imageCompressionRate >= 0.4 {
+                return "40-50"
+            } else if appStorage.imageCompressionRate >= 0.3 {
+                return "30-40"
+            } else if appStorage.imageCompressionRate >= 0.2 {
+                return "20-30"
+            } else if appStorage.imageCompressionRate >= 0.1 {
+                return "10-20"
+            } else {
+                return "0-1"
+            }
+        }
+        
+        // MARK: macOS原生压缩类CGImageDestination的变量
         // 将 NSImage 转换为 CGImage
         guard let tiffData = image.image.tiffRepresentation,
               let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
@@ -76,7 +102,7 @@ class CompressionManager:ObservableObject {
         }
         
         // 设置压缩格式
-        var type: CFString {
+        var imageType: CFString {
             switch image.type.uppercased() {
             case "JPG", "JPEG", "JP2":
                 return UTType.jpeg.identifier as CFString
@@ -96,51 +122,67 @@ class CompressionManager:ObservableObject {
             }
         }
         
-        // 创建用于接收压缩后数据的容器
-        let outputData = NSMutableData()
-        guard let destination = CGImageDestinationCreateWithData(outputData, type, 1, nil) else {
-            completion(false)
-            return
-        }
-        
-        // 压缩选项（0.0 = 最小质量，1.0 = 最佳质量）
-        let options: [CFString: Any] = [
-            kCGImageDestinationLossyCompressionQuality: appStorage.imageCompressionRate
-        ]
-        
-        // 添加图像到目标
-        CGImageDestinationAddImage(destination, cgImage, options as CFDictionary)
-        
-        // 完成写入
-        if CGImageDestinationFinalize(destination) {
-            // 压缩图片并获取压缩的 Data
-            let imageData = outputData as Data
-            
-            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "." + image.type.lowercased())
-            
-            do {
-                // 将压缩图片的 Data，写入临时文件
-                try imageData.write(to: tempURL)
-                DispatchQueue.main.async {
-                    // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                    image.outputSize = self.getFileSize(fileURL: tempURL)
-                    image.outputURL = tempURL
-                    if let outSize = image.outputSize {
-                        let ratio = Double(outSize) / Double(image.inputSize)
-                        image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
-                    } else {
-                        image.compressionRatio = 0.0
-                    }
-                }
-                completion(true)
-            } catch {
-                print("数据写入失败")
+        // MARK: 判断是否启用第三方库
+        if appStorage.enableThirdPartyLibraries {
+            // MARK: 当前启用第三方库，使用 pngquant 压缩
+            print("当前启用第三方库压缩")
+            guard let pngquant = Bundle.main.path(forResource: "pngquant", ofType: nil, inDirectory: "Packages") else {
+                print("pngquant not found in app bundle.")
                 completion(false)
+                return
             }
+            print("找到pngquant文件，路径为:\(pngquant),类型为:\(type(of:pngquant))")
+            completion(true)
             return
         } else {
-            completion(false)
-            return
+            print("使用Mac原生工具压缩")
+            // MARK: 不启用第三方库时，使用 MacOS 原生 CGImageDestination 压缩图片
+            // 创建用于接收压缩后数据的容器
+            let outputData = NSMutableData()
+            guard let destination = CGImageDestinationCreateWithData(outputData, imageType, 1, nil) else {
+                completion(false)
+                return
+            }
+            
+            // 压缩选项（0.0 = 最小质量，1.0 = 最佳质量）
+            let options: [CFString: Any] = [
+                kCGImageDestinationLossyCompressionQuality: appStorage.imageCompressionRate
+            ]
+            
+            // 添加图像到目标
+            CGImageDestinationAddImage(destination, cgImage, options as CFDictionary)
+            
+            // 完成写入
+            if CGImageDestinationFinalize(destination) {
+                // 压缩图片并获取压缩的 Data
+                let imageData = outputData as Data
+                
+                let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "." + image.type.lowercased())
+                
+                do {
+                    // 将压缩图片的 Data，写入临时文件
+                    try imageData.write(to: tempURL)
+                    DispatchQueue.main.async {
+                        // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
+                        image.outputSize = self.getFileSize(fileURL: tempURL)
+                        image.outputURL = tempURL
+                        if let outSize = image.outputSize {
+                            let ratio = Double(outSize) / Double(image.inputSize)
+                            image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
+                        } else {
+                            image.compressionRatio = 0.0
+                        }
+                    }
+                    completion(true)
+                } catch {
+                    print("数据写入失败")
+                    completion(false)
+                }
+                return
+            } else {
+                completion(false)
+                return
+            }
         }
         
     }

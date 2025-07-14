@@ -38,6 +38,18 @@ class AppStorage:ObservableObject {
         }
     }
     
+    // 启用第三方库压缩，当前使用pngquant压缩
+    @Published var enableThirdPartyLibraries = false {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(newValue, forKey: "enableThirdPartyLibraries")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue, forKey: "enableThirdPartyLibraries")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
     // 图片压缩率
     @Published var imageCompressionRate = 0.0 {
         willSet {
@@ -77,15 +89,28 @@ class AppStorage:ObservableObject {
     // 从UserDefaults加载数据
     private func loadUserDefault() {
         
+        // 是否启用菜单栏显示图标
         // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
         if UserDefaults.standard.object(forKey: "displayMenuBarIcon") == nil {
             // 设置默认值为 true
-            print("菜单栏显示图标，默认值为 nil，设置为 displayMenuBarIcon")
+            print("菜单栏显示图标，默认值为 nil，设置为 true")
             UserDefaults.standard.set(true, forKey: "displayMenuBarIcon")
             displayMenuBarIcon = true  // 菜单栏图标
         } else {
             displayMenuBarIcon = UserDefaults.standard.bool(forKey: "displayMenuBarIcon")
             print("菜单栏显示图标，默认值为 \(displayMenuBarIcon)")
+        }
+        
+        // 启用第三方库压缩
+        // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
+        if UserDefaults.standard.object(forKey: "enableThirdPartyLibraries") == nil {
+            // 设置默认值为 true
+            print("菜单栏显示图标，默认值为 nil，设置为 false")
+            UserDefaults.standard.set(false, forKey: "enableThirdPartyLibraries")
+            enableThirdPartyLibraries = false  // 菜单栏图标
+        } else {
+            enableThirdPartyLibraries = UserDefaults.standard.bool(forKey: "enableThirdPartyLibraries")
+            print("菜单栏显示图标，默认值为 \(enableThirdPartyLibraries)")
         }
         
         // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.6

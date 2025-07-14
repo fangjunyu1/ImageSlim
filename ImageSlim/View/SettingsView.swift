@@ -73,7 +73,7 @@ struct SettingsView: View {
                         
                         // 图片压缩率
                         HStack {
-                            Image(systemName: "zipper.page")
+                            Image(systemName: "numbers.rectangle")
                             Text("Image compression rate")
                             Spacer()
                             Text(compressionLocalizedKey)
@@ -126,6 +126,21 @@ struct SettingsView: View {
                             .pickerStyle(.menu)
                             .labelsHidden()
                             .fixedSize() // 不随容器拉伸
+                        }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 启用第三方库压缩
+                        HStack {
+                            Image(systemName: "zipper.page")
+                            Text("Enable third-party library compression")
+                            Spacer()
+                            Toggle("启用第三方库压缩",isOn: Binding(get: {
+                                appStorage.enableThirdPartyLibraries
+                            }, set: { newValue in
+                                appStorage.enableThirdPartyLibraries = newValue
+                            }))
+                            .labelsHidden()
                         }
                     }
                     .padding(14)

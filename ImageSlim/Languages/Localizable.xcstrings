@@ -185,6 +185,18 @@
         }
       }
     },
+    "Enable third-party library compression" : {
+      "comment" : "启用第三方库压缩",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用第三方库压缩"
+          }
+        }
+      }
+    },
     "GitHub" : {
       "comment" : "GitHub",
       "extractionState" : "manual"
@@ -296,6 +308,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最低"
+          }
+        }
+      }
+    },
+    "Mac native compression" : {
+      "comment" : "Mac原生压缩",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac原生压缩"
           }
         }
       }
@@ -529,6 +553,9 @@
       }
     },
     "压缩失败" : {
+
+    },
+    "启用第三方库压缩" : {
 
     },
     "显示图标" : {
