@@ -239,14 +239,38 @@ struct SettingsView: View {
                             Image(systemName: "leaf")
                             Text("Acknowledgements")
                             Spacer()
-                            Text("pngquant、Freepik、ChatGPT")
-                                .foregroundColor(.gray)
-                        }
-//                        .onTapGesture {
-//                            
-//                        }
-                        .onHover { isHovering in
-                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                            HStack(spacing:0) {
+                                Text("pngquant")
+                                    .onTapGesture {
+                                        if let url = URL(string: "https://pngquant.org/") {
+                                            openURL(url)
+                                        }
+                                    }
+                                    .onHover { isHovering in
+                                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                    }
+                                Text("、")
+                                Text("Freepik")
+                                    .onTapGesture {
+                                        if let url = URL(string: "https://www.freepik.com/") {
+                                            openURL(url)
+                                        }
+                                    }
+                                    .onHover { isHovering in
+                                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                    }
+                                Text("、")
+                                Text("ChatGPT")
+                                    .onTapGesture {
+                                        if let url = URL(string: "https://chatgpt.com/") {
+                                            openURL(url)
+                                        }
+                                    }
+                                    .onHover { isHovering in
+                                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                    }
+                            }
+                            .foregroundColor(.gray)
                         }
                     }
                     .padding(14)

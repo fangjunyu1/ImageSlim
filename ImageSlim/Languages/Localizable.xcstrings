@@ -14,6 +14,9 @@
     "-%lld%%" : {
 
     },
+    "、" : {
+
+    },
     "%@" : {
 
     },
@@ -86,6 +89,9 @@
           }
         }
       }
+    },
+    "ChatGPT" : {
+      "extractionState" : "manual"
     },
     "Clear the queue" : {
       "comment" : "清除队列",
@@ -218,6 +224,9 @@
           }
         }
       }
+    },
+    "Freepik" : {
+      "extractionState" : "manual"
     },
     "GitHub" : {
       "comment" : "GitHub",
@@ -405,6 +414,9 @@
           }
         }
       }
+    },
+    "pngquant" : {
+      "extractionState" : "manual"
     },
     "pngquant、Freepik、ChatGPT" : {
       "extractionState" : "manual"
