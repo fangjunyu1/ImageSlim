@@ -135,6 +135,10 @@ struct SettingsView: View {
                             Image(systemName: "zipper.page")
                             Text("Enable third-party library compression")
                             Spacer()
+                            if appStorage.enableThirdPartyLibraries {
+                                Text("pngquant")
+                                    .foregroundColor(.gray)
+                            }
                             Toggle("启用第三方库压缩",isOn: Binding(get: {
                                 appStorage.enableThirdPartyLibraries
                             }, set: { newValue in

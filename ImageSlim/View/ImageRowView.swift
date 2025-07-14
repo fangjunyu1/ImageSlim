@@ -214,7 +214,7 @@ struct ImageRowView: View {
                     .foregroundColor(.red)
             } else {
                 // 否则，显示加载状态。
-                ProgressView("Loading...")
+                ProgressView("")
                     .scaleEffect(0.5)
                     .labelsHidden()
             }

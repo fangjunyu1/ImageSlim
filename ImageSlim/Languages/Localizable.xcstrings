@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     " : %lld / %lld" : {
       "localizations" : {
         "en" : {
@@ -304,9 +307,6 @@
         }
       }
     },
-    "Loading..." : {
-
-    },
     "Lossless" : {
       "comment" : "无损（压缩率）",
       "extractionState" : "manual",
@@ -418,9 +418,6 @@
     "pngquant" : {
       "extractionState" : "manual"
     },
-    "pngquant、Freepik、ChatGPT" : {
-      "extractionState" : "manual"
-    },
     "Privacy policy" : {
       "comment" : "隐私政策",
       "extractionState" : "manual",
@@ -501,6 +498,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在菜单栏中显示图标"
+          }
+        }
+      }
+    },
+    "Sponsor Us" : {
+      "comment" : "赞助我们",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助我们"
           }
         }
       }

@@ -8,4 +8,5 @@
 enum SelectedView {
     case compression
     case settings
+    case sponsorUs
 }

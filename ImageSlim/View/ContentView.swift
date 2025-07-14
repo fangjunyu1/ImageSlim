@@ -169,6 +169,19 @@ struct ContentView: View {
                 
             }
             
+            Button(action:{
+                appStorage.selectedView = .sponsorUs
+            }, label: {
+                Text("Sponsor Us")
+                    .font(.footnote)
+                    .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                    }
+            })
+            .buttonStyle(.plain)
+                
+            Spacer().frame(height:10)
             Text("\(Bundle.main.version) (\(Bundle.main.build))")
                 .foregroundColor(.gray)
                 .font(.footnote)

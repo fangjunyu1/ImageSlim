@@ -14,8 +14,8 @@ struct WorkspaceView: View {
             CompressionView()
         } else if appStorage.selectedView == .settings {
             SettingsView()
-        } else {
-            
+        } else if appStorage.selectedView == .sponsorUs {
+            SponsorUsView()
         }
     }
 }
