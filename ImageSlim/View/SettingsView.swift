@@ -264,6 +264,16 @@ struct SettingsView: View {
                                         isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                                     }
                                 Text("、")
+                                Text("Zip")
+                                    .onTapGesture {
+                                        if let url = URL(string: "https://github.com/marmelroy/Zip") {
+                                            openURL(url)
+                                        }
+                                    }
+                                    .onHover { isHovering in
+                                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                    }
+                                Text("、")
                                 Text("ChatGPT")
                                     .onTapGesture {
                                         if let url = URL(string: "https://chatgpt.com/") {

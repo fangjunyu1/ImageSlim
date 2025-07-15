@@ -598,6 +598,9 @@
         }
       }
     },
+    "Zip" : {
+      "extractionState" : "manual"
+    },
     "压缩失败" : {
 
     },
