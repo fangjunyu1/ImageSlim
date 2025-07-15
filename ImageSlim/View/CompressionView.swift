@@ -277,18 +277,45 @@ struct CompressionView: View {
             }
         }
         .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
+            print("支持的格式有：\(NSPasteboard.general.types ?? [])")
             let pb = NSPasteboard.general
-            if let imageData = pb.data(forType: .tiff),
-               let image = NSImage(data: imageData) {
-                print("粘贴的是图片")
-                //pastedImage = image
-            } else if let str = pb.string(forType: .string) {
-                print("粘贴的字符串为：\(str)")
-                // pastedText = str
-            } else {
-                print("剪贴板中无可识别内容")
-                // pastedImage = nil
+            let imageTypes: [NSPasteboard.PasteboardType] = [.tiff]
+            var compressImages: [CustomImages] = []
+            
+            // for-in循环
+            for type in imageTypes {
+                if let imageData = pb.data(forType: type) {
+                    print("粘贴的是图片")
+                    //pastedImage = image
+                    // 将粘贴的图片转换成png格式
+                    let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
+                    
+                    do {
+                        try imageData.write(to: outputURL)
+                        // 获取 Finder 上的大小
+                        let fileSize = getFileSize(fileURL: outputURL)
+                        
+                        // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
+                        if let nsImage = NSImage(contentsOf: outputURL) {
+                            let customImage = CustomImages(image: nsImage, name: outputURL.lastPathComponent, type: outputURL.pathExtension.uppercased(), inputSize: fileSize,inputURL: outputURL)
+                            compressImages.append(customImage)
+                            DispatchQueue.main.async {
+                                appStorage.images.append(customImage)
+                            }
+                        }
+                    } catch {
+                        print("粘贴板写入过程发生报错")
+                    }
+                } else if let str = pb.string(forType: .string) {
+                    print("粘贴的字符串为：\(str)")
+                    // pastedText = str
+                } else {
+                    print("剪贴板中无可识别内容")
+                    // pastedImage = nil
+                }
             }
+            // for-in循环结束，开始调用压缩图片
+            compressManager.enqueue(compressImages)
         }
 
     }
