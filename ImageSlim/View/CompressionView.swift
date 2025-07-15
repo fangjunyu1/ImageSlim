@@ -276,6 +276,21 @@ struct CompressionView: View {
                 print("导入图片失败！")
             }
         }
+        .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
+            let pb = NSPasteboard.general
+            if let imageData = pb.data(forType: .tiff),
+               let image = NSImage(data: imageData) {
+                print("粘贴的是图片")
+                //pastedImage = image
+            } else if let str = pb.string(forType: .string) {
+                print("粘贴的字符串为：\(str)")
+                // pastedText = str
+            } else {
+                print("剪贴板中无可识别内容")
+                // pastedImage = nil
+            }
+        }
+
     }
 }
 

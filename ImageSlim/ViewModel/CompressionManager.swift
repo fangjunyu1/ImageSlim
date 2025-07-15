@@ -111,36 +111,40 @@ class CompressionManager:ObservableObject {
             let pipe = Pipe()
             process.standardOutput = pipe
             process.standardError = pipe
+            let fileHandle = pipe.fileHandleForReading
             
             do {
                 try process.run()   // 启动
-                process.waitUntilExit() // 等待直到退出
                 
-                let logData = pipe.fileHandleForReading.readDataToEndOfFile()  // 获取压缩数据的日志
-                if let log = String(data: logData, encoding: .utf8) {
-                    print("pngquant 日志：\n\(log)")
-                }
-                DispatchQueue.main.async { [self] in
-                    // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                    image.outputSize = getFileSize(fileURL: outputURL)
-                    image.outputURL = outputURL
-                    if let outSize = image.outputSize {
-                        let ratio = Double(outSize) / Double(image.inputSize)
-                        image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
+                process.terminationHandler = { process in
+                    let logData = fileHandle.readDataToEndOfFile()
+                        if let log = String(data: logData, encoding: .utf8) {
+                            print("pngquant 日志：\n\(log)")
+                        }
+                    
+                    DispatchQueue.main.async { [self] in
+                        // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
+                        image.outputSize = getFileSize(fileURL: outputURL)
+                        image.outputURL = outputURL
+                        if let outSize = image.outputSize {
+                            let ratio = Double(outSize) / Double(image.inputSize)
+                            image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
+                        } else {
+                            image.compressionRatio = 0.0
+                        }
+                    }
+                    
+                    if process.terminationStatus == 0 {
+                        print("压缩完成")
+                        completion(true)
+                        return
                     } else {
-                        image.compressionRatio = 0.0
+                        print("压缩失败，退出码：\(process.terminationStatus)")
+                        completion(false)
+                        return
                     }
                 }
                 
-                if process.terminationStatus == 0 {
-                    print("压缩完成")
-                    completion(true)
-                    return
-                } else {
-                    print("压缩失败，退出码：\(process.terminationStatus)")
-                    completion(false)
-                    return
-                }
             } catch {
                 print("运行 pngquant 失败：\(error)")
             }
