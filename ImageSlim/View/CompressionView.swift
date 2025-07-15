@@ -135,8 +135,8 @@ struct CompressionView: View {
                 ScrollView(showsIndicators:false) {
                     ForEach(Array(appStorage.images.enumerated()),id: \.offset) { index,item in
                         ImageRowView(item: item,index: index,previewer: previewer)
-                        .frame(maxWidth: .infinity)
-                        .frame(height:42)
+                            .frame(maxWidth: .infinity)
+                            .frame(height:42)
                         // 分割线
                         Divider()
                             .padding(.leading,55)
@@ -279,45 +279,57 @@ struct CompressionView: View {
         .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
             print("支持的格式有：\(NSPasteboard.general.types ?? [])")
             let pb = NSPasteboard.general
-            let imageTypes: [NSPasteboard.PasteboardType] = [.tiff]
             var compressImages: [CustomImages] = []
             
-            // for-in循环
-            for type in imageTypes {
-                if let imageData = pb.data(forType: type) {
-                    print("粘贴的是图片")
-                    //pastedImage = image
-                    // 将粘贴的图片转换成png格式
-                    let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
+            if let urls = pb.readObjects(forClasses: [NSURL.self], options: nil) as? [URL] {
+                print("粘贴的是URL数组")
+                // 读取urls文件
+                for url in urls {
+                    // 获取 Finder 上的大小
+                    let fileSize = getFileSize(fileURL: url)
                     
-                    do {
-                        try imageData.write(to: outputURL)
-                        // 获取 Finder 上的大小
-                        let fileSize = getFileSize(fileURL: outputURL)
-                        
-                        // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
-                        if let nsImage = NSImage(contentsOf: outputURL) {
-                            let customImage = CustomImages(image: nsImage, name: outputURL.lastPathComponent, type: outputURL.pathExtension.uppercased(), inputSize: fileSize,inputURL: outputURL)
-                            compressImages.append(customImage)
-                            DispatchQueue.main.async {
-                                appStorage.images.append(customImage)
-                            }
+                    // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
+                    if let nsImage = NSImage(contentsOf: url) {
+                        let customImage = CustomImages(image: nsImage, name: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
+                        compressImages.append(customImage)
+                        DispatchQueue.main.async {
+                            appStorage.images.append(customImage)
                         }
-                    } catch {
-                        print("粘贴板写入过程发生报错")
                     }
-                } else if let str = pb.string(forType: .string) {
-                    print("粘贴的字符串为：\(str)")
-                    // pastedText = str
-                } else {
-                    print("剪贴板中无可识别内容")
-                    // pastedImage = nil
                 }
+            } else if let imageData = pb.data(forType: .tiff) {
+                print("粘贴的是图片")
+                //pastedImage = image
+                // 将粘贴的图片转换成png格式
+                let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
+                
+                do {
+                    try imageData.write(to: outputURL)
+                    // 获取 Finder 上的大小
+                    let fileSize = getFileSize(fileURL: outputURL)
+                    
+                    // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
+                    if let nsImage = NSImage(contentsOf: outputURL) {
+                        let customImage = CustomImages(image: nsImage, name: outputURL.lastPathComponent, type: outputURL.pathExtension.uppercased(), inputSize: fileSize,inputURL: outputURL)
+                        compressImages.append(customImage)
+                        DispatchQueue.main.async {
+                            appStorage.images.append(customImage)
+                        }
+                    }
+                } catch {
+                    print("粘贴板写入过程发生报错")
+                }
+            } else if let str = pb.string(forType: .string) {
+                print("粘贴的字符串为：\(str)")
+                // pastedText = str
+            } else {
+                print("剪贴板中无可识别内容")
+                // pastedImage = nil
             }
             // for-in循环结束，开始调用压缩图片
             compressManager.enqueue(compressImages)
         }
-
+        
     }
 }
 
