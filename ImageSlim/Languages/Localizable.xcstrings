@@ -358,6 +358,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "loading..." : {
 
     },

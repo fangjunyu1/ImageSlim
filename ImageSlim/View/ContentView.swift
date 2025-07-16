@@ -173,12 +173,21 @@ struct ContentView: View {
             Button(action:{
                 showSponsorUs = true
             }, label: {
-                Text("Sponsor Us")
-                    .font(.footnote)
-                    .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                    }
+                if appStorage.inAppPurchaseMembership {
+                    Text("Thank you for your support")
+                        .font(.footnote)
+                        .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
+                } else {
+                    Text("Sponsor Us")
+                        .font(.footnote)
+                        .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
+                        .onHover { isHovering in
+                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                        }
+                }
             })
             .buttonStyle(.plain)
                 
