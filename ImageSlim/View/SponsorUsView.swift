@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SuponsorStruct: Identifiable{
-    var id:Int
+    var id:String
     var icon: String
     var title: LocalizedStringKey
     var subtitle: LocalizedStringKey
@@ -17,14 +17,14 @@ struct SuponsorStruct: Identifiable{
 
 struct SponsorUsView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var selectedNum: Int? = nil
+    @State private var selectedNum: String? = nil
     @ObservedObject var appStorage = AppStorage.shared
     @ObservedObject var iapManager = IAPManager.shared
     private var suponsorList: [SuponsorStruct] = [
-        SuponsorStruct(id: 6748666607, icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
-        SuponsorStruct(id: 6748668532, icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
-        SuponsorStruct(id: 6748669029, icon: "📖", title: "Sponsor us a book", subtitle: "We may be able to solve the next problem with it", price: 6.0),
-        SuponsorStruct(id: 6748669282, icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
+        SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
+        SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
+        SuponsorStruct(id: "SponsorUsABook", icon: "📖", title: "Sponsor us a book", subtitle: "We may be able to solve the next problem with it", price: 6.0),
+        SuponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
     ]
     var body: some View {
         VStack {
@@ -80,11 +80,19 @@ struct SponsorUsView: View {
                         Spacer()
                     }
                     ForEach(suponsorList) { item in
+                        
                         Button(action: {
                             if let product = iapManager.products.first(where: { $0.id == item.id }) {
-                                print("当前产品的名称")
-                            } else {
-                                print("未找到对应产品")
+                                if !iapManager.products.isEmpty {
+                                    iapManager.loadPurchased = true // 显示加载动画
+                                    // 分开调用购买操作
+                                    iapManager.purchaseProduct(product)
+                                } else {
+                                    print("未找到对应产品")
+                                    Task {
+                                        await iapManager.loadProduct()   // 加载产品信息
+                                    }
+                                }
                             }
                         },label: {
                             HStack {
@@ -100,8 +108,13 @@ struct SponsorUsView: View {
                                         .foregroundColor(selectedNum == item.id ? Color(hex: "DADADA") : .gray)
                                 }
                                 Spacer()
-                                Text("$\(String(format: "%.2f",item.price))")
-                                    .foregroundColor(selectedNum == item.id ? .white : .black)
+                                if let product = iapManager.products.first(where: { $0.id == item.id }) {
+                                    Text("\(product.displayPrice)")
+                                        .foregroundColor(selectedNum == item.id ? .white : .black)
+                                } else {
+                                    Text("$ --)")
+                                        .foregroundColor(selectedNum == item.id ? .white : .black)
+                                }
                             }
                             .padding(10)
                             .background(
