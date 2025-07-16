@@ -65,7 +65,7 @@ struct SponsorUsView: View {
                 }
                 .frame(width:430,height:110)
                 
-                Spacer().frame(height:10)
+                Spacer().frame(height:18)
                 // 赞助列表
                 VStack {
                     HStack{
@@ -101,29 +101,30 @@ struct SponsorUsView: View {
                         isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                     }
                 }
-            }
-            // 关闭Sheet按钮
-            VStack(spacing: 0){
-                Button(action:{
-                    print("点击了关闭按钮")
-                    dismiss()
-                },label: {
-                    Text("Off")
-                        .fontWeight(.bold)
-                        .padding(.vertical,6)
-                        .padding(.horizontal,24)
-                        .foregroundColor(.white)
-                        .background(Color(hex: "118DE6"))
-                        .cornerRadius(4)
-                })
-                .buttonStyle(.plain)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                
+                // 关闭Sheet按钮
+                VStack(spacing: 0){
+                    Button(action:{
+                        print("点击了关闭按钮")
+                        dismiss()
+                    },label: {
+                        Text("Off")
+                            .fontWeight(.bold)
+                            .padding(.vertical,6)
+                            .padding(.horizontal,24)
+                            .foregroundColor(.white)
+                            .background(Color(hex: "118DE6"))
+                            .cornerRadius(4)
+                    })
+                    .buttonStyle(.plain)
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                    }
                 }
             }
         }
         .padding(14)
-        .frame(minWidth: 450, minHeight: 530)
+        .frame(width: 450)
         .overlay {
             if IAPManager.shared.loadPurchased {
                 ZStack {
