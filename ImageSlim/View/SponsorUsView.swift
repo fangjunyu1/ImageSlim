@@ -32,7 +32,7 @@ struct SponsorUsView: View {
                 ZStack {
                     Image("supportUs")
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .cornerRadius(10)
                     HStack {
                         VStack {
@@ -47,6 +47,8 @@ struct SponsorUsView: View {
                         Spacer()
                     }
                 }
+                .frame(width:430,height:110)
+                
                 Spacer().frame(height:10)
                 // 赞助列表
                 VStack {
@@ -107,6 +109,9 @@ struct SponsorUsView: View {
                         Text("Restore in-app purchases")
                             .fontWeight(.bold)
                     })
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                    }
                 }
             }
             // 关闭Sheet按钮
@@ -130,7 +135,7 @@ struct SponsorUsView: View {
             }
         }
         .padding(14)
-        .frame(minWidth: 400, minHeight: 580)
+        .frame(minWidth: 450, minHeight: 530)
     }
 }
 
