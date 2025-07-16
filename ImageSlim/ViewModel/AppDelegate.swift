@@ -15,6 +15,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         
+        // 初始化键盘监听事件
+        KeyboardMonitor.shared.startMonitoring()
+        
+        // 获取内购信息的动态数据
+        Task {
+            await IAPManager.shared.loadProduct()
+            // await IAPManager.shared.handleTransactions()
+        }
+        
+        
         // 根据设置中的菜单栏选项，创建菜单栏
         if AppStorage.shared.displayMenuBarIcon {
             statusBarController = StatusBarController()

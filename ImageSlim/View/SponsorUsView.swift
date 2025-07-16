@@ -19,11 +19,12 @@ struct SponsorUsView: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedNum: Int? = nil
     @ObservedObject var appStorage = AppStorage.shared
+    @ObservedObject var iapManager = IAPManager.shared
     private var suponsorList: [SuponsorStruct] = [
-        SuponsorStruct(id: 0, icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
-        SuponsorStruct(id: 1, icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
-        SuponsorStruct(id: 2, icon: "📖", title: "Sponsor us a book", subtitle: "We may be able to solve the next problem with it", price: 6.0),
-        SuponsorStruct(id: 3, icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
+        SuponsorStruct(id: 6748666607, icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
+        SuponsorStruct(id: 6748668532, icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
+        SuponsorStruct(id: 6748669029, icon: "📖", title: "Sponsor us a book", subtitle: "We may be able to solve the next problem with it", price: 6.0),
+        SuponsorStruct(id: 6748669282, icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
     ]
     var body: some View {
         VStack {
@@ -80,7 +81,11 @@ struct SponsorUsView: View {
                     }
                     ForEach(suponsorList) { item in
                         Button(action: {
-                            
+                            if let product = iapManager.products.first(where: { $0.id == item.id }) {
+                                print("当前产品的名称")
+                            } else {
+                                print("未找到对应产品")
+                            }
                         },label: {
                             HStack {
                                 Text("\(item.icon)")
