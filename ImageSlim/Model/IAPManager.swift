@@ -27,7 +27,7 @@ class IAPManager:ObservableObject {
             }
             DispatchQueue.main.async {
                 self.products = fetchedProducts  // 将获取的内购商品保存到products变量
-                print("成功加载产品: \(self.products)")    // 输出内购商品数组信息
+                // print("成功加载产品: \(self.products)")    // 输出内购商品数组信息
             }
         } catch {
             print("加载产品失败：\(error)")    // 输出报错
@@ -80,7 +80,7 @@ class IAPManager:ObservableObject {
                 let transaction = try checkVerified(result) // 验证交易
                 // 处理交易，例如解锁内容
                 print("设置内购标识为已购")
-                // 更新主线程
+                // 在主线程恢复已购标识
                 DispatchQueue.main.async {
                     AppStorage.shared.inAppPurchaseMembership = true
                 }

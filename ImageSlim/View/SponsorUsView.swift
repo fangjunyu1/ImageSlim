@@ -11,6 +11,7 @@ struct SponsorUsView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var selectedNum: String? = nil
+    @ObservedObject var iapManager = IAPManager.shared
     @ObservedObject var appStorage = AppStorage.shared
     private var suponsorList: [SuponsorStruct] = [
         SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
@@ -83,11 +84,18 @@ struct SponsorUsView: View {
                         .font(.footnote)
                     
                     Spacer().frame(height:10)
+                    
+                    // 恢复内购代码
                     Button(action: {
-                        
+                        let store = NSUbiquitousKeyValueStore.default
+                        appStorage.inAppPurchaseMembership = store.bool(forKey: "enableThirdPartyLibraries")
                     }, label: {
-                        Text("Restore in-app purchases")
-                            .fontWeight(.bold)
+                        HStack(spacing:0) {
+                            Text("Restore in-app purchases")
+                                .fontWeight(.bold)
+                            Text("(iCloud)")
+                                .fontWeight(.bold)
+                        }
                     })
                     .onHover { isHovering in
                         isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()

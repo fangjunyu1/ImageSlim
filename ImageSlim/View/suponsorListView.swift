@@ -39,6 +39,7 @@ struct suponsorListView: View {
                         .foregroundColor(selectedNum == item.id ? Color(hex: "DADADA") : .gray)
                 }
                 Spacer()
+                // 内购价格
                 if let product = iapManager.products.first(where: { $0.id == item.id }) {
                     Text("\(product.displayPrice)")
                         .foregroundColor(selectedNum == item.id ? .white : .black)
