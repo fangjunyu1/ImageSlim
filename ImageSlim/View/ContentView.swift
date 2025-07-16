@@ -12,6 +12,7 @@ struct ContentView: View {
     @ObservedObject var appStorage = AppStorage.shared
     @State private var progress = 0.0
     @State private var showDownloadsProgress = false
+    @State private var showSponsorUs = false
     
     func zipImages() {
         showDownloadsProgress = true
@@ -170,7 +171,7 @@ struct ContentView: View {
             }
             
             Button(action:{
-                appStorage.selectedView = .sponsorUs
+                showSponsorUs = true
             }, label: {
                 Text("Sponsor Us")
                     .font(.footnote)
@@ -188,6 +189,9 @@ struct ContentView: View {
         }
         .frame(minWidth: 140,minHeight: 340)    // 限制最小尺寸
         .padding(30)
+        .sheet(isPresented: $showSponsorUs) {
+            SponsorUsView()
+        }
     }
 }
 

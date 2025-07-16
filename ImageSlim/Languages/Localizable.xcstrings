@@ -33,6 +33,9 @@
         }
       }
     },
+    "$%@" : {
+
+    },
     "About" : {
       "comment" : "关于",
       "extractionState" : "manual",
@@ -93,6 +96,18 @@
         }
       }
     },
+    "Because of you, we can insist on bringing good tools to more people" : {
+      "comment" : "因为你，我们才能坚持把好工具带给更多人",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "因为你，我们才能坚持把好工具带给更多人"
+          }
+        }
+      }
+    },
     "ChatGPT" : {
       "extractionState" : "manual"
     },
@@ -144,6 +159,18 @@
         }
       }
     },
+    "Develop motivation to work overtime late at night" : {
+      "comment" : "开发深夜加班的动力",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开发深夜加班的动力"
+          }
+        }
+      }
+    },
     "Document directory" : {
       "comment" : "文稿目录",
       "extractionState" : "manual",
@@ -152,6 +179,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "文稿目录"
+          }
+        }
+      }
+    },
+    "Don't let developers starve to death in Xcode" : {
+      "comment" : "不让开发者饿死在Xcode里",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不让开发者饿死在Xcode里"
           }
         }
       }
@@ -234,6 +273,18 @@
     "GitHub" : {
       "comment" : "GitHub",
       "extractionState" : "manual"
+    },
+    "Give someone a rose, and the fragrance will linger on your hands" : {
+      "comment" : "赠人玫瑰，手有余香",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赠人玫瑰，手有余香"
+          }
+        }
+      }
     },
     "High Quality" : {
       "comment" : "高品质（压缩率）",
@@ -466,6 +517,18 @@
         }
       }
     },
+    "Restore in-app purchases" : {
+      "comment" : "恢复内购",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复内购"
+          }
+        }
+      }
+    },
     "Select up to 20 pictures, each no larger than 5MB." : {
       "comment" : "最多选择 20 张图片，每张大小不超过 5MB。",
       "extractionState" : "manual",
@@ -514,6 +577,66 @@
         }
       }
     },
+    "Sponsor us a book" : {
+      "comment" : "赞助我们一本书",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助我们一本书"
+          }
+        }
+      }
+    },
+    "Sponsor us a burger" : {
+      "comment" : "赞助我们一个汉堡",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助我们一个汉堡"
+          }
+        }
+      }
+    },
+    "Sponsor us a cup of coffee" : {
+      "comment" : "赞助我们一杯咖啡",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助我们一杯咖啡"
+          }
+        }
+      }
+    },
+    "Sponsorship List" : {
+      "comment" : "赞助列表",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助列表"
+          }
+        }
+      }
+    },
+    "Support our open source business" : {
+      "comment" : "支持我们的开源事业",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "支持我们的开源事业"
+          }
+        }
+      }
+    },
     "Supports multiple formats such as .png, .jpeg, .gif, .bmp, .tiff, etc." : {
       "comment" : "支持 .png, .jpeg, .gif, .bmp, .tiff 等多种格式。",
       "extractionState" : "manual",
@@ -534,6 +657,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用条款"
+          }
+        }
+      }
+    },
+    "This sponsorship project is a one-time consumable in-app purchase. It only unlocks the upload limit when you purchase it for the first time. The service will not be repeated in the future, and it does not support recovery." : {
+      "comment" : "该赞助项目为一次性消耗型内购，仅在首次购买时解锁上传限制，后续不再重复提供服务，也不支持恢复。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该赞助项目为一次性消耗型内购，仅在首次购买时解锁上传限制，后续不再重复提供服务，也不支持恢复。"
           }
         }
       }
@@ -574,6 +709,18 @@
         }
       }
     },
+    "We may be able to solve the next problem with it" : {
+      "comment" : "我们也许能靠它解决下一个问题",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们也许能靠它解决下一个问题"
+          }
+        }
+      }
+    },
     "Web page (Chinese)" : {
       "comment" : "网页（中文）",
       "extractionState" : "manual",
@@ -601,16 +748,10 @@
     "Zip" : {
       "extractionState" : "manual"
     },
-    "压缩失败" : {
-
-    },
     "启用第三方库压缩" : {
 
     },
     "显示图标" : {
-
-    },
-    "等待压缩" : {
 
     },
     "选择目录" : {

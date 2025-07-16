@@ -207,10 +207,10 @@ struct ImageRowView: View {
                 }
                 .disabled(item.isDownloaded)
             } else if item.compressionState == .pending{
-                Text("等待压缩")
+                Text("Waiting for compression")
                     .foregroundColor(.red)
             } else if item.compressionState == .failed {
-                Text("压缩失败")
+                Text("Compression failed")
                     .foregroundColor(.red)
             } else {
                 // 否则，显示加载状态。
