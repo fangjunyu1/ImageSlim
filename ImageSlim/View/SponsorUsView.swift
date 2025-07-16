@@ -7,19 +7,10 @@
 
 import SwiftUI
 
-struct SuponsorStruct: Identifiable{
-    var id:String
-    var icon: String
-    var title: LocalizedStringKey
-    var subtitle: LocalizedStringKey
-    var price: Double
-}
-
 struct SponsorUsView: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedNum: String? = nil
     @ObservedObject var appStorage = AppStorage.shared
-    @ObservedObject var iapManager = IAPManager.shared
     private var suponsorList: [SuponsorStruct] = [
         SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
         SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
@@ -80,59 +71,7 @@ struct SponsorUsView: View {
                         Spacer()
                     }
                     ForEach(suponsorList) { item in
-                        
-                        Button(action: {
-                            if let product = iapManager.products.first(where: { $0.id == item.id }) {
-                                if !iapManager.products.isEmpty {
-                                    iapManager.loadPurchased = true // 显示加载动画
-                                    // 分开调用购买操作
-                                    iapManager.purchaseProduct(product)
-                                } else {
-                                    print("未找到对应产品")
-                                    Task {
-                                        await iapManager.loadProduct()   // 加载产品信息
-                                    }
-                                }
-                            }
-                        },label: {
-                            HStack {
-                                Text("\(item.icon)")
-                                    .font(.largeTitle)
-                                Spacer().frame(width:10)
-                                VStack(alignment: .leading) {
-                                    Text(item.title)
-                                        .font(.callout)
-                                        .foregroundColor(selectedNum == item.id ? .white : .black)
-                                    Text(item.subtitle)
-                                        .font(.footnote)
-                                        .foregroundColor(selectedNum == item.id ? Color(hex: "DADADA") : .gray)
-                                }
-                                Spacer()
-                                if let product = iapManager.products.first(where: { $0.id == item.id }) {
-                                    Text("\(product.displayPrice)")
-                                        .foregroundColor(selectedNum == item.id ? .white : .black)
-                                } else {
-                                    Text("$ --)")
-                                        .foregroundColor(selectedNum == item.id ? .white : .black)
-                                }
-                            }
-                            .padding(10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(selectedNum == item.id ? Color.blue : Color.white)
-                                    .shadow(color: .gray.opacity(0.3), radius: 3, x: 0, y: 3)
-                            )
-                        })
-                        .buttonStyle(.plain)
-                        .onHover { isHovering in
-                            if isHovering {
-                                selectedNum = item.id
-                                NSCursor.pointingHand.set()
-                            } else {
-                                selectedNum = nil
-                                NSCursor.arrow.set()
-                            }
-                        }
+                        suponsorListView(item:item,selectedNum: $selectedNum)
                     }
                     .padding(.vertical,2)
                     
