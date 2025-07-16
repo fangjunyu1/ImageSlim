@@ -661,6 +661,18 @@
         }
       }
     },
+    "Thank you for your support" : {
+      "comment" : "感谢您的支持",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "感谢您的支持"
+          }
+        }
+      }
+    },
     "This sponsorship project is a one-time consumable in-app purchase. It only unlocks the upload limit when you purchase it for the first time. The service will not be repeated in the future, and it does not support recovery." : {
       "comment" : "该赞助项目为一次性消耗型内购，仅在首次购买时解锁上传限制，后续不再重复提供服务，也不支持恢复。",
       "extractionState" : "manual",
@@ -741,6 +753,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "窗口预览"
+          }
+        }
+      }
+    },
+    "Your support keeps free software alive." : {
+      "comment" : "您的支持让自由软件不止于理想。",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您的支持让自由软件不止于理想。"
           }
         }
       }

@@ -18,6 +18,7 @@ struct SuponsorStruct: Identifiable{
 struct SponsorUsView: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedNum: Int? = nil
+    @ObservedObject var appStorage = AppStorage.shared
     private var suponsorList: [SuponsorStruct] = [
         SuponsorStruct(id: 0, icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
         SuponsorStruct(id: 1, icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
@@ -30,21 +31,42 @@ struct SponsorUsView: View {
             ScrollView(showsIndicators: false) {
                 // 赞助我们-图片
                 ZStack {
-                    Image("supportUs")
-                        .resizable()
-                        .scaledToFill()
-                        .cornerRadius(10)
-                    HStack {
-                        VStack {
-                            Text("Sponsor Us")
-                                .font(.title2)
-                            Spacer().frame(height:10)
-                            Text("Give someone a rose, and the fragrance will linger on your hands")
-                                .foregroundColor(.gray)
-                                .font(.footnote)
+                    if !appStorage.inAppPurchaseMembership {
+                        Image("supportUs")
+                            .resizable()
+                            .scaledToFill()
+                            .cornerRadius(10)
+                        HStack {
+                            VStack {
+                                Text("Sponsor Us")
+                                    .font(.title2)
+                                Spacer().frame(height:10)
+                                Text("Give someone a rose, and the fragrance will linger on your hands")
+                                    .foregroundColor(.gray)
+                                    .font(.footnote)
+                            }
+                            .frame(width: 150)
+                            Spacer()
                         }
-                        .frame(width: 150)
-                        Spacer()
+                        .padding(.leading,10)
+                    } else {
+                        Image("thanks")
+                            .resizable()
+                            .scaledToFill()
+                            .cornerRadius(10)
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Text("Thank you for your support")
+                                    .font(.title2)
+                                Spacer().frame(height:10)
+                                Text("Your support keeps free software alive.")
+                                    .foregroundColor(.gray)
+                                    .font(.footnote)
+                            }
+                            .frame(width: 170)
+                        }
+                        .padding(.trailing,10)
                     }
                 }
                 .frame(width:430,height:110)
