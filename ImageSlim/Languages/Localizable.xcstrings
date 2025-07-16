@@ -358,6 +358,9 @@
         }
       }
     },
+    "loading..." : {
+
+    },
     "Lossless" : {
       "comment" : "无损（压缩率）",
       "extractionState" : "manual",

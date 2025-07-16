@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SponsorUsView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var selectedNum: String? = nil
     @ObservedObject var appStorage = AppStorage.shared
@@ -115,6 +116,22 @@ struct SponsorUsView: View {
         }
         .padding(14)
         .frame(minWidth: 450, minHeight: 530)
+        .overlay {
+            if IAPManager.shared.loadPurchased {
+                ZStack {
+                    Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
+                    VStack {
+                        // 加载条
+                        ProgressView("loading...")
+                        // 加载条修饰符
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .padding()
+                            .background(colorScheme == .dark ? Color(hex: "A8AFB3") : Color.white)
+                            .cornerRadius(10)
+                    }
+                }
+            }
+        }
     }
 }
 

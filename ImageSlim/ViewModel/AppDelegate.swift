@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // 获取内购信息的动态数据
         Task {
             await IAPManager.shared.loadProduct()
-            // await IAPManager.shared.handleTransactions()
+            await IAPManager.shared.handleTransactions()
         }
         
         

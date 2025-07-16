@@ -14,9 +14,6 @@ class AppStorage:ObservableObject {
         loadUserDefault()   // 加载 UserDefaults 中的数据
     }
     
-    // 内购赞助后，关闭图片上传限制
-    @Published var inAppPurchaseMembership = false
-    
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
     
@@ -86,10 +83,22 @@ class AppStorage:ObservableObject {
         }
     }
     
+    // 是否内购赞助
+    @Published var inAppPurchaseMembership = false {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(newValue, forKey: "inAppPurchaseMembership")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue, forKey: "inAppPurchaseMembership")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
     // 从UserDefaults加载数据
     private func loadUserDefault() {
         
-        // 是否启用菜单栏显示图标
+        // 1、是否启用菜单栏显示图标
         // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
         if UserDefaults.standard.object(forKey: "displayMenuBarIcon") == nil {
             // 设置默认值为 true
@@ -101,7 +110,7 @@ class AppStorage:ObservableObject {
             print("菜单栏显示图标，默认值为 \(displayMenuBarIcon)")
         }
         
-        // 启用第三方库压缩
+        // 2、启用第三方库压缩
         // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
         if UserDefaults.standard.object(forKey: "enableThirdPartyLibraries") == nil {
             // 设置默认值为 true
@@ -113,17 +122,19 @@ class AppStorage:ObservableObject {
             print("菜单栏显示图标，默认值为 \(enableThirdPartyLibraries)")
         }
         
-        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.6
+        // 3、图片压缩率
+        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.0
         if UserDefaults.standard.object(forKey: "imageCompressionRate") == nil {
             // 设置默认值为 true
-            print("图片压缩率，默认值为 nil，设置为 0.6")
-            UserDefaults.standard.set(0.6, forKey: "imageCompressionRate")
-            imageCompressionRate = 0.6  // 菜单栏图标
+            print("图片压缩率，默认值为 nil，设置为 0.0")
+            UserDefaults.standard.set(0.0, forKey: "imageCompressionRate")
+            imageCompressionRate = 0.0  // 菜单栏图标
         } else {
             imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate")
             print("图片压缩率，默认值为 \(imageCompressionRate)")
         }
         
+        // 4、图片预览方式
         // 如果 UserDefaults 中没有 imagePreviewMode 键，设置默认为 Quick Look
         if UserDefaults.standard.object(forKey: "imagePreviewMode") == nil {
             // 设置默认值为 true
@@ -137,7 +148,7 @@ class AppStorage:ObservableObject {
             print("图片预览方式，默认值为 \(imagePreviewMode)")
         }
         
-        // 图片保存目录【同步UserDefaults】
+        // 5、图片保存目录【同步UserDefaults】
         // 如果 UserDefaults 中没有 imageSaveDirectory 键，设置默认为 DownloadsDirectory
         if UserDefaults.standard.object(forKey: "imageSaveDirectory") == nil {
             // 设置默认值为 true
@@ -149,6 +160,19 @@ class AppStorage:ObservableObject {
             let directory = SaveDirectory(rawValue: directoryString)
             imageSaveDirectory = directory ?? SaveDirectory.downloadsDirectory
             print("图片保存目录，默认值为 \(imageSaveDirectory)")
+        }
+        
+        // 6、应用赞助标识
+        // 如果 UserDefaults 中没有 inAppPurchaseMembership 键，设置默认为 false
+        if UserDefaults.standard.object(forKey: "inAppPurchaseMembership") == nil {
+            // 设置默认值为 true
+            print("应用赞助，默认值为nil，设置为 false")
+            UserDefaults.standard.set(false, forKey: "inAppPurchaseMembership")
+            inAppPurchaseMembership = false  // 菜单栏图标
+        } else {
+            // 如果 UserDefaults 有 inAppPurchaseMembership 键，则设置为对应 Bool 值
+            inAppPurchaseMembership = UserDefaults.standard.bool(forKey: "inAppPurchaseMembership")
+            print("应用赞助，默认值为 \(inAppPurchaseMembership)")
         }
     }
 }

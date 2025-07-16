@@ -43,7 +43,8 @@ class IAPManager:ObservableObject {
                 switch result {
                 case .success(let verification):    // 购买成功的情况，返回verification包含交易的验证信息
                     let transaction = try checkVerified(verification)    // 验证交易
-                    savePurchasedState(for: product.id)    // 更新UserDefaults中的购买状态
+                    print("设置内购标识为已购")
+                    AppStorage.shared.inAppPurchaseMembership = true
                     await transaction.finish()    // 告诉系统交易完成
                     print("交易成功：\(result)")
                 case .userCancelled:    // 用户取消交易
@@ -55,9 +56,8 @@ class IAPManager:ObservableObject {
                 }
             } catch {
                 print("购买失败：\(error)")
-                await resetProduct()    // 购买失败后重置 product 以便允许再次尝试购买
             }
-            self.loadPurchased = false   // 隐藏内购时的加载画布
+            self.loadPurchased = false   // 隐藏内购加载画布
             print("loadPurchased:\(loadPurchased)")
         }
     }
@@ -73,34 +73,27 @@ class IAPManager:ObservableObject {
         }
     }
     // handleTransactions处理所有的交易情况
-//    func handleTransactions() async {
-//        for await result in Transaction.updates {
-//            // 遍历当前所有已完成的交易
-//            do {
-//                let transaction = try checkVerified(result) // 验证交易
-//                // 处理交易，例如解锁内容
-//                savePurchasedState(for: transaction.productID)
-//                await transaction.finish()
-//            } catch {
-//                print("交易处理失败：\(error)")
-//            }
-//        }
-//    }
+    func handleTransactions() async {
+        for await result in Transaction.updates {
+            // 遍历当前所有已完成的交易
+            do {
+                let transaction = try checkVerified(result) // 验证交易
+                // 处理交易，例如解锁内容
+                print("设置内购标识为已购")
+                // 更新主线程
+                DispatchQueue.main.async {
+                    AppStorage.shared.inAppPurchaseMembership = true
+                }
+                await transaction.finish()
+            } catch {
+                print("交易处理失败：\(error)")
+            }
+        }
+    }
     // 当购买失败时，会尝试重新加载产品信息。
     func resetProduct() async {
         self.products = []
         await loadProduct()    // 调取loadProduct方法获取产品信息
-    }
-    // 保存购买状态到用户偏好设置或其他存储位置
-    func savePurchasedState(for productID: String) {
-        UserDefaults.standard.set(true, forKey: productID)
-        print("Purchased state saved for product: \(productID)")
-    }
-    // 通过productID检查是否已完成购买
-    func loadPurchasedState(for productID: String) -> Bool{
-        let isPurchased = UserDefaults.standard.bool(forKey: productID)    // UserDefaults读取购买状态
-        print("Purchased state loaded for product: \(productID) - \(isPurchased)")
-        return isPurchased    // 返回购买状态
     }
 }
 // 定义 throws 报错
