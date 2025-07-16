@@ -634,6 +634,18 @@
         }
       }
     },
+    "Sponsorship success" : {
+      "comment" : "赞助成功",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞助成功"
+          }
+        }
+      }
+    },
     "Support our open source business" : {
       "comment" : "支持我们的开源事业",
       "extractionState" : "manual",

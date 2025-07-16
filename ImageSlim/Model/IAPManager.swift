@@ -6,6 +6,7 @@
 //
 
 import StoreKit
+import Combine
 
 @MainActor
 class IAPManager:ObservableObject {
@@ -14,6 +15,7 @@ class IAPManager:ObservableObject {
     @Published var productID = ["SponsoredCoffee","SponsorUsABurger","SponsorUsABook","SupportOurOpenSourceWork"]  //  需要内购的产品ID数组
     @Published var products: [Product] = []    // 存储从 App Store 获取的内购商品信息
     @Published var loadPurchased = false    // 如果开始内购流程，loadPurchased为true，View视图显示加载画布
+    @Published var successTips = false
     
     // 视图自动加载loadProduct()方法
     func loadProduct() async {
@@ -45,6 +47,7 @@ class IAPManager:ObservableObject {
                     let transaction = try checkVerified(verification)    // 验证交易
                     print("设置内购标识为已购")
                     AppStorage.shared.inAppPurchaseMembership = true
+                    successTips = true
                     await transaction.finish()    // 告诉系统交易完成
                     print("交易成功：\(result)")
                 case .userCancelled:    // 用户取消交易
