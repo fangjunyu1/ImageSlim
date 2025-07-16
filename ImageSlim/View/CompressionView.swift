@@ -88,7 +88,7 @@ struct CompressionView: View {
                         }
                         Spacer().frame(height:20)
                         if appStorage.inAppPurchaseMembership {
-                            Text("Supports multiple formats such as .png, .jpeg, .gif, .bmp, .tiff, etc.")
+                            Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
                                 .font(.footnote)
                                 .foregroundColor(.gray)
                         } else if !appStorage.images.isEmpty {
@@ -162,7 +162,7 @@ struct CompressionView: View {
                     Spacer().frame(height:14)
                     
                     if appStorage.inAppPurchaseMembership {
-                        Text("Supports multiple formats such as .png, .jpeg, .gif, .bmp, .tiff, etc.")
+                        Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
                             .font(.footnote)
                             .foregroundColor(.gray)
                     } else {
