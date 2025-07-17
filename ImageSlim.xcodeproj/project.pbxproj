@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DF1B92B2E2364C900FA59E6 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1DF1B92A2E2364C900FA59E6 /* Zip */; };
+		1DB130FB2E290BD6001C63BE /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1DB130FA2E290BD6001C63BE /* Zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF1B92B2E2364C900FA59E6 /* Zip in Frameworks */,
+				1DB130FB2E290BD6001C63BE /* Zip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			);
 			name = ImageSlim;
 			packageProductDependencies = (
-				1DF1B92A2E2364C900FA59E6 /* Zip */,
+				1DB130FA2E290BD6001C63BE /* Zip */,
 			);
 			productName = ImageSlim;
 			productReference = 1D01110F2E02791C00D9718B /* ImageSlim.app */;
@@ -155,7 +155,7 @@
 			mainGroup = 1D0111062E02791C00D9718B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				1DF1B9292E2364C900FA59E6 /* XCRemoteSwiftPackageReference "Zip" */,
+				1DB130F92E290BD6001C63BE /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1D0111102E02791C00D9718B /* Products */;
@@ -318,7 +318,7 @@
 				CODE_SIGN_ENTITLEMENTS = ImageSlim/ImageSlim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = RRMSD743UQ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -349,7 +349,7 @@
 				CODE_SIGN_ENTITLEMENTS = ImageSlim/ImageSlim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = RRMSD743UQ;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -396,7 +396,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1DF1B9292E2364C900FA59E6 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		1DB130F92E290BD6001C63BE /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
 			requirement = {
@@ -407,9 +407,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1DF1B92A2E2364C900FA59E6 /* Zip */ = {
+		1DB130FA2E290BD6001C63BE /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1DF1B9292E2364C900FA59E6 /* XCRemoteSwiftPackageReference "Zip" */;
+			package = 1DB130F92E290BD6001C63BE /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */

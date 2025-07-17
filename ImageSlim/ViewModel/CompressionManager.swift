@@ -43,11 +43,11 @@ class CompressionManager:ObservableObject {
         compressImage(task) { success in
             DispatchQueue.main.async {
                 task.compressionState = success ? .completed : .failed
-                self.taskQueue.removeFirst()
-                self.isCompressing = false
-                // 如果没有压缩的任务，就显示全部压缩完成
-                self.compressionTask() // 继续下一个
             }
+            self.taskQueue.removeFirst()
+            self.isCompressing = false
+            // 如果没有压缩的任务，就显示全部压缩完成
+            self.compressionTask() // 继续下一个
         }
     }
     
@@ -101,12 +101,18 @@ class CompressionManager:ObservableObject {
             }
             
             guard let inputURL = image.inputURL else { return }
+            
             // 图片的输出路径，位置在 Temporary 临时文件夹
-            let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "." + image.type.lowercased())
+            let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name + "." + image.type.lowercased())
             
             let process = Process()
             process.executableURL = URL(fileURLWithPath: pngquant)
-            process.arguments = ["--quality=\(quality)", "--output", outputURL.path, inputURL.path]
+            process.arguments = [
+                "--quality=\(quality)",
+                "--force",
+                "--output",
+                outputURL.path,
+                inputURL.path]
             
             let pipe = Pipe()
             process.standardOutput = pipe
@@ -125,7 +131,9 @@ class CompressionManager:ObservableObject {
                     DispatchQueue.main.async { [self] in
                         // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
                         image.outputSize = getFileSize(fileURL: outputURL)
+                        print("outputSize:\(image.outputSize ?? 0)")
                         image.outputURL = outputURL
+                        print("outputURL:\(image.outputURL ?? URL(fileURLWithPath: "123"))")
                         if let outSize = image.outputSize {
                             let ratio = Double(outSize) / Double(image.inputSize)
                             image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio

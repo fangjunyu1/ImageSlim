@@ -113,7 +113,7 @@ struct ContentView: View {
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }
             }
-            .frame(width: 130,alignment: .leading)
+            .frame(width: 130)
             .lineLimit(1)
             .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%
             
