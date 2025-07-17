@@ -66,7 +66,7 @@ struct ContentView: View {
             Text("Open source image compression tool")
                 .foregroundColor(.gray)
             
-            Spacer().frame(height: 30)
+            Spacer().frame(height: 20)
             
             VStack(alignment: .leading) {
                 // 压缩菜单-按钮
@@ -113,7 +113,9 @@ struct ContentView: View {
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }
             }
-            .frame(width: 100,alignment: .leading)
+            .frame(width: 130,alignment: .leading)
+            .lineLimit(1)
+            .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%
             
             Spacer()
             
@@ -190,6 +192,7 @@ struct ContentView: View {
                 }
             })
             .buttonStyle(.plain)
+            .multilineTextAlignment(.center)
                 
             Spacer().frame(height:10)
             Text("\(Bundle.main.version) (\(Bundle.main.build))")
@@ -207,4 +210,6 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .frame(width:200)
+        .environment(\.locale, .init(identifier: "ml")) // 设置为德语
 }

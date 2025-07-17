@@ -226,4 +226,5 @@ struct ImageRowView: View {
 #Preview {
     ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
         .frame(width: 300,height:40)
+        .environment(\.locale, .init(identifier: "de")) // 设置为德语
 }

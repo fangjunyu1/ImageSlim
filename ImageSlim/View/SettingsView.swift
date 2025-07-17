@@ -304,4 +304,6 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .frame(width: 400)
+        .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

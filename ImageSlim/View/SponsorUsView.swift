@@ -20,8 +20,6 @@ struct SponsorUsView: View {
         SuponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
     ]
     var body: some View {
-        VStack {
-            // 赞助视图
             ScrollView(showsIndicators: false) {
                 // 赞助我们-图片
                 ZStack {
@@ -83,7 +81,7 @@ struct SponsorUsView: View {
                         .foregroundColor(.gray)
                         .font(.footnote)
                     
-                    Spacer().frame(height:10)
+                    Spacer().frame(height:20)
                     
                     // 恢复内购代码
                     Button(action: {
@@ -97,10 +95,12 @@ struct SponsorUsView: View {
                                 .fontWeight(.bold)
                         }
                     })
+                    .buttonStyle(.plain)
                     .onHover { isHovering in
                         isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                     }
                 }
+                Spacer().frame(height:20)
                 
                 // 关闭Sheet按钮
                 VStack(spacing: 0){
@@ -121,10 +121,11 @@ struct SponsorUsView: View {
                         isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                     }
                 }
+                Spacer().frame(height:30)
             }
-        }
-        .padding(14)
-        .frame(width: 450)
+        .frame(width: 400)
+        .padding(.top,14)
+        .padding(.horizontal,30)
         .overlay {
             if iapManager.loadPurchased {
                 ZStack {
@@ -181,4 +182,5 @@ struct SponsorUsView: View {
 
 #Preview {
     SponsorUsView()
+        .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

@@ -22,4 +22,5 @@ struct WorkspaceView: View {
 
 #Preview {
     WorkspaceView()
+        .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }
