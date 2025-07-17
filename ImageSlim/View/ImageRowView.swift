@@ -49,7 +49,7 @@ struct ImageRowView: View {
             }
         }
         let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
-        let destinationURL = directoryURL.appendingPathComponent(file.fullName)
+        let destinationURL = directoryURL.appendingPathComponent(file.name)
         
         do {
             if FileManager.default.fileExists(atPath: destinationURL.path) {
@@ -135,7 +135,7 @@ struct ImageRowView: View {
             // 图片信息
             VStack(alignment: .leading) {
                 // 图片名称
-                Text("\(item.fullName)")
+                Text("\(item.name)")
                     .frame(maxWidth: 150, alignment: .leading)
                     .lineLimit(1)
                 Spacer().frame(height:3)
@@ -224,7 +224,7 @@ struct ImageRowView: View {
 }
 
 #Preview {
-    ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ",fullName: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
+    ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
         .frame(width: 300,height:40)
         .environment(\.locale, .init(identifier: "de")) // 设置为德语
 }

@@ -103,7 +103,7 @@ class CompressionManager:ObservableObject {
             guard let inputURL = image.inputURL else { return }
             
             // 图片的输出路径，位置在 Temporary 临时文件夹
-            let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name + "." + image.type.lowercased())
+            let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)
             
             let process = Process()
             process.executableURL = URL(fileURLWithPath: pngquant)

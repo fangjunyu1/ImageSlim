@@ -11,7 +11,6 @@ class CustomImages: ObservableObject, Identifiable {
     let id: UUID
     let image: NSImage
     let name: String
-    let fullName: String
     let type: String
     let inputSize: Int
     
@@ -26,7 +25,6 @@ class CustomImages: ObservableObject, Identifiable {
     init(id: UUID = UUID(),
          image: NSImage,
          name: String,
-         fullName: String,
          type: String,
          inputSize: Int,
          outputSize: Int? = nil,
@@ -37,7 +35,6 @@ class CustomImages: ObservableObject, Identifiable {
         self.id = id
         self.image = image
         self.name = name
-        self.fullName = fullName
         self.type = type
         self.inputSize = inputSize
         self.inputURL = inputURL

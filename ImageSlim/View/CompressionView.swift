@@ -59,7 +59,7 @@ struct CompressionView: View {
             let fileSize = getFileSize(fileURL: url)
             // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
             if let nsImage = NSImage(contentsOf: url) {
-                let customImage = CustomImages(image: nsImage, name: url.deletingPathExtension().lastPathComponent,fullName: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
+                let customImage = CustomImages(image: nsImage, name: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
                 compressImages.append(customImage)
                 DispatchQueue.main.async {
                     appStorage.images.append(customImage)
@@ -289,7 +289,7 @@ struct CompressionView: View {
                     
                     // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
                     if let nsImage = NSImage(contentsOf: url) {
-                        let customImage = CustomImages(image: nsImage, name: url.deletingPathExtension().lastPathComponent,fullName: url.lastPathComponent,type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
+                        let customImage = CustomImages(image: nsImage, name: url.lastPathComponent,type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
                         compressImages.append(customImage)
                         DispatchQueue.main.async {
                             appStorage.images.append(customImage)
@@ -309,7 +309,7 @@ struct CompressionView: View {
                     
                     // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
                     if let nsImage = NSImage(contentsOf: outputURL) {
-                        let customImage = CustomImages(image: nsImage, name: outputURL.deletingPathExtension().lastPathComponent,fullName: outputURL.lastPathComponent, type: outputURL.pathExtension.uppercased(), inputSize: fileSize,inputURL: outputURL)
+                        let customImage = CustomImages(image: nsImage, name: outputURL.lastPathComponent, type: outputURL.pathExtension.uppercased(), inputSize: fileSize,inputURL: outputURL)
                         compressImages.append(customImage)
                         DispatchQueue.main.async {
                             appStorage.images.append(customImage)
