@@ -9,6 +9,7 @@ import SwiftUI
 import QuickLookUI
 
 struct ImageRowView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
     @ObservedObject var appStorage = AppStorage.shared
     @ObservedObject var compressManager = CompressionManager.shared
@@ -143,7 +144,7 @@ struct ImageRowView: View {
                 HStack {
                     ZStack {
                         Rectangle()
-                            .foregroundColor(Color(hex: "91C9FF"))
+                            .foregroundColor(colorScheme == .light ? Color(hex: "91C9FF") : Color(hex: "6c6c6c"))
                             .frame(width:50,height:16)
                             .cornerRadius(3)
                         Text("\(item.type)")
@@ -186,17 +187,17 @@ struct ImageRowView: View {
                     
                     if item.isDownloaded {
                         Image(systemName:"checkmark")
-                            .foregroundColor(Color(hex: "3679F6"))
+                            .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
                             .padding(.vertical,5)
                             .padding(.horizontal,20)
-                            .background(Color(hex: "EEEEEE"))
+                            .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
                             .cornerRadius(20)
                     } else {
                         Text("Download")
-                            .foregroundColor(Color(hex: "3679F6"))
+                            .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
                             .padding(.vertical,5)
                             .padding(.horizontal,20)
-                            .background(Color(hex: "EEEEEE"))
+                            .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
                             .cornerRadius(20)
                     }
                 }

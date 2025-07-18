@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct suponsorListView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var iapManager = IAPManager.shared
     var item: SuponsorStruct
     @Binding var selectedNum:String?
@@ -33,7 +34,7 @@ struct suponsorListView: View {
                 VStack(alignment: .leading) {
                     Text(item.title)
                         .font(.callout)
-                        .foregroundColor(selectedNum == item.id ? .white : .black)
+                        .foregroundColor(selectedNum == item.id ? .white : colorScheme == .light ? .black : .white)
                     Text(item.subtitle)
                         .font(.footnote)
                         .foregroundColor(selectedNum == item.id ? Color(hex: "DADADA") : .gray)
@@ -42,7 +43,7 @@ struct suponsorListView: View {
                 // 内购价格
                 if let product = iapManager.products.first(where: { $0.id == item.id }) {
                     Text("\(product.displayPrice)")
-                        .foregroundColor(selectedNum == item.id ? .white : .black)
+                    .foregroundColor(selectedNum == item.id ? .white : colorScheme == .light ? .black : .white)
                 } else {
                     Text("$ --)")
                         .foregroundColor(selectedNum == item.id ? .white : .black)
@@ -51,7 +52,7 @@ struct suponsorListView: View {
             .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(selectedNum == item.id ? Color.blue : Color.white)
+                    .fill(selectedNum == item.id ? Color.blue : colorScheme == .light ? Color.white : Color(hex: "2f2f2f"))
                     .shadow(color: .gray.opacity(0.3), radius: 3, x: 0, y: 3)
             )
         })
@@ -69,6 +70,6 @@ struct suponsorListView: View {
 }
 
 #Preview {
-    suponsorListView(iapManager: IAPManager.shared, item: SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0), selectedNum: .constant("SponsoredCoffee"))
+    suponsorListView(iapManager: IAPManager.shared, item: SuponsorStruct(id: "SponsoredCoffees", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0), selectedNum: .constant("SponsoredCoffee"))
         .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

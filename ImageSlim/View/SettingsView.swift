@@ -10,6 +10,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var appStorage = AppStorage.shared
     @Environment(\.openURL) var openURL
     
@@ -148,7 +149,7 @@ struct SettingsView: View {
                         }
                     }
                     .padding(14)
-                    .background(Color(hex: "EEEEEE"))
+                    .background(colorScheme == .light ? Color(hex: "EEEEEE") : .clear)
                     .cornerRadius(8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
@@ -288,7 +289,7 @@ struct SettingsView: View {
                         }
                     }
                     .padding(14)
-                    .background(Color(hex: "EEEEEE"))
+                    .background(colorScheme == .light ? Color(hex: "EEEEEE") : .clear)
                     .cornerRadius(8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)

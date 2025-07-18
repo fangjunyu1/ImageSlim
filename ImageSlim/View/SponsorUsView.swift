@@ -28,6 +28,7 @@ struct SponsorUsView: View {
                             .resizable()
                             .scaledToFill()
                             .cornerRadius(10)
+                            .opacity(colorScheme == .light ? 1 : 0.3)
                         HStack {
                             VStack {
                                 Text("Sponsor Us")
@@ -46,6 +47,7 @@ struct SponsorUsView: View {
                             .resizable()
                             .scaledToFill()
                             .cornerRadius(10)
+                            .opacity(colorScheme == .light ? 1 : 0.3)
                         HStack {
                             Spacer()
                             VStack {

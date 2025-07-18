@@ -9,6 +9,7 @@ import SwiftUI
 import Zip
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var appStorage = AppStorage.shared
     @State private var progress = 0.0
     @State private var showDownloadsProgress = false
@@ -85,7 +86,9 @@ struct ContentView: View {
                     .contentShape(Rectangle())
                 })
                 .buttonStyle(.plain)
-                .foregroundColor(appStorage.selectedView == .compression ? .black : .gray)
+                .foregroundColor(appStorage.selectedView == .compression ?
+                                 colorScheme == .light ? .black : .white :
+                        .gray)
                 .onHover { isHovering in
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }
@@ -108,7 +111,9 @@ struct ContentView: View {
                     .contentShape(Rectangle())
                 })
                 .buttonStyle(.plain)
-                .foregroundColor(appStorage.selectedView == .settings ? .black : .gray)
+                .foregroundColor(appStorage.selectedView == .settings ?
+                                 colorScheme == .light ? .black : .white :
+                        .gray)
                 .onHover { isHovering in
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }

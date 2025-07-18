@@ -13,6 +13,7 @@ import AppKit
 import UniformTypeIdentifiers
 
 struct CompressionView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var previewer = ImagePreviewWindow()
     @ObservedObject var appStorage = AppStorage.shared
     @ObservedObject var compressManager = CompressionManager.shared
@@ -138,8 +139,12 @@ struct CompressionView: View {
                     ZStack {
                         Rectangle()
                             .frame(width: 150,height: 100)
-                            .foregroundColor(isHovering ? Color(hex: "BEE2FF") : Color(hex:"E6E6E6"))
+                            .foregroundColor(
+                                isHovering ? Color(hex: "BEE2FF") :
+                                    colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
+                            )
                             .shadow(color: .gray.opacity(0.6), radius: 2, x: 0, y: 4)
+                            .cornerRadius(5)
                         Image("upload")
                             .resizable()
                             .scaledToFit()
@@ -174,7 +179,7 @@ struct CompressionView: View {
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .padding(.vertical,20)
                 .padding(.horizontal,30)
-                .background(.white)
+                .background(colorScheme == .light ? .white : Color(hex: "222222"))
                 .cornerRadius(10)
             } else {
                 
@@ -204,8 +209,12 @@ struct CompressionView: View {
                     ZStack {
                         Rectangle()
                             .frame(width: 240,height: 160)
-                            .foregroundColor(isHovering ? Color(hex: "BEE2FF") : Color(hex:"E6E6E6"))
-                            .shadow(color: .gray.opacity(0.6), radius: 2, x: 0, y: 4)
+                            .foregroundColor(
+                                isHovering ? colorScheme == .light ? Color(hex: "BEE2FF") : Color(hex: "3d3d3d"):
+                                    colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
+                            )
+                            .cornerRadius(5)
+                            .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4)
                         Image("upload")
                             .resizable()
                             .scaledToFit()
