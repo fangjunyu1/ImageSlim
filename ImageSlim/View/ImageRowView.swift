@@ -200,7 +200,6 @@ struct ImageRowView: View {
                             .cornerRadius(20)
                     }
                 }
-                .frame(width: 70)
                 .buttonStyle(.plain)
                 .onHover { isHovering in
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
