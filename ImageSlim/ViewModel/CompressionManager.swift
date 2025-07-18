@@ -208,7 +208,7 @@ class CompressionManager:ObservableObject {
                 // 压缩图片并获取压缩的 Data
                 let imageData = outputData as Data
                 
-                let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + "." + image.type.lowercased())
+                let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)
                 
                 do {
                     // 将压缩图片的 Data，写入临时文件
