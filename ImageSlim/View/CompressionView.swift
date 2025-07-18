@@ -55,15 +55,44 @@ struct CompressionView: View {
         print("进入 savePictures 方法")
         var compressImages: [CustomImages] = []
         for url in tmpURL {
+            
             // 获取 Finder 上的大小
             let fileSize = getFileSize(fileURL: url)
-            // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
-            if let nsImage = NSImage(contentsOf: url) {
-                let customImage = CustomImages(image: nsImage, name: url.lastPathComponent, type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
+            
+            // 加载图片对象
+            guard let nsImage = NSImage(contentsOf: url) else {
+                print("无法加载粘贴的图片")
+                continue
+            }
+            
+            let imageName = url.lastPathComponent
+            let imageType = url.pathExtension.uppercased()
+            
+            var compressionState: CompressionState = .pending
+
+            if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
+                print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
+                compressionState = .failed
+            }
+            
+            print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
+            
+            // 内购用户 or 文件大小合规
+            let customImage = CustomImages(
+                image: nsImage,
+                name: imageName,
+                type: imageType,
+                inputSize: fileSize,
+                inputURL: url,
+                compressionState: compressionState
+            )
+            
+            DispatchQueue.main.async {
+                appStorage.images.append(customImage)
+            }
+
+            if compressionState == .pending {
                 compressImages.append(customImage)
-                DispatchQueue.main.async {
-                    appStorage.images.append(customImage)
-                }
             }
         }
         
@@ -287,33 +316,84 @@ struct CompressionView: View {
                     // 获取 Finder 上的大小
                     let fileSize = getFileSize(fileURL: url)
                     
-                    // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
-                    if let nsImage = NSImage(contentsOf: url) {
-                        let customImage = CustomImages(image: nsImage, name: url.lastPathComponent,type: url.pathExtension.uppercased(), inputSize: fileSize,inputURL: url)
+                    // 加载图片对象
+                    guard let nsImage = NSImage(contentsOf: url) else {
+                        print("无法加载粘贴的图片")
+                        continue
+                    }
+                    
+                    let imageName = url.lastPathComponent
+                    let imageType = url.pathExtension.uppercased()
+                    
+                    var compressionState: CompressionState = .pending
+
+                    if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
+                        print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
+                        compressionState = .failed
+                    }
+                    print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
+                    // 内购用户 or 文件大小合规
+                    let customImage = CustomImages(
+                        image: nsImage,
+                        name: imageName,
+                        type: imageType,
+                        inputSize: fileSize,
+                        inputURL: url,
+                        compressionState: compressionState
+                    )
+                    
+                    DispatchQueue.main.async {
+                        appStorage.images.append(customImage)
+                    }
+
+                    if compressionState == .pending {
                         compressImages.append(customImage)
-                        DispatchQueue.main.async {
-                            appStorage.images.append(customImage)
-                        }
                     }
                 }
             } else if let imageData = pb.data(forType: .tiff) {
                 print("粘贴的是图片")
                 //pastedImage = image
                 // 将粘贴的图片转换成png格式
-                let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
+                let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
                 
                 do {
-                    try imageData.write(to: outputURL)
-                    // 获取 Finder 上的大小
-                    let fileSize = getFileSize(fileURL: outputURL)
+                    try imageData.write(to: url)
                     
-                    // 根据 URL 获取 NSImage，将图片、名称、类型、大小都保存到 AppStorage的images数组中
-                    if let nsImage = NSImage(contentsOf: outputURL) {
-                        let customImage = CustomImages(image: nsImage, name: outputURL.lastPathComponent, type: outputURL.pathExtension.uppercased(), inputSize: fileSize,inputURL: outputURL)
+                    // 获取 Finder 上的大小
+                    let fileSize = getFileSize(fileURL: url)
+                    
+                    // 加载图片对象
+                    guard let nsImage = NSImage(contentsOf: url) else {
+                        print("无法加载粘贴的图片")
+                        return
+                    }
+                    
+                    let imageName = url.lastPathComponent
+                    let imageType = url.pathExtension.uppercased()
+                    
+                    var compressionState: CompressionState = .pending
+
+                    if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
+                        print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
+                        compressionState = .failed
+                    }
+                    print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
+                    // 内购用户 or 文件大小合规
+                    let customImage = CustomImages(
+                        image: nsImage,
+                        name: imageName,
+                        type: imageType,
+                        inputSize: fileSize,
+                        inputURL: url,
+                        compressionState: compressionState
+                    )
+                    
+                    DispatchQueue.main.async {
+                        appStorage.images.append(customImage)
+                    }
+
+                    if compressionState == .pending {
                         compressImages.append(customImage)
-                        DispatchQueue.main.async {
-                            appStorage.images.append(customImage)
-                        }
                     }
                 } catch {
                     print("粘贴板写入过程发生报错")
