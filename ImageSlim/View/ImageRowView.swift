@@ -45,8 +45,8 @@ struct ImageRowView: View {
             switch appStorage.imageSaveDirectory {
             case .downloadsDirectory:
                 return .downloadsDirectory
-            case .picturesDirectory:
-                return .picturesDirectory
+//            case .picturesDirectory:
+//                return .picturesDirectory
             }
         }
         let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!

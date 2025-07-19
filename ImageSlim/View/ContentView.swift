@@ -26,8 +26,8 @@ struct ContentView: View {
                     switch appStorage.imageSaveDirectory {
                     case .downloadsDirectory:
                         return .downloadsDirectory
-                    case .picturesDirectory:
-                        return .picturesDirectory
+//                    case .picturesDirectory:
+//                        return .picturesDirectory
                     }
                 }
                 
