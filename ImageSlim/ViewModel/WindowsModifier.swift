@@ -5,7 +5,7 @@
 //  Created by 方君宇 on 2025/7/8.
 //
 
-import SwiftUICore
+import SwiftUI
 
 struct WindowsModifier: ViewModifier {
     func body(content: Content) -> some View {
