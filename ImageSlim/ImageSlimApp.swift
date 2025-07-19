@@ -13,7 +13,9 @@ struct ImageSlimApp: App {
 
     var body: some Scene {
         // 空 Scene，窗口由 AppDelegate 管理
-        Settings {}  // 占位，不弹出任何窗口
+        Settings {
+            SettingsView()
+        }  // 占位，不弹出任何窗口
 
     }
 }
