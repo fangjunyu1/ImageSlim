@@ -123,12 +123,12 @@ class AppStorage:ObservableObject {
         }
         
         // 3、图片压缩率
-        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.0
+        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.1
         if UserDefaults.standard.object(forKey: "imageCompressionRate") == nil {
             // 设置默认值为 true
-            print("图片压缩率，默认值为 nil，设置为 0.0")
-            UserDefaults.standard.set(0.0, forKey: "imageCompressionRate")
-            imageCompressionRate = 0.0  // 菜单栏图标
+            print("图片压缩率，默认值为 nil，设置为 0.1")
+            UserDefaults.standard.set(0.1, forKey: "imageCompressionRate")
+            imageCompressionRate = 0.1  // 菜单栏图标
         } else {
             imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate")
             print("图片压缩率，默认值为 \(imageCompressionRate)")
