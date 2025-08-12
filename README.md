@@ -1,4 +1,20 @@
 # ImageSlim
+Free, open-source image compression software for Mac
+
+<h3>Compression Technology</h3>
+Image compression is achieved using Apple's image framework or third-party packages.
+
+<h3>Instructions</h3>
+You can click the image button in the app or drag an image into the app to automatically enter the compression queue and return the compressed image.
+
+You can select the download path in the settings. For multiple images, you can use the "Download All" button to save them as a Zip archive.
+
+<h3>Privacy Policy</h3>
+This app does not guarantee or conduct code reviews of third-party packages. Images are saved locally to the user. User images or information are not uploaded to third-party servers. Some configuration data is saved to Apple servers via iCloud.
+
+-----------
+
+# ImageSlim
 免费、开源的Mac压缩图片软件
 
 <h3>压缩技术</h3>
