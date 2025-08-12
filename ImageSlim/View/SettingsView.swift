@@ -114,7 +114,7 @@ struct SettingsView: View {
                         // 图片保存目录
                         HStack {
                             Image(systemName: "square.and.arrow.down")
-                            Text("Image save directory")
+                            Text("Save location")
                             Spacer()
                             Picker("选择目录", selection: Binding(get: {
                                 appStorage.imageSaveDirectory
