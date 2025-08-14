@@ -94,7 +94,7 @@ struct SettingsView: View {
                         // 图片预览方式
                         HStack {
                             Image(systemName: "plus.magnifyingglass")
-                            Text("Show icon in menu bar")
+                            Text("Image preview method")
                             Spacer()
                             Picker("预览方式", selection: Binding(get: {
                                 appStorage.imagePreviewMode
