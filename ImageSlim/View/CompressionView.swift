@@ -120,13 +120,6 @@ struct CompressionView: View {
                             Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
                                 .font(.footnote)
                                 .foregroundColor(.gray)
-                        } else if !appStorage.images.isEmpty {
-                            HStack(spacing: 0) {
-                                Text("Number of uploaded pictures")
-                                Text(" : \(appStorage.images.count) / \(appStorage.limitImageNum)")
-                            }
-                            .font(.footnote)
-                            .foregroundColor(appStorage.images.count >= appStorage.limitImageNum ? .red : .gray)
                         } else {
                             Text("Select up to 20 pictures, each no larger than 5MB.")
                                 .font(.footnote)
@@ -193,7 +186,6 @@ struct CompressionView: View {
                     }
                     
                     Spacer().frame(height:14)
-                    
                     if appStorage.inAppPurchaseMembership {
                         Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
                             .font(.footnote)
