@@ -14,9 +14,23 @@ struct ImageRowView: View {
     @ObservedObject var appStorage = AppStorage.shared
     @ObservedObject var compressManager = CompressionManager.shared
     @ObservedObject var item: CustomImages
+    @State private var shakeOffset: CGFloat = 0
     var index: Int
     var previewer: ImagePreviewWindow
     // var completion: () -> Void
+    
+    // 抖动效果
+    private func triggerShake() {
+        withAnimation(Animation.linear(duration: 0.1)) {
+            shakeOffset = -3
+        }
+        withAnimation(Animation.linear(duration: 0.1).repeatCount(5, autoreverses: true)) {
+            shakeOffset = 6
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            shakeOffset = 0
+        }
+    }
     
     // 将图片存储到照片并返回URL
     func saveImageToTempFile(image: NSImage) -> URL? {
@@ -45,8 +59,8 @@ struct ImageRowView: View {
             switch appStorage.imageSaveDirectory {
             case .downloadsDirectory:
                 return .downloadsDirectory
-//            case .picturesDirectory:
-//                return .picturesDirectory
+                //            case .picturesDirectory:
+                //                return .picturesDirectory
             }
         }
         let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
@@ -151,8 +165,13 @@ struct ImageRowView: View {
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }
-                    Text(TranslateSize(fileSize:item.inputSize))
-                        .foregroundColor(.gray)
+                    if !appStorage.inAppPurchaseMembership && item.inputSize > 5_000_000 {
+                        Text(TranslateSize(fileSize:item.inputSize))
+                            .foregroundColor(.red)
+                    } else {
+                        Text(TranslateSize(fileSize:item.inputSize))
+                            .foregroundColor(.gray)
+                    }
                 }
             }
             Spacer()
@@ -172,46 +191,69 @@ struct ImageRowView: View {
                 
                 Spacer().frame(width:10)
                 
-                // 下载按钮
-                
-                Button(action: {
-                    saveToDownloads(file: item)
-                    print("isDownloaded状态改为true")
-                    item.isDownloaded = true
-                    // 延时 2 秒后恢复
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                        print("isDownloaded状态改为false")
-                        item.isDownloaded = false
-                    }
-                }) {
-                    
-                    if item.isDownloaded {
-                        Image(systemName:"checkmark")
+                // 赞助应用，显示下载按钮，未赞助应用，超过5MB的图片显示 锁图标
+                if !appStorage.inAppPurchaseMembership && item.inputSize > 5_000_000 {
+                    VStack {
+                        Image(systemName:"lock.fill")
                             .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
                             .padding(.vertical,5)
                             .padding(.horizontal,20)
-                            .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
-                            .cornerRadius(20)
-                    } else {
-                        Text("Download")
-                            .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
-                            .padding(.vertical,5)
-                            .padding(.horizontal,20)
-                            .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
-                            .cornerRadius(20)
+                            .offset(x: shakeOffset)
                     }
+                    .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
+                    .cornerRadius(20)
+                    .onTapGesture {
+                        print("抖动锁图标")
+                        triggerShake()
+                    }
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                    }
+                } else {
+                    // 下载按钮
+                    Button(action: {
+                        saveToDownloads(file: item)
+                        print("isDownloaded状态改为true")
+                        item.isDownloaded = true
+                        // 延时 2 秒后恢复
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            print("isDownloaded状态改为false")
+                            item.isDownloaded = false
+                        }
+                    }) {
+                        
+                        if item.isDownloaded {
+                            Image(systemName:"checkmark")
+                                .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
+                                .padding(.vertical,5)
+                                .padding(.horizontal,20)
+                                .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
+                                .cornerRadius(20)
+                        } else {
+                            Text("Download")
+                                .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
+                                .padding(.vertical,5)
+                                .padding(.horizontal,20)
+                                .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
+                                .cornerRadius(20)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                    }
+                    .disabled(item.isDownloaded)
                 }
-                .buttonStyle(.plain)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                }
-                .disabled(item.isDownloaded)
             } else if item.compressionState == .pending{
                 Text("Waiting for compression")
                     .foregroundColor(.red)
             } else if item.compressionState == .failed {
                 Text("Compression failed")
                     .foregroundColor(.red)
+            } else if item.compressionState == .compressing{
+                ProgressView("")
+                    .scaleEffect(0.5)
+                    .labelsHidden()
             } else {
                 // 否则，显示加载状态。
                 ProgressView("")
@@ -224,7 +266,10 @@ struct ImageRowView: View {
 }
 
 #Preview {
-    ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
-        .frame(width: 300,height:40)
-        .environment(\.locale, .init(identifier: "de")) // 设置为德语
+    ZStack {
+        Color.white.frame(width: 300,height:40)
+        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 12000000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
+            .frame(width: 300,height:40)
+        // .environment(\.locale, .init(identifier: "de")) // 设置为德语
+    }
 }

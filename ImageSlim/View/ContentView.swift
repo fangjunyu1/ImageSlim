@@ -216,5 +216,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .frame(width:200)
-        .environment(\.locale, .init(identifier: "ml")) // 设置为德语
+        // .environment(\.locale, .init(identifier: "ml")) // 设置为德语
 }

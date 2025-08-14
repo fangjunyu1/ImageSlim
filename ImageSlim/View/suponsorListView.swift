@@ -71,5 +71,5 @@ struct suponsorListView: View {
 
 #Preview {
     suponsorListView(iapManager: IAPManager.shared, item: SuponsorStruct(id: "SponsoredCoffees", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0), selectedNum: .constant("SponsoredCoffee"))
-        .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+        // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

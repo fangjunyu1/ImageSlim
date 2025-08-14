@@ -71,12 +71,12 @@ struct CompressionView: View {
             
             var compressionState: CompressionState = .pending
 
-            if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
-                print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
-                compressionState = .failed
-            }
-            
-            print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
+//            if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
+//                print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
+//                compressionState = .failed
+//            }
+//            
+//            print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
             
             // 内购用户 or 文件大小合规
             let customImage = CustomImages(
@@ -423,5 +423,5 @@ struct CompressionView: View {
 
 #Preview {
     CompressionView()
-        .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+        // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

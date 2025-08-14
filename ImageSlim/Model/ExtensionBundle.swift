@@ -21,8 +21,4 @@ extension Bundle {
     var build: String {
         object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
     }
-
-    var bundleIdentifier: String {
-        bundleIdentifier ?? "Unknown"
-    }
 }
