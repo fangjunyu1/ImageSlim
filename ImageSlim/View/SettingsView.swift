@@ -131,19 +131,19 @@ struct SettingsView: View {
                         
                         Divider().padding(.leading,25)
                         
-                        // 启用第三方库压缩
+                        // 启用Pngquant - 第三方库压缩
                         HStack {
                             Image(systemName: "zipper.page")
                             Text("Enable third-party library compression")
                             Spacer()
-                            if appStorage.enableThirdPartyLibraries {
-                                Text("pngquant")
+                            if appStorage.enablePngquant {
+                                Text("Pngquant")
                                     .foregroundColor(.gray)
                             }
                             Toggle("启用第三方库压缩",isOn: Binding(get: {
-                                appStorage.enableThirdPartyLibraries
+                                appStorage.enablePngquant
                             }, set: { newValue in
-                                appStorage.enableThirdPartyLibraries = newValue
+                                appStorage.enablePngquant = newValue
                             }))
                             .labelsHidden()
                         }
@@ -245,7 +245,7 @@ struct SettingsView: View {
                             Text("Acknowledgements")
                             Spacer()
                             HStack(spacing:0) {
-                                Text("pngquant")
+                                Text("Pngquant")
                                     .onTapGesture {
                                         if let url = URL(string: "https://pngquant.org/") {
                                             openURL(url)

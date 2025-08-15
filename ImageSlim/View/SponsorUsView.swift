@@ -88,7 +88,7 @@ struct SponsorUsView: View {
                     // 恢复内购代码
                     Button(action: {
                         let store = NSUbiquitousKeyValueStore.default
-                        appStorage.inAppPurchaseMembership = store.bool(forKey: "enableThirdPartyLibraries")
+                        appStorage.inAppPurchaseMembership = store.bool(forKey: "inAppPurchaseMembership")
                     }, label: {
                         HStack(spacing:0) {
                             Text("Restore in-app purchases")

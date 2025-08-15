@@ -10971,7 +10971,7 @@
         }
       }
     },
-    "pngquant" : {
+    "Pngquant" : {
       "comment" : "pngquant",
       "extractionState" : "manual",
       "localizations" : {

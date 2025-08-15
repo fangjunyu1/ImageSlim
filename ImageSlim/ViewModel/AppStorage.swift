@@ -36,13 +36,13 @@ class AppStorage:ObservableObject {
     }
     
     // 启用第三方库压缩，当前使用pngquant压缩
-    @Published var enableThirdPartyLibraries = false {
+    @Published var enablePngquant = false {
         willSet {
             // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "enableThirdPartyLibraries")
+            UserDefaults.standard.set(newValue, forKey: "enablePngquant")
             // 修改 iCloud 中的值
             let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "enableThirdPartyLibraries")
+            store.set(newValue, forKey: "enablePngquant")
             store.synchronize() // 强制触发数据同步
         }
     }
@@ -110,16 +110,16 @@ class AppStorage:ObservableObject {
             print("菜单栏显示图标，默认值为 \(displayMenuBarIcon)")
         }
         
-        // 2、启用第三方库压缩
+        // 2、启用Pngquant -第三方库压缩
         // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
-        if UserDefaults.standard.object(forKey: "enableThirdPartyLibraries") == nil {
+        if UserDefaults.standard.object(forKey: "enablePngquant") == nil {
             // 设置默认值为 true
             print("菜单栏显示图标，默认值为 nil，设置为 false")
-            UserDefaults.standard.set(false, forKey: "enableThirdPartyLibraries")
-            enableThirdPartyLibraries = false  // 菜单栏图标
+            UserDefaults.standard.set(false, forKey: "enablePngquant")
+            enablePngquant = false  // 菜单栏图标
         } else {
-            enableThirdPartyLibraries = UserDefaults.standard.bool(forKey: "enableThirdPartyLibraries")
-            print("菜单栏显示图标，默认值为 \(enableThirdPartyLibraries)")
+            enablePngquant = UserDefaults.standard.bool(forKey: "enablePngquant")
+            print("菜单栏显示图标，默认值为 \(enablePngquant)")
         }
         
         // 3、图片压缩率

@@ -70,7 +70,7 @@ class CompressionManager:ObservableObject {
     // 使用 NSbitmapimagerep 压缩图片
     private func compressImage(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
         // MARK: 判断是否启用第三方库
-        if appStorage.enableThirdPartyLibraries {
+        if appStorage.enablePngquant {
             // MARK: 当前启用第三方库，使用 pngquant 压缩
             var quality: String {
                 if appStorage.imageCompressionRate >= 0.9 {
