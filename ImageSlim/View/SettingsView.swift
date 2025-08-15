@@ -255,6 +255,16 @@ struct SettingsView: View {
                                         isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                                     }
                                 Text("、")
+                                Text("Gifsicle")
+                                    .onTapGesture {
+                                        if let url = URL(string: "https://www.lcdf.org/gifsicle/") {
+                                            openURL(url)
+                                        }
+                                    }
+                                    .onHover { isHovering in
+                                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                                    }
+                                Text("、")
                                 Text("Freepik")
                                     .onTapGesture {
                                         if let url = URL(string: "https://www.freepik.com/") {
