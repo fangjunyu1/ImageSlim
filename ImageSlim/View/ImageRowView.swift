@@ -82,23 +82,37 @@ struct ImageRowView: View {
     func TranslateSize(fileSize: Int) -> String {
         let num = 1000.0
         let size = Double(fileSize)
+        
+        func format(_ value: Double) -> String {
+            let roundedValue = (value * 10).rounded() / 10
+                // 判断是否为整数
+            print("1、roundedValue:\(roundedValue)")
+                if roundedValue.truncatingRemainder(dividingBy: 1) == 0 {
+                    print("2、roundedValue:\(roundedValue)")
+                    return String(format: "%.0f", roundedValue) // 无小数
+                } else {
+                    print("2、roundedValue:\(roundedValue)")
+                    return String(format: "%.1f", roundedValue) // 一位小数
+                }
+            }
+        
         if size < num {
             return "\(size) B"
         } else if size < pow(num,2.0) {
-            let sizeNum = size / pow(num,1.0)
+            let sizeNum = size / pow(num,1)
             return "\(ceil(sizeNum)) KB"
         } else if size < pow(num,3.0) {
-            let sizeNum = size / pow(num,2.0)
-            return "\(String(format:"%.2f",sizeNum)) MB"
+            let sizeNum = size / pow(num,2)
+            return "\(format(sizeNum)) MB"
         } else if size < pow(num,4.0) {
-            let sizeNum = size / pow(num,3.0)
-            return "\(String(format:"%.2f",sizeNum)) GB"
+            let sizeNum = size / pow(num,3)
+            return "\(format(sizeNum)) GB"
         } else if size < pow(num,5.0) {
-            let sizeNum = size / pow(num,4.0)
-            return "\(String(format:"%.2f",sizeNum)) TB"
+            let sizeNum = size / pow(num,4)
+            return "\(format(sizeNum)) TB"
         } else {
-            let sizeNum = size / pow(num,4.0)
-            return "\(String(format:"%.2f",sizeNum)) TB"
+            let sizeNum = size / pow(num,5)
+            return "\(format(sizeNum)) TB"
         }
     }
     
