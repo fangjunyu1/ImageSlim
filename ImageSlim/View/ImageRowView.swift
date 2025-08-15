@@ -86,7 +86,7 @@ struct ImageRowView: View {
             return "\(size) B"
         } else if size < pow(num,2.0) {
             let sizeNum = size / pow(num,1.0)
-            return "\(ceil(sizeNum.rounded())) KB"
+            return "\(ceil(sizeNum)) KB"
         } else if size < pow(num,3.0) {
             let sizeNum = size / pow(num,2.0)
             return "\(String(format:"%.2f",sizeNum)) MB"
@@ -97,7 +97,7 @@ struct ImageRowView: View {
             let sizeNum = size / pow(num,4.0)
             return "\(String(format:"%.2f",sizeNum)) TB"
         } else {
-            let sizeNum = num / pow(num,4.0)
+            let sizeNum = size / pow(num,4.0)
             return "\(String(format:"%.2f",sizeNum)) TB"
         }
     }

@@ -52,15 +52,18 @@ class CompressionManager:ObservableObject {
     }
     
     private func getFileSize(fileURL: URL) -> Int {
-        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
+        // Finder上的图片大小
+//        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
+//        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
+//        print("Finder上的图片大小：\(diskSize)")
         
         // 获取文件的实际大小
         let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
+        print("文件的实际大小：\(attributes ?? 0)")
         
         // 当macOS上有图像大小，以macOS上图像字节为准。
         // 如果macOS上没有图像大小，以获取的图像字节为准。
-        return diskSize > 0 ? diskSize : attributes ?? 0
+        return attributes ?? 0
         
     }
     
@@ -131,7 +134,6 @@ class CompressionManager:ObservableObject {
                     DispatchQueue.main.async { [self] in
                         // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
                         image.outputSize = getFileSize(fileURL: outputURL)
-                        print("outputSize:\(image.outputSize ?? 0)")
                         image.outputURL = outputURL
                         print("outputURL:\(image.outputURL ?? URL(fileURLWithPath: "123"))")
                         if let outSize = image.outputSize {
