@@ -124,7 +124,11 @@ struct ContentView: View {
             
             Spacer()
             
-            if !appStorage.images.isEmpty {
+            // 用户未完成内购，图片列表不为空，图片列表中有小于5MB的图片
+            // 或者用户完成内购，图片不为空
+            // 满足以上任一条件，显示下载和清除队列按钮
+            if (!appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty && appStorage.images.contains { $0.inputSize < 5_000_000 }) ||
+               (appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty) {
                 // 清除队列
                 Button(action: {
                     print("清除队列")
