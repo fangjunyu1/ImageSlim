@@ -34,8 +34,15 @@ struct ContentView: View {
                 let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask)[0]
                 let destinationURL = directoryURL.appendingPathComponent("ImageSlim.zip")
                 var ImagesURL:[URL] {
-                    let urls = appStorage.images.compactMap { $0.outputURL }
-                    return urls
+                    // 如果用户赞助，返回所有图片的下载URL
+                    // 如果用户未赞助，返回5MB以下的图片
+                    if appStorage.inAppPurchaseMembership {
+                        let urls = appStorage.images.compactMap({ $0.outputURL })
+                        return urls
+                    } else {
+                        let urls = appStorage.images.filter { $0.inputSize < 5_000_000 } .compactMap { $0.outputURL }
+                        return urls
+                    }
                 }
                 try Zip.zipFiles(paths: ImagesURL, zipFilePath: destinationURL, password: nil) { progress in
                     DispatchQueue.main.async {
@@ -127,8 +134,7 @@ struct ContentView: View {
             // 用户未完成内购，图片列表不为空，图片列表中有小于5MB的图片
             // 或者用户完成内购，图片不为空
             // 满足以上任一条件，显示下载和清除队列按钮
-            if (!appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty && appStorage.images.contains { $0.inputSize < 5_000_000 }) ||
-               (appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty) {
+            if !appStorage.images.isEmpty  {
                 // 清除队列
                 Button(action: {
                     print("清除队列")
@@ -150,31 +156,37 @@ struct ContentView: View {
                 
                 Spacer().frame(height: 20)
                 
-                
-                // 下载全部
-                Button(action: {
-                    Task {
-                        zipImages()
-                    }
-                }, label: {
-                    ZStack {
-                        if showDownloadsProgress {
-                            ProgressView(value: progress, total: 1.0)
-                                            .progressViewStyle(LinearProgressViewStyle())
-                                            .padding()
-                        } else {
-                            Rectangle()
-                                .frame(width: 120,height: 35)
-                                .foregroundColor(Color(hex: "3960EA"))
-                                .cornerRadius(10)
-                            Text("Download All")
-                                .foregroundColor(.white)
+                if (!appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty && appStorage.images.contains { $0.inputSize < 5_000_000 }) ||
+                    (appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty) {
+                    
+                    // 下载全部
+                    Button(action: {
+                        Task {
+                            zipImages()
                         }
+                    }, label: {
+                        ZStack {
+                            if showDownloadsProgress {
+                                ProgressView(value: progress, total: 1.0)
+                                                .progressViewStyle(LinearProgressViewStyle())
+                                                .padding()
+                            } else {
+                                Rectangle()
+                                    .frame(width: 120,height: 35)
+                                    .foregroundColor(Color(hex: "3960EA"))
+                                    .cornerRadius(10)
+                                Text("Download All")
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    })
+                    .buttonStyle(.plain)
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                     }
-                })
-                .buttonStyle(.plain)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                } else {
+                    Color.clear.frame(width: 120,height:35)
+                        .opacity(0)
                 }
                 
                 Spacer().frame(height: 20)
