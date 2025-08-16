@@ -35,12 +35,15 @@ struct ContentView: View {
                 let destinationURL = directoryURL.appendingPathComponent("ImageSlim.zip")
                 
                 // 2、获取需要打包的图片 URL
-                var ImagesURL:[URL] = appStorage.images
+                print("开始整理需要打包的图片 URL")
+                let ImagesURL:[URL] = appStorage.images
                     .filter{ appStorage.inAppPurchaseMembership || $0.inputSize < 5_000_000 }
                     .compactMap { $0.outputURL }
                 
                 // 3、处理文件名，确定最终导出 URL
+                print("创建 finalImagesURL 变量")
                 var finalImagesURL:[URL] = []
+                print("开始遍历图片数组")
                 for url in ImagesURL {
                     // 获取文件名称
                     let imageName = url.lastPathComponent
@@ -51,13 +54,20 @@ struct ContentView: View {
                     let finalName: String = appStorage.KeepOriginalFileName ? imageName : "\(fileName)_compress.\(fileExt)"
                     let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
                     
+                    print("url:\(url)")
+                    print("finalURL:\(finalURL)")
+                    print("开始复制图片")
                     // 拼接 目录路径 + 文件名称
+                    if FileManager.default.fileExists(atPath: finalURL.path) {
+                        try FileManager.default.removeItem(at: finalURL)
+                    }
                     try FileManager.default.copyItem(at: url, to: finalURL)
-                    
-                    finalImagesURL.append(destinationURL)
+                    print("")
+                    finalImagesURL.append(finalURL)
                     print("已添加文件：\(finalURL)")
                 }
                 
+                print("finalImagesURL:\(finalImagesURL)")
                 try Zip.zipFiles(paths: finalImagesURL, zipFilePath: destinationURL, password: nil) { progress in
                     DispatchQueue.main.async {
                         self.progress = progress

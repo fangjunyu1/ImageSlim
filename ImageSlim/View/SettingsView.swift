@@ -122,7 +122,6 @@ struct SettingsView: View {
                                 appStorage.imageSaveDirectory = value
                             })) {
                                 Text("Download directory").tag(SaveDirectory.downloadsDirectory)
-//                                Text("Image directory").tag(SaveDirectory.picturesDirectory)
                             }
                             .pickerStyle(.menu)
                             .labelsHidden()

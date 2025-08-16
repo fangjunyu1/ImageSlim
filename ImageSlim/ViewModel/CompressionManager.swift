@@ -163,7 +163,7 @@ class CompressionManager:ObservableObject {
                     print("压缩完成")
                     completion(true)
                     return
-                }else {
+                } else {
                     print("压缩失败，退出码：\(process.terminationStatus)")
                     completion(false)
                     return
