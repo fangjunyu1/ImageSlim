@@ -59,20 +59,34 @@ struct ImageRowView: View {
             switch appStorage.imageSaveDirectory {
             case .downloadsDirectory:
                 return .downloadsDirectory
-                //            case .picturesDirectory:
-                //                return .picturesDirectory
             }
         }
+        
+        // 获取目录路径
         let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
-        let destinationURL = directoryURL.appendingPathComponent(file.name)
+        
+        // 获取文件名称，并拆分为 文件名+后缀名
+        let nsName = file.name as NSString
+        let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
+        let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
+        // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
+        let finalName: String
+        if !appStorage.KeepOriginalFileName {
+            print("当前设置为不保持原文件名，因此添加_compress后缀")
+            finalName = "\(fileName)_compress.\(fileExt)"
+        } else {
+            finalName = file.name
+        }
+        
+        // 拼接 目录路径 + 文件名称
+        let destinationURL = directoryURL.appendingPathComponent(finalName)
+        print("fileName:\(fileName),destinationURL:\(destinationURL)")
         
         do {
             if FileManager.default.fileExists(atPath: destinationURL.path) {
                 try FileManager.default.removeItem(at: destinationURL)
             }
-            if let outURL = file.outputURL {
-                try FileManager.default.copyItem(at: outURL, to: destinationURL)
-            }
+            try FileManager.default.copyItem(at: file.outputURL!, to: destinationURL)
             print("已保存到 \(directory) 目录：\(destinationURL.path)")
         } catch {
             print("保存失败：\(error)")
@@ -85,16 +99,16 @@ struct ImageRowView: View {
         
         func format(_ value: Double) -> String {
             let roundedValue = (value * 10).rounded() / 10
-                // 判断是否为整数
+            // 判断是否为整数
             print("1、roundedValue:\(roundedValue)")
-                if roundedValue.truncatingRemainder(dividingBy: 1) == 0 {
-                    print("2、roundedValue:\(roundedValue)")
-                    return String(format: "%.0f", roundedValue) // 无小数
-                } else {
-                    print("2、roundedValue:\(roundedValue)")
-                    return String(format: "%.1f", roundedValue) // 一位小数
-                }
+            if roundedValue.truncatingRemainder(dividingBy: 1) == 0 {
+                print("2、roundedValue:\(roundedValue)")
+                return String(format: "%.0f", roundedValue) // 无小数
+            } else {
+                print("2、roundedValue:\(roundedValue)")
+                return String(format: "%.1f", roundedValue) // 一位小数
             }
+        }
         
         if size < num {
             return "\(size) B"
@@ -282,7 +296,7 @@ struct ImageRowView: View {
 #Preview {
     ZStack {
         Color.white.frame(width: 300,height:40)
-        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 12000000,outputSize: 120000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
+        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
             .frame(width: 300,height:40)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
     }

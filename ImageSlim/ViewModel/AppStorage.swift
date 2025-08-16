@@ -107,6 +107,18 @@ class AppStorage:ObservableObject {
         }
     }
     
+    // 保持原文件名
+    @Published var KeepOriginalFileName = false {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(newValue, forKey: "KeepOriginalFileName")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue, forKey: "KeepOriginalFileName")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
     // 从UserDefaults加载数据
     private func loadUserDefault() {
         
@@ -189,14 +201,27 @@ class AppStorage:ObservableObject {
         // 7、应用赞助标识
         // 如果 UserDefaults 中没有 inAppPurchaseMembership 键，设置默认为 false
         if UserDefaults.standard.object(forKey: "inAppPurchaseMembership") == nil {
-            // 设置默认值为 true
+            // 设置默认值为 false
             print("应用赞助，默认值为nil，设置为 false")
             UserDefaults.standard.set(false, forKey: "inAppPurchaseMembership")
-            inAppPurchaseMembership = false  // 菜单栏图标
+            inAppPurchaseMembership = false
         } else {
             // 如果 UserDefaults 有 inAppPurchaseMembership 键，则设置为对应 Bool 值
             inAppPurchaseMembership = UserDefaults.standard.bool(forKey: "inAppPurchaseMembership")
             print("应用赞助，默认值为 \(inAppPurchaseMembership)")
+        }
+        
+        // 8、保持原文件名
+        // 如果 UserDefaults 中没有 KeepOriginalFileName 键，设置默认为 false
+        if UserDefaults.standard.object(forKey: "KeepOriginalFileName") == nil {
+            // 设置默认值为 false
+            print("保持原文件名，默认值为nil，设置为 false")
+            UserDefaults.standard.set(false, forKey: "KeepOriginalFileName")
+            KeepOriginalFileName = false
+        } else {
+            // 如果 UserDefaults 有 KeepOriginalFileName 键，则设置为对应 Bool 值
+            KeepOriginalFileName = UserDefaults.standard.bool(forKey: "KeepOriginalFileName")
+            print("保持原文件名，默认值为 \(KeepOriginalFileName)")
         }
     }
 }

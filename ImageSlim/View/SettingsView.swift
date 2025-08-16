@@ -131,14 +131,14 @@ struct SettingsView: View {
                         
                         Divider().padding(.leading,25)
                         
-                        // 启用Pngquant - 第三方库压缩
+                        // 启用第三方库压缩
                         HStack {
                             Image(systemName: "zipper.page")
                             Text("Enable third-party library compression")
                             Spacer()
                             Text("Pngquant")
                                 .foregroundColor(.gray)
-                            Toggle("启用第三方库压缩",isOn: Binding(get: {
+                            Toggle("Pngquant",isOn: Binding(get: {
                                 appStorage.enablePngquant
                             }, set: { newValue in
                                 appStorage.enablePngquant = newValue
@@ -147,10 +147,25 @@ struct SettingsView: View {
                             
                             Text("Gifsicle")
                                 .foregroundColor(.gray)
-                            Toggle("启用第三方库压缩",isOn: Binding(get: {
+                            Toggle("Gifsicle",isOn: Binding(get: {
                                 appStorage.enableGifsicle
                             }, set: { newValue in
                                 appStorage.enableGifsicle = newValue
+                            }))
+                            .labelsHidden()
+                        }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 保持原文件名
+                        HStack {
+                            Image(systemName: "zipper.page")
+                            Text("Keep the original file name")
+                            Spacer()
+                            Toggle("Keep the original file name",isOn: Binding(get: {
+                                appStorage.KeepOriginalFileName
+                            }, set: { newValue in
+                                appStorage.KeepOriginalFileName = newValue
                             }))
                             .labelsHidden()
                         }

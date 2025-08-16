@@ -26,13 +26,12 @@ struct ContentView: View {
                     switch appStorage.imageSaveDirectory {
                     case .downloadsDirectory:
                         return .downloadsDirectory
-//                    case .picturesDirectory:
-//                        return .picturesDirectory
                     }
                 }
                 
                 let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask)[0]
                 let destinationURL = directoryURL.appendingPathComponent("ImageSlim.zip")
+                
                 var ImagesURL:[URL] {
                     // 如果用户赞助，返回所有图片的下载URL
                     // 如果用户未赞助，返回5MB以下的图片
@@ -44,7 +43,32 @@ struct ContentView: View {
                         return urls
                     }
                 }
-                try Zip.zipFiles(paths: ImagesURL, zipFilePath: destinationURL, password: nil) { progress in
+                var finalImagesURL:[URL] = []
+                for url in ImagesURL {
+                    print("url:\(url)")
+                    // 获取文件名称
+                    let imageName = url.lastPathComponent
+                    print("imageName:\(imageName)")
+                    let nsName = imageName as NSString
+                    let fileName = nsName.deletingPathExtension    // 获取文件名称
+                    let fileExt = nsName.pathExtension    // 获取文件扩展名
+                    // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
+                    let finalName: String
+                    if !appStorage.KeepOriginalFileName {
+                        print("当前设置为不保持原文件名，因此添加_compress后缀")
+                        finalName = "\(fileName)_compress.\(fileExt)"
+                    } else {
+                        finalName = imageName
+                    }
+                    print("finalName:\(finalName)")
+                    // 拼接 目录路径 + 文件名称
+                    let destinationURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
+                    finalImagesURL.append(destinationURL)
+                    print("finalImagesURL添加文件输出路径：\(destinationURL)")
+                    try? FileManager.default.copyItem(at: url, to: destinationURL)
+                }
+                
+                try Zip.zipFiles(paths: finalImagesURL, zipFilePath: destinationURL, password: nil) { progress in
                     DispatchQueue.main.async {
                         self.progress = progress
                         if progress == 1 {

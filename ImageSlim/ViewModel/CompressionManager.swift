@@ -182,10 +182,7 @@ class CompressionManager:ObservableObject {
         }
         
         let quality = getPngquantQualityString()
-        
-        // 图片的输出路径，位置在 Temporary 临时文件夹
-        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)
-        
+        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)    // 获取outputURL
         let process = Process()
         process.executableURL = URL(fileURLWithPath: pngquant)
         // pngquant --quality=65-80 --output "/Users/fangjunyu/Desktop/IMG_3104_compressed.png" "/Users/fangjunyu/Desktop/IMG_3104.PNG"
@@ -281,15 +278,15 @@ class CompressionManager:ObservableObject {
             // 压缩图片并获取压缩的 Data
             let imageData = outputData as Data
             
-            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)
-            
+            let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)
+            print("outputURL:\(outputURL)")
             do {
                 // 将压缩图片的 Data，写入临时文件
-                try imageData.write(to: tempURL)
+                try imageData.write(to: outputURL)
                 DispatchQueue.main.async {
                     // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                    image.outputSize = self.getFileSize(fileURL: tempURL)
-                    image.outputURL = tempURL
+                    image.outputSize = self.getFileSize(fileURL: outputURL)
+                    image.outputURL = outputURL
                     if let outSize = image.outputSize {
                         let ratio = Double(outSize) / Double(image.inputSize)
                         image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio

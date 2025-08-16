@@ -69,7 +69,7 @@ struct CompressionView: View {
             let imageName = url.lastPathComponent
             let imageType = url.pathExtension.uppercased()
             
-            var compressionState: CompressionState = .pending
+            let compressionState: CompressionState = .pending
 
 //            if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
 //                print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
