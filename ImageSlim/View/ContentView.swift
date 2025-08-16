@@ -18,54 +18,44 @@ struct ContentView: View {
     func zipImages() {
         showDownloadsProgress = true
         progress = 0.0
+        
         DispatchQueue.global(qos: .userInitiated).async {
             do {
-                print("zipImages 任务中是否是主线程？", Thread.isMainThread)
                 print("打包Zip")
-                var directory:FileManager.SearchPathDirectory {
+                
+                // 1、确定保存目录
+                var saveDirectory:FileManager.SearchPathDirectory {
                     switch appStorage.imageSaveDirectory {
                     case .downloadsDirectory:
                         return .downloadsDirectory
                     }
                 }
                 
-                let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask)[0]
+                let directoryURL = FileManager.default.urls(for: saveDirectory, in: .userDomainMask)[0]
                 let destinationURL = directoryURL.appendingPathComponent("ImageSlim.zip")
                 
-                var ImagesURL:[URL] {
-                    // 如果用户赞助，返回所有图片的下载URL
-                    // 如果用户未赞助，返回5MB以下的图片
-                    if appStorage.inAppPurchaseMembership {
-                        let urls = appStorage.images.compactMap({ $0.outputURL })
-                        return urls
-                    } else {
-                        let urls = appStorage.images.filter { $0.inputSize < 5_000_000 } .compactMap { $0.outputURL }
-                        return urls
-                    }
-                }
+                // 2、获取需要打包的图片 URL
+                var ImagesURL:[URL] = appStorage.images
+                    .filter{ appStorage.inAppPurchaseMembership || $0.inputSize < 5_000_000 }
+                    .compactMap { $0.outputURL }
+                
+                // 3、处理文件名，确定最终导出 URL
                 var finalImagesURL:[URL] = []
                 for url in ImagesURL {
-                    print("url:\(url)")
                     // 获取文件名称
                     let imageName = url.lastPathComponent
-                    print("imageName:\(imageName)")
                     let nsName = imageName as NSString
                     let fileName = nsName.deletingPathExtension    // 获取文件名称
                     let fileExt = nsName.pathExtension    // 获取文件扩展名
                     // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
-                    let finalName: String
-                    if !appStorage.KeepOriginalFileName {
-                        print("当前设置为不保持原文件名，因此添加_compress后缀")
-                        finalName = "\(fileName)_compress.\(fileExt)"
-                    } else {
-                        finalName = imageName
-                    }
-                    print("finalName:\(finalName)")
+                    let finalName: String = appStorage.KeepOriginalFileName ? imageName : "\(fileName)_compress.\(fileExt)"
+                    let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
+                    
                     // 拼接 目录路径 + 文件名称
-                    let destinationURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
+                    try FileManager.default.copyItem(at: url, to: finalURL)
+                    
                     finalImagesURL.append(destinationURL)
-                    print("finalImagesURL添加文件输出路径：\(destinationURL)")
-                    try? FileManager.default.copyItem(at: url, to: destinationURL)
+                    print("已添加文件：\(finalURL)")
                 }
                 
                 try Zip.zipFiles(paths: finalImagesURL, zipFilePath: destinationURL, password: nil) { progress in
