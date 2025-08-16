@@ -191,9 +191,14 @@ struct ContentView: View {
                     }, label: {
                         ZStack {
                             if showDownloadsProgress {
+                                Rectangle()
+                                    .frame(width: 120,height: 35)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
                                 ProgressView(value: progress, total: 1.0)
                                                 .progressViewStyle(LinearProgressViewStyle())
-                                                .padding()
+                                                .frame(width:100,height:35)
+                                
                             } else {
                                 Rectangle()
                                     .frame(width: 120,height: 35)
