@@ -32,7 +32,23 @@ struct ContentView: View {
                 }
                 
                 let directoryURL = FileManager.default.urls(for: saveDirectory, in: .userDomainMask)[0]
-                let destinationURL = directoryURL.appendingPathComponent("ImageSlim.zip")
+                
+                let calendar = Calendar.current
+                let date = Date()
+                let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+                
+                var destinationURL:URL = URL(fileURLWithPath: "")
+                if let year = components.year,
+                   let month = components.month,
+                   let day = components.day,
+                    let hour = components.hour,
+                    let minute = components.minute,
+                    let second = components.second {
+                    let iDay = day < 10 ? "0\(String(day))" : "\(day)"
+                    destinationURL = directoryURL.appendingPathComponent("ImageSlim_\(year)-\(month)-\(iDay) \(hour).\(minute).\(second).zip")
+                } else {
+                    destinationURL = destinationURL.appendingPathComponent("ImageSlim.zip")
+                }
                 
                 // 2、获取需要打包的图片 URL
                 print("开始整理需要打包的图片 URL")
