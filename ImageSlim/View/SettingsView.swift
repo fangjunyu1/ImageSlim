@@ -136,14 +136,21 @@ struct SettingsView: View {
                             Image(systemName: "zipper.page")
                             Text("Enable third-party library compression")
                             Spacer()
-                            if appStorage.enablePngquant {
-                                Text("Pngquant")
-                                    .foregroundColor(.gray)
-                            }
+                            Text("Pngquant")
+                                .foregroundColor(.gray)
                             Toggle("启用第三方库压缩",isOn: Binding(get: {
                                 appStorage.enablePngquant
                             }, set: { newValue in
                                 appStorage.enablePngquant = newValue
+                            }))
+                            .labelsHidden()
+                            
+                            Text("Gifsicle")
+                                .foregroundColor(.gray)
+                            Toggle("启用第三方库压缩",isOn: Binding(get: {
+                                appStorage.enableGifsicle
+                            }, set: { newValue in
+                                appStorage.enableGifsicle = newValue
                             }))
                             .labelsHidden()
                         }

@@ -47,6 +47,18 @@ class AppStorage:ObservableObject {
         }
     }
     
+    // 启用第三方库压缩，当前使用Gifsicle压缩
+    @Published var enableGifsicle = false {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(newValue, forKey: "enableGifsicle")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue, forKey: "enableGifsicle")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
     // 图片压缩率
     @Published var imageCompressionRate = 0.0 {
         willSet {
@@ -122,19 +134,31 @@ class AppStorage:ObservableObject {
             print("菜单栏显示图标，默认值为 \(enablePngquant)")
         }
         
-        // 3、图片压缩率
-        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0.1
+        // 3、启用 Gifsicle -第三方库压缩
+        // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
+        if UserDefaults.standard.object(forKey: "enableGifsicle") == nil {
+            // 设置默认值为 true
+            print("菜单栏显示图标，默认值为 nil，设置为 false")
+            UserDefaults.standard.set(false, forKey: "enableGifsicle")
+            enableGifsicle = false  // 菜单栏图标
+        } else {
+            enableGifsicle = UserDefaults.standard.bool(forKey: "enableGifsicle")
+            print("菜单栏显示图标，默认值为 \(enableGifsicle)")
+        }
+        
+        // 4、图片压缩率
+        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0
         if UserDefaults.standard.object(forKey: "imageCompressionRate") == nil {
             // 设置默认值为 true
-            print("图片压缩率，默认值为 nil，设置为 0.1")
-            UserDefaults.standard.set(0.1, forKey: "imageCompressionRate")
-            imageCompressionRate = 0.1  // 菜单栏图标
+            print("图片压缩率，默认值为 nil，设置为 0")
+            UserDefaults.standard.set(0, forKey: "imageCompressionRate")
+            imageCompressionRate = 0  // 菜单栏图标
         } else {
             imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate")
             print("图片压缩率，默认值为 \(imageCompressionRate)")
         }
         
-        // 4、图片预览方式
+        // 5、图片预览方式
         // 如果 UserDefaults 中没有 imagePreviewMode 键，设置默认为 Quick Look
         if UserDefaults.standard.object(forKey: "imagePreviewMode") == nil {
             // 设置默认值为 true
@@ -148,7 +172,7 @@ class AppStorage:ObservableObject {
             print("图片预览方式，默认值为 \(imagePreviewMode)")
         }
         
-        // 5、图片保存目录【同步UserDefaults】
+        // 6、图片保存目录【同步UserDefaults】
         // 如果 UserDefaults 中没有 imageSaveDirectory 键，设置默认为 DownloadsDirectory
         if UserDefaults.standard.object(forKey: "imageSaveDirectory") == nil {
             // 设置默认值为 true
@@ -162,7 +186,7 @@ class AppStorage:ObservableObject {
             print("图片保存目录，默认值为 \(imageSaveDirectory)")
         }
         
-        // 6、应用赞助标识
+        // 7、应用赞助标识
         // 如果 UserDefaults 中没有 inAppPurchaseMembership 键，设置默认为 false
         if UserDefaults.standard.object(forKey: "inAppPurchaseMembership") == nil {
             // 设置默认值为 true
