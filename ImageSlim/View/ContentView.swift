@@ -15,6 +15,70 @@ struct ContentView: View {
     @State private var showDownloadsProgress = false
     @State private var showSponsorUs = false
     
+    
+    private func saveImg(file:CustomImages,url:URL) {
+        // 获取文件名称，并拆分为 文件名+后缀名
+        let nsName = file.name as NSString
+        let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
+        let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
+        // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
+        let finalName: String
+        if !appStorage.KeepOriginalFileName {
+            print("当前设置为不保持原文件名，因此添加_compress后缀")
+            finalName = "\(fileName)_compress.\(fileExt)"
+        } else {
+            finalName = file.name
+        }
+        
+        // 拼接 目录路径 + 文件名称
+        let destinationURL = url.appendingPathComponent(finalName)
+        
+        do {
+            if FileManager.default.fileExists(atPath: destinationURL.path) {
+                try FileManager.default.removeItem(at: destinationURL)
+            }
+            try FileManager.default.copyItem(at: file.outputURL!, to: destinationURL)
+        } catch {
+            print("保存失败：\(error)")
+        }
+    }
+    
+    private func saveZip(finalImagesURL:[URL], url: URL){
+        let calendar = Calendar.current
+        let date = Date()
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        var destinationURL = URL(fileURLWithPath: "")
+        if let year = components.year,
+           let month = components.month,
+           let day = components.day,
+           let hour = components.hour,
+           let minute = components.minute,
+           let second = components.second {
+            let iDay = day < 10 ? "0\(String(day))" : "\(day)"
+            destinationURL =  url.appendingPathComponent("ImageSlim_\(year)-\(month)-\(iDay) \(hour).\(minute).\(second).zip")
+        } else {
+            destinationURL = url.appendingPathComponent("ImageSlim.zip")
+        }
+        do {
+            try Zip.zipFiles(paths: finalImagesURL, zipFilePath: destinationURL, password: nil) { progress in
+                DispatchQueue.main.async {
+                    self.progress = progress
+                    if progress == 1 {
+                        showDownloadsProgress = false
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                print("打包完成")
+            }
+        } catch {
+            DispatchQueue.main.async {
+                self.showDownloadsProgress = false
+                print("在SaveZip方法中崩溃")
+            }
+        }
+    }
+    
     func zipImages() {
         showDownloadsProgress = true
         progress = 0.0
@@ -23,77 +87,66 @@ struct ContentView: View {
             do {
                 print("打包Zip")
                 
-                // 1、确定保存目录
-                var saveDirectory:FileManager.SearchPathDirectory {
-                    switch appStorage.imageSaveDirectory {
-                    case .downloadsDirectory:
-                        return .downloadsDirectory
-                    }
-                }
-                
-                let directoryURL = FileManager.default.urls(for: saveDirectory, in: .userDomainMask)[0]
-                
-                let calendar = Calendar.current
-                let date = Date()
-                let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-                
-                var destinationURL:URL = URL(fileURLWithPath: "")
-                if let year = components.year,
-                   let month = components.month,
-                   let day = components.day,
-                    let hour = components.hour,
-                    let minute = components.minute,
-                    let second = components.second {
-                    let iDay = day < 10 ? "0\(String(day))" : "\(day)"
-                    destinationURL = directoryURL.appendingPathComponent("ImageSlim_\(year)-\(month)-\(iDay) \(hour).\(minute).\(second).zip")
-                } else {
-                    destinationURL = destinationURL.appendingPathComponent("ImageSlim.zip")
-                }
-                
-                // 2、获取需要打包的图片 URL
+                // 1、获取需要打包的图片 URL
                 print("开始整理需要打包的图片 URL")
                 let ImagesURL:[URL] = appStorage.images
                     .filter{ appStorage.inAppPurchaseMembership || $0.inputSize < 5_000_000 }
                     .compactMap { $0.outputURL }
                 
-                // 3、处理文件名，确定最终导出 URL
+                // 2、处理文件名，确定最终导出 URL
                 print("创建 finalImagesURL 变量")
                 var finalImagesURL:[URL] = []
                 print("开始遍历图片数组")
                 for url in ImagesURL {
                     // 获取文件名称
                     let imageName = url.lastPathComponent
+                    
                     let nsName = imageName as NSString
                     let fileName = nsName.deletingPathExtension    // 获取文件名称
                     let fileExt = nsName.pathExtension    // 获取文件扩展名
                     // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
-                    let finalName: String = appStorage.KeepOriginalFileName ? imageName : "\(fileName)_compress.\(fileExt)"
-                    let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
-                    
-                    print("url:\(url)")
-                    print("finalURL:\(finalURL)")
-                    print("开始复制图片")
-                    // 拼接 目录路径 + 文件名称
-                    if FileManager.default.fileExists(atPath: finalURL.path) {
-                        try FileManager.default.removeItem(at: finalURL)
+                    if !appStorage.KeepOriginalFileName {
+                        let finalName: String = "\(fileName)_compress.\(fileExt)"
+                        let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
+                        // 拼接 目录路径 + 文件名称
+                        if FileManager.default.fileExists(atPath: finalURL.path) {
+                            try FileManager.default.removeItem(at: finalURL)
+                        }
+                        print("copy前:url\(url),finalURL:\(finalURL)")
+                        try FileManager.default.copyItem(at: url, to: finalURL)
+                        print("copy后:url\(url),finalURL:\(finalURL)")
+                        finalImagesURL.append(finalURL)
+                        print("已添加文件：\(finalURL)")
+                    } else {
+                        print("保持原文件名，使用outputURL")
+                        finalImagesURL.append(url)
                     }
-                    try FileManager.default.copyItem(at: url, to: finalURL)
-                    print("")
-                    finalImagesURL.append(finalURL)
-                    print("已添加文件：\(finalURL)")
                 }
                 
-                print("finalImagesURL:\(finalImagesURL)")
-                try Zip.zipFiles(paths: finalImagesURL, zipFilePath: destinationURL, password: nil) { progress in
-                    DispatchQueue.main.async {
-                        self.progress = progress
-                        if progress == 1 {
-                            showDownloadsProgress = false
+                // 3、判断 保存目录-安全书签，有的话，保存到安全书签的目录，没有的话，保存到Downloads目录
+                // 如果有保存目录-安全书签
+                if let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") {
+                    var isStale = false
+                    do {
+                        let url = try URL(
+                            resolvingBookmarkData: saveLocation,
+                            options: [.withSecurityScope],
+                            relativeTo: nil,
+                            bookmarkDataIsStale: &isStale
+                        )
+                        if url.startAccessingSecurityScopedResource() {
+                            saveZip(finalImagesURL:finalImagesURL, url: url)
+                            url.stopAccessingSecurityScopedResource()
+                        } else {
+                            print("无法访问资源")
                         }
+                    } catch {
+                        print("解析书签失败: \(error)")
                     }
-                }
-                DispatchQueue.main.async {
-                    print("打包完成")
+                    
+                } else {
+                    let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+                    saveZip(finalImagesURL: finalImagesURL, url: downloadURL)
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -212,8 +265,8 @@ struct ContentView: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                                 ProgressView(value: progress, total: 1.0)
-                                                .progressViewStyle(LinearProgressViewStyle())
-                                                .frame(width:100,height:35)
+                                    .progressViewStyle(LinearProgressViewStyle())
+                                    .frame(width:100,height:35)
                                 
                             } else {
                                 Rectangle()
@@ -259,7 +312,7 @@ struct ContentView: View {
             })
             .buttonStyle(.plain)
             .multilineTextAlignment(.center)
-                
+            
             Spacer().frame(height:10)
             Text("\(Bundle.main.version) (\(Bundle.main.build))")
                 .foregroundColor(.gray)
@@ -277,5 +330,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .frame(width:200)
-        // .environment(\.locale, .init(identifier: "ml")) // 设置为德语
+    // .environment(\.locale, .init(identifier: "ml")) // 设置为德语
 }

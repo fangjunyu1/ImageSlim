@@ -53,18 +53,7 @@ struct ImageRowView: View {
         panel.makeKeyAndOrderFront(nil)
     }
     
-    // 下载图片到文件夹
-    func saveToDownloads(file: CustomImages) {
-        var directory:FileManager.SearchPathDirectory {
-            switch appStorage.imageSaveDirectory {
-            case .downloadsDirectory:
-                return .downloadsDirectory
-            }
-        }
-        
-        // 获取目录路径
-        let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
-        
+    private func saveImg(file:CustomImages,url:URL) {
         // 获取文件名称，并拆分为 文件名+后缀名
         let nsName = file.name as NSString
         let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
@@ -79,17 +68,46 @@ struct ImageRowView: View {
         }
         
         // 拼接 目录路径 + 文件名称
-        let destinationURL = directoryURL.appendingPathComponent(finalName)
-        print("fileName:\(fileName),destinationURL:\(destinationURL)")
+        let destinationURL = url.appendingPathComponent(finalName)
         
         do {
             if FileManager.default.fileExists(atPath: destinationURL.path) {
                 try FileManager.default.removeItem(at: destinationURL)
             }
             try FileManager.default.copyItem(at: file.outputURL!, to: destinationURL)
-            print("已保存到 \(directory) 目录：\(destinationURL.path)")
         } catch {
             print("保存失败：\(error)")
+        }
+    }
+    
+    // 下载图片到文件夹
+    func saveToDownloads(file: CustomImages) {
+        var directory:FileManager.SearchPathDirectory {
+            switch appStorage.imageSaveDirectory {
+            case .downloadsDirectory:
+                return .downloadsDirectory
+            }
+        }
+        
+        // 获取目录路径
+        // 如果有安全书签，保存到安全书签的URL
+        if let bookmark = UserDefaults.standard.data(forKey: "SaveLocation") {
+            var isStale = false
+                do {
+                    let url = try URL(resolvingBookmarkData: bookmark, options: [.withSecurityScope], relativeTo: nil, bookmarkDataIsStale: &isStale)
+
+                    if url.startAccessingSecurityScopedResource() {
+                        saveImg(file: file,url: url)
+                        url.stopAccessingSecurityScopedResource()
+                    } else {
+                        print("无法访问资源")
+                    }
+                } catch {
+                    print("解析书签失败: \(error)")
+                }
+        } else {
+            let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
+            saveImg(file: file,url: directoryURL)
         }
     }
     // 根据图片的字节大小显示适配的存储大小。

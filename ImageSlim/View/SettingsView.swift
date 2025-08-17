@@ -13,6 +13,7 @@ struct SettingsView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var appStorage = AppStorage.shared
     @Environment(\.openURL) var openURL
+    @State private var saveName: String = "Downloads"
     
     var compressionLocalizedKey: LocalizedStringKey  {
         let rate = appStorage.imageCompressionRate
@@ -40,6 +41,47 @@ struct SettingsView: View {
         
         if let url = URL(string: urlString ?? "") {
             NSWorkspace.shared.open(url)
+        }
+    }
+    
+    // 保存路径-安全书签
+    func createSaveLocation() {
+        let panel = NSOpenPanel()
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.allowsMultipleSelection = false
+        let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
+        panel.prompt = saveDir
+        
+        if panel.runModal() == .OK, let url = panel.url {
+            do {
+                let bookmark = try url.bookmarkData(options: [.withSecurityScope], includingResourceValuesForKeys: nil, relativeTo: nil)
+                UserDefaults.standard.set(bookmark, forKey: "SaveLocation")
+                print("书签保存成功")
+                refreshSaveName()
+            } catch {
+                print("书签创建失败: \(error)")
+            }
+        }
+    }
+    
+    private func refreshSaveName() {
+        guard let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") else {
+            saveName = "Downloads"
+            return
+        }
+        var isStale = false
+        do {
+            let url = try URL(
+                resolvingBookmarkData: saveLocation,
+                options: [.withSecurityScope],
+                relativeTo: nil,
+                bookmarkDataIsStale: &isStale
+            )
+            saveName = url.lastPathComponent
+        } catch {
+            print("解析书签失败: \(error)")
+            saveName = "Downloads"
         }
     }
     
@@ -116,16 +158,19 @@ struct SettingsView: View {
                             Image(systemName: "square.and.arrow.down")
                             Text("Save location")
                             Spacer()
-                            Picker("选择目录", selection: Binding(get: {
-                                appStorage.imageSaveDirectory
-                            }, set: { value, _ in
-                                appStorage.imageSaveDirectory = value
-                            })) {
-                                Text("Download directory").tag(SaveDirectory.downloadsDirectory)
+                            
+                            Button(action: {
+                                createSaveLocation()
+                            }, label: {
+                                Text(saveName)
+                            })
+                            .buttonStyle(.plain)
+                            .onHover { isHovering in
+                                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                             }
-                            .pickerStyle(.menu)
-                            .labelsHidden()
-                            .fixedSize() // 不随容器拉伸
+                            .onAppear {
+                                refreshSaveName()
+                            }
                         }
                         
                         Divider().padding(.leading,25)
