@@ -2850,13 +2850,25 @@
       }
     },
     "Conversion" : {
-      "comment" : "转换",
+      "comment" : "1.0.2:转换",
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "转换"
+          }
+        }
+      }
+    },
+    "Converting images" : {
+      "comment" : "1.0.2:转换图片",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转换图片"
           }
         }
       }
@@ -5982,13 +5994,25 @@
       }
     },
     "EnableImageConversion" : {
-      "comment" : "启用图片转换",
+      "comment" : "1.0.2:启用图片转换",
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "启用图片转换"
+          }
+        }
+      }
+    },
+    "Free files and convert them immediately" : {
+      "comment" : "1.0.2：释放文件，立即转换",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "释放文件，立即转换"
           }
         }
       }

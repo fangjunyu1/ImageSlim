@@ -1,14 +1,14 @@
 //
-//  ImageRowView.swift
+//  ImageRowConversionView.swift
 //  ImageSlim
 //
-//  Created by 方君宇 on 2025/7/12.
+//  Created by 方君宇 on 2025/8/25.
 //
 
 import SwiftUI
 import QuickLookUI
 
-struct ImageRowView: View {
+struct ImageRowConversionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
     @ObservedObject var appStorage = AppStorage.shared
@@ -227,7 +227,15 @@ struct ImageRowView: View {
                 // 输出参数
                 VStack(alignment: .trailing) {
                     // 压缩占比
-                    Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(colorScheme == .light ? .purple : Color(hex: "2f2f2f"))
+                            .frame(width:50,height:16)
+                            .cornerRadius(3)
+                        Text("\(item.type)")
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                    }
                     Spacer().frame(height:3)
                     // 输出图片大小
                     Text(TranslateSize(fileSize:item.outputSize ?? 0))
@@ -314,7 +322,7 @@ struct ImageRowView: View {
 #Preview {
     ZStack {
         Color.white.frame(width: 300,height:40)
-        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
+        ImageRowConversionView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),outputType: "JPG",compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
             .frame(width: 300,height:40)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
     }

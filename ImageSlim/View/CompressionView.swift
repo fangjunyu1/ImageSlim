@@ -96,60 +96,50 @@ struct CompressionView: View {
     
     var body: some View {
         VStack {
-            if !appStorage.images.isEmpty {
-                // 上传图片提示语
-                HStack {
-                    Spacer()
-                    VStack {
-                        if isHovering {
-                            Text("Release the file and add compression")
-                                .font(.title)
-                        } else {
-                            Text("Upload pictures and compress them instantly")
-                                .font(.title)
-                        }
-                        Spacer().frame(height:20)
-                        if appStorage.inAppPurchaseMembership {
-                            Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        } else {
-                            Text("Select up to 20 pictures, each no larger than 5MB.")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    Spacer()
-                        .frame(width: 30)
-                    // 图像
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 150,height: 100)
-                            .foregroundColor(
-                                isHovering ? Color(hex: "BEE2FF") :
-                                    colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
-                            )
-                            .shadow(color: .gray.opacity(0.6), radius: 2, x: 0, y: 4)
-                            .cornerRadius(5)
-                        Image("upload")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                    }
-                    .onTapGesture {
-                        showImporter = true
-                    }
-                    .onHover(perform: { isHovering in
-                        if isHovering {
-                            NSCursor.pointingHand.set()
-                        } else {
-                            NSCursor.arrow.set()
-                        }
-                    })
-                    
-                    Spacer()
+            AdaptiveContentView(isEmpty: appStorage.images.isEmpty, title: {
+                if isHovering {
+                    Text("Release the file and add compression")
+                        .font(.title)
+                } else {
+                    Text("Upload pictures and compress them instantly")
+                        .font(.title)
                 }
-                .frame(height: 140)
+            }, tips: {
+                if appStorage.inAppPurchaseMembership {
+                    Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                } else {
+                    Text("Select up to 20 pictures, each no larger than 5MB.")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+            }, zstack: {
+                ZStack {
+                    Rectangle()
+                        .frame(width: 240,height: 160)
+                        .foregroundColor(
+                            isHovering ? colorScheme == .light ? Color(hex: "BEE2FF") : Color(hex: "3d3d3d") :
+                                colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
+                        )
+                        .cornerRadius(5)
+                        .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4)
+                    Image("upload")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150)
+                }
+                .onHover(perform: { isHovering in
+                    if isHovering {
+                        NSCursor.pointingHand.set()
+                    } else {
+                        NSCursor.arrow.set()
+                    }
+                })
+                .onTapGesture {
+                    showImporter = true
+                }
+            }, list: {
                 // 图片列表
                 ScrollView(showsIndicators:false) {
                     ForEach(Array(appStorage.images.enumerated()),id: \.offset) { index,item in
@@ -167,58 +157,7 @@ struct CompressionView: View {
                 .padding(.horizontal,30)
                 .background(colorScheme == .light ? .white : Color(hex: "222222"))
                 .cornerRadius(10)
-            } else {
-                
-                VStack {
-                    if isHovering {
-                        Text("Release the file and add compression")
-                            .font(.title)
-                    } else {
-                        Text("Upload pictures and compress them instantly")
-                            .font(.title)
-                    }
-                    
-                    Spacer().frame(height:14)
-                    if appStorage.inAppPurchaseMembership {
-                        Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    } else {
-                        Text("Select up to 20 pictures, each no larger than 5MB.")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Spacer().frame(height:20)
-                    
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 240,height: 160)
-                            .foregroundColor(
-                                isHovering ? colorScheme == .light ? Color(hex: "BEE2FF") : Color(hex: "3d3d3d"):
-                                    colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
-                            )
-                            .cornerRadius(5)
-                            .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4)
-                        Image("upload")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150)
-                    }
-                    .onHover(perform: { isHovering in
-                        if isHovering {
-                            NSCursor.pointingHand.set()
-                        } else {
-                            NSCursor.arrow.set()
-                        }
-                    })
-                    .onTapGesture {
-                        showImporter = true
-                    }
-                    Spacer().frame(height: 60)
-                    
-                }
-            }
+            })
         }
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in

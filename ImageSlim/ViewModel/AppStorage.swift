@@ -20,8 +20,11 @@ class AppStorage:ObservableObject {
     // 非内购用户，限制 20 张图片
     @Published var limitImageNum = 20
     
-    // 存储图片
+    // 压缩图片数组
     @Published var images:[CustomImages] = []
+    
+    // 转换图片数组
+    @Published var conversionImages:[CustomImages] = []
     
     // 菜单栏显示图标，true为显示
     @Published var displayMenuBarIcon = true {
@@ -108,13 +111,13 @@ class AppStorage:ObservableObject {
     }
     
     // 保持原文件名
-    @Published var KeepOriginalFileName = false {
+    @Published var keepOriginalFileName = false {
         willSet {
             // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "KeepOriginalFileName")
+            UserDefaults.standard.set(newValue, forKey: "keepOriginalFileName")
             // 修改 iCloud 中的值
             let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "KeepOriginalFileName")
+            store.set(newValue, forKey: "keepOriginalFileName")
             store.synchronize() // 强制触发数据同步
         }
     }
@@ -127,6 +130,18 @@ class AppStorage:ObservableObject {
             // 修改 iCloud 中的值
             let store = NSUbiquitousKeyValueStore.default
             store.set(newValue, forKey: "EnableImageConversion")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
+    // 转换图片格式
+    @Published var convertTypeState: ConversionTypeState = .jpeg {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(convertTypeState.rawValue, forKey: "convertTypeState")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue.rawValue, forKey: "convertTypeState")
             store.synchronize() // 强制触发数据同步
         }
     }
@@ -224,16 +239,16 @@ class AppStorage:ObservableObject {
         }
         
         // 8、保持原文件名
-        // 如果 UserDefaults 中没有 KeepOriginalFileName 键，设置默认为 false
-        if UserDefaults.standard.object(forKey: "KeepOriginalFileName") == nil {
+        // 如果 UserDefaults 中没有 keepOriginalFileName 键，设置默认为 false
+        if UserDefaults.standard.object(forKey: "keepOriginalFileName") == nil {
             // 设置默认值为 false
             print("保持原文件名，默认值为nil，设置为 false")
-            UserDefaults.standard.set(false, forKey: "KeepOriginalFileName")
-            KeepOriginalFileName = false
+            UserDefaults.standard.set(false, forKey: "keepOriginalFileName")
+            keepOriginalFileName = false
         } else {
-            // 如果 UserDefaults 有 KeepOriginalFileName 键，则设置为对应 Bool 值
-            KeepOriginalFileName = UserDefaults.standard.bool(forKey: "KeepOriginalFileName")
-            print("保持原文件名，默认值为 \(KeepOriginalFileName)")
+            // 如果 UserDefaults 有 keepOriginalFileName 键，则设置为对应 Bool 值
+            keepOriginalFileName = UserDefaults.standard.bool(forKey: "keepOriginalFileName")
+            print("保持原文件名，默认值为 \(keepOriginalFileName)")
         }
         
         // 9、启用图片转换
@@ -247,6 +262,19 @@ class AppStorage:ObservableObject {
             // 如果 UserDefaults 有 EnableImageConversion 键，则设置为对应 Bool 值
             EnableImageConversion = UserDefaults.standard.bool(forKey: "EnableImageConversion")
             print("保持原文件名，默认值为 \(EnableImageConversion)")
+        }
+        
+        // 10、转换图片格式
+        // 如果 UserDefaults 中没有 convertImageFormats 键，设置默认为 JPEG
+        if UserDefaults.standard.object(forKey: "convertTypeState") == nil {
+            // 设置默认值为 jpeg
+            print("转换图片格式，默认值为 nil，设置为 ConversionTypeState.jpeg")
+            UserDefaults.standard.set(ConversionTypeState.jpeg.rawValue, forKey: "convertTypeState")
+            convertTypeState = ConversionTypeState.jpeg  // JPEG 图片
+        } else {
+            let formatsString = UserDefaults.standard.object(forKey: "convertTypeState") as? String
+            let convertTypeState = ConversionTypeState(rawValue: formatsString ?? "jpeg") ?? ConversionTypeState.jpeg
+            print("转换图片格式，默认值为 \(convertTypeState)")
         }
     }
 }

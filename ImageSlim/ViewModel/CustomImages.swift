@@ -18,6 +18,7 @@ class CustomImages: ObservableObject, Identifiable {
     @Published var compressionRatio: Double?
     @Published var inputURL: URL?
     @Published var outputURL: URL?
+    @Published var outputType: String?
     // 图片状态：.pending 等待压缩 .compressing 正在压缩 .completed 已压缩完成 .failed 压缩失败
     @Published var compressionState:CompressionState
     @Published var isDownloaded: Bool = false
@@ -31,6 +32,7 @@ class CustomImages: ObservableObject, Identifiable {
          compressionRatio: Double? = nil,
          inputURL: URL? = nil,
          outputURL: URL? = nil,
+         outputType: String? = nil,
          compressionState: CompressionState = .pending) {
         self.id = id
         self.image = image
@@ -41,6 +43,7 @@ class CustomImages: ObservableObject, Identifiable {
         self.outputSize = outputSize
         self.compressionRatio = compressionRatio
         self.outputURL = outputURL
+        self.outputType = outputType
         self.compressionState = compressionState
     }
 }

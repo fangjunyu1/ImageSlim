@@ -1,17 +1,17 @@
 //
-//  CompressionManager.swift
+//  ConversionManager.swift
 //  ImageSlim
 //
-//  Created by 方君宇 on 2025/7/12.
+//  Created by 方君宇 on 2025/8/25.
 //
 
 import SwiftUI
 import ImageIO
 import UniformTypeIdentifiers
 
-class CompressionManager:ObservableObject {
+class ConversionManager:ObservableObject {
     @ObservedObject var appStorage = AppStorage.shared
-    static let shared = CompressionManager()
+    static let shared = ConversionManager()
     // 任务队列：存储被压缩的图片
     private var taskQueue: [CustomImages] = []
     

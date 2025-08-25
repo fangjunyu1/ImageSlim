@@ -207,9 +207,9 @@ struct SettingsView: View {
                             Text("Keep the original file name")
                             Spacer()
                             Toggle("Keep the original file name",isOn: Binding(get: {
-                                appStorage.KeepOriginalFileName
+                                appStorage.keepOriginalFileName
                             }, set: { newValue in
-                                appStorage.KeepOriginalFileName = newValue
+                                appStorage.keepOriginalFileName = newValue
                             }))
                             .labelsHidden()
                         }

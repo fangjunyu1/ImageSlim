@@ -13,7 +13,7 @@ struct ConversionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var previewer = ImagePreviewWindow()
     @ObservedObject var appStorage = AppStorage.shared
-    @ObservedObject var compressManager = CompressionManager.shared
+    @ObservedObject var conversionManager = ConversionManager.shared
     @State private var isHovering = false
     @State private var showImporter = false
     
@@ -79,116 +79,40 @@ struct ConversionView: View {
             )
             
             DispatchQueue.main.async {
-                appStorage.images.append(customImage)
+                appStorage.conversionImages.append(customImage)
             }
-
+            
             if compressionState == .pending {
                 compressImages.append(customImage)
             }
         }
         
         // 显示全部上传的图片，开始压缩
-        compressManager.enqueue(compressImages)    // 立即压缩
+        conversionManager.enqueue(compressImages)    // 立即压缩
     }
     
     var body: some View {
         VStack {
-            if !appStorage.images.isEmpty {
-                // 上传图片提示语
-                HStack {
-                    Spacer()
-                    VStack {
-                        if isHovering {
-                            Text("Release the file and add compression")
-                                .font(.title)
-                        } else {
-                            Text("Upload pictures and compress them instantly")
-                                .font(.title)
-                        }
-                        Spacer().frame(height:20)
-                        if appStorage.inAppPurchaseMembership {
-                            Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        } else {
-                            Text("Select up to 20 pictures, each no larger than 5MB.")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    Spacer()
-                        .frame(width: 30)
-                    // 图像
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 150,height: 100)
-                            .foregroundColor(
-                                isHovering ? Color(hex: "BEE2FF") :
-                                    colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
-                            )
-                            .shadow(color: .gray.opacity(0.6), radius: 2, x: 0, y: 4)
-                            .cornerRadius(5)
-                        Image("upload")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100)
-                    }
-                    .onTapGesture {
-                        showImporter = true
-                    }
-                    .onHover(perform: { isHovering in
-                        if isHovering {
-                            NSCursor.pointingHand.set()
-                        } else {
-                            NSCursor.arrow.set()
-                        }
-                    })
-                    
-                    Spacer()
+            AdaptiveContentView(isEmpty: appStorage.conversionImages.isEmpty, title: {
+                if isHovering {
+                    Text("Free files and convert them immediately")
+                        .font(.title)
+                } else {
+                    Text("Converting images")
+                        .font(.title)
                 }
-                .frame(height: 140)
-                // 图片列表
-                ScrollView(showsIndicators:false) {
-                    ForEach(Array(appStorage.images.enumerated()),id: \.offset) { index,item in
-                        ImageRowView(item: item,index: index,previewer: previewer)
-                            .frame(maxWidth: .infinity)
-                            .frame(height:42)
-                        // 分割线
-                        Divider()
-                            .padding(.leading,55)
-                            .opacity(appStorage.images.count - 1 == index ? 0 : 1)
-                    }
+            }, tips: {
+                if appStorage.inAppPurchaseMembership {
+                    Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                } else {
+                    Text("Select up to 20 pictures, each no larger than 5MB.")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
                 }
-                .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .padding(.vertical,20)
-                .padding(.horizontal,30)
-                .background(colorScheme == .light ? .white : Color(hex: "222222"))
-                .cornerRadius(10)
-            } else {
-                
-                VStack {
-                    if isHovering {
-                        Text("Release the file and add compression")
-                            .font(.title)
-                    } else {
-                        Text("Upload pictures and compress them instantly")
-                            .font(.title)
-                    }
-                    
-                    Spacer().frame(height:14)
-                    if appStorage.inAppPurchaseMembership {
-                        Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    } else {
-                        Text("Select up to 20 pictures, each no larger than 5MB.")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Spacer().frame(height:20)
-                    
-                    ZStack {
+            }, zstack:  {
+                ZStack {
                         Rectangle()
                             .frame(width: 240,height: 160)
                             .foregroundColor(
@@ -197,7 +121,7 @@ struct ConversionView: View {
                             )
                             .cornerRadius(5)
                             .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4)
-                        Image("upload")
+                        Image("conversion")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150)
@@ -212,16 +136,30 @@ struct ConversionView: View {
                     .onTapGesture {
                         showImporter = true
                     }
-                    Spacer().frame(height: 60)
-                    
-                }
-            }
+            }, list: {
+                ScrollView(showsIndicators:false) {
+                        ForEach(Array(appStorage.conversionImages.enumerated()),id: \.offset) { index,item in
+                            ImageRowConversionView(item: item,index: index,previewer: previewer)
+                                .frame(maxWidth: .infinity)
+                                .frame(height:42)
+                            // 分割线
+                            Divider()
+                                .padding(.leading,55)
+                                .opacity(appStorage.conversionImages.count - 1 == index ? 0 : 1)
+                        }
+                    }
+                    .frame(maxWidth: .infinity,maxHeight: .infinity)
+                    .padding(.vertical,20)
+                    .padding(.horizontal,30)
+                    .background(colorScheme == .light ? .white : Color(hex: "222222"))
+                    .cornerRadius(10)
+            })
         }
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             
             let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
-            var limitNum = appStorage.limitImageNum - appStorage.images.count
+            var limitNum = appStorage.limitImageNum - appStorage.conversionImages.count
             var imageURLs: [URL] = []
             let group = DispatchGroup()
             
@@ -262,15 +200,16 @@ struct ConversionView: View {
             do {
                 let selectedFiles: [URL] = try result.get()
                 
+                // 如果未赞助，限制导入图片的数量
                 let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
-                var limitNum = appStorage.limitImageNum - appStorage.images.count
+                var limitNum = appStorage.limitImageNum - appStorage.conversionImages.count
                 var imageURLs: [URL] = []
                 
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
                     // 非内购用户，判断图片是否为最大上传数量
                     if islimitImagesNum && limitNum <= 0 {
-                        print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
+                        print("当前已经有 \(appStorage.conversionImages.count) 张图片，不再接收新的图片")
                         break
                     }
                     
@@ -317,7 +256,7 @@ struct ConversionView: View {
                     let imageType = url.pathExtension.uppercased()
                     
                     var compressionState: CompressionState = .pending
-
+                    
                     if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
                         print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
                         compressionState = .failed
@@ -334,9 +273,9 @@ struct ConversionView: View {
                     )
                     
                     DispatchQueue.main.async {
-                        appStorage.images.append(customImage)
+                        appStorage.conversionImages.append(customImage)
                     }
-
+                    
                     if compressionState == .pending {
                         compressImages.append(customImage)
                     }
@@ -363,7 +302,7 @@ struct ConversionView: View {
                     let imageType = url.pathExtension.uppercased()
                     
                     var compressionState: CompressionState = .pending
-
+                    
                     if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
                         print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
                         compressionState = .failed
@@ -380,9 +319,9 @@ struct ConversionView: View {
                     )
                     
                     DispatchQueue.main.async {
-                        appStorage.images.append(customImage)
+                        appStorage.conversionImages.append(customImage)
                     }
-
+                    
                     if compressionState == .pending {
                         compressImages.append(customImage)
                     }
@@ -397,7 +336,7 @@ struct ConversionView: View {
                 // pastedImage = nil
             }
             // for-in循环结束，开始调用压缩图片
-            compressManager.enqueue(compressImages)
+            conversionManager.enqueue(compressImages)
         }
         
     }
@@ -405,5 +344,5 @@ struct ConversionView: View {
 
 #Preview {
     ConversionView()
-        // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+    // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

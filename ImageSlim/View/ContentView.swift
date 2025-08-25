@@ -23,7 +23,7 @@ struct ContentView: View {
         let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
         // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
         let finalName: String
-        if !appStorage.KeepOriginalFileName {
+        if !appStorage.keepOriginalFileName {
             print("当前设置为不保持原文件名，因此添加_compress后缀")
             finalName = "\(fileName)_compress.\(fileExt)"
         } else {
@@ -105,7 +105,7 @@ struct ContentView: View {
                     let fileName = nsName.deletingPathExtension    // 获取文件名称
                     let fileExt = nsName.pathExtension    // 获取文件扩展名
                     // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
-                    if !appStorage.KeepOriginalFileName {
+                    if !appStorage.keepOriginalFileName {
                         let finalName: String = "\(fileName)_compress.\(fileExt)"
                         let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)
                         // 拼接 目录路径 + 文件名称
