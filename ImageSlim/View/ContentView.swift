@@ -15,7 +15,6 @@ struct ContentView: View {
     @State private var showDownloadsProgress = false
     @State private var showSponsorUs = false
     
-    
     private func saveImg(file:CustomImages,url:URL) {
         // 获取文件名称，并拆分为 文件名+后缀名
         let nsName = file.name as NSString
@@ -89,7 +88,18 @@ struct ContentView: View {
                 
                 // 1、获取需要打包的图片 URL
                 print("开始整理需要打包的图片 URL")
-                let ImagesURL:[URL] = appStorage.images
+                var images: [CustomImages] {
+                    switch appStorage.selectedView {
+                    case .compression:
+                        return appStorage.images
+                    case .conversion:
+                        return appStorage.conversionImages
+                    default:
+                        return []
+                    }
+                }
+                
+                let ImagesURL:[URL] = images
                     .filter{ appStorage.inAppPurchaseMembership || $0.inputSize < 5_000_000 }
                     .compactMap { $0.outputURL }
                 
@@ -254,68 +264,19 @@ struct ContentView: View {
             // 用户未完成内购，图片列表不为空，图片列表中有小于5MB的图片
             // 或者用户完成内购，图片不为空
             // 满足以上任一条件，显示下载和清除队列按钮
-            if !appStorage.images.isEmpty  {
-                // 清除队列
-                Button(action: {
-                    print("清除队列")
-                    appStorage.images = []
-                }, label: {
-                    ZStack {
-                        Rectangle()
-                            .frame(width: 120,height: 35)
-                            .foregroundColor(Color(hex: "FF4343"))
-                            .cornerRadius(10)
-                        Text("Clear the queue")
-                            .foregroundColor(.white)
+            
+            if appStorage.selectedView == .compression {
+                AdaptiveButtonView(isEmpty: appStorage.images.isEmpty, images: $appStorage.images, showDownloadsProgress: $showDownloadsProgress, progress: $progress, zipImages:  {
+                    Task {
+                        zipImages()
                     }
                 })
-                .buttonStyle(.plain)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                }
-                
-                Spacer().frame(height: 20)
-                
-                if (!appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty && appStorage.images.contains { $0.inputSize < 5_000_000 }) ||
-                    (appStorage.inAppPurchaseMembership && !appStorage.images.isEmpty) {
-                    
-                    // 下载全部
-                    Button(action: {
-                        Task {
-                            zipImages()
-                        }
-                    }, label: {
-                        ZStack {
-                            if showDownloadsProgress {
-                                Rectangle()
-                                    .frame(width: 120,height: 35)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(10)
-                                ProgressView(value: progress, total: 1.0)
-                                    .progressViewStyle(LinearProgressViewStyle())
-                                    .frame(width:100,height:35)
-                                
-                            } else {
-                                Rectangle()
-                                    .frame(width: 120,height: 35)
-                                    .foregroundColor(Color(hex: "3960EA"))
-                                    .cornerRadius(10)
-                                Text("Download All")
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    })
-                    .buttonStyle(.plain)
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+            } else if appStorage.selectedView == .conversion {
+                AdaptiveButtonView(isEmpty: appStorage.conversionImages.isEmpty, images: $appStorage.conversionImages, showDownloadsProgress: $showDownloadsProgress, progress: $progress, zipImages:  {
+                    Task {
+                        zipImages()
                     }
-                } else {
-                    Color.clear.frame(width: 120,height:35)
-                        .opacity(0)
-                }
-                
-                Spacer().frame(height: 20)
-                
+                })
             }
             
             Button(action:{
