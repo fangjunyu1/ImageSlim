@@ -16,6 +16,8 @@ struct WorkspaceView: View {
             SettingsView()
         } else if appStorage.selectedView == .sponsorUs {
             SponsorUsView()
+        } else if appStorage.selectedView == .conversion {
+            ConversionView()
         }
     }
 }

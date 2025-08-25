@@ -2849,6 +2849,18 @@
         }
       }
     },
+    "Conversion" : {
+      "comment" : "转换",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转换"
+          }
+        }
+      }
+    },
     "Desktop directory" : {
       "comment" : "桌面目录",
       "extractionState" : "manual",
@@ -5965,6 +5977,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用第三方函式庫壓縮"
+          }
+        }
+      }
+    },
+    "EnableImageConversion" : {
+      "comment" : "启用图片转换",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用图片转换"
           }
         }
       }

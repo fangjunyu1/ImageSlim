@@ -193,6 +193,33 @@ struct ContentView: View {
                     isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
                 }
                 
+                if appStorage.EnableImageConversion {
+                    Spacer().frame(height: 20)
+                    
+                    // 转换菜单-按钮
+                    Button(action: {
+                        appStorage.selectedView = .conversion
+                    }, label: {
+                        HStack {
+                            Image(systemName: "photo.on.rectangle.angled")
+                                .imageScale(.large)
+                                .frame(width: 20)
+                            Spacer().frame(width: 14)
+                            Text("Conversion")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                        }
+                        .contentShape(Rectangle())
+                    })
+                    .buttonStyle(.plain)
+                    .foregroundColor(appStorage.selectedView == .conversion ?
+                                     colorScheme == .light ? .black : .white :
+                            .gray)
+                    .onHover { isHovering in
+                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
+                    }
+                }
+                
                 Spacer().frame(height: 20)
                 
                 // 设置菜单-按钮

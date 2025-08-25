@@ -119,6 +119,18 @@ class AppStorage:ObservableObject {
         }
     }
     
+    // 启用图片转换
+    @Published var EnableImageConversion = false {
+        willSet {
+            // 修改 USerDefault 中的值
+            UserDefaults.standard.set(newValue, forKey: "EnableImageConversion")
+            // 修改 iCloud 中的值
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue, forKey: "EnableImageConversion")
+            store.synchronize() // 强制触发数据同步
+        }
+    }
+    
     // 从UserDefaults加载数据
     private func loadUserDefault() {
         
@@ -222,6 +234,19 @@ class AppStorage:ObservableObject {
             // 如果 UserDefaults 有 KeepOriginalFileName 键，则设置为对应 Bool 值
             KeepOriginalFileName = UserDefaults.standard.bool(forKey: "KeepOriginalFileName")
             print("保持原文件名，默认值为 \(KeepOriginalFileName)")
+        }
+        
+        // 9、启用图片转换
+        // 如果 UserDefaults 中没有 EnableImageConversion 键，设置默认为 true
+        if UserDefaults.standard.object(forKey: "EnableImageConversion") == nil {
+            // 设置默认值为 true
+            print("保持原文件名，默认值为nil，设置为 true")
+            UserDefaults.standard.set(true, forKey: "EnableImageConversion")
+            EnableImageConversion = true
+        } else {
+            // 如果 UserDefaults 有 EnableImageConversion 键，则设置为对应 Bool 值
+            EnableImageConversion = UserDefaults.standard.bool(forKey: "EnableImageConversion")
+            print("保持原文件名，默认值为 \(EnableImageConversion)")
         }
     }
 }

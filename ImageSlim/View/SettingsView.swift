@@ -213,6 +213,21 @@ struct SettingsView: View {
                             }))
                             .labelsHidden()
                         }
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 启用图片转换
+                        HStack {
+                            Image(systemName: "arrow.down.left.arrow.up.right")
+                            Text("EnableImageConversion")
+                            Spacer()
+                            Toggle("EnableImageConversion",isOn: Binding(get: {
+                                appStorage.EnableImageConversion
+                            }, set: { newValue in
+                                appStorage.EnableImageConversion = newValue
+                            }))
+                            .labelsHidden()
+                        }
                     }
                     .padding(14)
                     .background(colorScheme == .light ? Color(hex: "EEEEEE") : .clear)
