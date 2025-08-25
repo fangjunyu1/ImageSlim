@@ -203,7 +203,7 @@ struct SettingsView: View {
                         
                         // 保持原文件名
                         HStack {
-                            Image(systemName: "zipper.page")
+                            Image(systemName: "ellipsis.curlybraces")
                             Text("Keep the original file name")
                             Spacer()
                             Toggle("Keep the original file name",isOn: Binding(get: {
