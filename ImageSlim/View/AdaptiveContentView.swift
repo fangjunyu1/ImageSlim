@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct AdaptiveContentView<JudgmentView: View,ImageView: View,ImageList: View>: View {
+struct AdaptiveContentView<TitleView: View,JudgmentTextView: View,ImageView: View,ImageList: View>: View {
     let isEmpty: Bool
-    let title: JudgmentView
-    let tips: JudgmentView
+    let title: TitleView
+    let tips: JudgmentTextView
     let zstack: ImageView
     let list: ImageList
     
-    init(isEmpty: Bool, @ViewBuilder title: () -> JudgmentView,@ViewBuilder tips: () -> JudgmentView, @ViewBuilder zstack: () -> ImageView, @ViewBuilder list: () -> ImageList) {
+    init(isEmpty: Bool, @ViewBuilder title: () -> TitleView,@ViewBuilder tips: () -> JudgmentTextView, @ViewBuilder zstack: () -> ImageView, @ViewBuilder list: () -> ImageList) {
         self.isEmpty = isEmpty
         self.title = title()
         self.tips = tips()

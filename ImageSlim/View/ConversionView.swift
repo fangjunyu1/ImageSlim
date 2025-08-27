@@ -94,12 +94,37 @@ struct ConversionView: View {
     var body: some View {
         VStack {
             AdaptiveContentView(isEmpty: appStorage.conversionImages.isEmpty, title: {
-                if isHovering {
-                    Text("Free files and convert them immediately")
-                        .font(.title)
-                } else {
-                    Text("Converting images")
-                        .font(.title)
+                Group {
+                    if isHovering {
+                        Text("Free files and convert them immediately")
+                            .font(.title)
+                    } else {
+                        HStack {
+                            Text("Converting images")
+                                .font(.title)
+                            Menu {
+                                ForEach(ConversionTypeState.allCases) { option in
+                                    Button(option.rawValue) {
+                                        appStorage.convertTypeState = option
+                                    }
+                                }
+                            } label: {
+                                Text(appStorage.convertTypeState.rawValue.uppercased())
+                                    .frame(width: 60, height: 30)
+                                    .foregroundColor(.white)
+                                    .background(Color(hex: "082A7C"))
+                                    .cornerRadius(10)
+                            }
+                            .buttonStyle(.plain)
+                            .onHover(perform: { isHovering in
+                                if isHovering {
+                                    NSCursor.pointingHand.set()
+                                } else {
+                                    NSCursor.arrow.set()
+                                }
+                            })
+                        }
+                    }
                 }
             }, tips: {
                 if appStorage.inAppPurchaseMembership {
@@ -113,46 +138,46 @@ struct ConversionView: View {
                 }
             }, zstack:  {
                 ZStack {
-                        Rectangle()
-                            .frame(width: 240,height: 160)
-                            .foregroundColor(
-                                isHovering ? colorScheme == .light ? Color(hex: "BEE2FF") : Color(hex: "3d3d3d"):
-                                    colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
-                            )
-                            .cornerRadius(5)
-                            .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4)
-                        Image("conversion")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150)
+                    Rectangle()
+                        .frame(width: 240,height: 160)
+                        .foregroundColor(
+                            isHovering ? colorScheme == .light ? Color(hex: "BEE2FF") : Color(hex: "3d3d3d"):
+                                colorScheme == .light ?  Color(hex:"E6E6E6") : Color(hex: "2f2f2f")
+                        )
+                        .cornerRadius(5)
+                        .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 4)
+                    Image("conversion")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150)
+                }
+                .onHover(perform: { isHovering in
+                    if isHovering {
+                        NSCursor.pointingHand.set()
+                    } else {
+                        NSCursor.arrow.set()
                     }
-                    .onHover(perform: { isHovering in
-                        if isHovering {
-                            NSCursor.pointingHand.set()
-                        } else {
-                            NSCursor.arrow.set()
-                        }
-                    })
-                    .onTapGesture {
-                        showImporter = true
-                    }
+                })
+                .onTapGesture {
+                    showImporter = true
+                }
             }, list: {
                 ScrollView(showsIndicators:false) {
-                        ForEach(Array(appStorage.conversionImages.enumerated()),id: \.offset) { index,item in
-                            ImageRowConversionView(item: item,index: index,previewer: previewer)
-                                .frame(maxWidth: .infinity)
-                                .frame(height:42)
-                            // 分割线
-                            Divider()
-                                .padding(.leading,55)
-                                .opacity(appStorage.conversionImages.count - 1 == index ? 0 : 1)
-                        }
+                    ForEach(Array(appStorage.conversionImages.enumerated()),id: \.offset) { index,item in
+                        ImageRowConversionView(item: item,index: index,previewer: previewer)
+                            .frame(maxWidth: .infinity)
+                            .frame(height:42)
+                        // 分割线
+                        Divider()
+                            .padding(.leading,55)
+                            .opacity(appStorage.conversionImages.count - 1 == index ? 0 : 1)
                     }
-                    .frame(maxWidth: .infinity,maxHeight: .infinity)
-                    .padding(.vertical,20)
-                    .padding(.horizontal,30)
-                    .background(colorScheme == .light ? .white : Color(hex: "222222"))
-                    .cornerRadius(10)
+                }
+                .frame(maxWidth: .infinity,maxHeight: .infinity)
+                .padding(.vertical,20)
+                .padding(.horizontal,30)
+                .background(colorScheme == .light ? .white : Color(hex: "222222"))
+                .cornerRadius(10)
             })
         }
         .modifier(WindowsModifier())
