@@ -137,11 +137,14 @@ class AppStorage:ObservableObject {
     // 转换图片格式
     @Published var convertTypeState: ConversionTypeState = .jpeg {
         willSet {
+            print("修改的值为：\(newValue.rawValue)")
             // 修改 USerDefault 中的值
-            UserDefaults.standard.set(convertTypeState.rawValue, forKey: "convertTypeState")
+            UserDefaults.standard.set(newValue.rawValue, forKey: "convertTypeState")
+            print("保存到UserDefaults：\(UserDefaults.standard.object(forKey: "convertTypeState") as? String ?? "None")")
             // 修改 iCloud 中的值
             let store = NSUbiquitousKeyValueStore.default
             store.set(newValue.rawValue, forKey: "convertTypeState")
+            print("同步到iCloud")
             store.synchronize() // 强制触发数据同步
         }
     }
@@ -255,7 +258,7 @@ class AppStorage:ObservableObject {
         // 如果 UserDefaults 中没有 EnableImageConversion 键，设置默认为 true
         if UserDefaults.standard.object(forKey: "EnableImageConversion") == nil {
             // 设置默认值为 true
-            print("保持原文件名，默认值为nil，设置为 true")
+            print("启用图片转换，默认值为nil，设置为 true")
             UserDefaults.standard.set(true, forKey: "EnableImageConversion")
             EnableImageConversion = true
         } else {
@@ -273,7 +276,7 @@ class AppStorage:ObservableObject {
             convertTypeState = ConversionTypeState.jpeg  // JPEG 图片
         } else {
             let formatsString = UserDefaults.standard.object(forKey: "convertTypeState") as? String
-            let convertTypeState = ConversionTypeState(rawValue: formatsString ?? "jpeg") ?? ConversionTypeState.jpeg
+            convertTypeState = ConversionTypeState(rawValue: formatsString ?? "jpeg") ?? ConversionTypeState.jpeg
             print("转换图片格式，默认值为 \(convertTypeState)")
         }
     }
