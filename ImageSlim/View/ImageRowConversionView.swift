@@ -54,21 +54,25 @@ struct ImageRowConversionView: View {
     }
     
     private func saveImg(file:CustomImages,url:URL) {
-        // 获取文件名称，并拆分为 文件名+后缀名
-        let nsName = file.name as NSString
+        // 获取输出文件路径中的文件名称，并拆分为 文件名+后缀名
+        let nsName: NSString = (file.outputURL?.lastPathComponent ?? "unknown") as NSString
+        print("nsName:\(nsName)")
         let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
         let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
+        print("fileName:\(fileName),fileExt:\(fileExt)")
         // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
         let finalName: String
         if !appStorage.keepOriginalFileName {
             print("当前设置为不保持原文件名，因此添加_compress后缀")
             finalName = "\(fileName)_compress.\(fileExt)"
         } else {
-            finalName = file.name
+            finalName = nsName as String
         }
+        print("fileNmae:\(finalName)")
         
         // 拼接 目录路径 + 文件名称
         let destinationURL = url.appendingPathComponent(finalName)
+        print("destinationURL:\(destinationURL)")
         
         do {
             if FileManager.default.fileExists(atPath: destinationURL.path) {
@@ -232,7 +236,7 @@ struct ImageRowConversionView: View {
                             .foregroundColor(colorScheme == .light ? .purple : Color(hex: "2f2f2f"))
                             .frame(width:50,height:16)
                             .cornerRadius(3)
-                        Text("\(item.type)")
+                        Text("\(item.outputType ?? "")")
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }
@@ -299,10 +303,10 @@ struct ImageRowConversionView: View {
                     .disabled(item.isDownloaded)
                 }
             } else if item.compressionState == .pending{
-                Text("Waiting for compression")
+                Text("Waiting for conversion")
                     .foregroundColor(.red)
             } else if item.compressionState == .failed {
-                Text("Compression failed")
+                Text("Conversion failed")
                     .foregroundColor(.red)
             } else if item.compressionState == .compressing{
                 ProgressView("")

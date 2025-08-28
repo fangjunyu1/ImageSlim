@@ -2861,6 +2861,18 @@
         }
       }
     },
+    "Conversion failed" : {
+      "comment" : "1.0.2:转换失败",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "转换失败"
+          }
+        }
+      }
+    },
     "Converting images" : {
       "comment" : "1.0.2:转换图片",
       "extractionState" : "manual",
@@ -18515,6 +18527,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "等待壓縮"
+          }
+        }
+      }
+    },
+    "Waiting for conversion" : {
+      "comment" : "1.0.2:等待转换",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "等待转换"
           }
         }
       }
