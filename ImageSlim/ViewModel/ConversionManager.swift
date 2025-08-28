@@ -112,16 +112,10 @@ class ConversionManager:ObservableObject {
                 id = UTType.heic.identifier
             case .jp2, .j2k, .jpf, .jpx, .jpm:
                 id = UTType.jpeg2000.identifier
-            case .ico:
-                id = UTType.ico.identifier
             case .pdf:
                 id = UTType.pdf.identifier
-            case .svg:
-                id = UTType.svg.identifier
             case .webp:
                 id = UTType.webP.identifier
-            case .raw, .cr2, .nef, .arw, .dng, .orf, .rw2:
-                id = UTType.rawImage.identifier
             }
             return id as CFString
         }

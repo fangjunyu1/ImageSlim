@@ -48,7 +48,8 @@ enum ConversionTypeState:String, CaseIterable, Hashable, Identifiable {
     
     /// Windows 图标文件
     /// 常见扩展名: .ico
-    case ico
+    /// 只能读取，不能写入，暂时隐藏
+    /// case ico
     
     /// PDF 文档
     /// 常见扩展名: .pdf
@@ -56,7 +57,8 @@ enum ConversionTypeState:String, CaseIterable, Hashable, Identifiable {
     
     /// SVG 矢量图
     /// 常见扩展名: .svg
-    case svg
+    /// 只能读取，不能写入，暂时隐藏
+    /// case svg
     
     /// WebP 图像
     /// 常见扩展名: .webp
@@ -64,11 +66,12 @@ enum ConversionTypeState:String, CaseIterable, Hashable, Identifiable {
     
     /// RAW 图像（相机原始文件，包含多种厂商格式）
     /// 常见扩展名: .raw, .cr2, .nef, .arw, .dng, .orf, .rw2 等
-    case raw    // RAW 图像（相机原始文件，包含多种厂商格式）
-    case cr2    // RAW 图像（相机原始文件，包含多种厂商格式）
-    case nef    // RAW 图像（相机原始文件，包含多种厂商格式）
-    case arw    // RAW 图像（相机原始文件，包含多种厂商格式）
-    case dng    // RAW 图像（相机原始文件，包含多种厂商格式）
-    case orf    // RAW 图像（相机原始文件，包含多种厂商格式）
-    case rw2    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// 只能读取，不能写入，暂时隐藏
+    /// case raw    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// case cr2    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// case nef    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// case arw    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// case dng    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// case orf    // RAW 图像（相机原始文件，包含多种厂商格式）
+    /// case rw2    // RAW 图像（相机原始文件，包含多种厂商格式）
 }
