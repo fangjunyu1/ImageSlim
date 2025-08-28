@@ -53,9 +53,9 @@ class CompressionManager:ObservableObject {
     
     private func getFileSize(fileURL: URL) -> Int {
         // Finder上的图片大小
-//        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-//        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
-//        print("Finder上的图片大小：\(diskSize)")
+        //        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
+        //        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
+        //        print("Finder上的图片大小：\(diskSize)")
         
         // 获取文件的实际大小
         let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
@@ -88,7 +88,7 @@ class CompressionManager:ObservableObject {
         } else {
             // 默认 macOS 原生压缩
             print("使用 macOS 默认压缩")
-           compressWithNative(image, completion: completion)
+            compressWithNative(image, completion: completion)
         }
     }
     
@@ -138,20 +138,28 @@ class CompressionManager:ObservableObject {
             
             process.terminationHandler = { process in
                 let logData = fileHandle.readDataToEndOfFile()
-                    if let log = String(data: logData, encoding: .utf8) {
-                        print("pngquant 日志：\n\(log)")
-                    }
+                if let log = String(data: logData, encoding: .utf8) {
+                    print("pngquant 日志：\n\(log)")
+                }
                 
                 DispatchQueue.main.async { [self] in
                     // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                    image.outputSize = getFileSize(fileURL: outputURL)
-                    image.outputURL = outputURL
-                    print("outputURL:\(image.outputURL ?? URL(fileURLWithPath: "123"))")
-                    if let outSize = image.outputSize {
-                        let ratio = Double(outSize) / Double(image.inputSize)
-                        image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
-                    } else {
+                    
+                    let compressedSize = getFileSize(fileURL: outputURL)
+                    if compressedSize > image.inputSize {
+                        print("压缩结果比原图大，保留原图")
+                        image.outputSize = image.inputSize
+                        image.outputURL = image.inputURL
                         image.compressionRatio = 0.0
+                    } else {
+                        image.outputSize = compressedSize
+                        image.outputURL = outputURL
+                        if let outSize = image.outputSize {
+                            let ratio = Double(outSize) / Double(image.inputSize)
+                            image.compressionRatio = outSize > image.inputSize ? 0.0 : 1 - ratio
+                        } else {
+                            image.compressionRatio = 0.0
+                        }
                     }
                 }
                 
@@ -282,6 +290,16 @@ class CompressionManager:ObservableObject {
             // 压缩图片并获取压缩的 Data
             let imageData = outputData as Data
             
+            if imageData.count > image.inputSize {
+                print("压缩结果比原图大，保留原图")
+                // 用原始 tiffData 或原始文件数据替代
+                image.outputSize = image.inputSize
+                image.outputURL = image.inputURL
+                image.compressionRatio = 0.0
+                completion(true)
+                return
+            }
+            // 否则使用压缩后的数据
             let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent(image.name)
             print("outputURL:\(outputURL)")
             do {
