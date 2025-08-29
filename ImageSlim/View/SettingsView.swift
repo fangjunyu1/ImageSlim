@@ -13,7 +13,7 @@ struct SettingsView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject var appStorage = AppStorage.shared
     @Environment(\.openURL) var openURL
-    @State private var saveName: String = "Downloads"
+    @State private var saveName: String = "Select Save Location"
     
     var compressionLocalizedKey: LocalizedStringKey  {
         let rate = appStorage.imageCompressionRate
@@ -47,8 +47,8 @@ struct SettingsView: View {
     // 保存路径-安全书签
     func createSaveLocation() {
         let panel = NSOpenPanel()
-        panel.canChooseDirectories = true
         panel.canChooseFiles = false
+        panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
         let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
         panel.prompt = saveDir
@@ -67,7 +67,7 @@ struct SettingsView: View {
     
     private func refreshSaveName() {
         guard let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") else {
-            saveName = "Downloads"
+            saveName = "Select Save Location"
             return
         }
         var isStale = false
@@ -81,7 +81,7 @@ struct SettingsView: View {
             saveName = url.lastPathComponent
         } catch {
             print("解析书签失败: \(error)")
-            saveName = "Downloads"
+            saveName = "Select Save Location"
         }
     }
     

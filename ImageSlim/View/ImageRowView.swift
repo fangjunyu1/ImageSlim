@@ -82,12 +82,6 @@ struct ImageRowView: View {
     
     // 下载图片到文件夹
     func saveToDownloads(file: CustomImages) {
-        var directory:FileManager.SearchPathDirectory {
-            switch appStorage.imageSaveDirectory {
-            case .downloadsDirectory:
-                return .downloadsDirectory
-            }
-        }
         
         // 获取目录路径
         // 如果有安全书签，保存到安全书签的URL
@@ -106,8 +100,34 @@ struct ImageRowView: View {
                     print("解析书签失败: \(error)")
                 }
         } else {
-            let directoryURL = FileManager.default.urls(for: directory, in: .userDomainMask).first!
-            saveImg(file: file,url: directoryURL)
+            // 如果没有保存过目录，让用户选择
+            askUserForSaveLocation(file: file)
+        }
+    }
+    
+    /// 弹出 NSSavePanel 或 NSOpenPanel 让用户选择目录，并保存书签
+    func askUserForSaveLocation(file: CustomImages) {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
+        panel.prompt = saveDir
+
+        if panel.runModal() == .OK, let url = panel.url {
+            do {
+                let bookmark = try url.bookmarkData(options: [.withSecurityScope],includingResourceValuesForKeys: nil,
+                                                    relativeTo: nil)
+                UserDefaults.standard.set(bookmark, forKey: "SaveLocation")
+                print("书签保存成功")
+
+                if url.startAccessingSecurityScopedResource() {
+                    saveImg(file: file, url: url)
+                    url.stopAccessingSecurityScopedResource()
+                }
+            } catch {
+                print("书签创建失败: \(error)")
+            }
         }
     }
     // 根据图片的字节大小显示适配的存储大小。

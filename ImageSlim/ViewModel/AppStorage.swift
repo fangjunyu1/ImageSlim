@@ -87,16 +87,16 @@ class AppStorage:ObservableObject {
     }
     
     // 图片保存目录
-    @Published var imageSaveDirectory: SaveDirectory = .downloadsDirectory {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(imageSaveDirectory.rawValue, forKey: "imageSaveDirectory")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue.rawValue, forKey: "imageSaveDirectory")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+//    @Published var imageSaveDirectory: SaveDirectory = .downloadsDirectory {
+//        willSet {
+//            // 修改 USerDefault 中的值
+//            UserDefaults.standard.set(imageSaveDirectory.rawValue, forKey: "imageSaveDirectory")
+//            // 修改 iCloud 中的值
+//            let store = NSUbiquitousKeyValueStore.default
+//            store.set(newValue.rawValue, forKey: "imageSaveDirectory")
+//            store.synchronize() // 强制触发数据同步
+//        }
+//    }
     
     // 是否内购赞助
     @Published var inAppPurchaseMembership = false {
@@ -216,17 +216,17 @@ class AppStorage:ObservableObject {
         
         // 6、图片保存目录【同步UserDefaults】
         // 如果 UserDefaults 中没有 imageSaveDirectory 键，设置默认为 DownloadsDirectory
-        if UserDefaults.standard.object(forKey: "imageSaveDirectory") == nil {
-            // 设置默认值为 true
-            print("图片保存目录，默认值为 nil，设置为 SaveDirectory.downloadsDirectory")
-            UserDefaults.standard.set(SaveDirectory.downloadsDirectory.rawValue, forKey: "imagePreviewMode")
-            imageSaveDirectory = SaveDirectory.downloadsDirectory  // 菜单栏图标
-        } else {
-            let directoryString = UserDefaults.standard.object(forKey: "imageSaveDirectory") as? String ?? "downloadsDirectory"
-            let directory = SaveDirectory(rawValue: directoryString)
-            imageSaveDirectory = directory ?? SaveDirectory.downloadsDirectory
-            print("图片保存目录，默认值为 \(imageSaveDirectory)")
-        }
+//        if UserDefaults.standard.object(forKey: "imageSaveDirectory") == nil {
+//            // 设置默认值为 true
+//            print("图片保存目录，默认值为 nil，设置为 SaveDirectory.downloadsDirectory")
+//            UserDefaults.standard.set(SaveDirectory.downloadsDirectory.rawValue, forKey: "imagePreviewMode")
+//            imageSaveDirectory = SaveDirectory.downloadsDirectory  // 菜单栏图标
+//        } else {
+//            let directoryString = UserDefaults.standard.object(forKey: "imageSaveDirectory") as? String ?? "downloadsDirectory"
+//            let directory = SaveDirectory(rawValue: directoryString)
+//            imageSaveDirectory = directory ?? SaveDirectory.downloadsDirectory
+//            print("图片保存目录，默认值为 \(imageSaveDirectory)")
+//        }
         
         // 7、应用赞助标识
         // 如果 UserDefaults 中没有 inAppPurchaseMembership 键，设置默认为 false

@@ -155,13 +155,40 @@ struct ContentView: View {
                     }
                     
                 } else {
-                    let downloadURL = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
-                    saveZip(finalImagesURL: finalImagesURL, url: downloadURL)
+                    askUserForSaveLocation(finalImagesURL: finalImagesURL)
                 }
             } catch {
                 DispatchQueue.main.async {
                     self.showDownloadsProgress = false
                     print("打包失败")
+                }
+            }
+        }
+    }
+    
+    /// 弹出 NSSavePanel 或 NSOpenPanel 让用户选择目录，并保存书签
+    func askUserForSaveLocation(finalImagesURL: [URL]) {
+        DispatchQueue.main.async {
+            let panel = NSOpenPanel()
+            panel.canChooseFiles = false
+            panel.canChooseDirectories = true
+            panel.allowsMultipleSelection = false
+            let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
+            panel.prompt = saveDir
+            
+            if panel.runModal() == .OK, let url = panel.url {
+                do {
+                    let bookmark = try url.bookmarkData(options: [.withSecurityScope],includingResourceValuesForKeys: nil,
+                                                        relativeTo: nil)
+                    UserDefaults.standard.set(bookmark, forKey: "SaveLocation")
+                    print("书签保存成功")
+                    
+                    if url.startAccessingSecurityScopedResource() {
+                        saveZip(finalImagesURL: finalImagesURL, url: url)
+                        url.stopAccessingSecurityScopedResource()
+                    }
+                } catch {
+                    print("书签创建失败: \(error)")
                 }
             }
         }
