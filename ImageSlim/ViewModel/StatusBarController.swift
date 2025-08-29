@@ -46,6 +46,7 @@ class StatusBarController:ObservableObject {
     
     @objc func openApp() {
         if let window = WindowManager.shared.mainWindow {
+            NSApp.activate(ignoringOtherApps: true) 
             window.makeKeyAndOrderFront(nil)
         } else {
             print("没有窗口")

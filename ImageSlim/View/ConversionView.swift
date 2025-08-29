@@ -116,6 +116,7 @@ struct ConversionView: View {
                                     .cornerRadius(10)
                             }
                             .buttonStyle(.plain)
+                            .frame(height: 25)
                             .onHover(perform: { isHovering in
                                 if isHovering {
                                     NSCursor.pointingHand.set()
