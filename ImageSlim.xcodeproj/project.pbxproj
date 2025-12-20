@@ -151,6 +151,21 @@
 				"es-US",
 				"fr-CA",
 				es,
+				sq,
+				az,
+				my,
+				ceb,
+				"en-CA",
+				et,
+				fil,
+				is,
+				ga,
+				jv,
+				km,
+				fa,
+				sw,
+				uz,
+				lv,
 			);
 			mainGroup = 1D0111062E02791C00D9718B;
 			minimizedProjectReferenceProxies = 1;
