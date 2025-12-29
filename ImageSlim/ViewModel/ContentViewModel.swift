@@ -98,7 +98,7 @@ class ContentViewModel: ObservableObject {
                 }
                 
                 let ImagesURL:[URL] = images
-                    .filter{ self.appStorage.inAppPurchaseMembership || $0.inputSize < 5_000_000 }
+                    .filter{ self.appStorage.inAppPurchaseMembership || $0.inputSize < self.appStorage.limitImageSize }
                     .compactMap { $0.outputURL }
                 
                 // 2、处理文件名，确定最终导出 URL

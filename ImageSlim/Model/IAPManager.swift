@@ -39,7 +39,7 @@ class IAPManager:ObservableObject {
     func purchaseProduct(_ product: Product) {
         // 在这里输出要购买的商品id
         print("Purchasing product: \(product.id)")
-        Task {  @MainActor in
+        Task {
             do {
                 let result = try await product.purchase()
                 switch result {
@@ -99,6 +99,7 @@ class IAPManager:ObservableObject {
         await loadProduct()    // 调取loadProduct方法获取产品信息
     }
 }
+
 // 定义 throws 报错
 enum StoreError: Error {
     case IAPInformationIsEmpty

@@ -283,7 +283,7 @@ struct ConversionView: View {
                     
                     var compressionState: CompressionState = .pending
                     
-                    if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
+                    if !appStorage.inAppPurchaseMembership && fileSize > appStorage.limitImageSize {
                         print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
                         compressionState = .failed
                     }
@@ -329,7 +329,7 @@ struct ConversionView: View {
                     
                     var compressionState: CompressionState = .pending
                     
-                    if !appStorage.inAppPurchaseMembership && fileSize > 5_000_000 {
+                    if !appStorage.inAppPurchaseMembership && fileSize > appStorage.limitImageSize {
                         print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
                         compressionState = .failed
                     }

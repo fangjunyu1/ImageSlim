@@ -231,7 +231,7 @@ struct ImageRowView: View {
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }
-                    if !appStorage.inAppPurchaseMembership && item.inputSize > 5_000_000 {
+                    if !appStorage.inAppPurchaseMembership && item.inputSize > appStorage.limitImageSize {
                         Text(TranslateSize(fileSize:item.inputSize))
                             .foregroundColor(.red)
                     } else {
@@ -258,7 +258,7 @@ struct ImageRowView: View {
                 Spacer().frame(width:10)
                 
                 // 赞助应用，显示下载按钮，未赞助应用，超过5MB的图片显示 锁图标
-                if !appStorage.inAppPurchaseMembership && item.inputSize > 5_000_000 {
+                if !appStorage.inAppPurchaseMembership && item.inputSize > appStorage.limitImageSize {
                     VStack {
                         Image(systemName:"lock.fill")
                             .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)

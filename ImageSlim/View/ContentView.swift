@@ -108,23 +108,12 @@ struct ContentView: View {
             
             Spacer()
             
-            // 用户未完成内购，图片列表不为空，图片列表中有小于5MB的图片
-            // 或者用户完成内购，图片不为空
-            // 满足以上任一条件，显示下载和清除队列按钮
-            
-            if appStorage.selectedView == .compression {
-                AdaptiveButtonView(isEmpty: appStorage.images.isEmpty, images: $appStorage.images, showDownloadsProgress: $contentVM.showDownloadsProgress, progress: $contentVM.progress, zipImages:  {
-                    Task {
-                        contentVM.zipImages()
-                    }
-                })
-            } else if appStorage.selectedView == .conversion {
-                AdaptiveButtonView(isEmpty: appStorage.conversionImages.isEmpty, images: $appStorage.conversionImages, showDownloadsProgress: $contentVM.showDownloadsProgress, progress: $contentVM.progress, zipImages:  {
-                    Task {
-                        contentVM.zipImages()
-                    }
-                })
-            }
+            // 清除队列和下载全部视图
+            AdaptiveButtonView(showDownloadsProgress: $contentVM.showDownloadsProgress, progress: $contentVM.progress, zipImages:  {
+                Task {
+                    contentVM.zipImages()
+                }
+            })
             
             Button(action:{
                 showSponsorUs = true
