@@ -10,5 +10,4 @@ import AppKit
 class WindowManager {
     static let shared = WindowManager()
     var mainWindow: NSWindow? = nil
-    
 }

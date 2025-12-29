@@ -14,270 +14,91 @@ class AppStorage:ObservableObject {
         loadUserDefault()   // 加载 UserDefaults 中的数据
     }
     
+    // 防止循环写入标志
+    private var isLoading = false
+    
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
-    
     // 非内购用户，限制 20 张图片
     @Published var limitImageNum = 20
-    
     // 压缩图片数组
     @Published var images:[CustomImages] = []
-    
     // 转换图片数组
     @Published var conversionImages:[CustomImages] = []
-    
+
     // 菜单栏显示图标，true为显示
-    @Published var displayMenuBarIcon = true {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "displayMenuBarIcon")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "displayMenuBarIcon")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var displayMenuBarIcon = true { didSet { updateValue(key: "displayMenuBarIcon", newValue: displayMenuBarIcon, oldValue: oldValue)}}
     
     // 启用第三方库压缩，当前使用pngquant压缩
-    @Published var enablePngquant = false {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "enablePngquant")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "enablePngquant")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var enablePngquant = false { didSet { updateValue(key: "enablePngquant", newValue: enablePngquant, oldValue: oldValue)}}
     
     // 启用第三方库压缩，当前使用Gifsicle压缩
-    @Published var enableGifsicle = false {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "enableGifsicle")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "enableGifsicle")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var enableGifsicle = false { didSet { updateValue(key: "enableGifsicle", newValue: enableGifsicle, oldValue: oldValue)}}
     
     // 图片压缩率
-    @Published var imageCompressionRate = 0.0 {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "imageCompressionRate")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "imageCompressionRate")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var imageCompressionRate = 0.0 { didSet { updateValue(key: "imageCompressionRate", newValue: imageCompressionRate, oldValue: oldValue)}}
     
     // 图片预览方式
-    @Published var imagePreviewMode:PreviewMode = .quickLook {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue.rawValue, forKey: "imagePreviewMode")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue.rawValue, forKey: "imagePreviewMode")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
-    
-    // 图片保存目录
-//    @Published var imageSaveDirectory: SaveDirectory = .downloadsDirectory {
-//        willSet {
-//            // 修改 USerDefault 中的值
-//            UserDefaults.standard.set(imageSaveDirectory.rawValue, forKey: "imageSaveDirectory")
-//            // 修改 iCloud 中的值
-//            let store = NSUbiquitousKeyValueStore.default
-//            store.set(newValue.rawValue, forKey: "imageSaveDirectory")
-//            store.synchronize() // 强制触发数据同步
-//        }
-//    }
+    @Published var imagePreviewMode:PreviewMode = .quickLook { didSet { updateValue(key: "imagePreviewMode", newValue: imagePreviewMode.rawValue, oldValue: oldValue.rawValue)}}
     
     // 是否内购赞助
-    @Published var inAppPurchaseMembership = false {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "inAppPurchaseMembership")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "inAppPurchaseMembership")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var inAppPurchaseMembership = false { didSet { updateValue(key: "inAppPurchaseMembership", newValue: inAppPurchaseMembership, oldValue: oldValue)}}
     
     // 保持原文件名
-    @Published var keepOriginalFileName = false {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "keepOriginalFileName")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "keepOriginalFileName")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var keepOriginalFileName = false { didSet { updateValue(key: "keepOriginalFileName", newValue: keepOriginalFileName, oldValue: oldValue)}}
     
     // 启用图片转换
-    @Published var EnableImageConversion = false {
-        willSet {
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue, forKey: "EnableImageConversion")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: "EnableImageConversion")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
+    @Published var EnableImageConversion = false { didSet { updateValue(key: "EnableImageConversion", newValue: EnableImageConversion, oldValue: oldValue)}}
     
     // 转换图片格式
-    @Published var convertTypeState: ConversionTypeState = .jpeg {
-        willSet {
-            print("修改的值为：\(newValue.rawValue)")
-            // 修改 USerDefault 中的值
-            UserDefaults.standard.set(newValue.rawValue, forKey: "convertTypeState")
-            print("保存到UserDefaults：\(UserDefaults.standard.object(forKey: "convertTypeState") as? String ?? "None")")
-            // 修改 iCloud 中的值
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue.rawValue, forKey: "convertTypeState")
-            print("同步到iCloud")
-            store.synchronize() // 强制触发数据同步
-        }
-    }
-    
+    @Published var convertTypeState: ConversionTypeState = .jpeg { didSet { updateValue(key: "convertTypeState", newValue: convertTypeState.rawValue, oldValue: oldValue.rawValue)}}
+}
+
+// MARK: 从 UserDefaults 加载数据
+extension AppStorage {
     // 从UserDefaults加载数据
     private func loadUserDefault() {
+        isLoading = true    // 设置加载进度标志
+        defer {
+            isLoading = false
+            print("退出UserDefaults同步")
+        } // 还原加载进度标志
+        let defaults = UserDefaults.standard
+        // 注册默认值
+        defaults.register(defaults: [
+            "displayMenuBarIcon": true,   // 默认显示菜单栏图标
+            "imageCompressionRate": 0,   // 默认压缩率为 0
+            "imagePreviewMode": PreviewMode.quickLook.rawValue,  // 图片预览方式
+            "EnableImageConversion": true,   // 默认启用图片转换
+            "convertTypeState": ConversionTypeState.jpeg.rawValue    // 图片转换格式
+        ])
         
-        // 1、是否启用菜单栏显示图标
-        // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
-        if UserDefaults.standard.object(forKey: "displayMenuBarIcon") == nil {
-            // 设置默认值为 true
-            print("菜单栏显示图标，默认值为 nil，设置为 true")
-            UserDefaults.standard.set(true, forKey: "displayMenuBarIcon")
-            displayMenuBarIcon = true  // 菜单栏图标
-        } else {
-            displayMenuBarIcon = UserDefaults.standard.bool(forKey: "displayMenuBarIcon")
-            print("菜单栏显示图标，默认值为 \(displayMenuBarIcon)")
-        }
+        displayMenuBarIcon = defaults.bool(forKey: "displayMenuBarIcon")    // 显示图标
+        enablePngquant = UserDefaults.standard.bool(forKey: "enablePngquant")   // 启用 pngquant
+        enableGifsicle = UserDefaults.standard.bool(forKey: "enableGifsicle")   // 启用 gifsicle
+        imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate") //  图片压缩率
+        let modeString = UserDefaults.standard.string(forKey: "imagePreviewMode") ?? "quickLook"
+        imagePreviewMode = PreviewMode(rawValue: modeString) ?? PreviewMode.quickLook   // 图片预览方式
+        inAppPurchaseMembership = UserDefaults.standard.bool(forKey: "inAppPurchaseMembership") // 内购标识
+        keepOriginalFileName = UserDefaults.standard.bool(forKey: "keepOriginalFileName")   // 保持原文件名
+        EnableImageConversion = UserDefaults.standard.bool(forKey: "EnableImageConversion") // 启用图片转换
+        let formatsString = UserDefaults.standard.string(forKey: "convertTypeState") ?? "jpeg"
+        convertTypeState = ConversionTypeState(rawValue: formatsString) ?? ConversionTypeState.jpeg
+    }
+}
+
+// MARK: 更新字段，保存到 UserDefautls,并尝试同步 iCloud 数据
+extension AppStorage {
+    private func updateValue<T:Equatable>(key: String, newValue: T, oldValue: T) {
+        guard newValue != oldValue, !isLoading else { return }
         
-        // 2、启用Pngquant -第三方库压缩
-        // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
-        if UserDefaults.standard.object(forKey: "enablePngquant") == nil {
-            // 设置默认值为 true
-            print("菜单栏显示图标，默认值为 nil，设置为 false")
-            UserDefaults.standard.set(false, forKey: "enablePngquant")
-            enablePngquant = false  // 菜单栏图标
-        } else {
-            enablePngquant = UserDefaults.standard.bool(forKey: "enablePngquant")
-            print("菜单栏显示图标，默认值为 \(enablePngquant)")
-        }
+        // 同步保存到本地
+        let defaults = UserDefaults.standard
+        defaults.set(newValue, forKey: key)
         
-        // 3、启用 Gifsicle -第三方库压缩
-        // 如果 UserDefaults 中没有 displayMenuBarIcon 键，设置默认值为 true
-        if UserDefaults.standard.object(forKey: "enableGifsicle") == nil {
-            // 设置默认值为 true
-            print("菜单栏显示图标，默认值为 nil，设置为 false")
-            UserDefaults.standard.set(false, forKey: "enableGifsicle")
-            enableGifsicle = false  // 菜单栏图标
-        } else {
-            enableGifsicle = UserDefaults.standard.bool(forKey: "enableGifsicle")
-            print("菜单栏显示图标，默认值为 \(enableGifsicle)")
-        }
-        
-        // 4、图片压缩率
-        // 如果 UserDefaults 中没有 imageCompressionRate 键，设置默认为 0
-        if UserDefaults.standard.object(forKey: "imageCompressionRate") == nil {
-            // 设置默认值为 true
-            print("图片压缩率，默认值为 nil，设置为 0")
-            UserDefaults.standard.set(0, forKey: "imageCompressionRate")
-            imageCompressionRate = 0  // 菜单栏图标
-        } else {
-            imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate")
-            print("图片压缩率，默认值为 \(imageCompressionRate)")
-        }
-        
-        // 5、图片预览方式
-        // 如果 UserDefaults 中没有 imagePreviewMode 键，设置默认为 Quick Look
-        if UserDefaults.standard.object(forKey: "imagePreviewMode") == nil {
-            // 设置默认值为 true
-            print("图片预览方式，默认值为 nil，设置为 PreviewMode.quickLook")
-            UserDefaults.standard.set(PreviewMode.quickLook.rawValue, forKey: "imagePreviewMode")
-            imagePreviewMode = PreviewMode.quickLook  // 菜单栏图标
-        } else {
-            let modeString = UserDefaults.standard.object(forKey: "imagePreviewMode") as? String ?? "quickLook"
-            let mode = PreviewMode(rawValue: modeString)
-            imagePreviewMode = mode ?? PreviewMode.quickLook
-            print("图片预览方式，默认值为 \(imagePreviewMode)")
-        }
-        
-        // 6、图片保存目录【同步UserDefaults】
-        // 如果 UserDefaults 中没有 imageSaveDirectory 键，设置默认为 DownloadsDirectory
-//        if UserDefaults.standard.object(forKey: "imageSaveDirectory") == nil {
-//            // 设置默认值为 true
-//            print("图片保存目录，默认值为 nil，设置为 SaveDirectory.downloadsDirectory")
-//            UserDefaults.standard.set(SaveDirectory.downloadsDirectory.rawValue, forKey: "imagePreviewMode")
-//            imageSaveDirectory = SaveDirectory.downloadsDirectory  // 菜单栏图标
-//        } else {
-//            let directoryString = UserDefaults.standard.object(forKey: "imageSaveDirectory") as? String ?? "downloadsDirectory"
-//            let directory = SaveDirectory(rawValue: directoryString)
-//            imageSaveDirectory = directory ?? SaveDirectory.downloadsDirectory
-//            print("图片保存目录，默认值为 \(imageSaveDirectory)")
-//        }
-        
-        // 7、应用赞助标识
-        // 如果 UserDefaults 中没有 inAppPurchaseMembership 键，设置默认为 false
-        if UserDefaults.standard.object(forKey: "inAppPurchaseMembership") == nil {
-            // 设置默认值为 false
-            print("应用赞助，默认值为nil，设置为 false")
-            UserDefaults.standard.set(false, forKey: "inAppPurchaseMembership")
-            inAppPurchaseMembership = false
-        } else {
-            // 如果 UserDefaults 有 inAppPurchaseMembership 键，则设置为对应 Bool 值
-            inAppPurchaseMembership = UserDefaults.standard.bool(forKey: "inAppPurchaseMembership")
-            print("应用赞助，默认值为 \(inAppPurchaseMembership)")
-        }
-        
-        // 8、保持原文件名
-        // 如果 UserDefaults 中没有 keepOriginalFileName 键，设置默认为 false
-        if UserDefaults.standard.object(forKey: "keepOriginalFileName") == nil {
-            // 设置默认值为 false
-            print("保持原文件名，默认值为nil，设置为 false")
-            UserDefaults.standard.set(false, forKey: "keepOriginalFileName")
-            keepOriginalFileName = false
-        } else {
-            // 如果 UserDefaults 有 keepOriginalFileName 键，则设置为对应 Bool 值
-            keepOriginalFileName = UserDefaults.standard.bool(forKey: "keepOriginalFileName")
-            print("保持原文件名，默认值为 \(keepOriginalFileName)")
-        }
-        
-        // 9、启用图片转换
-        // 如果 UserDefaults 中没有 EnableImageConversion 键，设置默认为 true
-        if UserDefaults.standard.object(forKey: "EnableImageConversion") == nil {
-            // 设置默认值为 true
-            print("启用图片转换，默认值为nil，设置为 true")
-            UserDefaults.standard.set(true, forKey: "EnableImageConversion")
-            EnableImageConversion = true
-        } else {
-            // 如果 UserDefaults 有 EnableImageConversion 键，则设置为对应 Bool 值
-            EnableImageConversion = UserDefaults.standard.bool(forKey: "EnableImageConversion")
-            print("保持原文件名，默认值为 \(EnableImageConversion)")
-        }
-        
-        // 10、转换图片格式
-        // 如果 UserDefaults 中没有 convertImageFormats 键，设置默认为 JPEG
-        if UserDefaults.standard.object(forKey: "convertTypeState") == nil {
-            // 设置默认值为 jpeg
-            print("转换图片格式，默认值为 nil，设置为 ConversionTypeState.jpeg")
-            UserDefaults.standard.set(ConversionTypeState.jpeg.rawValue, forKey: "convertTypeState")
-            convertTypeState = ConversionTypeState.jpeg  // JPEG 图片
-        } else {
-            let formatsString = UserDefaults.standard.object(forKey: "convertTypeState") as? String
-            convertTypeState = ConversionTypeState(rawValue: formatsString ?? "jpeg") ?? ConversionTypeState.jpeg
-            print("转换图片格式，默认值为 \(convertTypeState)")
-        }
+        // iCloud
+        let store = NSUbiquitousKeyValueStore.default
+        store.set(newValue, forKey: key)
+        store.synchronize()
     }
 }

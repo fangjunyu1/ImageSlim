@@ -24,7 +24,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             await IAPManager.shared.handleTransactions()
         }
         
-        
         // 根据设置中的菜单栏选项，创建菜单栏
         if AppStorage.shared.displayMenuBarIcon {
             statusBarController = StatusBarController()
@@ -46,21 +45,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             .store(in: &cancellables)
         
+        // MARK: 创建分栏视图
+        
+        // content 为左侧显示的轻压图片 TabView
         let contentVC = NSHostingController(rootView: ContentView())
+        // workspace 为右侧显示的主视图内容
         let workspaceVC = NSHostingController(rootView: WorkspaceView())
         
-        // 创建 NSSplitViewController 并添加子项
+        // 创建 NSSplitViewController(分栏界面) 并添加子项
         let splitVC = NSSplitViewController()
         
         // 创建 NSSplitViewItem
         let sidebarItem = NSSplitViewItem(sidebarWithViewController: contentVC)
-        sidebarItem.canCollapse = false
+        sidebarItem.canCollapse = false // 不允许用户折叠
         let viewItem = NSSplitViewItem(viewController: workspaceVC)
         
         // 添加到控制器
         splitVC.addSplitViewItem(sidebarItem)
         splitVC.addSplitViewItem(viewItem)
         
+        // MARK: 分栏视图创建完成
+        
+        // MARK: 创建 Window 窗口
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 900, height: 550),
             styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView], // 可以调大小

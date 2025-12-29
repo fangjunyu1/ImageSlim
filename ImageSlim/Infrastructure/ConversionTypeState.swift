@@ -4,6 +4,7 @@
 //
 //  Created by 方君宇 on 2025/8/25.
 //
+// 图片支持的转换类型
 
 enum ConversionTypeState:String, CaseIterable, Hashable, Identifiable {
     var id: String { rawValue }

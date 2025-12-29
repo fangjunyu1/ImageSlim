@@ -166,6 +166,8 @@
 				sw,
 				uz,
 				lv,
+				"lt-LT",
+				"uz-Arab",
 			);
 			mainGroup = 1D0111062E02791C00D9718B;
 			minimizedProjectReferenceProxies = 1;

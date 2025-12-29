@@ -4,6 +4,7 @@
 //
 //  Created by 方君宇 on 2025/7/11.
 //
+// 压缩状态
 
 enum CompressionState {
     case pending     // 等待压缩
