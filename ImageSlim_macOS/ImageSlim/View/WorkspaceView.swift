@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct WorkspaceView: View {
-    @ObservedObject var appStorage = AppStorage.shared
+    var appStorage = AppStorage.shared
     var body: some View {
         if appStorage.selectedView == .compression {
             CompressionView()

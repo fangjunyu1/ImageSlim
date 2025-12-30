@@ -10,7 +10,7 @@ import ImageIO
 import UniformTypeIdentifiers
 
 class ConversionManager:ObservableObject {
-    @ObservedObject var appStorage = AppStorage.shared
+    var appStorage = AppStorage.shared
     static let shared = ConversionManager()
     // 任务队列：存储被转换的图片
     private var taskQueue: [CustomImages] = []

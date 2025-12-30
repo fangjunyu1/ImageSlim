@@ -11,7 +11,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var appStorage = AppStorage.shared
+    var appStorage = AppStorage.shared
     @Environment(\.openURL) var openURL
     @State private var saveName: String = "Select Save Location"
     

@@ -9,7 +9,7 @@ import SwiftUI
 import Zip
 
 class ContentViewModel: ObservableObject {
-    @StateObject var appStorage = AppStorage.shared
+    var appStorage = AppStorage.shared
     @State var progress = 0.0
     @State var showDownloadsProgress = false
     

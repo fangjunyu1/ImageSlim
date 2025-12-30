@@ -9,7 +9,7 @@ import SwiftUI
 
 struct suponsorListView: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var iapManager = IAPManager.shared
+    var iapManager = IAPManager.shared
     var item: SuponsorStruct
     @Binding var selectedNum:String?
     var body: some View {

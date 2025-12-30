@@ -11,8 +11,8 @@ import QuickLookUI
 struct ImageRowConversionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
-    @ObservedObject var appStorage = AppStorage.shared
-    @ObservedObject var compressManager = CompressionManager.shared
+    var appStorage = AppStorage.shared
+    var compressManager = CompressionManager.shared
     @ObservedObject var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
     var index: Int

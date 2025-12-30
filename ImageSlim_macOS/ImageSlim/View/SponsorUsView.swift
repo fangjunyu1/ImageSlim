@@ -11,8 +11,8 @@ struct SponsorUsView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @State private var selectedNum: String? = nil
-    @ObservedObject var iapManager = IAPManager.shared
-    @ObservedObject var appStorage = AppStorage.shared
+    var iapManager = IAPManager.shared
+    var appStorage = AppStorage.shared
     private var suponsorList: [SuponsorStruct] = [
         SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
         SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),

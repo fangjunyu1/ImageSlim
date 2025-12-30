@@ -12,8 +12,8 @@ import UniformTypeIdentifiers
 struct ConversionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var previewer = ImagePreviewWindow()
-    @ObservedObject var appStorage = AppStorage.shared
-    @ObservedObject var conversionManager = ConversionManager.shared
+    var appStorage = AppStorage.shared
+    var conversionManager = ConversionManager.shared
     @State private var isHovering = false
     @State private var showImporter = false
     

@@ -10,7 +10,7 @@ import ImageIO
 import UniformTypeIdentifiers
 
 class CompressionManager:ObservableObject {
-    @ObservedObject var appStorage = AppStorage.shared
+    var appStorage = AppStorage.shared
     static let shared = CompressionManager()
     // 任务队列：存储被压缩的图片
     private var taskQueue: [CustomImages] = []

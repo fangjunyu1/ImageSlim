@@ -15,8 +15,8 @@ import UniformTypeIdentifiers
 struct CompressionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var previewer = ImagePreviewWindow()
-    @ObservedObject var appStorage = AppStorage.shared
-    @ObservedObject var compressManager = CompressionManager.shared
+    var appStorage = AppStorage.shared
+    var compressManager = CompressionManager.shared
     @State private var isHovering = false
     @State private var showImporter = false
     
