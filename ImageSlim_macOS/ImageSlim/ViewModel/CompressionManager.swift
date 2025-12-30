@@ -4,6 +4,8 @@
 //
 //  Created by 方君宇 on 2025/7/12.
 //
+//  压缩视图的视图模型
+//
 
 import SwiftUI
 import ImageIO
@@ -17,6 +19,49 @@ class CompressionManager:ObservableObject {
     
     // 当前有无被压缩的图片，isCompressing表示当前有图片被压缩，其他图片需要等待
     @Published var isCompressing = false
+    
+    // 根据获取的 URL，存储图像到 CustomImages 数组中
+    func savePictures(url tmpURL: [URL]) {
+        print("进入 savePictures 方法")
+        var compressImages: [CustomImages] = []
+        for url in tmpURL {
+            
+            // 获取 Finder 上的大小
+            let fileSize = FileUtils.getFileSize(fileURL: url)
+            
+            // 加载图片对象
+            guard let nsImage = NSImage(contentsOf: url) else {
+                print("无法加载粘贴的图片")
+                continue
+            }
+            
+            let imageName = url.lastPathComponent
+            let imageType = url.pathExtension.uppercased()
+            
+            let compressionState: CompressionState = .pending
+            
+            // 内购用户 or 文件大小合规
+            let customImage = CustomImages(
+                image: nsImage,
+                name: imageName,
+                type: imageType,
+                inputSize: fileSize,
+                inputURL: url,
+                compressionState: compressionState
+            )
+            
+            DispatchQueue.main.async {
+                self.appStorage.compressedImages.append(customImage)
+            }
+
+            if compressionState == .pending {
+                compressImages.append(customImage)
+            }
+        }
+        
+        // 显示全部上传的图片，开始压缩
+        enqueue(compressImages)    // 立即压缩
+    }
     
     // 进入压缩队列，开始压缩
     func enqueue(_ image: [CustomImages]) {
@@ -49,22 +94,6 @@ class CompressionManager:ObservableObject {
             // 如果没有压缩的任务，就显示全部压缩完成
             self.compressionTask() // 继续下一个
         }
-    }
-    
-    private func getFileSize(fileURL: URL) -> Int {
-        // Finder上的图片大小
-        //        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-        //        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
-        //        print("Finder上的图片大小：\(diskSize)")
-        
-        // 获取文件的实际大小
-        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-        print("文件的实际大小：\(attributes ?? 0)")
-        
-        // 当macOS上有图像大小，以macOS上图像字节为准。
-        // 如果macOS上没有图像大小，以获取的图像字节为准。
-        return attributes ?? 0
-        
     }
     
     // 压缩图片的方法，根据图片类型和第三方库启用功能，实现对应图片格式的压缩
@@ -142,10 +171,10 @@ class CompressionManager:ObservableObject {
                     print("pngquant 日志：\n\(log)")
                 }
                 
-                DispatchQueue.main.async { [self] in
+                DispatchQueue.main.async {
                     // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
                     
-                    let compressedSize = getFileSize(fileURL: outputURL)
+                    let compressedSize = FileUtils.getFileSize(fileURL: outputURL)
                     if compressedSize > image.inputSize {
                         print("压缩结果比原图大，保留原图")
                         image.outputSize = image.inputSize
@@ -307,7 +336,7 @@ class CompressionManager:ObservableObject {
                 try imageData.write(to: outputURL)
                 DispatchQueue.main.async {
                     // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                    image.outputSize = self.getFileSize(fileURL: outputURL)
+                    image.outputSize = FileUtils.getFileSize(fileURL: outputURL)
                     image.outputURL = outputURL
                     if let outSize = image.outputSize {
                         let ratio = Double(outSize) / Double(image.inputSize)

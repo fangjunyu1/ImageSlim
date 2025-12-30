@@ -17,37 +17,6 @@ struct ConversionView: View {
     @State private var isHovering = false
     @State private var showImporter = false
     
-    // 将图片存储到照片并返回URL,将临时文件路径存储到 Temporary 文件夹，并返回 URL
-    func getFileSize(fileURL: URL) -> Int {
-        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
-        
-        // 获取文件的实际大小
-        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-        
-        // 当macOS上有图像大小，以macOS上图像字节为准。
-        // 如果macOS上没有图像大小，以获取的图像字节为准。
-        return diskSize > 0 ? diskSize : attributes ?? 0
-        
-    }
-    
-    // 将图片存储到照片并返回URL,将临时文件路径存储到 Temporary 文件夹，并返回 URL
-    func saveURLToTempFile(fileURL: URL) -> URL? {
-        let fileManager = FileManager.default
-        let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileURL.lastPathComponent)
-        
-        // 如果目标已存在，删除旧的
-        try? fileManager.removeItem(at: destinationURL)
-        
-        do {
-            try fileManager.copyItem(at: fileURL, to: destinationURL)
-            return destinationURL
-        } catch {
-            print("复制失败: \(error)")
-            return destinationURL
-        }
-    }
-    
     // 根据获取的 URL，存储图像到 CustomImages 数组中
     func savePictures(url tmpURL: [URL]) {
         print("进入 savePictures 方法")
@@ -55,7 +24,7 @@ struct ConversionView: View {
         for url in tmpURL {
             
             // 获取 Finder 上的大小
-            let fileSize = getFileSize(fileURL: url)
+            let fileSize = FileUtils.getFileSize(fileURL: url)
             
             // 加载图片对象
             guard let nsImage = NSImage(contentsOf: url) else {
@@ -202,7 +171,7 @@ struct ConversionView: View {
                     provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
                         defer { group.leave() }
                         guard let fileURL = url,
-                              let imageURL = saveURLToTempFile(fileURL: fileURL) else { return }
+                              let imageURL = FileUtils.saveURLToTempFile(fileURL: fileURL) else { return }
                         imageURLs.append(imageURL)
                     }
                 }
@@ -248,7 +217,7 @@ struct ConversionView: View {
                     defer { selectedFile.stopAccessingSecurityScopedResource() }
                     
                     // 根据 fileURL 保存图像
-                    guard let fileURL = saveURLToTempFile(fileURL: selectedFile) else { return }
+                    guard let fileURL = FileUtils.saveURLToTempFile(fileURL: selectedFile) else { return }
                     print("插入一张图片")
                     imageURLs.append(fileURL)
                     
@@ -271,7 +240,7 @@ struct ConversionView: View {
                 // 读取urls文件
                 for url in urls {
                     // 获取 Finder 上的大小
-                    let fileSize = getFileSize(fileURL: url)
+                    let fileSize = FileUtils.getFileSize(fileURL: url)
                     
                     // 加载图片对象
                     guard let nsImage = NSImage(contentsOf: url) else {
@@ -317,7 +286,7 @@ struct ConversionView: View {
                     try imageData.write(to: url)
                     
                     // 获取 Finder 上的大小
-                    let fileSize = getFileSize(fileURL: url)
+                    let fileSize = FileUtils.getFileSize(fileURL: url)
                     
                     // 加载图片对象
                     guard let nsImage = NSImage(contentsOf: url) else {

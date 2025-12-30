@@ -51,22 +51,6 @@ class ConversionManager:ObservableObject {
         }
     }
     
-    private func getFileSize(fileURL: URL) -> Int {
-        // Finder上的图片大小
-        //        let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
-        //        let diskSize = resourceValues?.totalFileAllocatedSize ?? 0
-        //        print("Finder上的图片大小：\(diskSize)")
-        
-        // 获取文件的实际大小
-        let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-        print("文件的实际大小：\(attributes ?? 0)")
-        
-        // 当macOS上有图像大小，以macOS上图像字节为准。
-        // 如果macOS上没有图像大小，以获取的图像字节为准。
-        return attributes ?? 0
-        
-    }
-    
     // 转换图片的方法，根据图片类型和第三方库启用功能，实现对应图片格式的转换
     private func conversionImage(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
         guard image.inputURL != nil else {
@@ -146,7 +130,7 @@ class ConversionManager:ObservableObject {
             try imageData.write(to: outputURL)
             DispatchQueue.main.async { [self] in
                 // 更新 Image 图片的输出大小，输出路径以及计算压缩比率
-                image.outputSize = self.getFileSize(fileURL: outputURL)
+                image.outputSize = FileUtils.getFileSize(fileURL: outputURL)
                 image.outputURL = outputURL
                 if let outSize = image.outputSize {
                     let ratio = Double(outSize) / Double(image.inputSize)
