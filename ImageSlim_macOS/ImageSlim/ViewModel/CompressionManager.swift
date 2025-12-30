@@ -10,13 +10,13 @@ import ImageIO
 import UniformTypeIdentifiers
 
 class CompressionManager:ObservableObject {
-    var appStorage = AppStorage.shared
     static let shared = CompressionManager()
+    let appStorage = AppStorage.shared
     // 任务队列：存储被压缩的图片
-    private var taskQueue: [CustomImages] = []
+    @Published var taskQueue: [CustomImages] = []
     
     // 当前有无被压缩的图片，isCompressing表示当前有图片被压缩，其他图片需要等待
-    private var isCompressing = false
+    @Published var isCompressing = false
     
     // 进入压缩队列，开始压缩
     func enqueue(_ image: [CustomImages]) {

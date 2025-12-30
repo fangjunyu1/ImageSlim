@@ -9,9 +9,9 @@ import SwiftUI
 import Zip
 
 class ContentViewModel: ObservableObject {
-    var appStorage = AppStorage.shared
-    @State var progress = 0.0
-    @State var showDownloadsProgress = false
+    let appStorage = AppStorage.shared
+    @Published var progress = 0.0
+    @Published var showDownloadsProgress = false
     
     private func saveImg(file:CustomImages,url:URL) {
         // 获取文件名称，并拆分为 文件名+后缀名
@@ -89,7 +89,7 @@ class ContentViewModel: ObservableObject {
                 var images: [CustomImages] {
                     switch self.appStorage.selectedView {
                     case .compression:
-                        return self.appStorage.images
+                        return self.appStorage.compressedImages
                     case .conversion:
                         return self.appStorage.conversionImages
                     default:

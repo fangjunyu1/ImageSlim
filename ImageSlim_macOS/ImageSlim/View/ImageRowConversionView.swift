@@ -11,8 +11,8 @@ import QuickLookUI
 struct ImageRowConversionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
-    var appStorage = AppStorage.shared
-    var compressManager = CompressionManager.shared
+    @EnvironmentObject var appStorage: AppStorage
+    @EnvironmentObject var compressManager: CompressionManager
     @ObservedObject var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
     var index: Int
@@ -199,7 +199,7 @@ struct ImageRowConversionView: View {
                     }
                 } else if appStorage.imagePreviewMode == .window {
                     // 使用新窗口预览图片
-                    previewer.show(image: Image(nsImage:appStorage.images[index].image))
+                    previewer.show(image: Image(nsImage:appStorage.compressedImages[index].image))
                 }
             }
             .onHover { isHovering in
@@ -349,6 +349,8 @@ struct ImageRowConversionView: View {
         Color.white.frame(width: 300,height:40)
         ImageRowConversionView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),outputType: "JPG",compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
             .frame(width: 300,height:40)
+            .environmentObject(AppStorage.shared)
+            .environmentObject(CompressionManager.shared)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
     }
 }

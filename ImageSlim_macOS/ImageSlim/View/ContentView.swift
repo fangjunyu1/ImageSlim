@@ -10,7 +10,7 @@ import Zip
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    var appStorage = AppStorage.shared
+    @EnvironmentObject var appStorage: AppStorage
     @StateObject var contentVM = ContentViewModel()
     @State private var showSponsorUs = false
     

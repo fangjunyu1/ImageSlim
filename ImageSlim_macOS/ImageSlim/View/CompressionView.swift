@@ -15,8 +15,8 @@ import UniformTypeIdentifiers
 struct CompressionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var previewer = ImagePreviewWindow()
-    var appStorage = AppStorage.shared
-    var compressManager = CompressionManager.shared
+    @EnvironmentObject var appStorage: AppStorage
+    @StateObject var compressManager = CompressionManager.shared
     @State private var isHovering = false
     @State private var showImporter = false
     
@@ -82,7 +82,7 @@ struct CompressionView: View {
             )
             
             DispatchQueue.main.async {
-                appStorage.images.append(customImage)
+                appStorage.compressedImages.append(customImage)
             }
 
             if compressionState == .pending {
@@ -96,7 +96,7 @@ struct CompressionView: View {
     
     var body: some View {
         VStack {
-            AdaptiveContentView(isEmpty: appStorage.images.isEmpty, title: {
+            AdaptiveContentView(isEmpty: appStorage.compressedImages.isEmpty, title: {
                 if isHovering {
                     Text("Release the file and add compression")
                         .font(.title)
@@ -142,14 +142,14 @@ struct CompressionView: View {
             }, list: {
                 // 图片列表
                 ScrollView(showsIndicators:false) {
-                    ForEach(Array(appStorage.images.enumerated()),id: \.offset) { index,item in
+                    ForEach(Array(appStorage.compressedImages.enumerated()),id: \.offset) { index,item in
                         ImageRowView(item: item,index: index,previewer: previewer)
                             .frame(maxWidth: .infinity)
                             .frame(height:42)
                         // 分割线
                         Divider()
                             .padding(.leading,55)
-                            .opacity(appStorage.images.count - 1 == index ? 0 : 1)
+                            .opacity(appStorage.compressedImages.count - 1 == index ? 0 : 1)
                     }
                 }
                 .frame(maxWidth: .infinity,maxHeight: .infinity)
@@ -159,11 +159,12 @@ struct CompressionView: View {
                 .cornerRadius(10)
             })
         }
+        .environmentObject(compressManager)
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             
             let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
-            var limitNum = appStorage.limitImageNum - appStorage.images.count
+            var limitNum = appStorage.limitImageNum - appStorage.compressedImages.count
             var imageURLs: [URL] = []
             let group = DispatchGroup()
             
@@ -205,14 +206,14 @@ struct CompressionView: View {
                 let selectedFiles: [URL] = try result.get()
                 
                 let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
-                var limitNum = appStorage.limitImageNum - appStorage.images.count
+                var limitNum = appStorage.limitImageNum - appStorage.compressedImages.count
                 var imageURLs: [URL] = []
                 
                 // 沙盒权限权限请求
                 for selectedFile in selectedFiles {
                     // 非内购用户，判断图片是否为最大上传数量
                     if islimitImagesNum && limitNum <= 0 {
-                        print("当前已经有 \(appStorage.images.count) 张图片，不再接收新的图片")
+                        print("当前已经有 \(appStorage.compressedImages.count) 张图片，不再接收新的图片")
                         break
                     }
                     
@@ -276,7 +277,7 @@ struct CompressionView: View {
                     )
                     
                     DispatchQueue.main.async {
-                        appStorage.images.append(customImage)
+                        appStorage.compressedImages.append(customImage)
                     }
 
                     if compressionState == .pending {
@@ -322,7 +323,7 @@ struct CompressionView: View {
                     )
                     
                     DispatchQueue.main.async {
-                        appStorage.images.append(customImage)
+                        appStorage.compressedImages.append(customImage)
                     }
 
                     if compressionState == .pending {
@@ -347,5 +348,6 @@ struct CompressionView: View {
 
 #Preview {
     CompressionView()
+        .environmentObject(AppStorage.shared)
         // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

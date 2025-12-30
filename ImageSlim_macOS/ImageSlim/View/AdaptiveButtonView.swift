@@ -10,16 +10,16 @@
 import SwiftUI
 
 struct AdaptiveButtonView: View {
-    var appStorage = AppStorage.shared
+    @EnvironmentObject var appStorage: AppStorage
     @Binding var showDownloadsProgress: Bool
     @Binding var progress: Double
     var zipImages: () -> Void
     
     var body: some View {
-        var isEmpty: Bool { appStorage.images.isEmpty }
+        var isEmpty: Bool { appStorage.compressedImages.isEmpty }
         var images: [CustomImages] {
             if appStorage.selectedView == .compression {
-                appStorage.images
+                appStorage.compressedImages
             } else {
                 appStorage.conversionImages
             }
@@ -91,7 +91,7 @@ struct AdaptiveButtonView: View {
     
     func removeImages() {
         if appStorage.selectedView == .compression {
-            appStorage.images.removeAll()
+            appStorage.compressedImages.removeAll()
         } else {
             appStorage.conversionImages.removeAll()
         }

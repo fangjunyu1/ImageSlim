@@ -10,13 +10,13 @@ import ImageIO
 import UniformTypeIdentifiers
 
 class ConversionManager:ObservableObject {
-    var appStorage = AppStorage.shared
     static let shared = ConversionManager()
+    let appStorage = AppStorage.shared
     // 任务队列：存储被转换的图片
-    private var taskQueue: [CustomImages] = []
+    @Published var taskQueue: [CustomImages] = []
     
     // 当前有无被转换的图片，isCompressing = true，表示当前有图片被转换，其他图片需要等待
-    private var isConversion = false
+    @Published var isConversion = false
     
     // 进进入转换队列，开始压缩
     func enqueue(_ image: [CustomImages]) {

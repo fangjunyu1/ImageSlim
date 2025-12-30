@@ -12,8 +12,8 @@ import UniformTypeIdentifiers
 struct ConversionView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var previewer = ImagePreviewWindow()
-    var appStorage = AppStorage.shared
-    var conversionManager = ConversionManager.shared
+    @EnvironmentObject var appStorage: AppStorage
+    @StateObject var conversionManager = ConversionManager.shared
     @State private var isHovering = false
     @State private var showImporter = false
     
@@ -181,6 +181,7 @@ struct ConversionView: View {
                 .cornerRadius(10)
             })
         }
+        .environmentObject(conversionManager)
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             
@@ -370,5 +371,6 @@ struct ConversionView: View {
 
 #Preview {
     ConversionView()
+        .environmentObject(AppStorage.shared)
     // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

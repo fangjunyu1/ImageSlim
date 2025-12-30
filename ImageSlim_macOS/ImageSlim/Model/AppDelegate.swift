@@ -12,7 +12,8 @@ import Combine
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarController: StatusBarController?
     var cancellables = Set<AnyCancellable>()
-    
+    var appStorage = AppStorage.shared
+    var iapManager = IAPManager.shared
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         // 初始化键盘监听事件
@@ -30,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         // 监听 displayMenuBarIcon 的变化
-        AppStorage.shared.$displayMenuBarIcon
+        appStorage.$displayMenuBarIcon
             .receive(on: RunLoop.main)
             .sink { [weak self] showIcon in
                 guard let self = self else { return }
@@ -48,9 +49,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // MARK: 创建分栏视图
         
         // content 为左侧显示的轻压图片 TabView
-        let contentVC = NSHostingController(rootView: ContentView())
+        let contentVC = NSHostingController(rootView:
+            ContentView()
+                .environmentObject(appStorage)
+                .environmentObject(iapManager)
+        )
         // workspace 为右侧显示的主视图内容
-        let workspaceVC = NSHostingController(rootView: WorkspaceView())
+        let workspaceVC = NSHostingController(rootView:
+            WorkspaceView()
+            .environmentObject(appStorage)
+            .environmentObject(iapManager)
+        )
         
         // 创建 NSSplitViewController(分栏界面) 并添加子项
         let splitVC = NSSplitViewController()

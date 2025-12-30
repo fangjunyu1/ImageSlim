@@ -24,7 +24,7 @@ class AppStorage:ObservableObject {
     // 非内购用户，限制 5MB 图片
     @Published var limitImageSize = 5_000_000
     // 压缩图片数组
-    @Published var images:[CustomImages] = []
+    @Published var compressedImages:[CustomImages] = []
     // 转换图片数组
     @Published var conversionImages:[CustomImages] = []
 
