@@ -8,6 +8,10 @@
 import SwiftUI
 import QuickLookUI
 
+enum ImageRowType {
+    case compression
+    case conversion
+}
 struct ImageRowView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
@@ -17,156 +21,7 @@ struct ImageRowView: View {
     @State private var shakeOffset: CGFloat = 0
     var index: Int
     var previewer: ImagePreviewWindow
-    // var completion: () -> Void
-    
-    // 抖动效果
-    private func triggerShake() {
-        withAnimation(Animation.linear(duration: 0.1)) {
-            shakeOffset = -3
-        }
-        withAnimation(Animation.linear(duration: 0.1).repeatCount(5, autoreverses: true)) {
-            shakeOffset = 6
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            shakeOffset = 0
-        }
-    }
-    
-    // 将图片存储到照片并返回URL
-    func saveImageToTempFile(image: NSImage) -> URL? {
-        guard let tiffData = image.tiffRepresentation,
-              let bitmap = NSBitmapImageRep(data: tiffData),
-              let pngData = bitmap.representation(using: .png, properties: [:]) else {
-            return nil
-        }
-        
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
-        try? pngData.write(to: tempURL)
-        return tempURL
-    }
-    
-    // 调用 Quick Look 预览图片
-    func previewImage(at url: URL) {
-        guard let panel = QLPreviewPanel.shared() else { return }
-        let dataSource = PreviewDataSource(urls: [url])
-        panel.dataSource = dataSource
-        panel.makeKeyAndOrderFront(nil)
-    }
-    
-    private func saveImg(file:CustomImages,url:URL) {
-        // 获取文件名称，并拆分为 文件名+后缀名
-        let nsName = file.name as NSString
-        let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
-        let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
-        // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
-        let finalName: String
-        if !appStorage.keepOriginalFileName {
-            print("当前设置为不保持原文件名，因此添加_compress后缀")
-            finalName = "\(fileName)_compress.\(fileExt)"
-        } else {
-            finalName = file.name
-        }
-        
-        // 拼接 目录路径 + 文件名称
-        let destinationURL = url.appendingPathComponent(finalName)
-        
-        do {
-            if FileManager.default.fileExists(atPath: destinationURL.path) {
-                try FileManager.default.removeItem(at: destinationURL)
-            }
-            try FileManager.default.copyItem(at: file.outputURL!, to: destinationURL)
-        } catch {
-            print("保存失败：\(error)")
-        }
-    }
-    
-    // 下载图片到文件夹
-    func saveToDownloads(file: CustomImages) {
-        
-        // 获取目录路径
-        // 如果有安全书签，保存到安全书签的URL
-        if let bookmark = UserDefaults.standard.data(forKey: "SaveLocation") {
-            var isStale = false
-                do {
-                    let url = try URL(resolvingBookmarkData: bookmark, options: [.withSecurityScope], relativeTo: nil, bookmarkDataIsStale: &isStale)
-
-                    if url.startAccessingSecurityScopedResource() {
-                        saveImg(file: file,url: url)
-                        url.stopAccessingSecurityScopedResource()
-                    } else {
-                        print("无法访问资源")
-                    }
-                } catch {
-                    print("解析书签失败: \(error)")
-                }
-        } else {
-            // 如果没有保存过目录，让用户选择
-            askUserForSaveLocation(file: file)
-        }
-    }
-    
-    /// 弹出 NSSavePanel 或 NSOpenPanel 让用户选择目录，并保存书签
-    func askUserForSaveLocation(file: CustomImages) {
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = false
-        let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
-        panel.prompt = saveDir
-
-        if panel.runModal() == .OK, let url = panel.url {
-            do {
-                let bookmark = try url.bookmarkData(options: [.withSecurityScope],includingResourceValuesForKeys: nil,
-                                                    relativeTo: nil)
-                UserDefaults.standard.set(bookmark, forKey: "SaveLocation")
-                print("书签保存成功")
-
-                if url.startAccessingSecurityScopedResource() {
-                    saveImg(file: file, url: url)
-                    url.stopAccessingSecurityScopedResource()
-                }
-            } catch {
-                print("书签创建失败: \(error)")
-            }
-        }
-    }
-    // 根据图片的字节大小显示适配的存储大小。
-    func TranslateSize(fileSize: Int) -> String {
-        let num = 1000.0
-        let size = Double(fileSize)
-        
-        func format(_ value: Double) -> String {
-            let roundedValue = (value * 10).rounded() / 10
-            // 判断是否为整数
-            print("1、roundedValue:\(roundedValue)")
-            if roundedValue.truncatingRemainder(dividingBy: 1) == 0 {
-                print("2、roundedValue:\(roundedValue)")
-                return String(format: "%.0f", roundedValue) // 无小数
-            } else {
-                print("2、roundedValue:\(roundedValue)")
-                return String(format: "%.1f", roundedValue) // 一位小数
-            }
-        }
-        
-        if size < num {
-            return "\(size) B"
-        } else if size < pow(num,2.0) {
-            let sizeNum = size / pow(num,1)
-            return "\(ceil(sizeNum)) KB"
-        } else if size < pow(num,3.0) {
-            let sizeNum = size / pow(num,2)
-            return "\(format(sizeNum)) MB"
-        } else if size < pow(num,4.0) {
-            let sizeNum = size / pow(num,3)
-            return "\(format(sizeNum)) GB"
-        } else if size < pow(num,5.0) {
-            let sizeNum = size / pow(num,4)
-            return "\(format(sizeNum)) TB"
-        } else {
-            let sizeNum = size / pow(num,5)
-            return "\(format(sizeNum)) TB"
-        }
-    }
+    var imageType: ImageRowType
     
     var body: some View {
         HStack {
@@ -184,18 +39,9 @@ struct ImageRowView: View {
                 .frame(width: 35, height: 35)
                 .zIndex(hoveringIndex == index ? 1 : -1)
             }
-            //                            // 悬停显示放大按钮
+            // 悬停显示放大按钮
             .onTapGesture {
-                // 根据 AppStorage 选项，选择图片打开方式：
-                if appStorage.imagePreviewMode == .quickLook {
-                    // 使用 Quick Look 预览图片
-                    if let url = saveImageToTempFile(image: item.image) {
-                        previewImage(at: url)
-                    }
-                } else if appStorage.imagePreviewMode == .window {
-                    // 使用新窗口预览图片
-                    previewer.show(image: Image(nsImage:appStorage.compressedImages[index].image))
-                }
+                lookImg()
             }
             .onHover { isHovering in
                 // 当鼠标进入视图区域时 isHovering = true
@@ -205,14 +51,11 @@ struct ImageRowView: View {
                 } else {
                     hoveringIndex = nil
                 }
-            }
-            .onHover { isHovering in
                 isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
             }
             .cornerRadius(4)
             
             Spacer().frame(width:20)
-                .background(.green)
             // 图片信息
             VStack(alignment: .leading) {
                 // 图片名称
@@ -232,10 +75,10 @@ struct ImageRowView: View {
                             .cornerRadius(5)
                     }
                     if !appStorage.inAppPurchaseMembership && item.inputSize > appStorage.limitImageSize {
-                        Text(TranslateSize(fileSize:item.inputSize))
+                        Text(FileUtils.TranslateSize(fileSize:item.inputSize))
                             .foregroundColor(.red)
                     } else {
-                        Text(TranslateSize(fileSize:item.inputSize))
+                        Text(FileUtils.TranslateSize(fileSize:item.inputSize))
                             .foregroundColor(.gray)
                     }
                 }
@@ -244,15 +87,34 @@ struct ImageRowView: View {
             
             // 如果图片完成压缩，显示压缩图片的输出参数和下载按钮
             if item.compressionState == .completed {
-                // 输出参数
-                VStack(alignment: .trailing) {
-                    // 压缩占比
-                    Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
-                    Spacer().frame(height:3)
-                    // 输出图片大小
-                    Text(TranslateSize(fileSize:item.outputSize ?? 0))
-                        .font(.footnote)
-                        .foregroundColor(.gray)
+                if imageType == .compression {
+                    VStack(alignment: .trailing) {
+                        // 压缩占比
+                        Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
+                        Spacer().frame(height:3)
+                        // 输出图片大小
+                        Text(FileUtils.TranslateSize(fileSize:item.outputSize ?? 0))
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
+                } else if imageType == .conversion {
+                                    VStack(alignment: .trailing) {
+                                        // 压缩占比
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundColor(colorScheme == .light ? .purple : Color(hex: "2f2f2f"))
+                                                .frame(width:50,height:16)
+                                                .cornerRadius(3)
+                                            Text("\(item.outputType ?? "")")
+                                                .foregroundColor(.white)
+                                                .cornerRadius(5)
+                                        }
+                                        Spacer().frame(height:3)
+                                        // 输出图片大小
+                                        Text(FileUtils.TranslateSize(fileSize:item.outputSize ?? 0))
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+                                    }
                 }
                 
                 Spacer().frame(width:10)
@@ -278,7 +140,7 @@ struct ImageRowView: View {
                 } else {
                     // 下载按钮
                     Button(action: {
-                        saveToDownloads(file: item)
+                        FileUtils.saveToDownloads(file: item)
                         print("isDownloaded状态改为true")
                         item.isDownloaded = true
                         // 延时 2 秒后恢复
@@ -311,11 +173,22 @@ struct ImageRowView: View {
                     .disabled(item.isDownloaded)
                 }
             } else if item.compressionState == .pending{
-                Text("Waiting for compression")
-                    .foregroundColor(.red)
+                if imageType == .compression {
+                    Text("Waiting for compression")
+                        .foregroundColor(.red)
+                } else if imageType == .conversion {
+                    Text("Waiting for conversion")
+                        .foregroundColor(.red)
+                }
+               
             } else if item.compressionState == .failed {
-                Text("Compression failed")
-                    .foregroundColor(.red)
+                if imageType == .compression {
+                    Text("Compression failed")
+                        .foregroundColor(.red)
+                } else if imageType == .conversion {
+                    Text("Conversion failed")
+                        .foregroundColor(.red)
+                }
             } else if item.compressionState == .compressing{
                 ProgressView("")
                     .scaleEffect(0.5)
@@ -331,10 +204,38 @@ struct ImageRowView: View {
     }
 }
 
+extension ImageRowView {
+    // 抖动效果
+    private func triggerShake() {
+        withAnimation(Animation.linear(duration: 0.1)) {
+            shakeOffset = -3
+        }
+        withAnimation(Animation.linear(duration: 0.1).repeatCount(5, autoreverses: true)) {
+            shakeOffset = 6
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            shakeOffset = 0
+        }
+    }
+    
+    func lookImg() {
+        // 根据 AppStorage 选项，选择图片打开方式：
+        if appStorage.imagePreviewMode == .quickLook {
+            // 使用 Quick Look 预览图片
+            if let url = FileUtils.saveImageToTempFile(image: item.image) {
+                FileUtils.previewImage(at: url)
+            }
+        } else if appStorage.imagePreviewMode == .window {
+            // 使用新窗口预览图片
+            previewer.show(image: Image(nsImage:appStorage.compressedImages[index].image))
+        }
+    }
+}
+
 #Preview {
     ZStack {
         Color.white.frame(width: 300,height:40)
-        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow())
+        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow(),imageType: .compression)
             .frame(width: 300,height:40)
             .environmentObject(AppStorage.shared)
             .environmentObject(CompressionManager.shared)

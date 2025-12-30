@@ -14,33 +14,38 @@ import UniformTypeIdentifiers
 
 struct CompressionView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var previewer = ImagePreviewWindow()
     @EnvironmentObject var appStorage: AppStorage
     @StateObject var compressManager = CompressionManager.shared
-    @State private var isHovering = false
+    @State private var previewer = ImagePreviewWindow()
+    @State private var isHovering = false   // 图片悬浮时
     @State private var showImporter = false
     
     var body: some View {
         VStack {
             AdaptiveContentView(isEmpty: appStorage.compressedImages.isEmpty, title: {
                 if isHovering {
+                    // 释放文件，添加压缩
                     Text("Release the file and add compression")
                         .font(.title)
                 } else {
+                    // 上传图片，即刻压缩
                     Text("Upload pictures and compress them instantly")
                         .font(.title)
                 }
             }, tips: {
                 if appStorage.inAppPurchaseMembership {
+                    // 支持 .png, .jpeg, .bmp, .tiff 等各种格式。
                     Text("Supports multiple formats including .png, .jpeg, .bmp, .tiff, etc.")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 } else {
+                    // 最多选择 20 张图片，每张大小不超过 5MB。
                     Text("Select up to 20 pictures, each no larger than 5MB.")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
             }, zstack: {
+                // 显示的图片区域
                 ZStack {
                     Rectangle()
                         .frame(width: 240,height: 160)
@@ -69,7 +74,7 @@ struct CompressionView: View {
                 // 图片列表
                 ScrollView(showsIndicators:false) {
                     ForEach(Array(appStorage.compressedImages.enumerated()),id: \.offset) { index,item in
-                        ImageRowView(item: item,index: index,previewer: previewer)
+                        ImageRowView(item: item,index: index,previewer: previewer,imageType: .compression)
                             .frame(maxWidth: .infinity)
                             .frame(height:42)
                         // 分割线

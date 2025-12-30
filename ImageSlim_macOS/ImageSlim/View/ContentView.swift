@@ -41,6 +41,7 @@ struct ContentView: View {
                             .fontWeight(.semibold)
                     }
                     .contentShape(Rectangle())
+                    .fixedSize()
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(appStorage.selectedView == .compression ?
@@ -67,6 +68,7 @@ struct ContentView: View {
                                 .fontWeight(.semibold)
                         }
                         .contentShape(Rectangle())
+                        .fixedSize()
                     })
                     .buttonStyle(.plain)
                     .foregroundColor(appStorage.selectedView == .conversion ?
@@ -93,6 +95,7 @@ struct ContentView: View {
                             .fontWeight(.semibold)
                     }
                     .contentShape(Rectangle())
+                    .fixedSize()
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(appStorage.selectedView == .settings ?
@@ -114,6 +117,22 @@ struct ContentView: View {
                     contentVM.zipImages()
                 }
             })
+            
+            #if DEBUG
+            VStack(spacing:10) {
+                Button("新增内购标识") {
+                    appStorage.inAppPurchaseMembership = true
+                }
+                Button("移除内购标识") {
+                    appStorage.inAppPurchaseMembership = false
+                }
+            }
+            .font(.footnote)
+            .buttonStyle(.plain)
+            .foregroundColor(.gray)
+            .padding(.vertical,10)
+            
+            #endif
             
             Button(action:{
                 showSponsorUs = true
@@ -154,5 +173,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .frame(width:200)
+        .environmentObject(AppStorage.shared)
     // .environment(\.locale, .init(identifier: "ml")) // 设置为德语
 }

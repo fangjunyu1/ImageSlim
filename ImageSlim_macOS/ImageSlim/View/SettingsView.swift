@@ -397,5 +397,6 @@ struct SettingsView: View {
 #Preview {
     SettingsView()
         .frame(width: 400)
+        .environmentObject(AppStorage.shared)
         // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

@@ -13,33 +13,6 @@ class ContentViewModel: ObservableObject {
     @Published var progress = 0.0
     @Published var showDownloadsProgress = false
     
-    private func saveImg(file:CustomImages,url:URL) {
-        // 获取文件名称，并拆分为 文件名+后缀名
-        let nsName = file.name as NSString
-        let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
-        let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
-        // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
-        let finalName: String
-        if !appStorage.keepOriginalFileName {
-            print("当前设置为不保持原文件名，因此添加_compress后缀")
-            finalName = "\(fileName)_compress.\(fileExt)"
-        } else {
-            finalName = file.name
-        }
-        
-        // 拼接 目录路径 + 文件名称
-        let destinationURL = url.appendingPathComponent(finalName)
-        
-        do {
-            if FileManager.default.fileExists(atPath: destinationURL.path) {
-                try FileManager.default.removeItem(at: destinationURL)
-            }
-            try FileManager.default.copyItem(at: file.outputURL!, to: destinationURL)
-        } catch {
-            print("保存失败：\(error)")
-        }
-    }
-    
     private func saveZip(finalImagesURL:[URL], url: URL){
         let calendar = Calendar.current
         let date = Date()

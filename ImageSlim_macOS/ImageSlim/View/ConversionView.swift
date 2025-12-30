@@ -134,7 +134,7 @@ struct ConversionView: View {
             }, list: {
                 ScrollView(showsIndicators:false) {
                     ForEach(Array(appStorage.conversionImages.enumerated()),id: \.offset) { index,item in
-                        ImageRowConversionView(item: item,index: index,previewer: previewer)
+                        ImageRowView(item: item,index: index,previewer: previewer,imageType: .conversion)
                             .frame(maxWidth: .infinity)
                             .frame(height:42)
                         // 分割线
