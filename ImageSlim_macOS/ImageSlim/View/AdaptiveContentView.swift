@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// 压缩/转换视图的自适应布局
+// 没有图片时，显示默认的“转换图片”等文字、图片内容
+// 如果有图片，则显示上方显示“转换图片”等文字、图片内容，底部显示图片列表
+
 struct AdaptiveContentView<TitleView: View,JudgmentTextView: View,ImageView: View,ImageList: View>: View {
     let isEmpty: Bool
     let title: TitleView
