@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 import QuickLookUI
+import SwiftUI
 
 struct FileUtils {
     
@@ -183,6 +184,64 @@ struct FileUtils {
         } else {
             // 如果没有保存过目录，让用户选择
             FileUtils.askUserForSaveLocation(file: file)
+        }
+    }
+    
+    // 发送邮件方法
+    static func sendEmail() {
+        let email = "fangjunyu.com@gmail.com"
+        let subject = "ImageSlim"
+        let body = "Hi fangjunyu,\n\n"
+        
+        // URL 编码参数
+        let urlString = "mailto:\(email)?subject=\(subject)&body=\(body)"
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        if let url = URL(string: urlString ?? "") {
+            NSWorkspace.shared.open(url)
+        }
+    }
+    
+    // MARK: 保存路径-安全书签
+    static func createSaveLocation(saveName: Binding<String>) {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = false
+        panel.canChooseDirectories = true
+        panel.allowsMultipleSelection = false
+        let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
+        panel.prompt = saveDir
+        
+        if panel.runModal() == .OK, let url = panel.url {
+            do {
+                let bookmark = try url.bookmarkData(options: [.withSecurityScope], includingResourceValuesForKeys: nil, relativeTo: nil)
+                UserDefaults.standard.set(bookmark, forKey: "SaveLocation")
+                print("书签保存成功")
+                refreshSaveName(saveName: saveName)
+            } catch {
+                print("书签创建失败: \(error)")
+            }
+        }
+    }
+    
+    
+    // MARK: 重试保存名称
+    static func refreshSaveName(saveName: Binding<String>) {
+        guard let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") else {
+            saveName.wrappedValue = "Select Save Location"
+            return
+        }
+        var isStale = false
+        do {
+            let url = try URL(
+                resolvingBookmarkData: saveLocation,
+                options: [.withSecurityScope],
+                relativeTo: nil,
+                bookmarkDataIsStale: &isStale
+            )
+            saveName.wrappedValue = url.lastPathComponent
+        } catch {
+            print("解析书签失败: \(error)")
+            saveName.wrappedValue = "Select Save Location"
         }
     }
 }

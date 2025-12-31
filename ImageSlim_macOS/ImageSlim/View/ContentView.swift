@@ -118,22 +118,6 @@ struct ContentView: View {
                 }
             })
             
-            #if DEBUG
-            VStack(spacing:10) {
-                Button("新增内购标识") {
-                    appStorage.inAppPurchaseMembership = true
-                }
-                Button("移除内购标识") {
-                    appStorage.inAppPurchaseMembership = false
-                }
-            }
-            .font(.footnote)
-            .buttonStyle(.plain)
-            .foregroundColor(.gray)
-            .padding(.vertical,10)
-            
-            #endif
-            
             Button(action:{
                 showSponsorUs = true
             }, label: {
