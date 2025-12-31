@@ -30,12 +30,7 @@ struct SettingsView: View {
                         SettingsItemView(
                             icon:"slider.horizontal.2.square",
                             title: "Show icon in menu bar",
-                            type: .PickerIcon(
-                                Binding(
-                                    get: { appStorage.displayMenuBarIcon },
-                                    set: { appStorage.displayMenuBarIcon = $0 }
-                                )
-                            ))
+                            type: .PickerIcon($appStorage.displayMenuBarIcon))
                         Divider().padding(.leading,25)
                         
                         // 图片压缩率
@@ -58,12 +53,7 @@ struct SettingsView: View {
                         SettingsItemView(
                             icon: "plus.magnifyingglass",
                             title: "Image preview method",
-                            type: .PickerPreview(
-                                Binding(
-                                    get: { appStorage.imagePreviewMode },
-                                    set: { appStorage.imagePreviewMode = $0}
-                                )
-                            ))
+                            type: .PickerPreview($appStorage.imagePreviewMode))
                         
                         Divider().padding(.leading,25)
                         
@@ -80,14 +70,8 @@ struct SettingsView: View {
                             icon: "zipper.page",
                             title: "Enable third-party library compression",
                             type: .ToggleThirdParty(
-                                pngquant: Binding(
-                                    get: { appStorage.enablePngquant },
-                                    set: { appStorage.enablePngquant = $0 }
-                                ),
-                                gifsicle: Binding(
-                                    get: { appStorage.enableGifsicle },
-                                    set: { appStorage.enableGifsicle = $0 }
-                                )
+                                pngquant: $appStorage.enablePngquant,
+                                gifsicle: $appStorage.enableGifsicle
                             )
                         )
                         
@@ -98,7 +82,8 @@ struct SettingsView: View {
                             icon: "ellipsis.curlybraces",
                             title: "Keep the original file name",
                             type: .Toggle("Keep the original file name",
-                                          $appStorage.keepOriginalFileName))
+                                          $appStorage.keepOriginalFileName)
+                        )
                         
                         Divider().padding(.leading,25)
                         
@@ -106,11 +91,8 @@ struct SettingsView: View {
                         SettingsItemView(
                             icon: "arrow.down.left.arrow.up.right",
                             title: "EnableImageConversion",
-                            type: .Toggle("EnableImageConversion",
-                                          Binding(
-                                            get: { appStorage.EnableImageConversion },
-                                            set: { appStorage.EnableImageConversion = $0 }
-                                          )))
+                            type: .Toggle("EnableImageConversion",$appStorage.EnableImageConversion)
+                        )
                     }
                     .modifier(SettingsVSModifier())
                 }
