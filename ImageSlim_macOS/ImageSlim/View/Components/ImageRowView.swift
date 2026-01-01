@@ -12,6 +12,7 @@ enum ImageRowType {
     case compression
     case conversion
 }
+
 struct ImageRowView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
