@@ -10,9 +10,10 @@ import SwiftUI
 struct SponsorUsView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
-    @State private var selectedNum: String? = nil
     @EnvironmentObject var iapManager: IAPManager
     @EnvironmentObject var appStorage: AppStorage
+    @State private var selectedNum: String? = nil
+    @State private var showRecovery = false
     
     private var suponsorList: [SuponsorStruct] = [
         SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
@@ -74,7 +75,9 @@ struct SponsorUsView: View {
                     Button(action: {
                         let store = NSUbiquitousKeyValueStore.default
                         let iCloudIAP = store.bool(forKey: "inAppPurchaseMembership")
+                        print("检查云端会员数据:\(iCloudIAP)")
                         appStorage.inAppPurchaseMembership = iCloudIAP
+                        showRecovery = true
                     }, label: {
                         HStack(spacing:3) {
                             Text("Restore in-app purchases")
@@ -95,12 +98,7 @@ struct SponsorUsView: View {
                         dismiss()
                     },label: {
                         Text("Off")
-                            .fontWeight(.bold)
-                            .padding(.vertical,6)
-                            .padding(.horizontal,24)
-                            .foregroundColor(.white)
-                            .background(Color(hex: "118DE6"))
-                            .cornerRadius(4)
+                            .BlueButtonText()
                     })
                     .buttonStyle(.plain)
                     .modifier(HoverModifier())
@@ -111,9 +109,11 @@ struct SponsorUsView: View {
                 HStack(spacing:10) {
                     Button("新增内购标识") {
                         appStorage.inAppPurchaseMembership = true
+                        showRecovery = true
                     }
                     Button("移除内购标识") {
                         appStorage.inAppPurchaseMembership = false
+                        showRecovery = true
                     }
                 }
                 .font(.footnote)
@@ -174,6 +174,9 @@ struct SponsorUsView: View {
                     .cornerRadius(10)
                 }
             }
+        }
+        .sheet(isPresented: $showRecovery) {
+            SponsorUsRecoveryView()
         }
     }
 }

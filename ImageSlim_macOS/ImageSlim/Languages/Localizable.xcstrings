@@ -26,7 +26,7 @@
         }
       }
     },
-    "$ --)" : {
+    "$ --" : {
 
     },
     "About" : {
@@ -11283,6 +11283,18 @@
         }
       }
     },
+    "No recovery records found" : {
+      "comment" : "暂无可恢复记录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无可恢复记录"
+          }
+        }
+      }
+    },
     "Number of uploaded pictures" : {
       "comment" : "上传图片数量",
       "extractionState" : "manual",
@@ -13787,6 +13799,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出"
+          }
+        }
+      }
+    },
+    "Recovery successful" : {
+      "comment" : "恢复成功",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恢复成功"
           }
         }
       }

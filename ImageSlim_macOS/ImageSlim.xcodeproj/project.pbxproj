@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D73930F2F0636BC0017269A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1D73930E2F0636BC0017269A /* Lottie */; };
 		1DAF46342F038EE400D5F000 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1DAF46332F038EE400D5F000 /* Zip */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DAF46342F038EE400D5F000 /* Zip in Frameworks */,
+				1D73930F2F0636BC0017269A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = ImageSlim;
 			packageProductDependencies = (
 				1DAF46332F038EE400D5F000 /* Zip */,
+				1D73930E2F0636BC0017269A /* Lottie */,
 			);
 			productName = ImageSlim;
 			productReference = 1D01110F2E02791C00D9718B /* ImageSlim.app */;
@@ -173,6 +176,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				1DAF46322F038EE400D5F000 /* XCRemoteSwiftPackageReference "Zip" */,
+				1D73930D2F0636BC0017269A /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1D0111102E02791C00D9718B /* Products */;
@@ -413,6 +417,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1D73930D2F0636BC0017269A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.2;
+			};
+		};
 		1DAF46322F038EE400D5F000 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
@@ -424,6 +436,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1D73930E2F0636BC0017269A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1D73930D2F0636BC0017269A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		1DAF46332F038EE400D5F000 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1DAF46322F038EE400D5F000 /* XCRemoteSwiftPackageReference "Zip" */;
