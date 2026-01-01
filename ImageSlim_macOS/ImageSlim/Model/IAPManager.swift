@@ -27,14 +27,14 @@ class IAPManager:ObservableObject {
                 // 抛出内购信息为空的错误,可能是所有的产品ID都不存在，中断执行，不会return返回products产品信息
                 throw StoreError.IAPInformationIsEmpty
             }
-            DispatchQueue.main.async {
-                self.products = fetchedProducts  // 将获取的内购商品保存到products变量
-                // print("成功加载产品: \(self.products)")    // 输出内购商品数组信息
-            }
+            
+            self.products = fetchedProducts  // 将获取的内购商品保存到products变量
+            // print("成功加载产品: \(self.products)")    // 输出内购商品数组信息
         } catch {
             print("加载产品失败：\(error)")    // 输出报错
         }
     }
+    
     // purchaseProduct：购买商品的方法，返回购买结果
     func purchaseProduct(_ product: Product) {
         // 在这里输出要购买的商品id
@@ -61,9 +61,9 @@ class IAPManager:ObservableObject {
                 print("购买失败：\(error)")
             }
             self.loadPurchased = false   // 隐藏内购加载画布
-            print("loadPurchased:\(loadPurchased)")
         }
     }
+    
     // 验证购买结果
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
@@ -75,7 +75,8 @@ class IAPManager:ObservableObject {
             return signedType    // StoreKit确认本笔交易信息由苹果服务器合法签署
         }
     }
-    // handleTransactions处理所有的交易情况
+    
+    // handleTransactions 处理所有的交易情况
     func handleTransactions() async {
         for await result in Transaction.updates {
             // 遍历当前所有已完成的交易
@@ -83,16 +84,15 @@ class IAPManager:ObservableObject {
                 let transaction = try checkVerified(result) // 验证交易
                 // 处理交易，例如解锁内容
                 print("设置内购标识为已购")
-                // 在主线程恢复已购标识
-                DispatchQueue.main.async {
-                    AppStorage.shared.inAppPurchaseMembership = true
-                }
+                // 恢复已购标识
+                AppStorage.shared.inAppPurchaseMembership = true
                 await transaction.finish()
             } catch {
                 print("交易处理失败：\(error)")
             }
         }
     }
+    
     // 当购买失败时，会尝试重新加载产品信息。
     func resetProduct() async {
         self.products = []

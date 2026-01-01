@@ -12,7 +12,6 @@ struct SponsorUsView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var iapManager: IAPManager
     @EnvironmentObject var appStorage: AppStorage
-    @State private var selectedNum: String? = nil
     @State private var showRecovery = false
     
     private var suponsorList: [SuponsorStruct] = [
@@ -59,7 +58,7 @@ struct SponsorUsView: View {
                         Spacer()
                     }
                     ForEach(suponsorList) { item in
-                        suponsorListView(item:item,selectedNum: $selectedNum)
+                        suponsorListView(item:item)
                     }
                     .padding(.vertical,2)
                     
@@ -94,7 +93,6 @@ struct SponsorUsView: View {
                 // 关闭Sheet按钮
                 VStack(spacing: 0){
                     Button(action:{
-                        print("点击了关闭按钮")
                         dismiss()
                     },label: {
                         Text("Off")
