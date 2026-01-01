@@ -653,6 +653,18 @@
         }
       }
     },
+    "All features have been successfully unlocked. Thank you for your support." : {
+      "comment" : "已成功解锁全部功能，感谢您的支持",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已成功解锁全部功能，感谢您的支持"
+          }
+        }
+      }
+    },
     "Always show" : {
       "comment" : "始终显示",
       "extractionState" : "manual",
@@ -5029,6 +5041,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "不讓開發者餓死在Xcode裡"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "comment" : "完成",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
           }
         }
       }

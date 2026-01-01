@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SponsorUsRecoveryView: View {
     @EnvironmentObject var appStorage: AppStorage
+    @EnvironmentObject var sound: SoundManager
     @Environment(\.dismiss) var dismiss
     var body: some View {
         let recoveryText = appStorage.inAppPurchaseMembership ? "Recovery successful" : "No recovery records found"
@@ -29,5 +30,8 @@ struct SponsorUsRecoveryView: View {
         }
         .padding(.horizontal,14)
         .frame(width: 200,height: 200)
+        .onAppear {
+            sound.playSound(named: "success")   // 播放音效
+        }
     }
 }

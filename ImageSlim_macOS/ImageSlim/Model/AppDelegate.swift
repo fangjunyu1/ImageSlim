@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var cancellables = Set<AnyCancellable>()
     var appStorage = AppStorage.shared
     var iapManager = IAPManager.shared
+    var sound = SoundManager.shared
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         // 初始化键盘监听事件
@@ -54,12 +55,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ContentView()
                 .environmentObject(appStorage)
                 .environmentObject(iapManager)
+                .environmentObject(sound)
         )
         // workspace 为右侧显示的主视图内容
         let workspaceVC = NSHostingController(rootView:
             WorkspaceView()
             .environmentObject(appStorage)
             .environmentObject(iapManager)
+            .environmentObject(sound)
         )
         
         // 创建 NSSplitViewController(分栏界面) 并添加子项

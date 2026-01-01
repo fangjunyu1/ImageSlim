@@ -126,54 +126,9 @@ struct SponsorUsView: View {
         .frame(width: 400)
         .padding(.top,14)
         .padding(.horizontal,30)
-        .overlay {
-            if iapManager.loadPurchased {
-                ZStack {
-                    Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
-                    VStack {
-                        // 加载条
-                        ProgressView("loading...")
-                        // 加载条修饰符
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .padding()
-                            .background(colorScheme == .dark ? Color(hex: "A8AFB3") : Color.white)
-                            .cornerRadius(10)
-                    }
-                }
-            }
-        }
-        .overlay {
-            if iapManager.successTips {
-                ZStack {
-                    Color.black.opacity(0.3).edgesIgnoringSafeArea(.all)
-                    
-                    VStack(spacing: 10) {
-                        Image(systemName: "checkmark.seal.fill")
-                            .foregroundColor(Color(hex: "416DFF"))
-                            .font(.system(size: 48))
-                        Text("Thank you for your support")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                        Button(action: {
-                            iapManager.successTips = false
-                        }, label: {
-                            Text("Sponsorship success")
-                                .font(.subheadline)
-                                .foregroundColor(.white)
-                                .padding(.vertical,8)
-                                .padding(.horizontal,20)
-                                .background(Color(hex: "118DE6"))
-                                .cornerRadius(3)
-                        })
-                        .buttonStyle(.plain)
-                        .modifier(HoverModifier())
-                    }
-                    .frame(width: 200,height:170)
-                    .background(.white)
-                    .cornerRadius(10)
-                    .cornerRadius(10)
-                }
-            }
+        .overlay(LoadPurchased())   // 加载视图
+        .sheet(isPresented: $iapManager.successTips) {
+            SponsorUsResultsView()
         }
         .sheet(isPresented: $showRecovery) {
             SponsorUsRecoveryView()
