@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 class CustomImages: ObservableObject, Identifiable {
     let id: UUID
     let image: NSImage

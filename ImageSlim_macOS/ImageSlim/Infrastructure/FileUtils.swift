@@ -10,6 +10,7 @@ import AppKit
 import QuickLookUI
 import SwiftUI
 
+@MainActor
 struct FileUtils {
     
     // MARK: 计算文件的大小

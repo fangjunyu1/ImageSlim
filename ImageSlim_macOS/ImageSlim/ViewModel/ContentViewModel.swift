@@ -8,6 +8,7 @@
 import SwiftUI
 import Zip
 
+@MainActor
 class ContentViewModel: ObservableObject {
     let appStorage = AppStorage.shared
     @Published var progress = 0.0

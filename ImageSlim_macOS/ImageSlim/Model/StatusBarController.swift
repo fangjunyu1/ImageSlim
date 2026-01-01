@@ -8,6 +8,7 @@
 import AppKit
 import SwiftUI
 
+@MainActor
 class StatusBarController:ObservableObject {
     private var statusItem: NSStatusItem?
     

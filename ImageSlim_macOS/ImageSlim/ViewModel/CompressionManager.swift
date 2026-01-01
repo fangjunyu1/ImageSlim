@@ -11,6 +11,7 @@ import SwiftUI
 import ImageIO
 import UniformTypeIdentifiers
 
+@MainActor
 class CompressionManager:ObservableObject {
     static let shared = CompressionManager()
     let appStorage = AppStorage.shared

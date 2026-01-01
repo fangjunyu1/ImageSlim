@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class AppStorage:ObservableObject {
     
     static var shared = AppStorage()

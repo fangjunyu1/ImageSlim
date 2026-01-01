@@ -9,6 +9,7 @@ import SwiftUI
 import ImageIO
 import UniformTypeIdentifiers
 
+@MainActor
 class ConversionManager:ObservableObject {
     static let shared = ConversionManager()
     let appStorage = AppStorage.shared
