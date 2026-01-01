@@ -24,5 +24,6 @@ struct WorkspaceView: View {
 
 #Preview {
     WorkspaceView()
+        .environmentObject(AppStorage.shared)
         // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

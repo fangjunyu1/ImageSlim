@@ -60,13 +60,7 @@ struct CompressionView: View {
                         .scaledToFit()
                         .frame(width: 150)
                 }
-                .onHover(perform: { isHovering in
-                    if isHovering {
-                        NSCursor.pointingHand.set()
-                    } else {
-                        NSCursor.arrow.set()
-                    }
-                })
+                .modifier(HoverModifier())
                 .onTapGesture {
                     showImporter = true
                 }

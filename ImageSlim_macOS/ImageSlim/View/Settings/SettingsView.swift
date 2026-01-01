@@ -159,21 +159,6 @@ struct SettingsView: View {
                 }
                 
                 Spacer().frame(height:20)
-#if DEBUG
-                HStack(spacing:10) {
-                    Button("新增内购标识") {
-                        appStorage.inAppPurchaseMembership = true
-                    }
-                    Button("移除内购标识") {
-                        appStorage.inAppPurchaseMembership = false
-                    }
-                }
-                .font(.footnote)
-                .buttonStyle(.plain)
-                .foregroundColor(.gray)
-                .padding(.vertical,10)
-                
-#endif
             }
         }
         .modifier(WindowsModifier())

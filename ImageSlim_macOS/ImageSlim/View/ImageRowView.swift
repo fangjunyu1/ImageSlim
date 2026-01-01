@@ -51,8 +51,8 @@ struct ImageRowView: View {
                 } else {
                     hoveringIndex = nil
                 }
-                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
             }
+            .modifier(HoverModifier())
             .cornerRadius(4)
             
             Spacer().frame(width:20)
@@ -134,9 +134,7 @@ struct ImageRowView: View {
                         print("抖动锁图标")
                         triggerShake()
                     }
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                    }
+                    .modifier(HoverModifier())
                 } else {
                     // 下载按钮
                     Button(action: {
@@ -167,9 +165,7 @@ struct ImageRowView: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                    }
+                    .modifier(HoverModifier())
                     .disabled(item.isDownloaded)
                 }
             } else if item.compressionState == .pending{
@@ -241,4 +237,5 @@ extension ImageRowView {
             .environmentObject(CompressionManager.shared)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
     }
+    .frame(width: 350,height: 100)
 }

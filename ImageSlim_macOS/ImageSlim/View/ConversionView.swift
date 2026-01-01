@@ -86,13 +86,7 @@ struct ConversionView: View {
                             }
                             .buttonStyle(.plain)
                             .frame(height: 25)
-                            .onHover(perform: { isHovering in
-                                if isHovering {
-                                    NSCursor.pointingHand.set()
-                                } else {
-                                    NSCursor.arrow.set()
-                                }
-                            })
+                            .modifier(HoverModifier())
                         }
                     }
                 }
@@ -121,13 +115,7 @@ struct ConversionView: View {
                         .scaledToFit()
                         .frame(width: 150)
                 }
-                .onHover(perform: { isHovering in
-                    if isHovering {
-                        NSCursor.pointingHand.set()
-                    } else {
-                        NSCursor.arrow.set()
-                    }
-                })
+                .modifier(HoverModifier())
                 .onTapGesture {
                     showImporter = true
                 }

@@ -45,7 +45,7 @@ struct suponsorListView: View {
                     Text("\(product.displayPrice)")
                     .foregroundColor(selectedNum == item.id ? .white : colorScheme == .light ? .black : .white)
                 } else {
-                    Text("$ --)")
+                    Text("$ --")
                         .foregroundColor(selectedNum == item.id ? .white : .black)
                 }
             }
@@ -60,16 +60,18 @@ struct suponsorListView: View {
         .onHover { isHovering in
             if isHovering {
                 selectedNum = item.id
-                NSCursor.pointingHand.set()
             } else {
                 selectedNum = nil
-                NSCursor.arrow.set()
             }
         }
+        .modifier(HoverModifier())
     }
 }
 
 #Preview {
-    suponsorListView(iapManager: IAPManager.shared, item: SuponsorStruct(id: "SponsoredCoffees", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0), selectedNum: .constant("SponsoredCoffee"))
-        // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+    VStack {
+        suponsorListView(iapManager: IAPManager.shared, item: SuponsorStruct(id: "SponsoredCoffees", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0), selectedNum: .constant("SponsoredCoffee"))
+            // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+    }
+    .frame(width: 300)
 }

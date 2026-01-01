@@ -47,9 +47,7 @@ struct ContentView: View {
                 .foregroundColor(appStorage.selectedView == .compression ?
                                  colorScheme == .light ? .black : .white :
                         .gray)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                }
+                .modifier(HoverModifier())
                 
                 if appStorage.EnableImageConversion {
                     Spacer().frame(height: 20)
@@ -74,9 +72,7 @@ struct ContentView: View {
                     .foregroundColor(appStorage.selectedView == .conversion ?
                                      colorScheme == .light ? .black : .white :
                             .gray)
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                    }
+                    .modifier(HoverModifier())
                 }
                 
                 Spacer().frame(height: 20)
@@ -101,9 +97,7 @@ struct ContentView: View {
                 .foregroundColor(appStorage.selectedView == .settings ?
                                  colorScheme == .light ? .black : .white :
                         .gray)
-                .onHover { isHovering in
-                    isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                }
+                .modifier(HoverModifier())
             }
             .frame(width: 130)
             .lineLimit(1)
@@ -125,16 +119,12 @@ struct ContentView: View {
                     Text("Thank you for your support")
                         .font(.footnote)
                         .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
-                        .onHover { isHovering in
-                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                        }
+                        .modifier(HoverModifier())
                 } else {
                     Text("Sponsor Us")
                         .font(.footnote)
                         .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
-                        .onHover { isHovering in
-                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                        }
+                        .modifier(HoverModifier())
                 }
             })
             .buttonStyle(.plain)

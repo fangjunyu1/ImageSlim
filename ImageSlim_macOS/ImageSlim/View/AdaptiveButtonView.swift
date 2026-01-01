@@ -45,9 +45,7 @@ struct AdaptiveButtonView: View {
                 }
             })
             .buttonStyle(.plain)
-            .onHover { isHovering in
-                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-            }
+            .modifier(HoverModifier())
             
             Spacer().frame(height: 20)
             
@@ -78,9 +76,7 @@ struct AdaptiveButtonView: View {
                 }
             })
             .buttonStyle(.plain)
-            .onHover { isHovering in
-                isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-            }
+            .modifier(HoverModifier())
         } else {
             Color.clear.frame(width: 120,height:35)
                 .opacity(0)

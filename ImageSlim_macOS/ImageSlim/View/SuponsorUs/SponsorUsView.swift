@@ -13,55 +13,40 @@ struct SponsorUsView: View {
     @State private var selectedNum: String? = nil
     @EnvironmentObject var iapManager: IAPManager
     @EnvironmentObject var appStorage: AppStorage
+    
     private var suponsorList: [SuponsorStruct] = [
         SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
         SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
         SuponsorStruct(id: "SponsorUsABook", icon: "📖", title: "Sponsor us a book", subtitle: "We may be able to solve the next problem with it", price: 6.0),
         SuponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
     ]
+    
     var body: some View {
             ScrollView(showsIndicators: false) {
                 // 赞助我们-图片
                 ZStack {
-                    if !appStorage.inAppPurchaseMembership {
-                        Image("supportUs")
-                            .resizable()
-                            .scaledToFill()
-                            .cornerRadius(10)
-                            .opacity(colorScheme == .light ? 1 : 0.3)
-                        HStack {
-                            VStack {
-                                Text("Sponsor Us")
-                                    .font(.title2)
-                                Spacer().frame(height:10)
-                                Text("Give someone a rose, and the fragrance will linger on your hands")
-                                    .foregroundColor(.gray)
-                                    .font(.footnote)
-                            }
-                            .frame(width: 150)
-                            Spacer()
+                    let topImgName = !appStorage.inAppPurchaseMembership ? "supportUs" : "thanks"
+                    let topImgTitle = !appStorage.inAppPurchaseMembership ? "Sponsor Us" : "Thank you for your support"
+                    let topImgSubTitle = !appStorage.inAppPurchaseMembership ? "Give someone a rose, and the fragrance will linger on your hands" : "Your support keeps free software alive."
+                    Image(topImgName)
+                        .resizable()
+                        .scaledToFill()
+                        .cornerRadius(10)
+                        .opacity(colorScheme == .light ? 1 : 0.3)
+                    HStack {
+                        if appStorage.inAppPurchaseMembership { Spacer()}
+                        VStack {
+                            Text(LocalizedStringKey(topImgTitle))
+                                .font(.title2)
+                            Spacer().frame(height:10)
+                            Text(LocalizedStringKey(topImgSubTitle))
+                                .foregroundColor(.gray)
+                                .font(.footnote)
                         }
-                        .padding(.leading,10)
-                    } else {
-                        Image("thanks")
-                            .resizable()
-                            .scaledToFill()
-                            .cornerRadius(10)
-                            .opacity(colorScheme == .light ? 1 : 0.3)
-                        HStack {
-                            Spacer()
-                            VStack {
-                                Text("Thank you for your support")
-                                    .font(.title2)
-                                Spacer().frame(height:10)
-                                Text("Your support keeps free software alive.")
-                                    .foregroundColor(.gray)
-                                    .font(.footnote)
-                            }
-                            .frame(width: 170)
-                        }
-                        .padding(.trailing,10)
+                        .frame(width: 150)
+                        if !appStorage.inAppPurchaseMembership { Spacer() }
                     }
+                    .padding(.horizontal,10)
                 }
                 .frame(width:430,height:110)
                 
@@ -91,7 +76,7 @@ struct SponsorUsView: View {
                         let iCloudIAP = store.bool(forKey: "inAppPurchaseMembership")
                         appStorage.inAppPurchaseMembership = iCloudIAP
                     }, label: {
-                        HStack(spacing:0) {
+                        HStack(spacing:3) {
                             Text("Restore in-app purchases")
                                 .fontWeight(.bold)
                             Text("(iCloud)")
@@ -99,9 +84,7 @@ struct SponsorUsView: View {
                         }
                     })
                     .buttonStyle(.plain)
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                    }
+                    .modifier(HoverModifier())
                 }
                 Spacer().frame(height:20)
                 
@@ -120,11 +103,25 @@ struct SponsorUsView: View {
                             .cornerRadius(4)
                     })
                     .buttonStyle(.plain)
-                    .onHover { isHovering in
-                        isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                    }
+                    .modifier(HoverModifier())
                 }
                 Spacer().frame(height:30)
+                
+#if DEBUG
+                HStack(spacing:10) {
+                    Button("新增内购标识") {
+                        appStorage.inAppPurchaseMembership = true
+                    }
+                    Button("移除内购标识") {
+                        appStorage.inAppPurchaseMembership = false
+                    }
+                }
+                .font(.footnote)
+                .buttonStyle(.plain)
+                .foregroundColor(.gray)
+                .padding(.vertical,10)
+                
+#endif
             }
         .frame(width: 400)
         .padding(.top,14)
@@ -169,9 +166,7 @@ struct SponsorUsView: View {
                                 .cornerRadius(3)
                         })
                         .buttonStyle(.plain)
-                        .onHover { isHovering in
-                            isHovering ? NSCursor.pointingHand.set() : NSCursor.arrow.set()
-                        }
+                        .modifier(HoverModifier())
                     }
                     .frame(width: 200,height:170)
                     .background(.white)
@@ -187,5 +182,5 @@ struct SponsorUsView: View {
     SponsorUsView()
         .environmentObject(IAPManager.shared)
         .environmentObject(AppStorage.shared)
-        // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+//         .environment(\.locale, .init(identifier: "ml"))  // 设置为马拉雅拉姆语
 }
