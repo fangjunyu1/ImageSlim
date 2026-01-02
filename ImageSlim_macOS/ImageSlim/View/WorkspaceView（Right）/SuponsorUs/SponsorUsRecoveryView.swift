@@ -14,6 +14,8 @@ struct SponsorUsRecoveryView: View {
     var body: some View {
         let recoveryText = appStorage.inAppPurchaseMembership ? "Recovery successful" : "No recovery records found"
         let lottieName = appStorage.inAppPurchaseMembership ? "check" : "NoEntry"
+        let soundName = appStorage.inAppPurchaseMembership ? "success" : "errorSound"
+        
         VStack {
             LottieMacView(filename: lottieName, isPlaying: true, playCount: 1, isReversed: false)
                 .scaledToFit()
@@ -31,7 +33,7 @@ struct SponsorUsRecoveryView: View {
         .padding(.horizontal,14)
         .frame(width: 200,height: 200)
         .onAppear {
-            sound.playSound(named: "success")   // 播放音效
+            sound.playSound(named: soundName)   // 播放音效
         }
     }
 }

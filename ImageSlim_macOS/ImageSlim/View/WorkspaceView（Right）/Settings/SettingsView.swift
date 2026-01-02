@@ -13,7 +13,6 @@ struct SettingsView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
     @Environment(\.openURL) var openURL
-    @State var saveName: String = "Select Save Location"
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -61,7 +60,7 @@ struct SettingsView: View {
                         SettingsItemView(
                             icon: "square.and.arrow.down",
                             title: "Save location",
-                            type: .SaveLocationButton($saveName))
+                            type: .SaveLocationButton)
                         
                         Divider().padding(.leading,25)
                         

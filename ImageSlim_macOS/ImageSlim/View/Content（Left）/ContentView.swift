@@ -11,7 +11,6 @@ import Zip
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
-    @StateObject var contentVM = ContentViewModel()
     @State private var showSponsorUs = false
     
     var body: some View {
@@ -106,11 +105,7 @@ struct ContentView: View {
             Spacer()
             
             // 清除队列和下载全部视图
-            AdaptiveButtonView(showDownloadsProgress: $contentVM.showDownloadsProgress, progress: $contentVM.progress, zipImages:  {
-                Task {
-                    contentVM.zipImages()
-                }
-            })
+            AdaptiveButtonView()
             
             Button(action:{
                 showSponsorUs = true

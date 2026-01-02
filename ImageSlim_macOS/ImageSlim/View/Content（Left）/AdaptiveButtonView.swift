@@ -11,9 +11,8 @@ import SwiftUI
 
 struct AdaptiveButtonView: View {
     @EnvironmentObject var appStorage: AppStorage
-    @Binding var showDownloadsProgress: Bool
-    @Binding var progress: Double
-    var zipImages: () -> Void
+    @State var progress = 0.0
+    @State var showDownloadsProgress = false
     
     var body: some View {
         // 图片列表
@@ -52,7 +51,7 @@ struct AdaptiveButtonView: View {
             // 下载全部
             Button(action: {
                 Task {
-                    zipImages()
+                    FileUtils.zipImages(isPurchase:appStorage.inAppPurchaseMembership, limitImageSize: appStorage.limitImageSize,keepOriginalFileName: appStorage.keepOriginalFileName,images: images,showDownloadsProgress: $showDownloadsProgress,progress: $progress)
                 }
             }, label: {
                 ZStack {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsItemTypeView: View {
     @Environment(\.openURL) var openURL
+    @State var saveName: String = "Select Save Location"
     let type: SettingsItemType
     var body: some View {
         switch type {
@@ -32,16 +33,16 @@ struct SettingsItemTypeView: View {
             .pickerStyle(.menu)
             .labelsHidden()
             .fixedSize() // 不随容器拉伸
-        case .SaveLocationButton(let binding):
+        case .SaveLocationButton:
             Button(action: {
-                FileUtils.createSaveLocation(saveName:binding)
+                FileUtils.createSaveLocation(saveName:$saveName)    // 选择保存目录 - 安全书签
             }, label: {
-                Text(LocalizedStringKey(binding.wrappedValue))
+                Text(LocalizedStringKey(saveName))
             })
             .buttonStyle(.plain)
             .modifier(HoverModifier())
             .onAppear {
-                FileUtils.refreshSaveName(saveName: binding)
+                FileUtils.refreshSaveName(saveName: $saveName)  // 显示视图时，修改目录名称
             }
         case .ToggleThirdParty(let pngquant, let gifsicle):
             Text("Pngquant")
