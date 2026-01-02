@@ -11,7 +11,6 @@ import QuickLookUI
 import SwiftUI
 import Zip
 
-@MainActor
 enum FileUtils {
     
     // MARK: 将文件保存到临时文件夹
@@ -27,7 +26,6 @@ enum FileUtils {
             try fileManager.copyItem(at: fileURL, to: destinationURL)
             return destinationURL
         } catch {
-            print("复制失败: \(error)")
             return destinationURL
         }
     }
@@ -48,6 +46,7 @@ enum FileUtils {
     }
     
     // MARK: 询问用户选择保存目录，并保存图片/Zip
+    @MainActor
     static func askUserForSaveLocation(type: askUserForSaveLocationEnum) {
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
@@ -79,6 +78,7 @@ enum FileUtils {
     }
     
     // MARK: 保存单张图片
+    @MainActor
     static func saveImg(file:CustomImages,url:URL) {
         // 获取文件名称，并拆分为 文件名+后缀名
         let nsName = file.name as NSString
@@ -108,6 +108,7 @@ enum FileUtils {
     }
     
     // MARK: 下载图片到文件夹
+    @MainActor
     static func saveToDownloads(file: CustomImages) {
         // 获取目录路径
         // 如果有安全书签，保存到安全书签的URL
@@ -132,6 +133,7 @@ enum FileUtils {
     }
     
     // MARK: 保存路径-安全书签
+    @MainActor
     static func createSaveLocation(saveName: Binding<String>) {
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
@@ -154,6 +156,7 @@ enum FileUtils {
     }
     
     // MARK: 修改保存名称
+    @MainActor
     static func refreshSaveName(saveName: Binding<String>) {
         // 如果没有安全书签，保存目录默认为“选择保存目录”
         guard let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") else {
@@ -261,6 +264,7 @@ extension FileUtils {
 // MARK: Zip 相关代码
 extension FileUtils {
     // Zip 压缩图片
+    @MainActor
     static func zipImages(isPurchase: Bool,limitImageSize: Int,keepOriginalFileName: Bool,images: [CustomImages],showDownloadsProgress:Binding<Bool>, progress: Binding<Double>) {
         Task {
             do {

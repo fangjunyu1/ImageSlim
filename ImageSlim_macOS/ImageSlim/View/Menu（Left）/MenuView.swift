@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MenuView.swift
 //  ImageSlim
 //
 //  Created by 方君宇 on 2025/6/18.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Zip
 
-struct ContentView: View {
+struct MenuView: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
     @State private var showSponsorUs = false
@@ -113,12 +113,12 @@ struct ContentView: View {
                 if appStorage.inAppPurchaseMembership {
                     Text("Thank you for your support")
                         .font(.footnote)
-                        .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
+                        .foregroundColor(.gray)
                         .modifier(HoverModifier())
                 } else {
                     Text("Sponsor Us")
                         .font(.footnote)
-                        .foregroundColor(appStorage.selectedView == .sponsorUs ? .black : .gray)
+                        .foregroundColor(.gray)
                         .modifier(HoverModifier())
                 }
             })
@@ -140,7 +140,7 @@ struct ContentView: View {
 
 
 #Preview {
-    ContentView()
+    MenuView()
         .frame(width:200)
         .environmentObject(AppStorage.shared)
     // .environment(\.locale, .init(identifier: "ml")) // 设置为德语

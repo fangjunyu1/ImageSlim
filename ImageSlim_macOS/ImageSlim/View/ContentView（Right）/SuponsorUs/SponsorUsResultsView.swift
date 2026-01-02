@@ -31,6 +31,13 @@ struct SponsorUsResultsView: View {
         }
         .padding(.horizontal,14)
         .frame(width: 300,height: 250)
+        .overlay {
+            LottieMacView(filename: "Fireworks1", isPlaying: true, playCount: 0, isReversed: false)
+                .scaledToFit()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 300, height: 250)
+                .disabled(true)
+        }
         .onAppear {
             sound.playSound(named: "success")   // 播放音效
         }

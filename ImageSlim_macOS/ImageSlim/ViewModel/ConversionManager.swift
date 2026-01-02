@@ -147,4 +147,47 @@ class ConversionManager:ObservableObject {
             completion(false)
         }
     }
+    
+    // 根据获取的 URL，存储图像到 CustomImages 数组中
+    func savePictures(url tmpURL: [URL]) {
+        print("进入 savePictures 方法")
+        var compressImages: [CustomImages] = []
+        for url in tmpURL {
+            
+            // 获取 Finder 上的大小
+            let fileSize = FileUtils.getFileSize(fileURL: url)
+            
+            // 加载图片对象
+            guard let nsImage = NSImage(contentsOf: url) else {
+                print("无法加载粘贴的图片")
+                continue
+            }
+            
+            let imageName = url.lastPathComponent
+            let imageType = url.pathExtension.uppercased()
+            
+            let compressionState: CompressionState = .pending
+            
+            // 内购用户 or 文件大小合规
+            let customImage = CustomImages(
+                image: nsImage,
+                name: imageName,
+                type: imageType,
+                inputSize: fileSize,
+                inputURL: url,
+                compressionState: compressionState
+            )
+            
+            DispatchQueue.main.async {
+                self.appStorage.conversionImages.append(customImage)
+            }
+            
+            if compressionState == .pending {
+                compressImages.append(customImage)
+            }
+        }
+        
+        // 显示全部上传的图片，开始压缩
+        enqueue(compressImages)    // 立即压缩
+    }
 }

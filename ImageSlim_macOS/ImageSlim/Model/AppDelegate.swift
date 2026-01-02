@@ -51,25 +51,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // MARK: 创建分栏视图
         
         // content 为左侧显示的轻压图片 TabView
-        let contentVC = NSHostingController(rootView:
-            ContentView()
+        let menuVC = NSHostingController(rootView:
+            MenuView()
                 .environmentObject(appStorage)
                 .environmentObject(iapManager)
                 .environmentObject(sound)
         )
         // workspace 为右侧显示的主视图内容
         let workspaceVC = NSHostingController(rootView:
-            WorkspaceView()
-            .environmentObject(appStorage)
-            .environmentObject(iapManager)
-            .environmentObject(sound)
+             ContentView()
+                .environmentObject(appStorage)
+                .environmentObject(iapManager)
+                .environmentObject(sound)
         )
         
         // 创建 NSSplitViewController(分栏界面) 并添加子项
         let splitVC = NSSplitViewController()
         
         // 创建 NSSplitViewItem
-        let sidebarItem = NSSplitViewItem(sidebarWithViewController: contentVC)
+        let sidebarItem = NSSplitViewItem(sidebarWithViewController: menuVC)
         sidebarItem.canCollapse = false // 不允许用户折叠
         let viewItem = NSSplitViewItem(viewController: workspaceVC)
         
