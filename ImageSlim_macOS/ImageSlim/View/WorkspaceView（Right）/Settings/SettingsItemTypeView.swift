@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsItemTypeView: View {
     @Environment(\.openURL) var openURL
-    @State var saveName: String = "Select Save Location"
+    @State var saveName: String = AppStorage.shared.saveName
     let type: SettingsItemType
     var body: some View {
         switch type {

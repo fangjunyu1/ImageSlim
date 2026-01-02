@@ -28,6 +28,8 @@ class AppStorage:ObservableObject {
     @Published var compressedImages:[CustomImages] = []
     // 转换图片数组
     @Published var conversionImages:[CustomImages] = []
+    // 默认选择保存文件夹的提示
+    @Published var saveName = "Select Save Location"
 
     // 菜单栏显示图标，true为显示
     @Published var displayMenuBarIcon = true { didSet { updateValue(key: "displayMenuBarIcon", newValue: displayMenuBarIcon, oldValue: oldValue)}}

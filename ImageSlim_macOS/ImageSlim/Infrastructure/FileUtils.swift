@@ -13,8 +13,9 @@ import Zip
 
 @MainActor
 enum FileUtils {
+    
     // MARK: 将文件保存到临时文件夹
-    // 将图片存储到照片并返回URL,将临时文件路径存储到 Temporary 文件夹，并返回 URL
+    // 用于将外部位置的图片存储到 Temporary 文件夹，并返回 URL
     static func saveURLToTempFile(fileURL: URL) -> URL? {
         let fileManager = FileManager.default
         let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileURL.lastPathComponent)
@@ -32,7 +33,7 @@ enum FileUtils {
     }
     
     // MARK: 保存图片并返回URL
-    // 将图片存储到照片并返回URL
+    // 仅用于点击图片列表时，返回 URL 给 QuickLook 并预览图片。
     static func saveImageToTempFile(image: NSImage) -> URL? {
         guard let tiffData = image.tiffRepresentation,
               let bitmap = NSBitmapImageRep(data: tiffData),
@@ -41,13 +42,13 @@ enum FileUtils {
         }
         
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
+        print("临时文件夹:\(FileManager.default.temporaryDirectory)")
         try? pngData.write(to: tempURL)
         return tempURL
     }
     
-    // MARK: 用户选择保存目录，之后保存单张图片
-    /// 弹出 NSSavePanel 或 NSOpenPanel 让用户选择目录，并保存书签
-    static func askUserForSaveLocation(file: CustomImages) {
+    // MARK: 询问用户选择保存目录，并保存图片/Zip
+    static func askUserForSaveLocation(type: askUserForSaveLocationEnum) {
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
@@ -63,7 +64,12 @@ enum FileUtils {
                 print("书签保存成功")
                 
                 if url.startAccessingSecurityScopedResource() {
-                    saveImg(file: file, url: url)
+                    switch type {
+                    case .image(let image):
+                        saveImg(file: image, url: url)
+                    case .images(let ImagesURL, let showDownloadsProgress, let progress):
+                        saveZip(ImagesURL: ImagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
+                    }
                     url.stopAccessingSecurityScopedResource()
                 }
             } catch {
@@ -72,41 +78,13 @@ enum FileUtils {
         }
     }
     
-    // MARK: 用户选择保存目录，之后保存整个Zip文件
-    /// 弹出 NSSavePanel 或 NSOpenPanel 让用户选择目录，并保存书签
-    static func askUserForSaveLocation(ImagesURL: [URL],showDownloadsProgress: Binding<Bool>,progress: Binding<Double>) {
-        DispatchQueue.main.async {
-            let panel = NSOpenPanel()
-            panel.canChooseFiles = false
-            panel.canChooseDirectories = true
-            panel.allowsMultipleSelection = false
-            let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
-            panel.prompt = saveDir
-            
-            if panel.runModal() == .OK, let url = panel.url {
-                do {
-                    let bookmark = try url.bookmarkData(options: [.withSecurityScope],includingResourceValuesForKeys: nil,
-                                                        relativeTo: nil)
-                    UserDefaults.standard.set(bookmark, forKey: "SaveLocation")
-                    print("书签保存成功")
-                    
-                    if url.startAccessingSecurityScopedResource() {
-                        saveZip(ImagesURL: ImagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
-                        url.stopAccessingSecurityScopedResource()
-                    }
-                } catch {
-                    print("书签创建失败: \(error)")
-                }
-            }
-        }
-    }
-    
-    // 保存图片
+    // MARK: 保存单张图片
     static func saveImg(file:CustomImages,url:URL) {
         // 获取文件名称，并拆分为 文件名+后缀名
         let nsName = file.name as NSString
         let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
         let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
+        
         // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
         let finalName: String
         if !AppStorage.shared.keepOriginalFileName {
@@ -139,7 +117,7 @@ enum FileUtils {
                 let url = try URL(resolvingBookmarkData: bookmark, options: [.withSecurityScope], relativeTo: nil, bookmarkDataIsStale: &isStale)
                 
                 if url.startAccessingSecurityScopedResource() {
-                    FileUtils.saveImg(file: file,url: url)
+                    saveImg(file: file,url: url)
                     url.stopAccessingSecurityScopedResource()
                 } else {
                     print("无法访问资源")
@@ -149,7 +127,7 @@ enum FileUtils {
             }
         } else {
             // 如果没有保存过目录，让用户选择
-            FileUtils.askUserForSaveLocation(file: file)
+            FileUtils.askUserForSaveLocation(type: .image(image: file))
         }
     }
     
@@ -179,7 +157,7 @@ enum FileUtils {
     static func refreshSaveName(saveName: Binding<String>) {
         // 如果没有安全书签，保存目录默认为“选择保存目录”
         guard let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") else {
-            saveName.wrappedValue = "Select Save Location"
+            saveName.wrappedValue = AppStorage.shared.saveName
             return
         }
         // 如果有安全书签，则获取图片保存目录的文件夹名称
@@ -194,7 +172,7 @@ enum FileUtils {
             saveName.wrappedValue = url.lastPathComponent
         } catch {
             print("解析书签失败: \(error)")
-            saveName.wrappedValue = "Select Save Location"
+            saveName.wrappedValue = AppStorage.shared.saveName
         }
     }
 }
@@ -338,7 +316,7 @@ extension FileUtils {
                     }
                     
                 } else {
-                    FileUtils.askUserForSaveLocation(ImagesURL: ImagesURL,showDownloadsProgress: showDownloadsProgress,progress: progress)
+                    FileUtils.askUserForSaveLocation(type: .images(ImagesURL: ImagesURL, showDownloadsProgress: showDownloadsProgress, progress: progress))
                 }
             } catch {
                 showDownloadsProgress.wrappedValue = false
@@ -382,4 +360,9 @@ extension FileUtils {
             print("在SaveZip方法中崩溃")
         }
     }
+}
+
+enum askUserForSaveLocationEnum {
+    case image(image:CustomImages)
+    case images(ImagesURL:[URL],showDownloadsProgress:Binding<Bool>,progress: Binding<Double>)
 }
