@@ -14,7 +14,7 @@ class WorkSpaceViewModel: ObservableObject {
     var appStorage = AppStorage.shared
     private init() {}
     
-    func onDrop(imagesCount: Int,providers:[NSItemProvider],savePicture: @escaping (_ imageURLs:[URL]) -> Void) -> Bool {
+    func onDrop(imagesCount: Int,providers:[NSItemProvider],savePicture: @escaping (_ imageURLs:[URL]) -> Void) async {
         print("进入 onDrop 方法")
         // 判断是否限制图片数量
         let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
@@ -23,66 +23,50 @@ class WorkSpaceViewModel: ObservableObject {
         
         // 根据限制数量，截取遍历的有效图片数组
         let effectiveProviders = islimitImagesNum
-            ? Array(providers.prefix(limitNum))
-            : providers
+        ? Array(providers.prefix(limitNum))
+        : providers
         
         // 图片 URL 列表，用于返回并添加到对应 压缩/转换 的队列
         var imageURLs: [URL] = []
         
-        // 设置调度组，防止 loadFileRepresentation 异步任务立即返回的问题
-        let group = DispatchGroup()
-        
-        // 拖拽返回的状态，默认为false，如果有效值，则改为true
-        var accepted = false
-        
-        
-        
-        // 遍历每一个图片
-        for provider in effectiveProviders {
-            
-            // 检测类型是否为图片
-            if provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) {
-                // 当前有图片，返回值改为true
-                accepted = true
-                
-                print("进入组")
-                group.enter()
-                
-                let syncQueue = DispatchQueue(label: "image.collect.queue")
-                provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
-                    
-                    // 如果解析图片报错，则输出错误
-                    if let error = error {
-                        print("loadFileRepresentation error:", error)
-                    }
-                    
-                    defer {
-                        print("离开组")
-                        group.leave()
-                    }
-                    // 获取拖入图片的URL，将图片保存到临时文件
-                    guard let fileURL = url,
-                          let imageURL = FileUtils.saveURLToTempFile(fileURL: fileURL) else { return }
-                    
-                    // 将临时文件添加到数组中
-                    syncQueue.async {
-                        imageURLs.append(imageURL)
+        // 进入 withTaskGroup（TaskGroup）
+        await withTaskGroup(of: URL?.self) { group in
+            print("进入withTaskGroup方法")
+            // 遍历每一个图片
+            for provider in effectiveProviders {
+                print("遍历图片")
+                // 检测类型是否为图片
+                guard provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) else {
+                    continue
+                }
+                group.addTask {
+                    // 桥接 TaskGroup 和 loadFileRepresentation 回调闭包，将 loadFileRepresentation 回调闭包的值返回给 addTask
+                    await withCheckedContinuation { cont in
+                        provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
+                            
+                            // 错误场景：返回nil
+                            guard let fileURL = url else {
+                                cont.resume(returning: nil)
+                                return
+                            }
+                            
+                            // 成功场景:返回图片 URL
+                            let imageURL = FileUtils.saveURLToTempFile(fileURL: fileURL)
+                            cont.resume(returning: imageURL)
+                        }
                     }
                 }
-            } else {
-                print("当前类型不是图片")
-                continue
+            }
+            
+            for await url in group {
+                if let url = url {
+                    imageURLs.append(url)
+                }
             }
         }
         
-        // 当全部组完成后执行
-        group.notify(queue: .main) {
-            // 调用闭包，将图片URL数组传递进入
-            savePicture(imageURLs)
-        }
-        
-        // 返回是否接受了拖入内容
-        return accepted
+        // 调用闭包，将图片URL数组传递进入
+        savePicture(imageURLs)
     }
     
     func fileImporter(result: Result<[URL], any Error>,savePictures: @escaping (_ imageURLs:[URL]) -> Void) {

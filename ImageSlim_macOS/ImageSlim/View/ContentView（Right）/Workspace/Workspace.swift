@@ -49,14 +49,18 @@ struct Workspace: View {
         .environmentObject(conversionManager)
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
-            workSpaceVM.onDrop(imagesCount: images.count, providers: providers) { imageURLs in
-                switch type {
-                case .compression:
-                    compressManager.savePictures(url: imageURLs)
-                case .conversion:
-                    conversionManager.savePictures(url: imageURLs)
+            Task {
+                await workSpaceVM.onDrop(imagesCount: images.count, providers: providers) { imageURLs in
+                    switch type {
+                    case .compression:
+                        compressManager.savePictures(url: imageURLs)
+                    case .conversion:
+                        conversionManager.savePictures(url: imageURLs)
+                    }
                 }
             }
+            // 因为onDrop不支持async闭包，直接返回true
+            return true
         }
         .fileImporter(
             isPresented: $showImporter,
