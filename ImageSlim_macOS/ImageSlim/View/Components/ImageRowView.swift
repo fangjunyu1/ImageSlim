@@ -17,8 +17,7 @@ struct ImageRowView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hoveringIndex: Int? = nil
     @EnvironmentObject var appStorage: AppStorage
-    @EnvironmentObject var compressManager: CompressionManager
-    @ObservedObject var item: CustomImages
+    var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
     var index: Int
     var previewer: ImagePreviewWindow
@@ -27,10 +26,12 @@ struct ImageRowView: View {
     var body: some View {
         HStack {
             ZStack {
-                Image(nsImage: item.image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 35, height: 35)
+                if let thumbnail = item.thumbnail {
+                    Image(nsImage: thumbnail)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 35, height: 35)
+                }
                 Group {
                     Color.gray.opacity(0.3)
                     Image(systemName:"plus.magnifyingglass")
@@ -219,12 +220,14 @@ extension ImageRowView {
         // 根据 AppStorage 选项，选择图片打开方式：
         if appStorage.imagePreviewMode == .quickLook {
             // 使用 Quick Look 预览图片
-            if let url = FileUtils.saveImageToTempFile(image: item.image) {
+            if let image = item.image,let url = FileUtils.saveImageToTempFile(image: image) {
                 FileUtils.previewImage(at: url)
             }
         } else if appStorage.imagePreviewMode == .window {
             // 使用新窗口预览图片
-            previewer.show(image: Image(nsImage:appStorage.compressedImages[index].image))
+            if let image = item.image {
+                previewer.show(image: Image(nsImage: image))
+            }
         }
     }
 }
@@ -232,10 +235,10 @@ extension ImageRowView {
 #Preview {
     ZStack {
         Color.white.frame(width: 300,height:40)
-        ImageRowView(item: CustomImages(image: NSImage(named: "upload")!, name: "ooPAPiDIMwAoiDvPFIs7CZIAcyAqEyAgzB5gQ.webp", type: "PNG", inputSize: 1200000,outputSize: 840000,outputURL: URL(string: "http://www.fangjunyu.com"),compressionState: .completed), index: 0, previewer: ImagePreviewWindow(),imageType: .compression)
+        
+        ImageRowView(item: CustomImages(name: "1.png", type: "PNG", inputSize: 1000, inputURL: URL(string: "http://www.fangjunyu.com")!, compressionState: .compressing), index: 0, previewer: ImagePreviewWindow(), imageType: .compression)
             .frame(width: 300,height:40)
             .environmentObject(AppStorage.shared)
-            .environmentObject(CompressionManager.shared)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
     }
     .frame(width: 350,height: 100)

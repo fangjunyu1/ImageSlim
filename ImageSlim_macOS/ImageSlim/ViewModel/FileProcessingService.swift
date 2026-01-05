@@ -131,23 +131,37 @@ class FileProcessingService: ObservableObject {
         }
     }
     
-    func onReceive(Enqueue: @escaping (_ images:[CustomImages]) -> Void) {
+    func onReceive(type: WorkspaceType) {
         print("支持的格式有：\(NSPasteboard.general.types ?? [])")
+        
         let pb = NSPasteboard.general
-        var images: [CustomImages] = []
+        
+        // 图片 URL 列表，用于返回并添加到对应 压缩/转换 的队列
+        var imageURLs: [URL] = []
         
         if let urls = pb.readObjects(forClasses: [NSURL.self], options: nil) as? [URL] {
-            print("粘贴的是URL数组")
+            var imagesCount: Int {
+                switch type {
+                case .compression:
+                    appStorage.compressedImages.count
+                case .conversion:
+                    appStorage.conversionImages.count
+                }
+            }
+            // 判断是否限制图片数量
+            let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
+            // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
+            let limitNum = appStorage.limitImageNum - imagesCount
+            
+            // 根据限制数量，截取遍历的有效图片数组
+            let effectiveProviders = islimitImagesNum
+            ? Array(urls.prefix(limitNum))
+            : urls
+            
             // 读取urls文件
-            for url in urls {
+            for url in effectiveProviders {
                 // 获取 Finder 上的大小
                 let fileSize = FileUtils.getFileSize(fileURL: url)
-                
-                // 加载图片对象
-                guard let nsImage = NSImage(contentsOf: url) else {
-                    print("无法加载粘贴的图片")
-                    continue
-                }
                 
                 let imageName = url.lastPathComponent
                 let imageType = url.pathExtension.uppercased()
@@ -161,7 +175,6 @@ class FileProcessingService: ObservableObject {
                 print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
                 // 内购用户 or 文件大小合规
                 let customImage = CustomImages(
-                    image: nsImage,
                     name: imageName,
                     type: imageType,
                     inputSize: fileSize,
@@ -171,11 +184,15 @@ class FileProcessingService: ObservableObject {
                 
                 appStorage.compressedImages.append(customImage)
                 
-                if compressionState == .pending {
-                    images.append(customImage)
+                switch type {
+                case .compression:
+                    WorkSpaceViewModel.shared.saveCompressPictures(url: imageURLs)
+                case .conversion:
+                    WorkSpaceViewModel.shared.saveConversionPictures(url: imageURLs)
                 }
             }
         } else if let imageData = pb.data(forType: .tiff) {
+            
             print("粘贴的是图片")
             //pastedImage = image
             // 将粘贴的图片转换成png格式
@@ -187,12 +204,6 @@ class FileProcessingService: ObservableObject {
                 // 获取 Finder 上的大小
                 let fileSize = FileUtils.getFileSize(fileURL: url)
                 
-                // 加载图片对象
-                guard let nsImage = NSImage(contentsOf: url) else {
-                    print("无法加载粘贴的图片")
-                    return
-                }
-                
                 let imageName = url.lastPathComponent
                 let imageType = url.pathExtension.uppercased()
                 
@@ -205,7 +216,6 @@ class FileProcessingService: ObservableObject {
                 print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
                 // 内购用户 or 文件大小合规
                 let customImage = CustomImages(
-                    image: nsImage,
                     name: imageName,
                     type: imageType,
                     inputSize: fileSize,
@@ -215,8 +225,11 @@ class FileProcessingService: ObservableObject {
                 
                 appStorage.compressedImages.append(customImage)
                 
-                if compressionState == .pending {
-                    images.append(customImage)
+                switch type {
+                case .compression:
+                    WorkSpaceViewModel.shared.saveCompressPictures(url: imageURLs)
+                case .conversion:
+                    WorkSpaceViewModel.shared.saveConversionPictures(url: imageURLs)
                 }
             } catch {
                 print("粘贴板写入过程发生报错")
@@ -228,6 +241,5 @@ class FileProcessingService: ObservableObject {
             print("剪贴板中无可识别内容")
             // pastedImage = nil
         }
-        Enqueue(images)
     }
 }

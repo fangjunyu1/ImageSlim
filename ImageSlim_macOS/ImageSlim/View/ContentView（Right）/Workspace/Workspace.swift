@@ -44,8 +44,6 @@ struct Workspace: View {
                 WorkspaceList(type: type, previewer: previewer)
             })
         }
-        .environmentObject(compressManager)
-        .environmentObject(conversionManager)
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             Task {
@@ -62,15 +60,7 @@ struct Workspace: View {
             filePS.fileImporter(type:type, result: result)
         }
         .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
-            filePS.onReceive() { compressImages in
-                // for-in循环结束，开始调用压缩图片
-                switch type {
-                case .compression:
-                    compressManager.enqueue(compressImages)
-                case .conversion:
-                    conversionManager.enqueue(compressImages)
-                }
-            }
+            filePS.onReceive(type: type)
         }
         
     }

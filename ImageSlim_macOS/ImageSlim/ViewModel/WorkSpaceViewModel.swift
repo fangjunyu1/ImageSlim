@@ -39,12 +39,6 @@ extension WorkSpaceViewModel {
             // 获取 Finder 上的大小
             let fileSize = FileUtils.getFileSize(fileURL: url)
             
-            // 加载图片对象
-            guard let nsImage = NSImage(contentsOf: url) else {
-                print("无法加载粘贴的图片")
-                continue
-            }
-            
             let imageName = url.lastPathComponent
             let imageType = url.pathExtension.uppercased()
             
@@ -52,7 +46,6 @@ extension WorkSpaceViewModel {
             
             // 内购用户 or 文件大小合规
             let customImage = CustomImages(
-                image: nsImage,
                 name: imageName,
                 type: imageType,
                 inputSize: fileSize,
@@ -236,7 +229,7 @@ extension WorkSpaceViewModel {
             "--force",
             "--output",
             outputURL.path,
-            image.inputURL!.path]
+            image.inputURL.path]
         
         runProcess(process: process, image: image, outputURL: outputURL, completion: completion)
     }
@@ -263,7 +256,7 @@ extension WorkSpaceViewModel {
         process.arguments = [
             "--optimize=3",
             "--colors", "\(quality)",
-            image.inputURL!.path,
+            image.inputURL.path,
             "--output",
             outputURL.path]
         
@@ -274,7 +267,7 @@ extension WorkSpaceViewModel {
     private func compressWithNative(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
         // MARK: macOS原生压缩类CGImageDestination的变量
         // 将 NSImage 转换为 CGImage
-        guard let tiffData = image.image.tiffRepresentation,
+        guard let tiffData = image.image?.tiffRepresentation,
               let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
               let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
             completion(false)
@@ -404,7 +397,7 @@ extension WorkSpaceViewModel {
     private func conversionWithNative(_ image: CustomImages, completion: @escaping (Bool) -> Void) {
         // MARK: macOS 原生转换类 Core Graphics
         // 获取CGImage
-        guard let tiffData = image.image.tiffRepresentation,
+        guard let tiffData = image.image?.tiffRepresentation,
               let bitmap = NSBitmapImageRep(data: tiffData),
               let cgImage = bitmap.cgImage else {
             print("无法获取 CGImage")
@@ -495,12 +488,6 @@ extension WorkSpaceViewModel {
             // 获取 Finder 上的大小
             let fileSize = FileUtils.getFileSize(fileURL: url)
             
-            // 加载图片对象
-            guard let nsImage = NSImage(contentsOf: url) else {
-                print("无法加载粘贴的图片")
-                continue
-            }
-            
             let imageName = url.lastPathComponent
             let imageType = url.pathExtension.uppercased()
             
@@ -508,7 +495,6 @@ extension WorkSpaceViewModel {
             
             // 内购用户 or 文件大小合规
             let customImage = CustomImages(
-                image: nsImage,
                 name: imageName,
                 type: imageType,
                 inputSize: fileSize,
