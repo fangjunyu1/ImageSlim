@@ -17,8 +17,7 @@ enum WorkspaceType {
 struct Workspace: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
-    @StateObject var compressManager = CompressionManager.shared
-    @StateObject var conversionManager = ConversionManager.shared
+    @StateObject var filePS = FileProcessingService.shared
     @StateObject var workSpaceVM = WorkSpaceViewModel.shared
     @State private var previewer = ImagePreviewWindow()
     @State private var isHovering = false   // 图片悬浮时
@@ -50,14 +49,7 @@ struct Workspace: View {
         .modifier(WindowsModifier())
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             Task {
-                await workSpaceVM.onDrop(imagesCount: images.count, providers: providers) { imageURLs in
-                    switch type {
-                    case .compression:
-                        compressManager.savePictures(url: imageURLs)
-                    case .conversion:
-                        conversionManager.savePictures(url: imageURLs)
-                    }
-                }
+                await filePS.onDrop(type: type,providers: providers)
             }
             // 因为onDrop不支持async闭包，直接返回true
             return true
@@ -67,18 +59,10 @@ struct Workspace: View {
             allowedContentTypes: [.image],
             allowsMultipleSelection: true
         ) { result in
-            
-            workSpaceVM.fileImporter(result: result) { imageURLs in
-                switch type {
-                case .compression:
-                    compressManager.savePictures(url: imageURLs)
-                case .conversion:
-                    compressManager.savePictures(url: imageURLs)
-                }
-            }
+            filePS.fileImporter(type:type, result: result)
         }
         .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
-            workSpaceVM.onReceive() { compressImages in
+            filePS.onReceive() { compressImages in
                 // for-in循环结束，开始调用压缩图片
                 switch type {
                 case .compression:
