@@ -17,6 +17,7 @@ enum WorkspaceType {
 struct Workspace: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
+    @EnvironmentObject var imageArray: ImageArrayViewModel
     @StateObject var filePS = FileProcessingService.shared
     @StateObject var workSpaceVM = WorkSpaceViewModel.shared
     @State private var previewer = ImagePreviewWindow()
@@ -28,9 +29,9 @@ struct Workspace: View {
         var images: [CustomImages] {
             switch type {
             case .compression:
-                appStorage.compressedImages
+                imageArray.compressedImages
             case .conversion:
-                appStorage.conversionImages
+                imageArray.conversionImages
             }
         }
         VStack {
@@ -45,6 +46,8 @@ struct Workspace: View {
             })
         }
         .modifier(WindowsModifier())
+        .environmentObject(workSpaceVM)
+        // 拖入图片
         .onDrop(of: [.image], isTargeted: $isHovering) { providers in
             Task {
                 await filePS.onDrop(type: type,providers: providers)
@@ -52,6 +55,7 @@ struct Workspace: View {
             // 因为onDrop不支持async闭包，直接返回true
             return true
         }
+        // 导入图片
         .fileImporter(
             isPresented: $showImporter,
             allowedContentTypes: [.image],
@@ -59,6 +63,7 @@ struct Workspace: View {
         ) { result in
             filePS.fileImporter(type:type, result: result)
         }
+        // Command + V 粘贴图片
         .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
             filePS.onReceive(type: type)
         }

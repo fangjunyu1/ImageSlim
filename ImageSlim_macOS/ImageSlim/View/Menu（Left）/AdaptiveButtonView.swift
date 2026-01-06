@@ -11,6 +11,8 @@ import SwiftUI
 
 struct AdaptiveButtonView: View {
     @EnvironmentObject var appStorage: AppStorage
+    @EnvironmentObject var imageArray: ImageArrayViewModel
+    var workSpaceVM = WorkSpaceViewModel.shared
     @State var progress = 0.0
     @State var showDownloadsProgress = false
     
@@ -18,19 +20,15 @@ struct AdaptiveButtonView: View {
         // 图片列表
         var images: [CustomImages] {
             if appStorage.selectedView == .compression {
-                appStorage.compressedImages
+                imageArray.compressedImages
             } else {
-                appStorage.conversionImages
+                imageArray.conversionImages
             }
         }
         
-        // 用户未完成内购，图片列表不为空，图片列表中有小于5MB的图片
-        // 或者用户完成内购，图片不为空
-        // 满足以上任一条件，显示下载和清除队列按钮
-        if (!appStorage.inAppPurchaseMembership && images.contains { $0.inputSize < appStorage.limitImageSize }) ||
-            (appStorage.inAppPurchaseMembership && !images.isEmpty) {
-            
-            // 清除队列
+        // MARK: 清除队列按钮
+        // 如果图片列表不为空，则显示清除队列按钮
+        if !images.isEmpty {
             Button(action: {
                 removeImages()
             }, label: {
@@ -45,13 +43,22 @@ struct AdaptiveButtonView: View {
             })
             .buttonStyle(.plain)
             .modifier(HoverModifier())
-            
+        } else {
+            Color.clear.frame(width: 120,height:35)
+                .opacity(0)
+        }
+        
+        // MARK: 下载图片按钮
+        // 用户未完成内购，图片列表不为空，图片列表中有小于5MB的图片
+        // 或者用户完成内购，图片不为空
+        // 满足以上任一条件，显示下载和清除队列按钮
+        if (!appStorage.inAppPurchaseMembership && images.contains { $0.inputSize < imageArray.limitImageSize }) ||
+            (appStorage.inAppPurchaseMembership && !images.isEmpty) {
             Spacer().frame(height: 20)
-            
             // 下载全部
             Button(action: {
                 Task {
-                    FileUtils.zipImages(isPurchase:appStorage.inAppPurchaseMembership, limitImageSize: appStorage.limitImageSize,keepOriginalFileName: appStorage.keepOriginalFileName,images: images,showDownloadsProgress: $showDownloadsProgress,progress: $progress)
+                    FileUtils.zipImages(isPurchase:appStorage.inAppPurchaseMembership, limitImageSize: imageArray.limitImageSize,keepOriginalFileName: appStorage.keepOriginalFileName,images: images,showDownloadsProgress: $showDownloadsProgress,progress: $progress)
                 }
             }, label: {
                 ZStack {
@@ -86,9 +93,9 @@ struct AdaptiveButtonView: View {
     
     func removeImages() {
         if appStorage.selectedView == .compression {
-            appStorage.compressedImages.removeAll()
+            imageArray.compressedImages.removeAll()
         } else {
-            appStorage.conversionImages.removeAll()
+            imageArray.conversionImages.removeAll()
         }
     }
 }

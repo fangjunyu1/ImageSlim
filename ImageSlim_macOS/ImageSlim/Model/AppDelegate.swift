@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var appStorage = AppStorage.shared
     var iapManager = IAPManager.shared
     var sound = SoundManager.shared
+    var imageArray = ImageArrayViewModel.shared
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         // 初始化键盘监听事件
@@ -56,6 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 .environmentObject(appStorage)
                 .environmentObject(iapManager)
                 .environmentObject(sound)
+                .environmentObject(imageArray)
         )
         // workspace 为右侧显示的主视图内容
         let workspaceVC = NSHostingController(rootView:
@@ -63,6 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 .environmentObject(appStorage)
                 .environmentObject(iapManager)
                 .environmentObject(sound)
+                .environmentObject(imageArray)
         )
         
         // 创建 NSSplitViewController(分栏界面) 并添加子项

@@ -15,11 +15,12 @@ enum ImageRowType {
 
 struct ImageRowView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var hoveringIndex: Int? = nil
+    @State private var hovering = false
     @EnvironmentObject var appStorage: AppStorage
+    @EnvironmentObject var workSpaceVM: WorkSpaceViewModel
+    @EnvironmentObject var imageArray: ImageArrayViewModel
     var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
-    var index: Int
     var previewer: ImagePreviewWindow
     var imageType: ImageRowType
     
@@ -39,7 +40,7 @@ struct ImageRowView: View {
                         .allowsHitTesting(false)
                 }
                 .frame(width: 35, height: 35)
-                .zIndex(hoveringIndex == index ? 1 : -1)
+                .zIndex(hovering ? 1 : -1)
             }
             // 悬停显示放大按钮
             .onTapGesture {
@@ -49,9 +50,9 @@ struct ImageRowView: View {
                 // 当鼠标进入视图区域时 isHovering = true
                 // 当鼠标离开视图区域时 isHovering = false
                 if isHovering {
-                    hoveringIndex = index
+                    hovering = true
                 } else {
-                    hoveringIndex = nil
+                    hovering = false
                 }
             }
             .modifier(HoverModifier())
@@ -72,11 +73,11 @@ struct ImageRowView: View {
                             .foregroundColor(colorScheme == .light ? Color(hex: "91C9FF") : Color(hex: "6c6c6c"))
                             .frame(width:50,height:16)
                             .cornerRadius(3)
-                        Text("\(item.type)")
+                        Text("\(item.inputType)")
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }
-                    if !appStorage.inAppPurchaseMembership && item.inputSize > appStorage.limitImageSize {
+                    if !appStorage.inAppPurchaseMembership && item.inputSize > imageArray.limitImageSize {
                         Text(FileUtils.TranslateSize(fileSize:item.inputSize))
                             .foregroundColor(.red)
                     } else {
@@ -122,7 +123,7 @@ struct ImageRowView: View {
                 Spacer().frame(width:10)
                 
                 // 赞助应用，显示下载按钮，未赞助应用，超过5MB的图片显示 锁图标
-                if !appStorage.inAppPurchaseMembership && item.inputSize > appStorage.limitImageSize {
+                if !appStorage.inAppPurchaseMembership && item.inputSize > imageArray.limitImageSize {
                     VStack {
                         Image(systemName:"lock.fill")
                             .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
@@ -236,7 +237,7 @@ extension ImageRowView {
     ZStack {
         Color.white.frame(width: 300,height:40)
         
-        ImageRowView(item: CustomImages(name: "1.png", type: "PNG", inputSize: 1000, inputURL: URL(string: "http://www.fangjunyu.com")!, compressionState: .compressing), index: 0, previewer: ImagePreviewWindow(), imageType: .compression)
+        ImageRowView(item: CustomImages(name: "1.png", inputType: "PNG", inputSize: 1000, inputURL: URL(string: "http://www.fangjunyu.com")!, compressionState: .compressing), previewer: ImagePreviewWindow(), imageType: .compression)
             .frame(width: 300,height:40)
             .environmentObject(AppStorage.shared)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语

@@ -20,14 +20,6 @@ class AppStorage:ObservableObject {
     
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
-    // 非内购用户，限制 20 张图片
-    @Published var limitImageNum = 20
-    // 非内购用户，限制 5MB 图片
-    @Published var limitImageSize = 5_000_000
-    // 压缩图片数组
-    @Published var compressedImages:[CustomImages] = []
-    // 转换图片数组
-    @Published var conversionImages:[CustomImages] = []
     // 默认选择保存文件夹的提示
     @Published var saveName = "Select Save Location"
 

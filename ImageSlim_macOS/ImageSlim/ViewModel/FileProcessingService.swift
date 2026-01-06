@@ -12,22 +12,36 @@ import UniformTypeIdentifiers
 class FileProcessingService: ObservableObject {
     static var shared = FileProcessingService()
     var appStorage = AppStorage.shared
+    var workSpaceVM = WorkSpaceViewModel.shared
+    var imageArray = ImageArrayViewModel.shared
     private init() {}
+    
+    private func getLimitedURLs(for type: WorkspaceType) -> [URL] {
+        let currentCount = type == .compression ?
+        imageArray.compressedImages.count :
+        imageArray.conversionImages.count
+        return []
+    }
     
     // MARK: 拖入图片执行代码
     func onDrop(type: WorkspaceType,providers:[NSItemProvider]) async {
         var imagesCount: Int {
             switch type {
             case .compression:
-                appStorage.compressedImages.count
+                imageArray.compressedImages.count
             case .conversion:
-                appStorage.conversionImages.count
+                imageArray.conversionImages.count
             }
         }
         // 判断是否限制图片数量
         let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
+        
+        print("当前图片数量:\(imagesCount)，队列图片数量:\(imageArray.compressTaskQueue.count)")
         // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
-        let limitNum = appStorage.limitImageNum - imagesCount
+        let limitNum =  imageArray.limitImageNum - imagesCount
+        print("限制数量：\(limitNum)")
+        
+        
         
         // 根据限制数量，截取遍历的有效图片数组
         let effectiveProviders = islimitImagesNum
@@ -85,9 +99,9 @@ class FileProcessingService: ObservableObject {
         var imagesCount: Int {
             switch type {
             case .compression:
-                appStorage.compressedImages.count
+                imageArray.compressedImages.count
             case .conversion:
-                appStorage.conversionImages.count
+                imageArray.conversionImages.count
             }
         }
         
@@ -100,7 +114,7 @@ class FileProcessingService: ObservableObject {
         // 判断是否限制图片数量
         let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
         // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
-        let limitNum = appStorage.limitImageNum - imagesCount
+        let limitNum =  imageArray.limitImageNum - imagesCount
         
         // 根据限制数量，截取遍历的有效图片数组
         let effectiveFiles = islimitImagesNum
@@ -143,15 +157,15 @@ class FileProcessingService: ObservableObject {
             var imagesCount: Int {
                 switch type {
                 case .compression:
-                    appStorage.compressedImages.count
+                    imageArray.compressedImages.count
                 case .conversion:
-                    appStorage.conversionImages.count
+                    imageArray.conversionImages.count
                 }
             }
             // 判断是否限制图片数量
             let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
             // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
-            let limitNum = appStorage.limitImageNum - imagesCount
+            let limitNum =  imageArray.limitImageNum - imagesCount
             
             // 根据限制数量，截取遍历的有效图片数组
             let effectiveProviders = islimitImagesNum
@@ -168,7 +182,7 @@ class FileProcessingService: ObservableObject {
                 
                 var compressionState: CompressionState = .pending
                 
-                if !appStorage.inAppPurchaseMembership && fileSize > appStorage.limitImageSize {
+                if !appStorage.inAppPurchaseMembership && fileSize >  imageArray.limitImageSize {
                     print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
                     compressionState = .failed
                 }
@@ -176,13 +190,13 @@ class FileProcessingService: ObservableObject {
                 // 内购用户 or 文件大小合规
                 let customImage = CustomImages(
                     name: imageName,
-                    type: imageType,
+                    inputType: imageType,
                     inputSize: fileSize,
                     inputURL: url,
                     compressionState: compressionState
                 )
                 
-                appStorage.compressedImages.append(customImage)
+                imageArray.compressedImages.append(customImage)
                 
                 switch type {
                 case .compression:
@@ -209,7 +223,7 @@ class FileProcessingService: ObservableObject {
                 
                 var compressionState: CompressionState = .pending
                 
-                if !appStorage.inAppPurchaseMembership && fileSize > appStorage.limitImageSize {
+                if !appStorage.inAppPurchaseMembership && fileSize >  imageArray.limitImageSize {
                     print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
                     compressionState = .failed
                 }
@@ -217,13 +231,13 @@ class FileProcessingService: ObservableObject {
                 // 内购用户 or 文件大小合规
                 let customImage = CustomImages(
                     name: imageName,
-                    type: imageType,
+                    inputType: imageType,
                     inputSize: fileSize,
                     inputURL: url,
                     compressionState: compressionState
                 )
                 
-                appStorage.compressedImages.append(customImage)
+                imageArray.compressedImages.append(customImage)
                 
                 switch type {
                 case .compression:

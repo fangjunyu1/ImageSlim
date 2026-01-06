@@ -9,11 +9,10 @@ import SwiftUI
 
 class CustomImages {
     let id: UUID = UUID()
-    var inputURL: URL
-    let name: String
-    let type: String
-    let inputSize: Int
-    
+    let name: String    // 图片名称
+    let inputURL: URL   // 输入URL
+    let inputSize: Int  // 输入图片大小
+    let inputType: String   // 输入类型
     
     // 懒加载图片，防止同时创建多个CustomImages时，出现卡顿的问题
     private var _image: NSImage?
@@ -28,27 +27,28 @@ class CustomImages {
     private var _thumbnail: NSImage?
     var thumbnail: NSImage? {
         if _thumbnail == nil {
-            _thumbnail = generateThumbnail(from:inputURL,maxSize: 35)
+            _thumbnail = generateThumbnail(from:inputURL,maxSize: 60)
         }
         return _thumbnail
     }
     
-    var outputSize: Int?
-    var compressionRatio: Double?
-    var outputURL: URL?
-    var outputType: String?
+    // 压缩/转换后显示的字段
+    var outputSize: Int? = nil    // 输出的大小
+    var compressionRatio: Double? = nil   // 压缩比例
+    var outputURL: URL? = nil // 输出路径
+    var outputType: String? = nil //输出类型
     // 图片状态：.pending 等待压缩 .compressing 正在压缩 .completed 已压缩完成 .failed 压缩失败
-    var compressionState:CompressionState
-    var isDownloaded: Bool = false
+    var compressionState:CompressionState = .pending
+    var isDownloaded: Bool = false  // 显示下载表示
     
     init(
         name: String,
-        type: String,
+        inputType: String,
         inputSize: Int,
         inputURL: URL,
         compressionState: CompressionState = .pending) {
             self.name = name
-            self.type = type
+            self.inputType = inputType
             self.inputSize = inputSize
             self.inputURL = inputURL
             self.compressionState = compressionState

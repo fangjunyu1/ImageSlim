@@ -13,19 +13,13 @@ import UniformTypeIdentifiers
 class WorkSpaceViewModel: ObservableObject {
     static var shared = WorkSpaceViewModel()
     var appStorage = AppStorage.shared
+    var imageArray = ImageArrayViewModel.shared
     private init() {}
     
-    // MARK: 压缩/转换队列
-    // 任务队列：存储被压缩的图片
-    @Published var compressTaskQueue: [CustomImages] = []
-    // 任务队列：存储被转换的图片
-    @Published var conversionTaskQueue: [CustomImages] = []
-    
-    // MARK: 压缩/转换队列状态
-    // 当前有无被压缩的图片，isCompressing表示当前有图片被压缩，其他图片需要等待
-    @Published var isCompressing = false
-    // 当前有无被转换的图片，isCompressing = true，表示当前有图片被转换，其他图片需要等待
-    @Published var isConversion = false
+    // 获取可用的 URL
+    func getLimitedURLs() {
+        
+    }
 }
 
 // 压缩任务
@@ -47,14 +41,14 @@ extension WorkSpaceViewModel {
             // 内购用户 or 文件大小合规
             let customImage = CustomImages(
                 name: imageName,
-                type: imageType,
+                inputType: imageType,
                 inputSize: fileSize,
                 inputURL: url,
                 compressionState: compressionState
             )
             
             DispatchQueue.main.async {
-                self.appStorage.compressedImages.append(customImage)
+                self.imageArray.compressedImages.append(customImage)
             }
 
             if compressionState == .pending {
@@ -63,7 +57,7 @@ extension WorkSpaceViewModel {
         }
         
         // 显示全部上传的图片，开始压缩
-        compressTaskQueue.append(contentsOf: compressImages)
+        imageArray.compressTaskQueue.append(contentsOf: compressImages)
         compressionTask()
     }
     
@@ -73,10 +67,10 @@ extension WorkSpaceViewModel {
     // 3、当压缩成功后，修改图片的压缩状态，移除任务队列中已经压缩图片，将当前压缩状态改为false，开始压缩下一个
     private func compressionTask() {
         // 如果当前没有被压缩的图片，获取任务队列的第一张图片，否则退出
-        guard !isCompressing, let task = compressTaskQueue.first else { return }
+        guard !imageArray.isCompressing, let task = imageArray.compressTaskQueue.first else { return }
         
         // 设置压缩状态为 true
-        isCompressing = true
+        imageArray.isCompressing = true
         DispatchQueue.main.async {
             // 修改当前图片为压缩中
             task.compressionState = .compressing
@@ -86,8 +80,8 @@ extension WorkSpaceViewModel {
             DispatchQueue.main.async {
                 task.compressionState = success ? .completed : .failed
             }
-            self.compressTaskQueue.removeFirst()
-            self.isCompressing = false
+            self.imageArray.compressTaskQueue.removeFirst()
+            self.imageArray.isCompressing = false
             // 如果没有压缩的任务，就显示全部压缩完成
             self.compressionTask() // 继续下一个
         }
@@ -101,7 +95,7 @@ extension WorkSpaceViewModel {
         }
         
         // 获取图片的大写格式
-        let type = image.type.uppercased()
+        let type = image.inputType.uppercased()
         
         if appStorage.enablePngquant && (type == "PNG" || type == "EXR" || type == "TIFF") {
             // 当前启用 Pngquant 并且图片格式为 PNG、EXR，使用 Pngquant 引擎压缩图片
@@ -276,7 +270,7 @@ extension WorkSpaceViewModel {
         
         // 设置压缩格式
         var imageType: CFString {
-            switch image.type.uppercased() {
+            switch image.inputType.uppercased() {
             case "JPG", "JPEG", "JP2":
                 return UTType.jpeg.identifier as CFString
             case "HEIC":
@@ -363,10 +357,10 @@ extension WorkSpaceViewModel {
     // 3、当转换成功后，修改图片的转换状态，移除任务队列中已经转换图片，将当前转换状态改为false，开始转换下一个
     private func conversionTask() {
         // 如果当前没有被转换的图片，获取任务队列的第一张图片，否则退出
-        guard !isConversion, let task = conversionTaskQueue.first else { return }
+        guard !imageArray.isConversion, let task = imageArray.conversionTaskQueue.first else { return }
         
         // 设置转换状态为 true
-        isConversion = true
+        imageArray.isConversion = true
         DispatchQueue.main.async {
             // 修改当前图片为压缩中
             task.compressionState = .compressing
@@ -376,8 +370,8 @@ extension WorkSpaceViewModel {
             DispatchQueue.main.async {
                 task.compressionState = success ? .completed : .failed
             }
-            self.conversionTaskQueue.removeFirst()
-            self.isConversion = false
+            self.imageArray.conversionTaskQueue.removeFirst()
+            self.imageArray.isConversion = false
             // 如果没有转换的任务，就显示全部转换完成
             self.conversionTask() // 继续下一个
         }
@@ -496,14 +490,14 @@ extension WorkSpaceViewModel {
             // 内购用户 or 文件大小合规
             let customImage = CustomImages(
                 name: imageName,
-                type: imageType,
+                inputType: imageType,
                 inputSize: fileSize,
                 inputURL: url,
                 compressionState: compressionState
             )
             
             DispatchQueue.main.async {
-                self.appStorage.conversionImages.append(customImage)
+                self.imageArray.conversionImages.append(customImage)
             }
             
             if compressionState == .pending {
@@ -512,7 +506,7 @@ extension WorkSpaceViewModel {
         }
         
         // 显示全部上传的图片，开始压缩
-        conversionTaskQueue.append(contentsOf: compressImages)
+        imageArray.conversionTaskQueue.append(contentsOf: compressImages)
         conversionTask()
     }
 }
