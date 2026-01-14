@@ -7,15 +7,121 @@
 
 import SwiftUI
 
-class CustomImages {
-    let id: UUID = UUID()
-    let name: String    // 图片名称
-    let inputURL: URL   // 输入URL
-    let inputSize: Int  // 输入图片大小
-    let inputType: String   // 输入类型
+class CustomImages: ObservableObject {
+    @Published var id: UUID    // UUID
+    @Published var name: String    // 图片名称，不包含文件后缀
+    @Published var type: WorkTaskType  // 压缩/转换
+    @Published var inputURL: URL   // 输入URL
+    @Published var inputType: String   // 输入文件后缀
+    @Published var outputType: String  // 输出文件后缀
     
+    @Published private var _image: NSImage?    // 图片
+    @Published private var _thumbnail: NSImage?    // 缩略图
+    @Published private var _inputSize: Int?    // 文件输入大小
+    @Published private var _outputSize: Int?   // 文件输出大小
+    
+    // 图片状态：.pending 等待压缩 .running 正在执行 .completed 已完成 .failed 压缩失败
+    @Published var isState: TaskState = .pending
+    @Published var isDownload: DownloadState = .idle
+    
+    // 进度
+    @Published private(set) var progress: Double = 0
+    
+    func updateProgress(_ value: Double = 0) {
+        progress = min(max(value, 0), 1)
+    }
+    
+    init(
+        id: UUID,
+        name: String,
+        type: WorkTaskType,
+        inputURL: URL,
+        inputType: String,
+        outputType: String,
+        isState: TaskState = .pending) {
+            self.id = id
+            self.name = name
+            self.type = type
+            self.inputURL = inputURL
+            self.inputType = inputType
+            self.outputType = outputType
+            self.isState = isState
+        }
+}
+
+    // MARK: 计算数学和方法
+extension CustomImages {
+    
+    // 输入文件的大小
+    var inputSize: Int {
+        if _inputSize == nil {
+            _inputSize = FileUtils.getFileSize(fileURL: inputURL)
+        }
+        return _inputSize ?? 0
+    }
+    
+    // 输出路径,默认命名为 image.id_compress
+    var outputURL: URL {
+        let ext = (type == .compression ? inputType : outputType).lowercased()
+        return FileManager.default.temporaryDirectory
+            .appendingPathComponent("\(id)_compress")
+            .appendingPathExtension(ext)
+    }
+    
+    // 输出文件的大小
+    var outputSize: Int {
+        if _outputSize == nil {
+            let input = FileUtils.getFileSize(fileURL: inputURL)
+            let output = FileUtils.getFileSize(fileURL: outputURL)
+            if output < input {
+                _outputSize = output
+            } else {
+                _outputSize = input
+            }
+        }
+        return _outputSize ?? 0
+    }
+    
+    // 图片压缩比例
+    var compressionRatio: Double {
+        guard inputSize > 0, outputSize > 0 else { return 0 }
+        let ratio = Double(outputSize) / Double(inputSize)
+        return outputSize > inputSize ? 0 : (1 - ratio)
+    }
+    
+    // 小写的输入文件类型
+    var inputTypeLowercased: String {
+        inputType.lowercased()
+    }
+    
+    // 大写的输入文件类型
+    var inputTypeUppercased: String {
+        inputType.uppercased()
+    }
+    
+    // 小写的输入文件类型
+    var outputTypeLowercased: String {
+        let ext = (type == .compression ? inputType : outputType).lowercased()
+        return ext
+    }
+    
+    // 大写的输入文件类型
+    var outputUppercased: String {
+        let ext = (type == .compression ? inputType : outputType).uppercased()
+        return ext
+    }
+    
+    // 原始文件名
+    var fullName: String {
+        name + "." + inputTypeLowercased
+    }
+    
+    // 实际磁盘文件名
+    var internalFileName: String {
+        inputURL.lastPathComponent
+    }
+     
     // 懒加载图片，防止同时创建多个CustomImages时，出现卡顿的问题
-    private var _image: NSImage?
     var image: NSImage? {
         if _image == nil {
             _image = NSImage(contentsOf: inputURL)
@@ -24,35 +130,12 @@ class CustomImages {
     }
     
     // 懒加载缩略图，
-    private var _thumbnail: NSImage?
     var thumbnail: NSImage? {
         if _thumbnail == nil {
             _thumbnail = generateThumbnail(from:inputURL,maxSize: 60)
         }
         return _thumbnail
     }
-    
-    // 压缩/转换后显示的字段
-    var outputSize: Int? = nil    // 输出的大小
-    var compressionRatio: Double? = nil   // 压缩比例
-    var outputURL: URL? = nil // 输出路径
-    var outputType: String? = nil //输出类型
-    // 图片状态：.pending 等待压缩 .compressing 正在压缩 .completed 已压缩完成 .failed 压缩失败
-    var compressionState:CompressionState = .pending
-    var isDownloaded: Bool = false  // 显示下载表示
-    
-    init(
-        name: String,
-        inputType: String,
-        inputSize: Int,
-        inputURL: URL,
-        compressionState: CompressionState = .pending) {
-            self.name = name
-            self.inputType = inputType
-            self.inputSize = inputSize
-            self.inputURL = inputURL
-            self.compressionState = compressionState
-        }
     
     // 创建缩略图
     private func generateThumbnail(from url: URL, maxSize: CGFloat) -> NSImage? {

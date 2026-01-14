@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkspaceTitle: View {
     @EnvironmentObject var appStorage: AppStorage
-    var type: WorkspaceType
+    var type: WorkTaskType
     var isHovering: Bool
     var body: some View {
         switch type {

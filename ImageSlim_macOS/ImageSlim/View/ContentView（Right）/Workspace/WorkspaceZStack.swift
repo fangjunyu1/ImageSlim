@@ -10,7 +10,7 @@ import SwiftUI
 struct WorkspaceZStack: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
-    var type: WorkspaceType
+    var type: WorkTaskType
     var isHovering: Bool
     @Binding var showImporter: Bool
     var body: some View {

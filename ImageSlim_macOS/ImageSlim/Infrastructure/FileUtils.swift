@@ -13,41 +13,9 @@ import Zip
 
 enum FileUtils {
     
-    // MARK: 将文件保存到临时文件夹
-    // 用于将外部位置的图片存储到 Temporary 文件夹，并返回 URL
-    static func saveURLToTempFile(fileURL: URL) -> URL? {
-        let fileManager = FileManager.default
-        let destinationURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileURL.lastPathComponent)
-        
-        // 如果目标已存在，删除旧的
-        try? fileManager.removeItem(at: destinationURL)
-        
-        do {
-            try fileManager.copyItem(at: fileURL, to: destinationURL)
-            return destinationURL
-        } catch {
-            return destinationURL
-        }
-    }
-    
-    // MARK: 保存图片并返回URL
-    // 仅用于点击图片列表时，返回 URL 给 QuickLook 并预览图片。
-    static func saveImageToTempFile(image: NSImage) -> URL? {
-        guard let tiffData = image.tiffRepresentation,
-              let bitmap = NSBitmapImageRep(data: tiffData),
-              let pngData = bitmap.representation(using: .png, properties: [:]) else {
-            return nil
-        }
-        
-        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
-        print("临时文件夹:\(FileManager.default.temporaryDirectory)")
-        try? pngData.write(to: tempURL)
-        return tempURL
-    }
-    
     // MARK: 询问用户选择保存目录，并保存图片/Zip
     @MainActor
-    static func askUserForSaveLocation(type: askUserForSaveLocationEnum) {
+    static func askUserForSaveLocation(type: askUserForSaveLocationEnum) -> Bool{
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
@@ -63,53 +31,82 @@ enum FileUtils {
                 print("书签保存成功")
                 
                 if url.startAccessingSecurityScopedResource() {
-                    switch type {
-                    case .image(let image):
-                        saveImg(file: image, url: url)
-                    case .images(let ImagesURL, let showDownloadsProgress, let progress):
-                        saveZip(ImagesURL: ImagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
-                    }
+                    return false
+                }
+                
+                defer {
                     url.stopAccessingSecurityScopedResource()
+                }
+                switch type {
+                case .image(let image):
+                    return saveImg(file: image, url: url)
+                case .images(let ImagesURL, let showDownloadsProgress, let progress):
+                    return saveZip(
+                        ImagesURL: ImagesURL,
+                        url: url,
+                        showDownloadsProgress: showDownloadsProgress,
+                        progress: progress)
                 }
             } catch {
                 print("书签创建失败: \(error)")
+                return false
             }
         }
+        return false
     }
     
     // MARK: 保存单张图片
     @MainActor
-    static func saveImg(file:CustomImages,url:URL) {
-        // 获取文件名称，并拆分为 文件名+后缀名
-        let nsName = file.name as NSString
-        let fileName = nsName.deletingPathExtension    // 获取文件名称， test.zip 获取 test 等。
-        let fileExt = nsName.pathExtension    // 获取文件扩展名， test.zip 获取 zip 等。
+    static func saveImg(file:CustomImages,url:URL) -> Bool {
         
-        // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
-        let finalName: String
-        if !AppStorage.shared.keepOriginalFileName {
-            print("当前设置为不保持原文件名，因此添加_compress后缀")
-            finalName = "\(fileName)_compress.\(fileExt)"
-        } else {
-            finalName = file.name
+        let fileName = file.name    // 获取文件名称， test.zip 获取 test 等。
+        let fileExt = file.outputTypeLowercased    // 获取文件扩展名， test.zip 获取 zip 等。
+        
+        func makeName(index: Int) -> String {
+            let suffix = index == 0 ? "" : "(\(index))"
+            // 设置最终名称，如果不保持原文件名称，则拼接_compress，保持原文件名称则显示正常的原文件名称
+            if AppStorage.shared.keepOriginalFileName {
+                return "\(fileName)\(suffix).\(fileExt)"
+            } else {
+                return "\(fileName)_compress\(suffix).\(fileExt)"
+            }
         }
         
-        // 拼接 目录路径 + 文件名称
-        let destinationURL = url.appendingPathComponent(finalName)
-        
         do {
-            if FileManager.default.fileExists(atPath: destinationURL.path) {
-                try FileManager.default.removeItem(at: destinationURL)
+            // 文件重复编码，默认为0，如果重复则进行叠加
+            var index = 0
+            // 拼接目录路径 + 文件名称
+            var destinationURL: URL
+            
+            while true {
+                destinationURL = url.appendingPathComponent(makeName(index: index))
+                
+                if !FileManager.default.fileExists(atPath: destinationURL.path) {
+                    break   // 跳过本次循环
+                }
+                
+                index += 1
+                
+                // 防止极端情况
+                if index > 10_00 {
+                    print("遍历发生报错")
+                }
             }
-            try FileManager.default.copyItem(at: file.outputURL!, to: destinationURL)
+            
+            // 如果不存在同名文件，则复制并实现图片保存
+            try FileManager.default.copyItem(at: file.outputURL, to: destinationURL)
+            print("保存成功:\(destinationURL.lastPathComponent)")
+            return true
         } catch {
             print("保存失败：\(error)")
+            return false
         }
     }
     
     // MARK: 下载图片到文件夹
     @MainActor
-    static func saveToDownloads(file: CustomImages) {
+    static func saveToDownloads(file: CustomImages) -> Bool {
+        print("进入 saveToDownloads 方法")
         // 获取目录路径
         // 如果有安全书签，保存到安全书签的URL
         if let bookmark = UserDefaults.standard.data(forKey: "SaveLocation") {
@@ -118,17 +115,19 @@ enum FileUtils {
                 let url = try URL(resolvingBookmarkData: bookmark, options: [.withSecurityScope], relativeTo: nil, bookmarkDataIsStale: &isStale)
                 
                 if url.startAccessingSecurityScopedResource() {
-                    saveImg(file: file,url: url)
-                    url.stopAccessingSecurityScopedResource()
+                    defer { url.stopAccessingSecurityScopedResource() }
+                    return saveImg(file: file,url: url)
                 } else {
                     print("无法访问资源")
+                    return false
                 }
             } catch {
                 print("解析书签失败: \(error)")
+                return false
             }
         } else {
             // 如果没有保存过目录，让用户选择
-            FileUtils.askUserForSaveLocation(type: .image(image: file))
+            return FileUtils.askUserForSaveLocation(type: .image(image: file))
         }
     }
     
@@ -215,7 +214,6 @@ extension FileUtils {
         
         // 获取文件的实际大小
         let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int
-        print("文件的实际大小：\(attributes ?? 0)")
         
         // 当macOS上有图像大小，以macOS上图像字节为准。
         // 如果macOS上没有图像大小，以获取的图像字节为准。
@@ -265,72 +263,75 @@ extension FileUtils {
 extension FileUtils {
     // Zip 压缩图片
     @MainActor
-    static func zipImages(isPurchase: Bool,limitImageSize: Int,keepOriginalFileName: Bool,images: [CustomImages],showDownloadsProgress:Binding<Bool>, progress: Binding<Double>) {
-        Task {
-            do {
-                print("打包Zip")
-                
-                // 1、筛选图片输出 URL
-                var ImagesURL:[URL] = images
-                    .filter{ isPurchase || $0.inputSize < limitImageSize }
-                    .compactMap { $0.outputURL }
-                
-                // 2、根据用户是否保持原文件名称选项，如果不保持原文件名称，则拼接_compress
-                // 如果保持原文件名称，则不执行该代码
-                if !keepOriginalFileName {
-                    var tmpURL:[URL] = []
-                    for url in ImagesURL {
-                        let imageName = url.lastPathComponent   // 获取文件名称
-                        let nsName = imageName as NSString
-                        let fileName = nsName.deletingPathExtension    // 获取文件名称（无后缀）
-                        let fileExt = nsName.pathExtension    // 获取文件扩展名（后缀）
-                        let finalName: String = "\(fileName)_compress.\(fileExt)"   // 添加 _compress 后缀
-                        let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)    // 拼接完整URL
-                        // 如果文件系统中有拼接的URL，则移除已有的 URL 文件
-                        if FileManager.default.fileExists(atPath: finalURL.path) {
-                            try FileManager.default.removeItem(at: finalURL)
-                        }
-                        // 将图片的输出 URL 复制到拼接_compress名称的 URL
-                        try FileManager.default.copyItem(at: url, to: finalURL)
-                        tmpURL.append(finalURL)
+    static func zipImages(isPurchase: Bool,limitImageSize: Int,keepOriginalFileName: Bool,images: [CustomImages],showDownloadsProgress:Binding<Bool>, progress: Binding<Double>) -> Bool {
+        do {
+            print("打包Zip")
+            
+            // 1、筛选图片输出 URL
+            var ImagesURL:[URL] = images
+                .filter{ isPurchase || $0.inputSize < limitImageSize }
+                .compactMap { $0.outputURL }
+            
+            // 2、根据用户是否保持原文件名称选项，如果不保持原文件名称，则拼接_compress
+            // 如果保持原文件名称，则不执行该代码
+            if !keepOriginalFileName {
+                var tmpURL:[URL] = []
+                for url in ImagesURL {
+                    let imageName = url.lastPathComponent   // 获取文件名称
+                    let nsName = imageName as NSString
+                    let fileName = nsName.deletingPathExtension    // 获取文件名称（无后缀）
+                    let fileExt = nsName.pathExtension    // 获取文件扩展名（后缀）
+                    let finalName: String = "\(fileName)_compress.\(fileExt)"   // 添加 _compress 后缀
+                    let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)    // 拼接完整URL
+                    // 如果文件系统中有拼接的URL，则移除已有的 URL 文件
+                    if FileManager.default.fileExists(atPath: finalURL.path) {
+                        try FileManager.default.removeItem(at: finalURL)
                     }
-                    ImagesURL = tmpURL
+                    // 将图片的输出 URL 复制到拼接_compress名称的 URL
+                    try FileManager.default.copyItem(at: url, to: finalURL)
+                    tmpURL.append(finalURL)
                 }
-                
-                // 3、判断 保存目录-安全书签，有的话，保存到安全书签的目录，没有的话，让用户手动选择目标
-                // 如果有保存目录-安全书签
-                if let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") {
-                    var isStale = false
-                    do {
-                        let url = try URL(
-                            resolvingBookmarkData: saveLocation,
-                            options: [.withSecurityScope],
-                            relativeTo: nil,
-                            bookmarkDataIsStale: &isStale
-                        )
-                        if url.startAccessingSecurityScopedResource() {
-                            // 调用 Zip 库，保存图片
-                            saveZip(ImagesURL:ImagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
-                            url.stopAccessingSecurityScopedResource()
-                        } else {
-                            print("无法访问资源")
-                        }
-                    } catch {
-                        print("解析书签失败: \(error)")
-                    }
-                    
-                } else {
-                    FileUtils.askUserForSaveLocation(type: .images(ImagesURL: ImagesURL, showDownloadsProgress: showDownloadsProgress, progress: progress))
-                }
-            } catch {
-                showDownloadsProgress.wrappedValue = false
-                print("打包失败")
+                ImagesURL = tmpURL
             }
+            
+            // 3、判断 保存目录-安全书签，有的话，保存到安全书签的目录，没有的话，让用户手动选择目标
+            // 如果有保存目录-安全书签
+            if let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") {
+                var isStale = false
+                do {
+                    let url = try URL(
+                        resolvingBookmarkData: saveLocation,
+                        options: [.withSecurityScope],
+                        relativeTo: nil,
+                        bookmarkDataIsStale: &isStale
+                    )
+                    if url.startAccessingSecurityScopedResource() {
+                        defer {
+                            url.stopAccessingSecurityScopedResource()
+                        }
+                        // 调用 Zip 库，保存图片
+                        return saveZip(ImagesURL:ImagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
+                    } else {
+                        print("无法访问资源")
+                        return false
+                    }
+                } catch {
+                    print("解析书签失败: \(error)")
+                    return false
+                }
+            } else {
+                return FileUtils.askUserForSaveLocation(type: .images(ImagesURL: ImagesURL, showDownloadsProgress: showDownloadsProgress, progress: progress))
+            }
+        } catch {
+            showDownloadsProgress.wrappedValue = false
+            print("打包失败")
+            return false
         }
     }
     
     // 保存 Zip 文件
-    static func saveZip(ImagesURL:[URL], url: URL,showDownloadsProgress showDownloadsProgressBinding: Binding<Bool>,progress progressBinding: Binding<Double>){
+    static func saveZip(ImagesURL:[URL], url: URL,showDownloadsProgress showDownloadsProgressBinding: Binding<Bool>,progress progressBinding: Binding<Double>) -> Bool {
+        
         let calendar = Calendar.current
         let date = Date()
         let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
@@ -348,6 +349,7 @@ extension FileUtils {
             // 如果无法解析日期，则保存为“ImageSlim.zip”
             destinationURL = url.appendingPathComponent("ImageSlim.zip")
         }
+        
         do {
             progressBinding.wrappedValue = 0    // 重制打包进度
             showDownloadsProgressBinding.wrappedValue = true    // 显示打包进度
@@ -359,9 +361,11 @@ extension FileUtils {
                 }
             }
             print("打包完成")
+            return true
         } catch {
             showDownloadsProgressBinding.wrappedValue = false
             print("在SaveZip方法中崩溃")
+            return false
         }
     }
 }

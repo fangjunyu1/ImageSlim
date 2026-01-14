@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkspaceTips: View {
     @EnvironmentObject var appStorage: AppStorage
-    var type: WorkspaceType
+    var type: WorkTaskType
     var body: some View {
         switch type {
             // 压缩提示

@@ -143,5 +143,6 @@ struct MenuView: View {
     MenuView()
         .frame(width:200)
         .environmentObject(AppStorage.shared)
+        .environmentObject(ImageArrayViewModel.shared)
     // .environment(\.locale, .init(identifier: "ml")) // 设置为德语
 }

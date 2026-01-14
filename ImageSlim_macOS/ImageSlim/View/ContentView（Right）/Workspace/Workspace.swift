@@ -10,10 +10,6 @@ import SwiftUI
 import AppKit
 import UniformTypeIdentifiers
 
-enum WorkspaceType {
-    case compression
-    case conversion
-}
 struct Workspace: View {
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appStorage: AppStorage
@@ -23,7 +19,7 @@ struct Workspace: View {
     @State private var previewer = ImagePreviewWindow()
     @State private var isHovering = false   // 图片悬浮时
     @State private var showImporter = false
-    var type: WorkspaceType
+    var type: WorkTaskType
     
     var body: some View {
         var images: [CustomImages] {
@@ -61,13 +57,20 @@ struct Workspace: View {
             allowedContentTypes: [.image],
             allowsMultipleSelection: true
         ) { result in
-            filePS.fileImporter(type:type, result: result)
+            Task {
+                await filePS.fileImporter(type:type, result: result)
+            }
         }
         // Command + V 粘贴图片
         .onReceive(KeyboardMonitor.shared.pastePublisher) { _ in
-            filePS.onReceive(type: type)
+            Task {
+                await filePS.onReceive(type: type)
+            }
         }
-        
+        .onAppear {
+            let tmpURL = FileManager.default.temporaryDirectory
+            print("tmpURL:\(tmpURL)")
+        }
     }
 }
 

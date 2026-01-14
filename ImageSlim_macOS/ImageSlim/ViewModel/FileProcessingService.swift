@@ -4,6 +4,8 @@
 //
 //  Created by 方君宇 on 2026/1/5.
 //
+//  用于处理拖入、导入、粘贴的图片方法
+//
 
 import SwiftUI
 import UniformTypeIdentifiers
@@ -16,235 +18,191 @@ class FileProcessingService: ObservableObject {
     var imageArray = ImageArrayViewModel.shared
     private init() {}
     
-    private func getLimitedURLs(for type: WorkspaceType) -> [URL] {
+    // 返回可用的泛型数组
+    private func getLimitedArray<T>(from array: [T], for type: WorkTaskType) -> [T] {
+        // 根据类型获取对应的压缩/转换图片数组的数量
         let currentCount = type == .compression ?
         imageArray.compressedImages.count :
         imageArray.conversionImages.count
-        return []
+        
+        // 内购用户，返回所有 URL，非内购用户，继续执行
+        if appStorage.inAppPurchaseMembership {
+            return array
+        }
+        
+        // 返回可用总数
+        let availableCount = max(0, imageArray.limitImageNum - currentCount)
+        return Array(array.prefix(availableCount))
     }
     
-    // MARK: 拖入图片执行代码
-    func onDrop(type: WorkspaceType,providers:[NSItemProvider]) async {
-        var imagesCount: Int {
-            switch type {
-            case .compression:
-                imageArray.compressedImages.count
-            case .conversion:
-                imageArray.conversionImages.count
-            }
+    // 传入 URL，返回 CustomImages 对象
+    nonisolated private func createCustomImages(type: WorkTaskType, url: URL, outputType: String) -> CustomImages {
+        print("进入 createCustomImages 方法")
+        // 设置 CustomImages 的 UUID，也是临时文件的名称
+        let uuid = UUID()
+        // 获取 URL 图片的文件名称
+        let imageName = (url.lastPathComponent as NSString).deletingPathExtension
+        // 获取 URL 图片的类型字符串（大写）
+        let inputType = url.pathExtension.uppercased()
+        
+        // 设置临时图片的保存路径并尝试保存
+        let fileManager = FileManager.default
+        let tmpExtension = url.pathExtension.lowercased()
+        let tmpURL = fileManager.temporaryDirectory
+            .appendingPathComponent("\(uuid)")
+            .appendingPathExtension(tmpExtension)
+        
+        // 防止存在旧文件（尽管可能性不大）
+        try? fileManager.removeItem(at: tmpURL)
+        
+        // 将 url 保存到临时文件中
+        do {
+            try fileManager.copyItem(at: url, to: tmpURL)
+        } catch {
+            print("图片拷贝失败")
+            print("原始文件 URL:\(url)")
+            print("拷贝临时文件夹的 URL:\(tmpURL)")
         }
-        // 判断是否限制图片数量
-        let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
         
-        print("当前图片数量:\(imagesCount)，队列图片数量:\(imageArray.compressTaskQueue.count)")
-        // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
-        let limitNum =  imageArray.limitImageNum - imagesCount
-        print("限制数量：\(limitNum)")
+        // 创建 CustomImages 对象
+        let customImages = CustomImages(
+            id: uuid,
+            name: imageName,
+            type: type,
+            inputURL: tmpURL,
+            inputType: inputType,
+            outputType: outputType)
         
+        return customImages
+    }
+}
+
+extension FileProcessingService {
+    
+    // MARK: 拖入图片执行代码
+    func onDrop(type: WorkTaskType,providers:[NSItemProvider]) async {
         
+        let outputType = appStorage.convertTypeState.rawValue
         
-        // 根据限制数量，截取遍历的有效图片数组
-        let effectiveProviders = islimitImagesNum
-        ? Array(providers.prefix(limitNum))
-        : providers
+        // 获取可用的 NSItemProvider 数组
+        let limitProviders = getLimitedArray(from: providers, for: type)
         
-        // 图片 URL 列表，用于返回并添加到对应 压缩/转换 的队列
-        var imageURLs: [URL] = []
-        
-        // 进入 withTaskGroup（TaskGroup）
-        await withTaskGroup(of: URL?.self) { group in
+        // TaskGroup 可以实现 I/O 并行排队执行
+        await withTaskGroup(of: CustomImages?.self) { group in
+            
             // 遍历每一个图片
-            for provider in effectiveProviders {
+            for provider in limitProviders {
                 // 检测类型是否为图片
                 guard provider.hasItemConformingToTypeIdentifier(UTType.image.identifier) else {
                     continue
                 }
+                
+                // 添加并发子任务
                 group.addTask {
-                    // 桥接 TaskGroup 和 loadFileRepresentation 回调闭包，将 loadFileRepresentation 回调闭包的值返回给 addTask
-                    await withCheckedContinuation { cont in
-                        provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
-                            
-                            // 错误场景：返回nil
-                            guard let fileURL = url else {
-                                cont.resume(returning: nil)
+                    // 返回拖入的图片，并创建 CustomImages 对象
+                    return await withCheckedContinuation { cont in
+                        provider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { loadUrl, error in
+                            print("进入 loadFileRepresentation 方法")
+                            // 当 url 为 nil 时，返回 nil
+                            guard let url = loadUrl else {
+                                print("url失败")
+                                cont.resume(returning:nil)
                                 return
                             }
                             
-                            // 成功场景:返回图片 URL
-                            let imageURL = FileUtils.saveURLToTempFile(fileURL: fileURL)
-                            cont.resume(returning: imageURL)
+                            // 当 url 不为 nil， 则创建 CustomImages 对象
+                            let customImages = self.createCustomImages(type: type,url: url,outputType: outputType)
+                            cont.resume(returning: customImages)
                         }
                     }
                 }
             }
             
-            for await url in group {
-                if let url = url {
-                    imageURLs.append(url)
-                }
+            // 获取所有的 CustomImage 对象，并插入显示队列，执行队列任务
+            for await image in group {
+                imageArray.addViewQueue(type: type,image: image)
             }
-        }
-        
-        // 调用闭包，将图片URL数组传递进入
-        switch type {
-        case .compression:
-            WorkSpaceViewModel.shared.saveCompressPictures(url: imageURLs)
-        case .conversion:
-            WorkSpaceViewModel.shared.saveConversionPictures(url: imageURLs)
         }
     }
+}
+
+extension FileProcessingService {
     
-    func fileImporter(type: WorkspaceType,result: Result<[URL], any Error>) {
-        
-        var imagesCount: Int {
-            switch type {
-            case .compression:
-                imageArray.compressedImages.count
-            case .conversion:
-                imageArray.conversionImages.count
-            }
-        }
-        
+    // MARK: 导入图片
+    func fileImporter(type: WorkTaskType,result: Result<[URL], Error>) async {
+        let outputType = appStorage.convertTypeState.rawValue
         guard case let .success(urls) = result else {
             print("导入文件失败")
             return
         }
-        let selectedFiles: [URL] = urls
         
-        // 判断是否限制图片数量
-        let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
-        // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
-        let limitNum =  imageArray.limitImageNum - imagesCount
+        // 获取可用的 NSItemProvider 数组
+        let limitProviders = getLimitedArray(from: urls, for: type)
         
-        // 根据限制数量，截取遍历的有效图片数组
-        let effectiveFiles = islimitImagesNum
-        ? Array(selectedFiles.prefix(limitNum))
-        : selectedFiles
-        
-        // 图片 URL 列表，用于返回并添加到对应 压缩/转换 的队列
-        var imageURLs: [URL] = []
-        
-        // 沙盒权限权限请求
-        for selectedFile in effectiveFiles {
-            guard selectedFile.startAccessingSecurityScopedResource() else {
-                print("无文件访问权限")
-                return
+        // TaskGroup 可以实现 I/O 并行排队执行
+        await withTaskGroup(of: CustomImages?.self) { group in
+            
+            // 沙盒权限权限请求
+            for url in limitProviders {
+                guard url.startAccessingSecurityScopedResource() else {
+                    print("无文件访问权限")
+                    continue
+                }
+                group.addTask {
+                    defer { url.stopAccessingSecurityScopedResource() }
+                    
+                    // 当 url 不为 nil， 则创建 CustomImages 对象
+                    let customImages = self.createCustomImages(type: type, url: url,outputType: outputType)
+                    return customImages
+                }
             }
-            defer { selectedFile.stopAccessingSecurityScopedResource() }
-            // 根据 fileURL 保存图像
-            guard let fileURL = FileUtils.saveURLToTempFile(fileURL: selectedFile) else { return }
-            print("插入一张图片")
-            imageURLs.append(fileURL)
-        }
-        
-        switch type {
-        case .compression:
-            WorkSpaceViewModel.shared.saveCompressPictures(url: imageURLs)
-        case .conversion:
-            WorkSpaceViewModel.shared.saveConversionPictures(url: imageURLs)
+            
+            // 获取所有的 CustomImage 对象，并插入显示队列，执行队列任务
+            for await image in group {
+                imageArray.addViewQueue(type: type,image: image)
+            }
         }
     }
     
-    func onReceive(type: WorkspaceType) {
-        print("支持的格式有：\(NSPasteboard.general.types ?? [])")
-        
+}
+
+extension FileProcessingService {
+    
+    // MARK: Command + V 粘贴
+    func onReceive(type: WorkTaskType) async {
+        let outputType = appStorage.convertTypeState.rawValue
         let pb = NSPasteboard.general
         
-        // 图片 URL 列表，用于返回并添加到对应 压缩/转换 的队列
-        var imageURLs: [URL] = []
-        
         if let urls = pb.readObjects(forClasses: [NSURL.self], options: nil) as? [URL] {
-            var imagesCount: Int {
-                switch type {
-                case .compression:
-                    imageArray.compressedImages.count
-                case .conversion:
-                    imageArray.conversionImages.count
-                }
-            }
-            // 判断是否限制图片数量
-            let islimitImagesNum = appStorage.inAppPurchaseMembership ? false : true
-            // 限制数量，默认限制数量为20，计算可用的数量：限制数量 - 当前图片数量 = 可以放入图片队列的数量
-            let limitNum =  imageArray.limitImageNum - imagesCount
             
-            // 根据限制数量，截取遍历的有效图片数组
-            let effectiveProviders = islimitImagesNum
-            ? Array(urls.prefix(limitNum))
-            : urls
+            // 获取可用的 NSItemProvider 数组
+            let limitProviders = getLimitedArray(from: urls, for: type)
             
-            // 读取urls文件
-            for url in effectiveProviders {
-                // 获取 Finder 上的大小
-                let fileSize = FileUtils.getFileSize(fileURL: url)
+            // TaskGroup 可以实现 I/O 并行排队执行
+            await withTaskGroup(of: CustomImages?.self) { group in
                 
-                let imageName = url.lastPathComponent
-                let imageType = url.pathExtension.uppercased()
-                
-                var compressionState: CompressionState = .pending
-                
-                if !appStorage.inAppPurchaseMembership && fileSize >  imageArray.limitImageSize {
-                    print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
-                    compressionState = .failed
+                // 读取urls文件
+                for url in limitProviders {
+                    group.addTask {
+                        self.createCustomImages(type: type, url: url,outputType: outputType)
+                    }
                 }
-                print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
-                // 内购用户 or 文件大小合规
-                let customImage = CustomImages(
-                    name: imageName,
-                    inputType: imageType,
-                    inputSize: fileSize,
-                    inputURL: url,
-                    compressionState: compressionState
-                )
                 
-                imageArray.compressedImages.append(customImage)
-                
-                switch type {
-                case .compression:
-                    WorkSpaceViewModel.shared.saveCompressPictures(url: imageURLs)
-                case .conversion:
-                    WorkSpaceViewModel.shared.saveConversionPictures(url: imageURLs)
+                // 获取所有的 CustomImage 对象，并插入显示队列，执行队列任务
+                for await image in group {
+                    imageArray.addViewQueue(type: type,image: image)
                 }
             }
         } else if let imageData = pb.data(forType: .tiff) {
             
-            print("粘贴的是图片")
-            //pastedImage = image
-            // 将粘贴的图片转换成png格式
+            // 粘贴的图片为照片，图片格式默认为 png 格式
             let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".png")
             
             do {
                 try imageData.write(to: url)
+                let customImage = createCustomImages(type: type, url: url,outputType: outputType)
+                imageArray.addViewQueue(type: type,image: customImage)
                 
-                // 获取 Finder 上的大小
-                let fileSize = FileUtils.getFileSize(fileURL: url)
-                
-                let imageName = url.lastPathComponent
-                let imageType = url.pathExtension.uppercased()
-                
-                var compressionState: CompressionState = .pending
-                
-                if !appStorage.inAppPurchaseMembership && fileSize >  imageArray.limitImageSize {
-                    print("文件过大跳过:\(imageName),文件大小为:\(fileSize)")
-                    compressionState = .failed
-                }
-                print("当前内购状态:\(appStorage.inAppPurchaseMembership),fileSize:\(fileSize)")
-                // 内购用户 or 文件大小合规
-                let customImage = CustomImages(
-                    name: imageName,
-                    inputType: imageType,
-                    inputSize: fileSize,
-                    inputURL: url,
-                    compressionState: compressionState
-                )
-                
-                imageArray.compressedImages.append(customImage)
-                
-                switch type {
-                case .compression:
-                    WorkSpaceViewModel.shared.saveCompressPictures(url: imageURLs)
-                case .conversion:
-                    WorkSpaceViewModel.shared.saveConversionPictures(url: imageURLs)
-                }
             } catch {
                 print("粘贴板写入过程发生报错")
             }

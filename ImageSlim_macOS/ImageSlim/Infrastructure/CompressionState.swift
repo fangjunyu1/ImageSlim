@@ -6,9 +6,16 @@
 //
 // 压缩状态
 
-enum CompressionState {
-    case pending     // 等待压缩
-    case compressing // 正在压缩
-    case completed   // 已压缩完成
-    case failed      // 压缩失败
+enum TaskState {
+    case pending     // 等待
+    case running     // 正在处理
+    case completed   // 处理完成
+    case failed      // 失败
+}
+
+enum DownloadState {
+    case idle   // 尚未开始
+    case running    // 下载中
+    case complete   // 已完成
+    case failed     // 失败
 }

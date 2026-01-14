@@ -12,7 +12,7 @@ struct WorkspaceList: View {
     @EnvironmentObject var appStorage: AppStorage
     @EnvironmentObject var workSpaceVM: WorkSpaceViewModel
     @EnvironmentObject var imageArray: ImageArrayViewModel
-    var type: WorkspaceType
+    var type: WorkTaskType
     var previewer: ImagePreviewWindow
     var body: some View {
         switch type {

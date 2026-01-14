@@ -8,11 +8,6 @@
 import SwiftUI
 import QuickLookUI
 
-enum ImageRowType {
-    case compression
-    case conversion
-}
-
 struct ImageRowView: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var hovering = false
@@ -22,7 +17,9 @@ struct ImageRowView: View {
     var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
     var previewer: ImagePreviewWindow
-    var imageType: ImageRowType
+    var imageType: WorkTaskType
+    let rightButtonWidth = 70.0
+    let rightButtonHeight = 30.0
     
     var body: some View {
         HStack {
@@ -62,7 +59,7 @@ struct ImageRowView: View {
             // 图片信息
             VStack(alignment: .leading) {
                 // 图片名称
-                Text("\(item.name)")
+                Text("\(item.fullName)")
                     .frame(maxWidth: 150, alignment: .leading)
                     .lineLimit(1)
                 Spacer().frame(height:3)
@@ -77,47 +74,44 @@ struct ImageRowView: View {
                             .foregroundColor(.white)
                             .cornerRadius(5)
                     }
-                    if !appStorage.inAppPurchaseMembership && item.inputSize > imageArray.limitImageSize {
-                        Text(FileUtils.TranslateSize(fileSize:item.inputSize))
-                            .foregroundColor(.red)
-                    } else {
-                        Text(FileUtils.TranslateSize(fileSize:item.inputSize))
-                            .foregroundColor(.gray)
-                    }
+                    let isOverLimit = !appStorage.inAppPurchaseMembership && item.inputSize > imageArray.limitImageSize
+                    Text(FileUtils.TranslateSize(fileSize: item.inputSize))
+                        .foregroundColor(isOverLimit ? .red : .gray)
                 }
             }
             Spacer()
             
             // 如果图片完成压缩，显示压缩图片的输出参数和下载按钮
-            if item.compressionState == .completed {
+            if item.isState == .completed {
+                // 根据图片的类型，显示压缩/转换的图片视图
                 if imageType == .compression {
                     VStack(alignment: .trailing) {
                         // 压缩占比
-                        Text("-\(Int((item.compressionRatio ?? 0) * 100))%")
+                        Text("-\(Int((item.compressionRatio) * 100))%")
                         Spacer().frame(height:3)
                         // 输出图片大小
-                        Text(FileUtils.TranslateSize(fileSize:item.outputSize ?? 0))
+                        Text(FileUtils.TranslateSize(fileSize:item.outputSize))
                             .font(.footnote)
                             .foregroundColor(.gray)
                     }
                 } else if imageType == .conversion {
-                                    VStack(alignment: .trailing) {
-                                        // 压缩占比
-                                        ZStack {
-                                            Rectangle()
-                                                .foregroundColor(colorScheme == .light ? .purple : Color(hex: "2f2f2f"))
-                                                .frame(width:50,height:16)
-                                                .cornerRadius(3)
-                                            Text("\(item.outputType ?? "")")
-                                                .foregroundColor(.white)
-                                                .cornerRadius(5)
-                                        }
-                                        Spacer().frame(height:3)
-                                        // 输出图片大小
-                                        Text(FileUtils.TranslateSize(fileSize:item.outputSize ?? 0))
-                                            .font(.footnote)
-                                            .foregroundColor(.gray)
-                                    }
+                    VStack(alignment: .trailing) {
+                        // 压缩占比
+                        ZStack {
+                            Rectangle()
+                                .foregroundColor(colorScheme == .light ? .purple : Color(hex: "2f2f2f"))
+                                .frame(width:50,height:16)
+                                .cornerRadius(3)
+                            Text("\(item.outputType)")
+                                .foregroundColor(.white)
+                                .cornerRadius(5)
+                        }
+                        Spacer().frame(height:3)
+                        // 输出图片大小
+                        Text(FileUtils.TranslateSize(fileSize:item.outputSize))
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                    }
                 }
                 
                 Spacer().frame(width:10)
@@ -126,69 +120,75 @@ struct ImageRowView: View {
                 if !appStorage.inAppPurchaseMembership && item.inputSize > imageArray.limitImageSize {
                     VStack {
                         Image(systemName:"lock.fill")
-                            .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
-                            .padding(.vertical,5)
-                            .padding(.horizontal,20)
                             .offset(x: shakeOffset)
                     }
-                    .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
-                    .cornerRadius(20)
                     .onTapGesture {
                         print("抖动锁图标")
                         triggerShake()
                     }
+                    .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
                     .modifier(HoverModifier())
+                    .cornerRadius(20)
                 } else {
                     // 下载按钮
                     Button(action: {
-                        FileUtils.saveToDownloads(file: item)
-                        print("isDownloaded状态改为true")
-                        item.isDownloaded = true
-                        // 延时 2 秒后恢复
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            print("isDownloaded状态改为false")
-                            item.isDownloaded = false
+                        // 修改下载标识
+                        item.isDownload = .running
+                        Task { @MainActor in
+                            let result = FileUtils.saveToDownloads(file: item)
+                            if result {
+                                print("保存成功，修改Download状态")
+                                item.isDownload = .complete
+                                // 延时 3 秒后恢复
+                            } else {
+                                print("保存失败，修改Download状态")
+                                item.isDownload = .failed
+                            }
+                            try await Task.sleep(nanoseconds: 3_000_000_000)
+                            // 恢复下载标识
+                            item.isDownload = .idle
                         }
                     }) {
-                        
-                        if item.isDownloaded {
+                        if item.isDownload == .complete {
+                            // 下载完成标识
                             Image(systemName:"checkmark")
-                                .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
-                                .padding(.vertical,5)
-                                .padding(.horizontal,20)
-                                .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
-                                .cornerRadius(20)
-                        } else {
+                                .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
+                        } else if item.isDownload == .idle {
+                            // 可下载标识
                             Text("Download")
-                                .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
-                                .padding(.vertical,5)
-                                .padding(.horizontal,20)
-                                .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
-                                .cornerRadius(20)
+                                .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
+                        } else if item.isDownload == .running {
+                            // 下载中标识
+                            ProgressView("")
+                                .scaleEffect(0.5)
+                                .labelsHidden()
+                                .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
+                        } else if item.isDownload == .failed {
+                            // 下载错误标识
+                            Image(systemName:"xmark")
+                                .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
+                                .foregroundColor(.red)
                         }
                     }
                     .buttonStyle(.plain)
                     .modifier(HoverModifier())
-                    .disabled(item.isDownloaded)
+                    .disabled(item.isDownload != .idle)
                 }
-            } else if item.compressionState == .pending{
+                
+            } else if item.isState == .pending{
                 if imageType == .compression {
-                    Text("Waiting for compression")
-                        .foregroundColor(.red)
+                    tipState(name: "Waiting for compression")
                 } else if imageType == .conversion {
-                    Text("Waiting for conversion")
-                        .foregroundColor(.red)
+                    tipState(name: "Waiting for conversion")
                 }
-               
-            } else if item.compressionState == .failed {
+                
+            } else if item.isState == .failed {
                 if imageType == .compression {
-                    Text("Compression failed")
-                        .foregroundColor(.red)
+                    tipState(name: "Compression failed")
                 } else if imageType == .conversion {
-                    Text("Conversion failed")
-                        .foregroundColor(.red)
+                    tipState(name: "Conversion failed")
                 }
-            } else if item.compressionState == .compressing{
+            } else if item.isState == .running {
                 ProgressView("")
                     .scaleEffect(0.5)
                     .labelsHidden()
@@ -203,6 +203,26 @@ struct ImageRowView: View {
     }
 }
 
+private struct ImageRowViewButton: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    let rightButtonWidth: Double
+    let rightButtonHeight: Double
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
+            .frame(width: rightButtonWidth,height: rightButtonHeight)
+            .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
+            .cornerRadius(20)
+    }
+}
+
+private struct tipState: View {
+    var name: String
+    var body: some View {
+        Text(LocalizedStringKey(name))
+            .foregroundColor(.red)
+    }
+}
 extension ImageRowView {
     // 抖动效果
     private func triggerShake() {
@@ -221,9 +241,7 @@ extension ImageRowView {
         // 根据 AppStorage 选项，选择图片打开方式：
         if appStorage.imagePreviewMode == .quickLook {
             // 使用 Quick Look 预览图片
-            if let image = item.image,let url = FileUtils.saveImageToTempFile(image: image) {
-                FileUtils.previewImage(at: url)
-            }
+            FileUtils.previewImage(at: item.inputURL)
         } else if appStorage.imagePreviewMode == .window {
             // 使用新窗口预览图片
             if let image = item.image {
@@ -236,10 +254,14 @@ extension ImageRowView {
 #Preview {
     ZStack {
         Color.white.frame(width: 300,height:40)
-        
-        ImageRowView(item: CustomImages(name: "1.png", inputType: "PNG", inputSize: 1000, inputURL: URL(string: "http://www.fangjunyu.com")!, compressionState: .compressing), previewer: ImagePreviewWindow(), imageType: .compression)
-            .frame(width: 300,height:40)
-            .environmentObject(AppStorage.shared)
+        ImageRowView(item:
+                        CustomImages(id: UUID(), name: "1", type: .compression, inputURL: URL(string: "http://www.fangjunyu.com")!, inputType: "PNG", outputType: "PNG"),
+                     previewer: ImagePreviewWindow(),
+                     imageType: .compression)
+        .frame(width: 300,height:40)
+        .environmentObject(AppStorage.shared)
+        .environmentObject(WorkSpaceViewModel.shared)
+        .environmentObject(ImageArrayViewModel.shared)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
     }
     .frame(width: 350,height: 100)

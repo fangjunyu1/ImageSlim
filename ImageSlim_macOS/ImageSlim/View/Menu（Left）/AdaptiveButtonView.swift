@@ -93,9 +93,11 @@ struct AdaptiveButtonView: View {
     
     func removeImages() {
         if appStorage.selectedView == .compression {
-            imageArray.compressedImages.removeAll()
+            // 移除显示压缩图片和压缩图片任务队列中的图片
+            imageArray.cancelCompressionTask()
         } else {
-            imageArray.conversionImages.removeAll()
+            // 移除转换图片和转换图片任务队列中的图片
+            imageArray.cancelConversionTask()
         }
     }
 }
