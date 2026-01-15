@@ -194,6 +194,10 @@ class ImageArrayViewModel: ObservableObject {
     // 取消所有的压缩任务
     func cancelCompressionTask() {
         compressionTask?.cancel()   // 取消压缩任务
+        for i in compressedImages {
+            i.releaseImage()
+            i.releaseThumbnail()
+        }
         compressedImages.removeAll()    // 移除压缩图片列表
         compressTaskQueue.removeAll()   // 移除压缩图片任务列表
         print("压缩任务已取消")
@@ -202,6 +206,10 @@ class ImageArrayViewModel: ObservableObject {
     // 取消所有的转换任务
     func cancelConversionTask() {
         conversionTask?.cancel()   // 取消压缩任务
+        for i in conversionImages {
+            i.releaseImage()
+            i.releaseThumbnail()
+        }
         conversionImages.removeAll()    // 移除压缩图片列表
         conversionTaskQueue.removeAll()   // 移除压缩图片任务列表
         print("转换任务已取消")

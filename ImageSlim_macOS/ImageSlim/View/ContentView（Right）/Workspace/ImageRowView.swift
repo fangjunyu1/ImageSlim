@@ -14,7 +14,7 @@ struct ImageRowView: View {
     @EnvironmentObject var appStorage: AppStorage
     @EnvironmentObject var workSpaceVM: WorkSpaceViewModel
     @EnvironmentObject var imageArray: ImageArrayViewModel
-    var item: CustomImages
+    @ObservedObject var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
     var previewer: ImagePreviewWindow
     var imageType: WorkTaskType
@@ -145,6 +145,7 @@ struct ImageRowView: View {
                                 item.isDownload = .failed
                             }
                             try await Task.sleep(nanoseconds: 3_000_000_000)
+                            print("恢复下载标识")
                             // 恢复下载标识
                             item.isDownload = .idle
                         }
