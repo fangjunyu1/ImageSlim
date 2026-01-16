@@ -21,10 +21,10 @@ struct SettingsItemTypeView: View {
             .pickerStyle(.menu)
             .labelsHidden()
             .fixedSize() // 不随容器拉伸
-        case .CompressionSlider(let string, let binding):
-            Text(string)
-            Slider(value: binding,in: 0...1,step: 0.25)
-                .frame(width: 100)
+            
+        case .CompressionSlider(let binding):
+            CompressionSliderView(value: binding)
+            
         case .PickerPreview(let binding):
             Picker("预览方式", selection: binding) {
                 Text("Window preview").tag(PreviewMode.window)
@@ -33,6 +33,7 @@ struct SettingsItemTypeView: View {
             .pickerStyle(.menu)
             .labelsHidden()
             .fixedSize() // 不随容器拉伸
+            
         case .SaveLocationButton:
             Button(action: {
                 FileUtils.createSaveLocation(saveName:$saveName)    // 选择保存目录 - 安全书签
@@ -44,6 +45,7 @@ struct SettingsItemTypeView: View {
             .onAppear {
                 FileUtils.refreshSaveName(saveName: $saveName)  // 显示视图时，修改目录名称
             }
+            
         case .ToggleThirdParty(let pngquant, let gifsicle):
             Text("Pngquant")
                 .foregroundColor(.gray)
@@ -54,9 +56,11 @@ struct SettingsItemTypeView: View {
                 .foregroundColor(.gray)
             Toggle("Gifsicle",isOn: gifsicle)
                 .labelsHidden()
+            
         case .Toggle(let string, let binding):
             Toggle(string,isOn: binding)
                 .labelsHidden()
+            
         case .Link(let string, let url):
             Text(LocalizedStringKey(string))
                 .foregroundColor(.gray)
@@ -66,6 +70,7 @@ struct SettingsItemTypeView: View {
                     }
                 }
                 .modifier(HoverModifier())
+            
         case .SendEmail(let string):
             Text(LocalizedStringKey(string))
                 .foregroundColor(.gray)
@@ -73,6 +78,7 @@ struct SettingsItemTypeView: View {
                     FileUtils.sendEmail()
                 }
                 .modifier(HoverModifier())
+            
         case .Thanks(let tuple):
             HStack(spacing:0) {
                 ForEach(tuple.indices, id:\.self) { index in
@@ -90,5 +96,36 @@ struct SettingsItemTypeView: View {
                 .foregroundColor(.gray)
             }
         }
+    }
+}
+
+// MARK: - 独立的压缩率滑块组件
+struct CompressionSliderView: View {
+    @Binding var value: Double
+    
+    private var qualityLabel: String {
+        switch value {
+        case 1.0: return "Lossless"
+        case 0.75: return "High Quality"
+        case 0.5: return "Balanced"
+        case 0.25: return "Low Quality"
+        case 0.0: return "Lowest"
+        default: return "\(Int(value * 100))%"
+        }
+    }
+    
+    var body: some View {
+        Text(qualityLabel)
+        Slider(
+            value: Binding(
+                get: { value },
+                set: { newValue in
+                    value = round(newValue * 4) / 4
+                }
+            ),
+            in: 0...1,
+            step: 0.25
+        )
+        .frame(width: 100)
     }
 }

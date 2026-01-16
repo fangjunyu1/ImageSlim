@@ -36,16 +36,7 @@ struct SettingsView: View {
                         SettingsItemView(
                             icon: "numbers.rectangle",
                             title: "Image compression rate",
-                            type: .CompressionSlider(
-                                compressionLocalizedKey,
-                                Binding(
-                                    get: { appStorage.imageCompressionRate },
-                                    set: {
-                                        // 处理 Slider 浮点数精度误差，如0.600000000001
-                                        let rounded = round($0 * 10) / 10
-                                        appStorage.imageCompressionRate = rounded }
-                                )
-                            ))
+                            type: .CompressionSlider($appStorage.imageCompressionRate))
                         Divider().padding(.leading,25)
                         
                         // 图片预览方式
@@ -109,7 +100,7 @@ struct SettingsView: View {
                             title: "Terms of use",
                             type: .Link(
                                 "Web page (Chinese)",
-                                "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e4%bd%bf%e7%94%a8%e6%9d%a1%e6%ac%be/"))
+                                url: "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e4%bd%bf%e7%94%a8%e6%9d%a1%e6%ac%be/"))
                         
                         Divider().padding(.leading,25)
                         
@@ -119,7 +110,7 @@ struct SettingsView: View {
                             title: "Privacy policy",
                             type: .Link(
                                 "Web page (Chinese)",
-                                "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e9%9a%90%e7%a7%81%e6%94%bf%e7%ad%96/"))
+                                url: "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e9%9a%90%e7%a7%81%e6%94%bf%e7%ad%96/"))
                         
                         Divider().padding(.leading,25)
                         
@@ -137,7 +128,7 @@ struct SettingsView: View {
                             title: "Open source",
                             type: .Link(
                                 "GitHub",
-                                "https://github.com/fangjunyu1/ImageSlim"))
+                                url: "https://github.com/fangjunyu1/ImageSlim"))
                         
                         Divider().padding(.leading,25)
                         
@@ -161,23 +152,6 @@ struct SettingsView: View {
             }
         }
         .modifier(WindowsModifier())
-    }
-}
-
-extension SettingsView {
-    var compressionLocalizedKey: LocalizedStringKey  {
-        let rate = appStorage.imageCompressionRate
-        if rate < 0.3 {
-            return "Lowest"
-        } else if rate < 0.5 {
-            return "Low Quality"
-        } else if rate < 0.7 {
-            return "Balanced"
-        } else if rate < 0.9 {
-            return "High Quality"
-        } else {
-            return "Lossless"
-        }
     }
 }
 
