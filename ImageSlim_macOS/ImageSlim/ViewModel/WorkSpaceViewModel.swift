@@ -30,15 +30,20 @@ extension WorkSpaceViewModel {
         let pngquant: String
         let gifsicle: String
         
+        // 0.25 和 0.75 为新增的图片压缩率，0.3 和 0.8为之前的图片压缩率。
         static func from(rate: Double) -> CompressionQuality {
             switch rate {
             case 1.0:
                 return CompressionQuality(pngquant: "90-100", gifsicle: "256")
             case 0.8:
                 return CompressionQuality(pngquant: "60-75", gifsicle: "192")
+            case 0.75:
+                return CompressionQuality(pngquant: "60-75", gifsicle: "192")
             case 0.5:
                 return CompressionQuality(pngquant: "40-50", gifsicle: "128")
             case 0.3:
+                return CompressionQuality(pngquant: "15-25", gifsicle: "64")
+            case 0.25:
                 return CompressionQuality(pngquant: "15-25", gifsicle: "64")
             default:
                 return CompressionQuality(pngquant: "15-25", gifsicle: "64")
@@ -112,8 +117,13 @@ extension WorkSpaceViewModel {
     
     // MARK: macOS 原生压缩
     private func compressWithNative(_ image: CustomImages) -> Bool {
+        
+        guard let fullImage = image.loadImageIfCalculate() else {
+            return false
+        }
+        
         // 将 NSImage 转换为 CGImage
-        guard let tiffData = image.image?.tiffRepresentation,
+        guard let tiffData = fullImage.tiffRepresentation,
               let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
               let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
             print("无法获取 CGImage")
@@ -168,6 +178,7 @@ extension WorkSpaceViewModel {
         do {
             try compressedData.write(to: image.outputURL)
             print("压缩完成:\(image.outputURL)")
+            print("图片写入成功，是否存在:\(FileManager.default.fileExists(atPath: image.outputURL.path))'")
             return true
         } catch {
             print("写入失败")
@@ -225,8 +236,13 @@ extension WorkSpaceViewModel {
     
     // 使用 Core Graphics 转换图片
     func conversionImage(_ image: CustomImages) -> Bool {
+        
+        guard let fullImage = image.loadImageIfCalculate() else {
+            return false
+        }
+        
         // 获取CGImage
-        guard let tiffData = image.image?.tiffRepresentation,
+        guard let tiffData = fullImage.tiffRepresentation,
               let bitmap = NSBitmapImageRep(data: tiffData),
               let cgImage = bitmap.cgImage else {
             print("无法获取 CGImage")

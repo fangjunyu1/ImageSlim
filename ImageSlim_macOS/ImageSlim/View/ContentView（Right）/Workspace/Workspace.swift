@@ -16,7 +16,6 @@ struct Workspace: View {
     @EnvironmentObject var imageArray: ImageArrayViewModel
     @StateObject var filePS = FileProcessingService.shared
     @StateObject var workSpaceVM = WorkSpaceViewModel.shared
-    @State private var previewer = ImagePreviewWindow()
     @State private var isHovering = false   // 图片悬浮时
     @State private var showImporter = false
     var type: WorkTaskType
@@ -38,7 +37,7 @@ struct Workspace: View {
             }, zstack: {
                 WorkspaceZStack(type: type, isHovering: isHovering,showImporter: $showImporter)
             }, list: {
-                WorkspaceList(type: type, previewer: previewer)
+                WorkspaceList(type: type)
             })
         }
         .modifier(WindowsModifier())

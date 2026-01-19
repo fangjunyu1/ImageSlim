@@ -31,6 +31,10 @@ class CustomImages: ObservableObject {
         progress = min(max(value, 0), 1)
     }
     
+    static var isPreview: Bool {
+        ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+    
     init(
         id: UUID,
         name: String,
@@ -54,8 +58,8 @@ extension CustomImages {
     
     // 输入文件的大小
     var inputSize: Int {
-        if _inputSize == nil {
-            _inputSize = FileUtils.getFileSize(fileURL: inputURL)
+        if Self.isPreview {
+            return _inputSize ?? 1_234_567
         }
         return _inputSize ?? 0
     }
@@ -63,21 +67,16 @@ extension CustomImages {
     // 输出路径,默认命名为 image.id_compress
     var outputURL: URL {
         let ext = (type == .compression ? inputType : outputType).lowercased()
-        return FileManager.default.temporaryDirectory
+        let outputURLs = FileManager.default.temporaryDirectory
             .appendingPathComponent("\(id)_compress")
             .appendingPathExtension(ext)
+        return outputURLs
     }
     
     // 输出文件的大小
     var outputSize: Int {
-        if _outputSize == nil {
-            let input = FileUtils.getFileSize(fileURL: inputURL)
-            let output = FileUtils.getFileSize(fileURL: outputURL)
-            if output < input {
-                _outputSize = output
-            } else {
-                _outputSize = input
-            }
+        if Self.isPreview {
+            return _outputSize ?? 456_789
         }
         return _outputSize ?? 0
     }
@@ -123,16 +122,16 @@ extension CustomImages {
      
     // 懒加载图片，防止同时创建多个CustomImages时，出现卡顿的问题
     var image: NSImage? {
-        if _image == nil {
-            _image = NSImage(contentsOf: inputURL)
+        if Self.isPreview {
+            return NSImage(systemSymbolName: "photo", accessibilityDescription: nil)
         }
         return _image
     }
     
     // 懒加载缩略图，
     var thumbnail: NSImage? {
-        if _thumbnail == nil {
-            _thumbnail = generateThumbnail(from:inputURL,maxSize: 60)
+        if Self.isPreview {
+            return NSImage(systemSymbolName: "photo", accessibilityDescription: nil)
         }
         return _thumbnail
     }
@@ -156,6 +155,11 @@ extension CustomImages {
         let thumbnail = NSImage(cgImage: cgImage, size: size)
         return thumbnail
     }
+}
+    
+    
+// MARK: - 调用方法
+extension CustomImages {
     
     // 释放图片
     func releaseImage() {
@@ -166,4 +170,56 @@ extension CustomImages {
     func releaseThumbnail() {
         _thumbnail = nil
     }
+    
+    // 计算输入文件大小
+    func loadInputSizeIfNeeded() {
+        if _inputSize == nil {
+            _inputSize = FileUtils.getFileSize(fileURL: inputURL)
+        }
+    }
+    
+    // 计算输出文件大小
+    func loadOutputSizeIfNeeded() {
+        if _outputSize == nil {
+            let input = FileUtils.getFileSize(fileURL: inputURL)
+            let output = FileUtils.getFileSize(fileURL: outputURL)
+            print("inputURL:\(inputURL),文件是否存在:\(FileManager.default.fileExists(atPath: outputURL.path))")
+            print("outputURL:\(outputURL),文件是否存在:\(FileManager.default.fileExists(atPath: outputURL.path))")
+            
+            if output < input {
+                _outputSize = output
+            } else {
+                _outputSize = input
+            }
+        }
+    }
+    
+    // 加载缩略图
+    func loadThumbnailIfNeeded() {
+        if _thumbnail == nil {
+            _thumbnail = generateThumbnail(from:inputURL,maxSize: 60)
+        }
+    }
+    
+    // 加载原图
+    func loadImageIfNeeded() {
+        if _image == nil {
+            _image = NSImage(contentsOf: inputURL)
+        }
+    }
+    
+    // 图片用于压缩/转换
+    func loadImageIfCalculate() -> NSImage? {
+        if let img = _image {
+            return img
+        }
+        
+        let img = NSImage(contentsOf: inputURL)
+        
+        return img
+    }
+}
+
+enum CustomImagesError: Error {
+    case loadImageFailed
 }

@@ -207,6 +207,8 @@ extension FileUtils {
     
     // 计算文件的大小
     static func getFileSize(fileURL: URL) -> Int {
+        print("进入getFileSize，URL:\(fileURL)")
+        print("文件是否存在:\(FileManager.default.fileExists(atPath: fileURL.path))")
         // Finder上的图片大小
         // let resourceValues = try? fileURL.resourceValues(forKeys: [.totalFileAllocatedSizeKey])
         // let diskSize = resourceValues?.totalFileAllocatedSize ?? 0

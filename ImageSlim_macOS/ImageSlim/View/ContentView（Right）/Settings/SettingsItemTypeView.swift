@@ -104,7 +104,7 @@ struct CompressionSliderView: View {
     @Binding var value: Double
     
     private var qualityLabel: String {
-        switch value {
+        switch quantize(value) {
         case 1.0: return "Lossless"
         case 0.75: return "High Quality"
         case 0.5: return "Balanced"
@@ -114,11 +114,15 @@ struct CompressionSliderView: View {
         }
     }
     
+    func quantize(_ value: Double) -> Double {
+        round(value * 4) / 4
+    }
+    
     var body: some View {
-        Text(qualityLabel)
+        Text(LocalizedStringKey(qualityLabel))
         Slider(
             value: Binding(
-                get: { value },
+                get: { quantize(value) },
                 set: { newValue in
                     value = round(newValue * 4) / 4
                 }

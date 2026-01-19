@@ -16,7 +16,6 @@ struct ImageRowView: View {
     @EnvironmentObject var imageArray: ImageArrayViewModel
     @ObservedObject var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
-    var previewer: ImagePreviewWindow
     var imageType: WorkTaskType
     let rightButtonWidth = 70.0
     let rightButtonHeight = 30.0
@@ -103,6 +102,7 @@ struct ImageRowView: View {
                                 .frame(width:50,height:16)
                                 .cornerRadius(3)
                             Text("\(item.outputType)")
+                                .font(.footnote)
                                 .foregroundColor(.white)
                                 .cornerRadius(5)
                         }
@@ -122,12 +122,12 @@ struct ImageRowView: View {
                         Image(systemName:"lock.fill")
                             .offset(x: shakeOffset)
                     }
+                    .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
+                    .modifier(HoverModifier())
                     .onTapGesture {
                         print("抖动锁图标")
                         triggerShake()
                     }
-                    .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
-                    .modifier(HoverModifier())
                     .cornerRadius(20)
                 } else {
                     // 下载按钮
@@ -172,7 +172,6 @@ struct ImageRowView: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .modifier(HoverModifier())
                     .disabled(item.isDownload != .idle)
                 }
                 
@@ -210,6 +209,7 @@ private struct ImageRowViewButton: ViewModifier {
     let rightButtonHeight: Double
     func body(content: Content) -> some View {
         content
+            .contentShape(Rectangle())
             .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
             .frame(width: rightButtonWidth,height: rightButtonHeight)
             .background(colorScheme == .light ? Color(hex: "EEEEEE") : Color(hex: "555555"))
@@ -245,9 +245,9 @@ extension ImageRowView {
             FileUtils.previewImage(at: item.inputURL)
         } else if appStorage.imagePreviewMode == .window {
             // 使用新窗口预览图片
-            if let image = item.image {
-                previewer.show(image: Image(nsImage: image))
-            }
+            let fullImage = item.loadImageIfCalculate()
+            guard let img = fullImage else { return }
+            ImagePreviewWindow.shared.show(image: img)
         }
     }
 }
@@ -256,14 +256,16 @@ extension ImageRowView {
     ZStack {
         Color.white.frame(width: 300,height:40)
         ImageRowView(item:
-                        CustomImages(id: UUID(), name: "1", type: .compression, inputURL: URL(string: "http://www.fangjunyu.com")!, inputType: "PNG", outputType: "PNG"),
-                     previewer: ImagePreviewWindow(),
-                     imageType: .compression)
+                        CustomImages(id: UUID(), name: "1", type: .conversion, inputURL: URL("https://backend.chatbase.co/storage/v1/object/public/chat-icons/72529423-6fcb-41de-ba3f-5f78df0223dd/yvyyk1zKYArY67zEfPZ6J.webp")!, inputType: "PNG", outputType: "PNG", isState: .completed),
+                     imageType: .conversion)
         .frame(width: 300,height:40)
         .environmentObject(AppStorage.shared)
         .environmentObject(WorkSpaceViewModel.shared)
         .environmentObject(ImageArrayViewModel.shared)
         // .environment(\.locale, .init(identifier: "de")) // 设置为德语
+        .onAppear {
+            print("\(CustomImages.isPreview ? "预览模式" : "正式环境")")
+        }
     }
     .frame(width: 350,height: 100)
 }

@@ -50,6 +50,10 @@ class ImageArrayViewModel: ObservableObject {
     func addViewQueue(type: WorkTaskType,image: CustomImages?) {
         guard let image = image else { return }
         
+        // 显示图片的缩略图和计算输入文件大小
+        image.loadThumbnailIfNeeded() // 加载缩略图
+        image.loadInputSizeIfNeeded() // 计算输入文件大小
+        
         switch type {
         case .compression:
             // CustomImage 对象添加到视图的列表
@@ -148,8 +152,15 @@ class ImageArrayViewModel: ObservableObject {
                     print("\(task.fullName) 压缩失败")
                 }
                 
+                // 计算输出文件大小
+                task.loadOutputSizeIfNeeded()
+                // 释放图片
+                task.releaseImage()
                 // 移除已处理的任务
                 compressTaskQueue.removeFirst()
+                
+                // 添加短暂延迟，避免 CPU 占比过高
+                try? await Task.sleep(nanoseconds: 100_000_000)
             }
             
         case .conversion:
@@ -167,11 +178,16 @@ class ImageArrayViewModel: ObservableObject {
                 if result {
                     task.isState = .completed
                     print("\(task.fullName) 转换成功")
+                    task.releaseImage() // 释放图片
                 } else {
                     task.isState = .failed
                     print("\(task.fullName) 转换失败")
                 }
                 
+                // 计算输出文件大小
+                task.loadOutputSizeIfNeeded()
+                // 释放图片
+                task.releaseImage()
                 // 移除已处理的任务
                 conversionTaskQueue.removeFirst()
                 

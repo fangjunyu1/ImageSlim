@@ -13,13 +13,12 @@ struct WorkspaceList: View {
     @EnvironmentObject var workSpaceVM: WorkSpaceViewModel
     @EnvironmentObject var imageArray: ImageArrayViewModel
     var type: WorkTaskType
-    var previewer: ImagePreviewWindow
     var body: some View {
         switch type {
         case .compression:
             ScrollView(showsIndicators:false) {
                 ForEach(Array(imageArray.compressedImages.enumerated()),id: \.offset) { index,item in
-                    ImageRowView(item: item,previewer: previewer,imageType: .compression)
+                    ImageRowView(item: item,imageType: .compression)
                         .frame(maxWidth: .infinity)
                         .frame(height:42)
                     // 分割线
@@ -32,7 +31,7 @@ struct WorkspaceList: View {
         case .conversion:
             ScrollView(showsIndicators:false) {
                 ForEach(Array(imageArray.conversionImages.enumerated()),id: \.offset) { index,item in
-                    ImageRowView(item: item,previewer: previewer,imageType: .conversion)
+                    ImageRowView(item: item,imageType: .conversion)
                         .frame(maxWidth: .infinity)
                         .frame(height:42)
                     // 分割线
@@ -59,7 +58,7 @@ struct WorkspaceListScrollViewModifier: ViewModifier {
 }
 
 #Preview {
-    WorkspaceList(type: .conversion, previewer: ImagePreviewWindow())
+    WorkspaceList(type: .conversion)
         .environmentObject(AppStorage.shared)
         .environmentObject(WorkSpaceViewModel.shared)
 }
