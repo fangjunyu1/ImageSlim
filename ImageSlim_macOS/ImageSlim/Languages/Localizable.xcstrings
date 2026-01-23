@@ -3797,6 +3797,9 @@
         }
       }
     },
+    "Cwebp" : {
+
+    },
     "Desktop directory" : {
       "comment" : "桌面目录",
       "extractionState" : "manual",
@@ -6617,8 +6620,8 @@
         }
       }
     },
-    "Enable third-party library compression" : {
-      "comment" : "启用第三方库压缩",
+    "Enable third-party libraries" : {
+      "comment" : "启用第三方库",
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {

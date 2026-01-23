@@ -61,7 +61,8 @@ struct SettingsView: View {
                             title: "Enable third-party library compression",
                             type: .ToggleThirdParty(
                                 pngquant: $appStorage.enablePngquant,
-                                gifsicle: $appStorage.enableGifsicle
+                                gifsicle: $appStorage.enableGifsicle,
+                                cwebp: $appStorage.enableCwebp
                             )
                         )
                         

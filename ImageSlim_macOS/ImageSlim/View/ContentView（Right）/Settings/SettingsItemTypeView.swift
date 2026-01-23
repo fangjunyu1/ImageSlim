@@ -46,7 +46,7 @@ struct SettingsItemTypeView: View {
                 FileUtils.refreshSaveName(saveName: $saveName)  // 显示视图时，修改目录名称
             }
             
-        case .ToggleThirdParty(let pngquant, let gifsicle):
+        case .ToggleThirdParty(let pngquant, let gifsicle, let cwebp):
             Text("Pngquant")
                 .foregroundColor(.gray)
             Toggle("Pngquant",isOn: pngquant)
@@ -55,6 +55,11 @@ struct SettingsItemTypeView: View {
             Text("Gifsicle")
                 .foregroundColor(.gray)
             Toggle("Gifsicle",isOn: gifsicle)
+                .labelsHidden()
+            
+            Text("Cwebp")
+                .foregroundColor(.gray)
+            Toggle("Cwebp",isOn: cwebp)
                 .labelsHidden()
             
         case .Toggle(let string, let binding):

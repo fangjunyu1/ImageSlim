@@ -15,7 +15,7 @@ enum FileUtils {
     
     // MARK: 询问用户选择保存目录，并保存图片/Zip
     @MainActor
-    static func askUserForSaveLocation(type: askUserForSaveLocationEnum) -> Bool{
+    static func askUserForSaveLocation(type: askUserForSaveLocationEnum) -> Bool {
         let panel = NSOpenPanel()
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
@@ -269,34 +269,58 @@ extension FileUtils {
         do {
             print("打包Zip")
             
-            // 1、筛选图片输出 URL
-            var ImagesURL:[URL] = images
+            // 1、筛选可以输出的图片
+            var ImagesArray: [CustomImages] = images
                 .filter{ isPurchase || $0.inputSize < limitImageSize }
-                .compactMap { $0.outputURL }
             
-            // 2、根据用户是否保持原文件名称选项，如果不保持原文件名称，则拼接_compress
-            // 如果保持原文件名称，则不执行该代码
-            if !keepOriginalFileName {
-                var tmpURL:[URL] = []
-                for url in ImagesURL {
-                    let imageName = url.lastPathComponent   // 获取文件名称
-                    let nsName = imageName as NSString
-                    let fileName = nsName.deletingPathExtension    // 获取文件名称（无后缀）
-                    let fileExt = nsName.pathExtension    // 获取文件扩展名（后缀）
-                    let finalName: String = "\(fileName)_compress.\(fileExt)"   // 添加 _compress 后缀
-                    let finalURL = url.deletingLastPathComponent().appendingPathComponent(finalName)    // 拼接完整URL
-                    // 如果文件系统中有拼接的URL，则移除已有的 URL 文件
-                    if FileManager.default.fileExists(atPath: finalURL.path) {
-                        try FileManager.default.removeItem(at: finalURL)
-                    }
-                    // 将图片的输出 URL 复制到拼接_compress名称的 URL
-                    try FileManager.default.copyItem(at: url, to: finalURL)
-                    tmpURL.append(finalURL)
-                }
-                ImagesURL = tmpURL
+            // 2、创建临时目录
+            let tempDirectory = FileManager.default.temporaryDirectory
+                .appendingPathComponent(UUID().uuidString, isDirectory: true)
+            try FileManager.default.createDirectory(at: tempDirectory, withIntermediateDirectories: true)
+            
+            // 临时文件夹在退出函数后被清理
+            defer {
+                try? FileManager.default.removeItem(at: tempDirectory)
             }
             
-            // 3、判断 保存目录-安全书签，有的话，保存到安全书签的目录，没有的话，让用户手动选择目标
+            // 3、筛选图片输出 URL
+            var imagesURL:[URL] = []
+            var nameCounter: [String: Int] = [:] // 处理重命名
+            
+            for image in ImagesArray {
+                
+                // 1、先构建基础文件名称（用于检查重名）
+                let baseFileName: String
+                if keepOriginalFileName {
+                    // 保持原文件名
+                    baseFileName = "\(image.name).\(image.outputTypeLowercased)"
+                } else {
+                    // 添加 _compressed 后缀
+                    baseFileName = "\(image.name)_compress.\(image.outputTypeLowercased)"
+                }
+                
+                // 2、处理重名，计算后缀
+                let suffix: Int
+                if let count = nameCounter[baseFileName] {
+                    suffix = count + 1
+                    nameCounter[baseFileName] = suffix
+                } else {
+                    suffix = 0
+                    nameCounter[baseFileName] = suffix
+                }
+                
+                // 3、根据后缀构建最终文件名
+                let finalName: String
+                let suffixString: String = suffix == 0 ? "" : "_\(suffix)"
+                let baseName = keepOriginalFileName ? image.name : "\(image.name)_compress"
+                finalName = "\(baseName)\(suffixString).\(image.outputTypeLowercased)"
+                
+                let destinationURL = tempDirectory.appendingPathComponent(finalName)
+                try FileManager.default.copyItem(at: image.outputURL, to: destinationURL)
+                imagesURL.append(destinationURL)
+            }
+               
+            // 4、判断 保存目录-安全书签，有的话，保存到安全书签的目录，没有的话，让用户手动选择目标
             // 如果有保存目录-安全书签
             if let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") {
                 var isStale = false
@@ -312,7 +336,7 @@ extension FileUtils {
                             url.stopAccessingSecurityScopedResource()
                         }
                         // 调用 Zip 库，保存图片
-                        return saveZip(ImagesURL:ImagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
+                        return saveZip(ImagesURL: imagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
                     } else {
                         print("无法访问资源")
                         return false
@@ -322,7 +346,7 @@ extension FileUtils {
                     return false
                 }
             } else {
-                return FileUtils.askUserForSaveLocation(type: .images(ImagesURL: ImagesURL, showDownloadsProgress: showDownloadsProgress, progress: progress))
+                return FileUtils.askUserForSaveLocation(type: .images(ImagesURL: imagesURL, showDownloadsProgress: showDownloadsProgress, progress: progress))
             }
         } catch {
             showDownloadsProgress.wrappedValue = false

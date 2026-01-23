@@ -29,24 +29,25 @@ extension WorkSpaceViewModel {
     private struct CompressionQuality {
         let pngquant: String
         let gifsicle: String
+        let cwebp: Double
         
         // 0.25 和 0.75 为新增的图片压缩率，0.3 和 0.8为之前的图片压缩率。
         static func from(rate: Double) -> CompressionQuality {
             switch rate {
             case 1.0:
-                return CompressionQuality(pngquant: "90-100", gifsicle: "256")
+                return CompressionQuality(pngquant: "90-100", gifsicle: "256", cwebp: 95)
             case 0.8:
-                return CompressionQuality(pngquant: "60-75", gifsicle: "192")
+                return CompressionQuality(pngquant: "60-75", gifsicle: "192", cwebp: 80)
             case 0.75:
-                return CompressionQuality(pngquant: "60-75", gifsicle: "192")
+                return CompressionQuality(pngquant: "60-75", gifsicle: "192", cwebp: 80)
             case 0.5:
-                return CompressionQuality(pngquant: "40-50", gifsicle: "128")
+                return CompressionQuality(pngquant: "40-50", gifsicle: "128", cwebp: 60)
             case 0.3:
-                return CompressionQuality(pngquant: "15-25", gifsicle: "64")
+                return CompressionQuality(pngquant: "15-25", gifsicle: "64", cwebp: 40)
             case 0.25:
-                return CompressionQuality(pngquant: "15-25", gifsicle: "64")
+                return CompressionQuality(pngquant: "15-25", gifsicle: "64",cwebp: 40)
             default:
-                return CompressionQuality(pngquant: "15-25", gifsicle: "64")
+                return CompressionQuality(pngquant: "15-25", gifsicle: "64", cwebp: 35)
             }
         }
     }
@@ -62,12 +63,16 @@ extension WorkSpaceViewModel {
         let type = image.inputTypeUppercased    // 大写文件后缀
         
         // 根据配置和文件类型选择压缩引擎
+        // cwebp 无法压缩 webp 格式图片，这里不作为压缩引擎使用
         if appStorage.enablePngquant && ["PNG","EXR","TIFF"].contains(type) {
             print("使用 Pngquant 引擎压缩 \(type) 图片")
             return await compressWithPngquant(image)
         } else if appStorage.enableGifsicle && type == "GIF" {
             print("使用 Gifsicle 引擎压缩 GIF 图片")
             return await compressWithGifsicle(image)
+        } else if appStorage.enableCwebp && type == "WEBP"{
+            print("使用 Cwebp 引擎压缩 WEBP 图片")
+            return await compressWithCwebp(image)
         } else {
             print("使用 macOS 原生压缩")
             return compressWithNative(image)
@@ -114,6 +119,107 @@ extension WorkSpaceViewModel {
         return await runProcess(process, for: image,engineName: "gifsicle")
     }
     
+    // MARK: Cwebp 压缩
+    func compressWithCwebp(_ image: CustomImages) async -> Bool {
+        guard let cwebp = Bundle.main.path(forResource: "cwebp", ofType: nil) else {
+            print("cwebp 未找到")
+            return false
+        }
+
+        // 图片输入格式
+        let inputType = image.inputTypeUppercased
+        
+        // cwebp 支持的格式：JPEG, WebP
+        let cwebpSupportedFormats = ["JPG", "JPEG", "WEBP"]
+        
+        var actualInputURL = image.inputURL
+        var needsCleanup = false
+        
+        // 如果输入格式不被 cwebp 支持，先转换 PNG 作为中间格式
+        if !cwebpSupportedFormats.contains(inputType) {
+            print("检测到 \(inputType) 格式不被 cwebp 支持，先转换为 JPEG 中间格式")
+            
+            // 创建临时 PNG 文件路径
+            let tempDirectory = FileManager.default.temporaryDirectory
+            let tempFileName = UUID().uuidString + ".jpeg"
+            let tempJEPGURL = tempDirectory.appendingPathComponent(tempFileName)
+            
+            // 获取图片的原图
+            guard let fullImage = image.loadImageIfCalculate() else {
+                print("无法加载原始图片")
+                return false
+            }
+            
+            // 使用 Core Graphics 转换为 JPEG
+            // 将 NSImage 转换为 CGImage
+            guard let tiffData = fullImage.tiffRepresentation,
+                  let source = CGImageSourceCreateWithData(tiffData as CFData, nil),
+                  let cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil) else {
+                print("无法获取 CGImage")
+                return false
+            }
+            
+            // 创建 PNG 数据
+            let outputData = NSMutableData()
+            guard let destination = CGImageDestinationCreateWithData(
+                outputData,
+                UTType.jpeg.identifier as CFString,
+                1,
+                nil
+            ) else {
+                print("无法创建 CGImageDestination")
+                return false
+            }
+            
+            // 添加图像到目标
+            CGImageDestinationAddImage(destination, cgImage, nil)
+            
+            guard CGImageDestinationFinalize(destination) else {
+                print("图片转换失败")
+                return false
+            }
+            
+            // 获取压缩图片的 Data
+            let compressedData = outputData as Data
+            
+            // 写入临时 JEPG 文件
+            do {
+                try compressedData.write(to: tempJEPGURL)
+                print("成功创建临时 JPEG 文件:\(tempJEPGURL.path)")
+                actualInputURL = tempJEPGURL
+                needsCleanup = true
+            } catch {
+                print("写入临时 JPEG 文件失败:\(error.localizedDescription)")
+                return false
+            }
+        }
+        
+        // 使用 cwebp 转换
+        let quality = CompressionQuality.from(rate: appStorage.imageCompressionRate)
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: cwebp)
+        
+        // cwebp input.jpg -q 80 -o output.webp
+        process.arguments = [
+            actualInputURL.path,
+            "-q", "\(quality.cwebp)",
+            "-o", image.outputURL.path
+        ]
+        
+        let result = await runProcess(process, for: image,engineName: "cwebp")
+        
+        // 清理临时文件
+        if needsCleanup {
+            do {
+                try FileManager.default.removeItem(at: actualInputURL)
+                print("已清理临时 JPEG 文件")
+            } catch {
+                print("清理临时文件失败")
+            }
+        }
+        
+        return result
+    }
     
     // MARK: macOS 原生压缩
     private func compressWithNative(_ image: CustomImages) -> Bool {
@@ -234,8 +340,25 @@ extension WorkSpaceViewModel {
     // 2、修改当前转换状态和图片的转换状态
     // 3、当转换成功后，修改图片的转换状态，移除任务队列中已经转换图片，将当前转换状态改为false，开始转换下一个
     
+    // 转换图片的方法，根据图片类型和配置选择合适的压缩引擎
+    func conversionImage(_ image: CustomImages) async -> Bool {
+        
+        // 获取图片转换的大写格式
+        let type = image.outputUppercased    // 大写文件后缀
+        print("文件转换的大写格式:\(type)")
+        
+        // 根据配置和文件类型选择压缩引擎
+        if appStorage.enableCwebp && type == "WEBP"{
+            print("使用 Cwebp 引擎转换 WEBP 图片")
+            return await compressWithCwebp(image)
+        } else {
+            print("使用 macOS 原生转换")
+            return conversionWithCoreGraphics(image)
+        }
+    }
+    
     // 使用 Core Graphics 转换图片
-    func conversionImage(_ image: CustomImages) -> Bool {
+    func conversionWithCoreGraphics(_ image: CustomImages) -> Bool {
         
         guard let fullImage = image.loadImageIfCalculate() else {
             return false

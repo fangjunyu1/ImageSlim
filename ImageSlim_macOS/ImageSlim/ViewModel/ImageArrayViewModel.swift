@@ -174,7 +174,7 @@ class ImageArrayViewModel: ObservableObject {
                 print("开始转换\(task.fullName)")
                 task.isState = .running // 更新图片的状态
                 
-                let result = workSpaceVM.conversionImage(task)
+                let result = await workSpaceVM.conversionImage(task)
                 if result {
                     task.isState = .completed
                     print("\(task.fullName) 转换成功")

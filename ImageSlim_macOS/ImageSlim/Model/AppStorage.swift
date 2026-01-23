@@ -32,6 +32,9 @@ class AppStorage:ObservableObject {
     // 启用第三方库压缩，当前使用Gifsicle压缩
     @Published var enableGifsicle = false { didSet { updateValue(key: "enableGifsicle", newValue: enableGifsicle, oldValue: oldValue)}}
     
+    // 启用第三方库压缩，当前使用Cwebp压缩
+    @Published var enableCwebp = false { didSet { updateValue(key: "enableCwebp", newValue: enableCwebp, oldValue: oldValue)}}
+    
     // 图片压缩率
     @Published var imageCompressionRate = 0.0 { didSet { updateValue(key: "imageCompressionRate", newValue: imageCompressionRate, oldValue: oldValue)}}
     
@@ -73,6 +76,7 @@ extension AppStorage {
         displayMenuBarIcon = defaults.bool(forKey: "displayMenuBarIcon")    // 显示图标
         enablePngquant = UserDefaults.standard.bool(forKey: "enablePngquant")   // 启用 pngquant
         enableGifsicle = UserDefaults.standard.bool(forKey: "enableGifsicle")   // 启用 gifsicle
+        enableCwebp = UserDefaults.standard.bool(forKey: "enableCwebp")   // 启用 cwebp
         imageCompressionRate = UserDefaults.standard.double(forKey: "imageCompressionRate") //  图片压缩率
         let modeString = UserDefaults.standard.string(forKey: "imagePreviewMode") ?? "quickLook"
         imagePreviewMode = PreviewMode(rawValue: modeString) ?? PreviewMode.quickLook   // 图片预览方式
