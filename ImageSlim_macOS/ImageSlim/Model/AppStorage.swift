@@ -52,6 +52,9 @@ class AppStorage:ObservableObject {
     
     // 转换图片格式
     @Published var convertTypeState: ConversionTypeState = .jpeg { didSet { updateValue(key: "convertTypeState", newValue: convertTypeState.rawValue, oldValue: oldValue.rawValue)}}
+    
+    // 是否完成评分
+    @Published var didRequestReview = false { didSet { updateValue(key: "didRequestReview", newValue: didRequestReview, oldValue: oldValue)}}
 }
 
 // MARK: 从 UserDefaults 加载数据

@@ -137,6 +137,8 @@ struct ImageRowView: View {
                         Task { @MainActor in
                             let result = FileUtils.saveToDownloads(file: item)
                             if result {
+                                // 首次下载完成，弹出评分弹窗
+                                FileUtils.requestRating()
                                 print("保存成功，修改Download状态")
                                 item.isDownload = .complete
                                 // 延时 3 秒后恢复

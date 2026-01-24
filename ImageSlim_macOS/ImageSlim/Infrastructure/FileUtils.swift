@@ -10,6 +10,7 @@ import AppKit
 import QuickLookUI
 import SwiftUI
 import Zip
+import StoreKit
 
 enum FileUtils {
     
@@ -392,6 +393,16 @@ extension FileUtils {
             showDownloadsProgressBinding.wrappedValue = false
             print("在SaveZip方法中崩溃")
             return false
+        }
+    }
+    
+    // 评分功能
+    @MainActor static func requestRating() {
+        // 第一次下载图片并弹出评分窗口
+        if !AppStorage.shared.didRequestReview {
+            SKStoreReviewController.requestReview()
+            AppStorage.shared.didRequestReview = true
+            print("弹出评分窗口")
         }
     }
 }
