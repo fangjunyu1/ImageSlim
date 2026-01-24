@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.isReleasedWhenClosed = false
         window.contentViewController = splitVC
-        window.minSize = NSSize(width: 600, height: 400)
+        window.minSize = NSSize(width: 600, height: 475)
         window.maxSize = NSSize(width: 1200, height: 800)
         window.makeKeyAndOrderFront(nil)
         

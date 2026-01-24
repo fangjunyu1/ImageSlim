@@ -142,7 +142,8 @@ struct SettingsView: View {
                                     ("Pngquant","https://pngquant.org/"),
                                     ("Gifsicle","https://www.lcdf.org/gifsicle/"),
                                     ("Freepik","https://www.freepik.com/"),
-                                    ("Zip","https://github.com/marmelroy/Zip")
+                                    ("Zip","https://github.com/marmelroy/Zip"),
+                                    ("Cwebp","https://chromium.googlesource.com/webm/libwebp")
                                 ])
                         )
                     }
