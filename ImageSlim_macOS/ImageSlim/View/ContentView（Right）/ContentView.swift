@@ -10,12 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var appStorage: AppStorage
     var body: some View {
-        if appStorage.selectedView == .compression {
+        switch appStorage.selectedView {
+        case .compression:
             Workspace(type: .compression)
-        } else if appStorage.selectedView == .settings {
-            SettingsView()
-        } else if appStorage.selectedView == .conversion {
+        case .conversion:
             Workspace(type: .conversion)
+        case .settings:
+            SettingsView()
+        case .statistics:
+            Statistics()
         }
     }
 }

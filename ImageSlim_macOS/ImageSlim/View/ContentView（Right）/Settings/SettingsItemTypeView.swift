@@ -11,6 +11,9 @@ struct SettingsItemTypeView: View {
     @Environment(\.openURL) var openURL
     @State var saveName: String = AppStorage.shared.saveName
     let type: SettingsItemType
+    // 临时文件大小
+    var tempStorageUsed = FileUtils.calculateTempFolderSize()
+    
     var body: some View {
         switch type {
         case .PickerIcon(let binding):
@@ -100,6 +103,14 @@ struct SettingsItemTypeView: View {
                 }
                 .foregroundColor(.gray)
             }
+        case .TempStorageUsed:
+            Button(action: {
+                let url = FileManager.default.temporaryDirectory
+                NSWorkspace.shared.open(url)    // 打开临时文件夹链接
+            }, label: {
+                Text("\(FileUtils.TranslateSize(fileSize: tempStorageUsed))")
+            })
+            .buttonStyle(.plain)
         }
     }
 }

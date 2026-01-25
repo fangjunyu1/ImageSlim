@@ -55,6 +55,9 @@ class AppStorage:ObservableObject {
     
     // 是否完成评分
     @Published var didRequestReview = false { didSet { updateValue(key: "didRequestReview", newValue: didRequestReview, oldValue: oldValue)}}
+    
+    // 启用统计功能
+    @Published var enableStatistics = false { didSet { updateValue(key: "enableStatistics", newValue: enableStatistics, oldValue: oldValue)}}
 }
 
 // MARK: 从 UserDefaults 加载数据
@@ -73,7 +76,8 @@ extension AppStorage {
             "imageCompressionRate": 0,   // 默认压缩率为 0
             "imagePreviewMode": PreviewMode.quickLook.rawValue,  // 图片预览方式
             "EnableImageConversion": true,   // 默认启用图片转换
-            "convertTypeState": ConversionTypeState.jpeg.rawValue    // 图片转换格式
+            "convertTypeState": ConversionTypeState.jpeg.rawValue,    // 图片转换格式
+            "enableStatistics": true    // 默认启用统计
         ])
         
         displayMenuBarIcon = defaults.bool(forKey: "displayMenuBarIcon")    // 显示图标
@@ -88,6 +92,8 @@ extension AppStorage {
         EnableImageConversion = UserDefaults.standard.bool(forKey: "EnableImageConversion") // 启用图片转换
         let formatsString = UserDefaults.standard.string(forKey: "convertTypeState") ?? "jpeg"
         convertTypeState = ConversionTypeState(rawValue: formatsString) ?? ConversionTypeState.jpeg
+        didRequestReview = UserDefaults.standard.bool(forKey: "didRequestReview") // 评分
+        enableStatistics = UserDefaults.standard.bool(forKey: "enableStatistics") // 启用统计
     }
 }
 

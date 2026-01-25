@@ -21,7 +21,7 @@ enum FileUtils {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
+        let saveDir = NSLocalizedString("Save Location", comment: "选择保存文件夹")
         panel.prompt = saveDir
         
         if panel.runModal() == .OK, let url = panel.url {
@@ -139,7 +139,7 @@ enum FileUtils {
         panel.canChooseFiles = false
         panel.canChooseDirectories = true
         panel.allowsMultipleSelection = false
-        let saveDir = NSLocalizedString("Save location", comment: "选择保存文件夹")
+        let saveDir = NSLocalizedString("Save Location", comment: "选择保存文件夹")
         panel.prompt = saveDir
         
         if panel.runModal() == .OK, let url = panel.url {
@@ -404,6 +404,34 @@ extension FileUtils {
             AppStorage.shared.didRequestReview = true
             print("弹出评分窗口")
         }
+    }
+    
+    // 计算临时文件大小
+    static func calculateTempFolderSize() -> Int {
+        let tempURL = FileManager.default.temporaryDirectory
+        var totalSize = 0
+        guard let enumerator = FileManager.default.enumerator(
+            at: tempURL,
+            includingPropertiesForKeys: [.fileSizeKey, .isRegularFileKey],
+            options: [.skipsHiddenFiles, .skipsPackageDescendants]
+        ) else {
+            return 0
+        }
+        
+        for case let fileURL as URL in enumerator {
+            do {
+                let resourceValues = try fileURL.resourceValues(forKeys: [.fileSizeKey, .isRegularFileKey])
+                
+                // 只统计常规文件
+                if resourceValues.isRegularFile == true {
+                    totalSize += resourceValues.fileSize ?? 0
+                }
+            } catch {
+                print("读取文件大小失败:\(fileURL)，错误: \(error)")
+            }
+        }
+        
+        return totalSize
     }
 }
 

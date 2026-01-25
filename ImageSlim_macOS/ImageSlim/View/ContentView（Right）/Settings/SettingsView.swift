@@ -28,21 +28,21 @@ struct SettingsView: View {
                         // 在菜单栏中显示图标
                         SettingsItemView(
                             icon:"slider.horizontal.2.square",
-                            title: "Show icon in menu bar",
+                            title: "Show in Menu Bar",
                             type: .PickerIcon($appStorage.displayMenuBarIcon))
                         Divider().padding(.leading,25)
                         
                         // 图片压缩率
                         SettingsItemView(
                             icon: "numbers.rectangle",
-                            title: "Image compression rate",
+                            title: "Compression Ratio",
                             type: .CompressionSlider($appStorage.imageCompressionRate))
                         Divider().padding(.leading,25)
                         
                         // 图片预览方式
                         SettingsItemView(
                             icon: "plus.magnifyingglass",
-                            title: "Image preview method",
+                            title: "Preview Mode",
                             type: .PickerPreview($appStorage.imagePreviewMode))
                         
                         Divider().padding(.leading,25)
@@ -50,7 +50,7 @@ struct SettingsView: View {
                         // 图片保存目录
                         SettingsItemView(
                             icon: "square.and.arrow.down",
-                            title: "Save location",
+                            title: "Save Location",
                             type: .SaveLocationButton)
                         
                         Divider().padding(.leading,25)
@@ -58,7 +58,7 @@ struct SettingsView: View {
                         // 启用第三方库压缩
                         SettingsItemView(
                             icon: "zipper.page",
-                            title: "Enable third-party library compression",
+                            title: "Use Third-Party Libraries",
                             type: .ToggleThirdParty(
                                 pngquant: $appStorage.enablePngquant,
                                 gifsicle: $appStorage.enableGifsicle,
@@ -71,8 +71,8 @@ struct SettingsView: View {
                         // 保持原文件名
                         SettingsItemView(
                             icon: "ellipsis.curlybraces",
-                            title: "Keep the original file name",
-                            type: .Toggle("Keep the original file name",
+                            title: "Keep Original Name",
+                            type: .Toggle("Keep Original Name",
                                           $appStorage.keepOriginalFileName)
                         )
                         
@@ -81,8 +81,26 @@ struct SettingsView: View {
                         // 启用图片转换
                         SettingsItemView(
                             icon: "arrow.down.left.arrow.up.right",
-                            title: "EnableImageConversion",
-                            type: .Toggle("EnableImageConversion",$appStorage.EnableImageConversion)
+                            title: "Enable Image Conversion",
+                            type: .Toggle("Enable Image Conversion",$appStorage.EnableImageConversion)
+                        )
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 启用统计功能
+                        SettingsItemView(
+                            icon: "chart.bar",
+                            title: "Enable Statistics",
+                            type: .Toggle("Enable Statistics",$appStorage.enableStatistics)
+                        )
+                        
+                        Divider().padding(.leading,25)
+                        
+                        // 临时文件占用
+                        SettingsItemView(
+                            icon: "tray",
+                            title: "Temp Storage Used",
+                            type: .TempStorageUsed
                         )
                     }
                     .modifier(SettingsVSModifier())

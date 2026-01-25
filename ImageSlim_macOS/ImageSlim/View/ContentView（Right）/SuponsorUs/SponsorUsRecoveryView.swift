@@ -35,7 +35,7 @@ struct SponsorUsRecoveryView: View {
             .modifier(HoverModifier())
         }
         .padding(.horizontal,14)
-        .frame(width: 200,height: 200)
+        .frame(width: 250,height: 230)
         .onAppear {
             sound.playSound(named: soundName)   // 播放音效
         }

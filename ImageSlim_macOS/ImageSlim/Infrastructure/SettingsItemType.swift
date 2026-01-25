@@ -17,4 +17,5 @@ enum SettingsItemType {
     case Link(String, url: String)
     case SendEmail(String)
     case Thanks([(String, String)])
+    case TempStorageUsed
 }

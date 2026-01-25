@@ -48,6 +48,7 @@ struct MenuView: View {
                         .gray)
                 .modifier(HoverModifier())
                 
+                // 转换功能
                 if appStorage.EnableImageConversion {
                     Spacer().frame(height: 20)
                     
@@ -74,6 +75,32 @@ struct MenuView: View {
                     .modifier(HoverModifier())
                 }
                 
+                // 统计功能
+                if appStorage.enableStatistics {
+                    Spacer().frame(height: 20)
+                    
+                    // 统计菜单-按钮
+                    Button(action: {
+                        appStorage.selectedView = .statistics
+                    }, label: {
+                        HStack {
+                            Image(systemName: "chart.bar")
+                                .imageScale(.large)
+                                .frame(width: 20)
+                            Spacer().frame(width: 14)
+                            Text("Statistics")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                        }
+                        .contentShape(Rectangle())
+                        .fixedSize()
+                    })
+                    .buttonStyle(.plain)
+                    .foregroundColor(appStorage.selectedView == .statistics ?
+                                     colorScheme == .light ? .black : .white :
+                            .gray)
+                    .modifier(HoverModifier())
+                }
                 Spacer().frame(height: 20)
                 
                 // 设置菜单-按钮

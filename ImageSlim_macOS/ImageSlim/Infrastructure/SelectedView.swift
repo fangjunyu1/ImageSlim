@@ -9,4 +9,5 @@ enum SelectedView {
     case compression
     case conversion
     case settings
+    case statistics
 }
