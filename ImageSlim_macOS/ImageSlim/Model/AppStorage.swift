@@ -58,6 +58,51 @@ class AppStorage:ObservableObject {
     
     // 启用统计功能
     @Published var enableStatistics = false { didSet { updateValue(key: "enableStatistics", newValue: enableStatistics, oldValue: oldValue)}}
+    
+    // MARK: 统计功能
+    
+    // 已压缩图片数量
+    @Published var imagesCompressed: Int64 = 0 { didSet { updateValue(key: "imagesCompressed", newValue: imagesCompressed, oldValue: oldValue)}}
+    
+    // 已转换图片数量
+    @Published var imagesConverted: Int64 = 0 { didSet { updateValue(key: "imagesConverted", newValue: imagesConverted, oldValue: oldValue)}}
+    
+    // 已处理图片数量
+    var totalImagesProcessed: Int64 {
+        imagesCompressed + imagesConverted
+    }
+    
+    // 原始图片总大小
+    @Published var originalSize: Int64 = 0 { didSet { updateValue(key: "originalSize", newValue: originalSize, oldValue: oldValue)}}
+    
+    // 压缩后总大小
+    @Published var compressedSize: Int64 = 0 { didSet { updateValue(key: "compressedSize", newValue: compressedSize, oldValue: oldValue)}}
+    
+    // 节省磁盘空间
+    var diskSpaceSaved: Int64 {
+        originalSize - compressedSize
+    }
+    
+    // 平均压缩率
+    @Published var avgCompressionRatio: Double = 0.0 { didSet { updateValue(key: "avgCompressionRatio", newValue: avgCompressionRatio, oldValue: oldValue)}}
+    
+    // 平均压缩后大小
+    @Published var avgCompressedSize: Double = 0.0 { didSet { updateValue(key: "avgCompressedSize", newValue: avgCompressedSize, oldValue: oldValue)}}
+    
+    // 最大单张节省空间
+    @Published var maxSizeSaved: Int64 = 0 { didSet { updateValue(key: "maxSizeSaved", newValue: maxSizeSaved, oldValue: oldValue)}}
+    
+    // 最大压缩率
+    @Published var maxCompressionRatio: Double = 0.0 { didSet { updateValue(key: "maxCompressionRatio", newValue: maxCompressionRatio, oldValue: oldValue)}}
+    
+    // 最近一次处理时间
+    @Published var lastProcessed: Date? { didSet { updateValue(key: "lastProcessed", newValue: lastProcessed, oldValue: oldValue)}}
+    
+    // 首次使用时间
+    @Published var firstUsed: Date? { didSet { updateValue(key: "firstUsed", newValue: firstUsed, oldValue: oldValue)}}
+    
+    // 累计使用天数
+    @Published var daysUsed: Int = 0 { didSet { updateValue(key: "daysUsed", newValue: daysUsed, oldValue: oldValue)}}
 }
 
 // MARK: 从 UserDefaults 加载数据
@@ -69,7 +114,9 @@ extension AppStorage {
             isLoading = false
             print("退出UserDefaults同步")
         } // 还原加载进度标志
+        
         let defaults = UserDefaults.standard
+        
         // 注册默认值
         defaults.register(defaults: [
             "displayMenuBarIcon": true,   // 默认显示菜单栏图标
@@ -94,6 +141,34 @@ extension AppStorage {
         convertTypeState = ConversionTypeState(rawValue: formatsString) ?? ConversionTypeState.jpeg
         didRequestReview = UserDefaults.standard.bool(forKey: "didRequestReview") // 评分
         enableStatistics = UserDefaults.standard.bool(forKey: "enableStatistics") // 启用统计
+        
+        // 统计数据
+        imagesCompressed = Int64(UserDefaults.standard.integer(forKey: "imagesCompressed")) // 已压缩图片数量
+        imagesConverted = Int64(UserDefaults.standard.integer(forKey: "imagesConverted")) // 已转换图片数量
+        originalSize = Int64(UserDefaults.standard.integer(forKey: "originalSize")) // 原始图片总大小
+        compressedSize = Int64(UserDefaults.standard.integer(forKey: "compressedSize")) // 压缩后总大小
+        avgCompressionRatio = UserDefaults.standard.double(forKey: "avgCompressionRatio") // 平均压缩率
+        avgCompressedSize = UserDefaults.standard.double(forKey: "avgCompressedSize") // 平均压缩后大小
+        maxSizeSaved = Int64(UserDefaults.standard.integer(forKey: "maxSizeSaved")) // 最大单张节省空间
+        maxCompressionRatio = UserDefaults.standard.double(forKey: "maxCompressionRatio") // 最大压缩率
+        daysUsed = UserDefaults.standard.integer(forKey: "daysUsed") // 累计使用天数
+        
+        // 日期类型 - 设置 nil
+        //最近一次处理时间
+        if defaults.object(forKey: "lastProcessed") == nil {
+            lastProcessed = nil
+        } else {
+            let timestamp = defaults.double(forKey: "lastProcessed")
+            lastProcessed = Date(timeIntervalSince1970: timestamp)
+        }
+        
+        // 首次使用时间
+        if defaults.object(forKey: "firstUsed") == nil {
+            firstUsed = nil
+        } else {
+            let timestamp = defaults.double(forKey: "firstUsed")
+            firstUsed = Date(timeIntervalSince1970: timestamp)
+        }
     }
 }
 
@@ -102,13 +177,27 @@ extension AppStorage {
     private func updateValue<T:Equatable>(key: String, newValue: T, oldValue: T) {
         guard newValue != oldValue, !isLoading else { return }
         
-        // 同步保存到本地
-        let defaults = UserDefaults.standard
-        defaults.set(newValue, forKey: key)
-        
-        // iCloud
-        let store = NSUbiquitousKeyValueStore.default
-        store.set(newValue, forKey: key)
-        store.synchronize()
+        if newValue is Date {
+            
+            let dateDouble = newValue as? Date
+            let dateDoubleValue = dateDouble?.timeIntervalSince1970
+            // 同步保存到本地
+            let defaults = UserDefaults.standard
+            defaults.set(dateDoubleValue, forKey: key)
+            
+            // iCloud
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(dateDoubleValue, forKey: key)
+            store.synchronize()
+        } else {
+            // 同步保存到本地
+            let defaults = UserDefaults.standard
+            defaults.set(newValue, forKey: key)
+            
+            // iCloud
+            let store = NSUbiquitousKeyValueStore.default
+            store.set(newValue, forKey: key)
+            store.synchronize()
+        }
     }
 }

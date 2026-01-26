@@ -271,7 +271,7 @@ extension FileUtils {
             print("打包Zip")
             
             // 1、筛选可以输出的图片
-            var ImagesArray: [CustomImages] = images
+            let ImagesArray: [CustomImages] = images
                 .filter{ isPurchase || $0.inputSize < limitImageSize }
             
             // 2、创建临时目录
@@ -320,7 +320,7 @@ extension FileUtils {
                 try FileManager.default.copyItem(at: image.outputURL, to: destinationURL)
                 imagesURL.append(destinationURL)
             }
-               
+            
             // 4、判断 保存目录-安全书签，有的话，保存到安全书签的目录，没有的话，让用户手动选择目标
             // 如果有保存目录-安全书签
             if let saveLocation = UserDefaults.standard.data(forKey: "SaveLocation") {
@@ -433,6 +433,89 @@ extension FileUtils {
         
         return totalSize
     }
+    
+    // 清理临时文件大小
+    static func cleanTempFolder() async throws -> CleanResult {
+        
+        let tempURL = FileManager.default.temporaryDirectory
+        
+        guard let enumerator = FileManager.default.enumerator(
+            at: tempURL,
+            includingPropertiesForKeys: [.fileSizeKey, .isRegularFileKey, .isDirectoryKey],
+            options: [.skipsHiddenFiles, .skipsPackageDescendants]
+        ) else {
+            throw CleanTempFolderError.enumeratorError
+        }
+        
+        // 收集所有文件和目录
+        let allFiles = Array(enumerator)
+        var filesToDelete: [(url: URL, size: Int)] = []
+        var dirsToDelete: [URL] = []
+        
+        for case let fileURL as URL in allFiles {
+            do {
+                let values = try fileURL.resourceValues(forKeys: [.fileSizeKey, .isRegularFileKey, .isDirectoryKey])
+                
+                if values.isRegularFile == true {
+                    let size = values.fileSize ?? 0
+                    filesToDelete.append((url: fileURL,size: size))
+                } else if values.isDirectory == true {
+                    dirsToDelete.append(fileURL)
+                }
+            } catch {
+                print("读取文件大小失败:\(fileURL)，错误: \(error)")
+            }
+        }
+        
+        // 在后台线程删除
+        let result = await Task.detached(priority: .userInitiated) {
+            var deletedFiles = 0
+            var deletedSize = 0
+            var failedFiles = 0
+            
+            // 删除文件
+            for (fileURL, size) in filesToDelete {
+                do {
+                    try FileManager.default.removeItem(at: fileURL)
+                    deletedFiles += 1
+                    deletedSize += size
+                } catch {
+                    failedFiles += 1
+                    print("删除文件失败:\(fileURL.path),错误信息：\(error.localizedDescription)")
+                }
+            }
+            
+            // 删除目录
+            for dirURL in dirsToDelete.reversed() {
+                do {
+                    try FileManager.default.removeItem(at: dirURL)
+                } catch {
+                    print("删除目录失败:\(dirURL.path),错误信息:\(error.localizedDescription)")
+                }
+            }
+            
+            return CleanResult(
+                deletedFiles: deletedFiles,
+                deletedSize: deletedSize,
+                failedFiles: failedFiles)
+        }.value
+        
+        return result
+    }
+}
+
+struct CleanResult {
+    // 删除文件数量
+    let deletedFiles: Int
+    // 删除文件大小
+    let deletedSize: Int
+    // 删除失败数量
+    let failedFiles: Int
+}
+
+enum CleanTempFolderError: Error {
+    case enumeratorError
+    case noFilesToDelete
 }
 
 enum askUserForSaveLocationEnum {

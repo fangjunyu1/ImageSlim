@@ -1289,6 +1289,30 @@
         }
       }
     },
+    "Avg. Compressed Size" : {
+      "comment" : "平均压缩后大小",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平均压缩后大小"
+          }
+        }
+      }
+    },
+    "Avg. Compression Ratio" : {
+      "comment" : "平均压缩率",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平均压缩率"
+          }
+        }
+      }
+    },
     "Balanced" : {
       "comment" : "均衡",
       "extractionState" : "manual",
@@ -2237,6 +2261,18 @@
         }
       }
     },
+    "Compressed Size" : {
+      "comment" : "压缩后总大小",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "压缩后总大小"
+          }
+        }
+      }
+    },
     "Compression" : {
       "comment" : "压缩",
       "extractionState" : "manual",
@@ -3169,6 +3205,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "圖片壓縮率"
+          }
+        }
+      }
+    },
+    "Compression Stats" : {
+      "comment" : "压缩效果",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "压缩效果"
           }
         }
       }
@@ -4109,8 +4157,32 @@
         }
       }
     },
+    "Core Stats" : {
+      "comment" : "核心统计",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "核心统计"
+          }
+        }
+      }
+    },
     "Cwebp" : {
 
+    },
+    "Days Used" : {
+      "comment" : "累计使用天数",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "累计使用天数"
+          }
+        }
+      }
     },
     "Desktop directory" : {
       "comment" : "桌面目录",
@@ -4732,6 +4804,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開發深夜加班的動力"
+          }
+        }
+      }
+    },
+    "Disk Space Saved" : {
+      "comment" : "节省磁盘空间",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "节省磁盘空间"
           }
         }
       }
@@ -7256,6 +7340,18 @@
         }
       }
     },
+    "First Used" : {
+      "comment" : "首次使用时间 ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "首次使用时间 "
+          }
+        }
+      }
+    },
     "Free files and convert them immediately" : {
       "comment" : "1.0.2：释放文件，立即转换",
       "extractionState" : "manual",
@@ -8515,6 +8611,30 @@
         }
       }
     },
+    "Images Compressed" : {
+      "comment" : "已压缩图片数量",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已压缩图片数量"
+          }
+        }
+      }
+    },
+    "Images Converted" : {
+      "comment" : "已转换图片数量",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已转换图片数量"
+          }
+        }
+      }
+    },
     "Issue feedback" : {
       "comment" : "问题反馈",
       "extractionState" : "manual",
@@ -9135,6 +9255,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保持原檔名"
+          }
+        }
+      }
+    },
+    "Last Processed" : {
+      "comment" : "最近一次处理时间 ",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最近一次处理时间 "
           }
         }
       }
@@ -10694,6 +10826,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mac原生壓縮"
+          }
+        }
+      }
+    },
+    "Max Compression Ratio" : {
+      "comment" : "最大压缩率",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最大压缩率"
+          }
+        }
+      }
+    },
+    "Max Size Saved" : {
+      "comment" : "最大单张节省空间",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最大单张节省空间"
           }
         }
       }
@@ -12266,6 +12422,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開源壓縮圖片工具"
+          }
+        }
+      }
+    },
+    "Original Size" : {
+      "comment" : "原始图片总大小",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "原始图片总大小"
           }
         }
       }
@@ -19182,6 +19350,18 @@
         }
       }
     },
+    "Total Images Processed" : {
+      "comment" : "已处理图片总数",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已处理图片总数"
+          }
+        }
+      }
+    },
     "Upload pictures and compress them instantly" : {
       "comment" : "上传图片，即刻压缩",
       "extractionState" : "manual",
@@ -19490,6 +19670,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "上傳圖片，即刻壓縮"
+          }
+        }
+      }
+    },
+    "Usage Info" : {
+      "comment" : "使用记录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用记录"
           }
         }
       }

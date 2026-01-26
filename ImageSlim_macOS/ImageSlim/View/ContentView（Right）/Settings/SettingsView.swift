@@ -27,14 +27,14 @@ struct SettingsView: View {
                         
                         // 在菜单栏中显示图标
                         SettingsItemView(
-                            icon:"slider.horizontal.2.square",
+                            icon:"macwindow",
                             title: "Show in Menu Bar",
                             type: .PickerIcon($appStorage.displayMenuBarIcon))
                         Divider().padding(.leading,25)
                         
                         // 图片压缩率
                         SettingsItemView(
-                            icon: "numbers.rectangle",
+                            icon: "arrow.down.forward.and.arrow.up.backward",
                             title: "Compression Ratio",
                             type: .CompressionSlider($appStorage.imageCompressionRate))
                         Divider().padding(.leading,25)
@@ -57,7 +57,7 @@ struct SettingsView: View {
                         
                         // 启用第三方库压缩
                         SettingsItemView(
-                            icon: "zipper.page",
+                            icon: "square.stack.3d.down.right",
                             title: "Use Third-Party Libraries",
                             type: .ToggleThirdParty(
                                 pngquant: $appStorage.enablePngquant,
@@ -80,7 +80,7 @@ struct SettingsView: View {
                         
                         // 启用图片转换
                         SettingsItemView(
-                            icon: "arrow.down.left.arrow.up.right",
+                            icon: "repeat",
                             title: "Enable Image Conversion",
                             type: .Toggle("Enable Image Conversion",$appStorage.EnableImageConversion)
                         )
@@ -115,7 +115,7 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         // 使用条例
                         SettingsItemView(
-                            icon: "chart.bar.horizontal.page",
+                            icon: "text.justify",
                             title: "Terms of use",
                             type: .Link(
                                 "Web page (Chinese)",
@@ -125,7 +125,7 @@ struct SettingsView: View {
                         
                         // 隐私政策
                         SettingsItemView(
-                            icon: "lock.document",
+                            icon: "lock",
                             title: "Privacy policy",
                             type: .Link(
                                 "Web page (Chinese)",

@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+private enum SettingsCleanStatus {
+    case clean
+    case loading
+    case success
+    case error
+}
+
 struct SettingsItemTypeView: View {
     @Environment(\.openURL) var openURL
     @State var saveName: String = AppStorage.shared.saveName
+    @State private var cleanStatus = SettingsCleanStatus.clean
     let type: SettingsItemType
     // 临时文件大小
-    var tempStorageUsed = FileUtils.calculateTempFolderSize()
+    @State private var tempStorageUsed = FileUtils.calculateTempFolderSize()
     
     var body: some View {
         switch type {
@@ -111,6 +119,61 @@ struct SettingsItemTypeView: View {
                 Text("\(FileUtils.TranslateSize(fileSize: tempStorageUsed))")
             })
             .buttonStyle(.plain)
+            .modifier(HoverModifier())
+            
+            Button(action: {
+                handleCleanAction()
+            }, label: {
+                switch cleanStatus {
+                case .clean:
+                    Image(systemName: "trash")
+                case .loading:
+                    ProgressView()
+                case .success:
+                    Image(systemName: "checkmark")
+                case .error:
+                    Image(systemName: "xmark")
+                }
+            })
+            .disabled(cleanStatus == .loading)
+        }
+    }
+    
+    private func handleCleanAction() {
+        
+        guard cleanStatus == .clean else { return }
+        // 修改清理按钮的状态
+        cleanStatus = .loading
+        
+        Task {
+            // 清空当前压缩/转换的图片列表，防止清理临时文件后，图片下载/转换文件失效
+            ImageArrayViewModel.shared.cancelAllTasks()
+            
+            do {
+                // 执行清理
+                let result = try await FileUtils.cleanTempFolder()
+                
+                print("清理完成：删除 \(result.deletedFiles) 个文件，释放 \(FileUtils.TranslateSize(fileSize: result.deletedSize))")
+                
+                if result.failedFiles > 0 {
+                    print("警告: \(result.failedFiles) 个文件删除失败")
+                }
+                
+                // 显示成功状态
+                cleanStatus = .success
+            } catch {
+                print("清理失败: \(error.localizedDescription)")
+                cleanStatus = .error
+            }
+            
+            // 延迟后重置状态
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            
+            // 重新计算临时文件大小
+            tempStorageUsed = FileUtils.calculateTempFolderSize()
+            
+            // 重置状态
+            cleanStatus = .clean
         }
     }
 }
