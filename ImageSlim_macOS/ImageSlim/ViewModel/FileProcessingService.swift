@@ -163,7 +163,6 @@ extension FileProcessingService {
             }
         }
     }
-    
 }
 
 extension FileProcessingService {
@@ -214,4 +213,42 @@ extension FileProcessingService {
             // pastedImage = nil
         }
     }
+}
+
+extension FileProcessingService {
+    
+    // MARK: 右键接收文件
+    func fileImporter(_ urls: [URL]) async {
+        
+        // 输出图片格式
+        let outputType = appStorage.convertTypeState.rawValue
+        
+        // 获取可用的 NSItemProvider 数组
+        let limitProviders = getLimitedArray(from: urls, for: .compression)
+        
+        // TaskGroup 可以实现 I/O 并行排队执行
+        await withTaskGroup(of: CustomImages?.self) { group in
+            
+            // 沙盒权限权限请求
+            for url in limitProviders {
+                guard url.startAccessingSecurityScopedResource() else {
+                    print("无文件访问权限")
+                    continue
+                }
+                group.addTask {
+                    defer { url.stopAccessingSecurityScopedResource() }
+                    
+                    // 当 url 不为 nil， 则创建 CustomImages 对象
+                    let customImages = self.createCustomImages(type: .compression, url: url,outputType: outputType)
+                    return customImages
+                }
+            }
+            
+            // 获取所有的 CustomImage 对象，并插入显示队列，执行队列任务
+            for await image in group {
+                imageArray.addViewQueue(type: .compression,image: image)
+            }
+        }
+    }
+    
 }

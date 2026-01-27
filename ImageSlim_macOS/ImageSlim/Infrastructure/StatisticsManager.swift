@@ -85,8 +85,8 @@ struct StatisticsManager {
         appStorage.maxSizeSaved = 0
         appStorage.maxCompressionRatio = 0
         appStorage.lastProcessed = Date.distantPast
-        appStorage.firstUsed = Date.distantPast
-        appStorage.lastDaysUsed = Date.distantPast
-        appStorage.daysUsed = 0
+        appStorage.firstUsed = Date()
+        appStorage.lastDaysUsed = Date()
+        appStorage.daysUsed = 1
     }
 }

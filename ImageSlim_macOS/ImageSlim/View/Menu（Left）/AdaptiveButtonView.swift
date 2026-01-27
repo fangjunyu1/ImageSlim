@@ -9,12 +9,19 @@
 
 import SwiftUI
 
+enum DownloadStatus {
+    case download
+    case loading
+    case complete
+    case error
+}
+
 struct AdaptiveButtonView: View {
     @EnvironmentObject var appStorage: AppStorage
     @EnvironmentObject var imageArray: ImageArrayViewModel
     var workSpaceVM = WorkSpaceViewModel.shared
     @State var progress = 0.0
-    @State var showDownloadsProgress = false
+    @State var downloadsStatus: DownloadStatus = .download
     
     var body: some View {
         // 图片列表
@@ -58,11 +65,27 @@ struct AdaptiveButtonView: View {
             // 下载全部
             Button(action: {
                 Task {
-                    FileUtils.zipImages(isPurchase:appStorage.inAppPurchaseMembership, limitImageSize: imageArray.limitImageSize,keepOriginalFileName: appStorage.keepOriginalFileName,images: images,showDownloadsProgress: $showDownloadsProgress,progress: $progress)
+                    FileUtils.zipImages(isPurchase:appStorage.inAppPurchaseMembership, limitImageSize: imageArray.limitImageSize,keepOriginalFileName: appStorage.keepOriginalFileName,images: images,downloadsStatus: $downloadsStatus,progress: $progress)
+                    
+                    try? await Task.sleep(nanoseconds: 3_000_000_000)
+                    
+                    downloadsStatus = .download
                 }
             }, label: {
                 ZStack {
-                    if showDownloadsProgress {
+                    switch downloadsStatus {
+                        
+                        // 下载全部
+                    case .download:
+                        Rectangle()
+                            .frame(width: 120,height: 35)
+                            .foregroundColor(Color(hex: "3960EA"))
+                            .cornerRadius(10)
+                        Text("Download All")
+                            .foregroundColor(.white)
+                        
+                        // 下载中
+                    case .loading:
                         Rectangle()
                             .frame(width: 120,height: 35)
                             .foregroundColor(.white)
@@ -71,12 +94,22 @@ struct AdaptiveButtonView: View {
                             .progressViewStyle(LinearProgressViewStyle())
                             .frame(width:100,height:35)
                         
-                    } else {
+                        // 下载完成
+                    case .complete:
                         Rectangle()
                             .frame(width: 120,height: 35)
-                            .foregroundColor(Color(hex: "3960EA"))
+                            .foregroundColor(Color(hex: "CC7C5E"))
                             .cornerRadius(10)
-                        Text("Download All")
+                        Text("Download Complete")
+                            .foregroundColor(.white)
+                        
+                        // 下载失败
+                    case .error:
+                        Rectangle()
+                            .frame(width: 120,height: 35)
+                            .foregroundColor(Color.gray)
+                            .cornerRadius(10)
+                        Text("Download Failed")
                             .foregroundColor(.white)
                     }
                 }

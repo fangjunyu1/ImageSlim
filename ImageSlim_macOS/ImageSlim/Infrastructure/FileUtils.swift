@@ -41,11 +41,11 @@ enum FileUtils {
                 switch type {
                 case .image(let image):
                     return saveImg(file: image, url: url)
-                case .images(let ImagesURL, let showDownloadsProgress, let progress):
+                case .images(let ImagesURL, let downloadsStatus, let progress):
                     return saveZip(
                         ImagesURL: ImagesURL,
                         url: url,
-                        showDownloadsProgress: showDownloadsProgress,
+                        downloadsStatus : downloadsStatus,
                         progress: progress)
                 }
             } catch {
@@ -266,7 +266,7 @@ extension FileUtils {
 extension FileUtils {
     // Zip 压缩图片
     @MainActor
-    static func zipImages(isPurchase: Bool,limitImageSize: Int,keepOriginalFileName: Bool,images: [CustomImages],showDownloadsProgress:Binding<Bool>, progress: Binding<Double>) -> Bool {
+    static func zipImages(isPurchase: Bool,limitImageSize: Int,keepOriginalFileName: Bool,images: [CustomImages],downloadsStatus:Binding<DownloadStatus>, progress: Binding<Double>) -> Bool {
         do {
             print("打包Zip")
             
@@ -337,7 +337,7 @@ extension FileUtils {
                             url.stopAccessingSecurityScopedResource()
                         }
                         // 调用 Zip 库，保存图片
-                        return saveZip(ImagesURL: imagesURL, url: url,showDownloadsProgress: showDownloadsProgress,progress: progress)
+                        return saveZip(ImagesURL: imagesURL, url: url,downloadsStatus: downloadsStatus,progress: progress)
                     } else {
                         print("无法访问资源")
                         return false
@@ -347,17 +347,17 @@ extension FileUtils {
                     return false
                 }
             } else {
-                return FileUtils.askUserForSaveLocation(type: .images(ImagesURL: imagesURL, showDownloadsProgress: showDownloadsProgress, progress: progress))
+                return FileUtils.askUserForSaveLocation(type: .images(ImagesURL: imagesURL, downloadsStatus: downloadsStatus, progress: progress))
             }
         } catch {
-            showDownloadsProgress.wrappedValue = false
+            downloadsStatus.wrappedValue = .error
             print("打包失败")
             return false
         }
     }
     
     // 保存 Zip 文件
-    static func saveZip(ImagesURL:[URL], url: URL,showDownloadsProgress showDownloadsProgressBinding: Binding<Bool>,progress progressBinding: Binding<Double>) -> Bool {
+    static func saveZip(ImagesURL:[URL], url: URL,downloadsStatus: Binding<DownloadStatus>,progress progressBinding: Binding<Double>) -> Bool {
         
         let calendar = Calendar.current
         let date = Date()
@@ -379,18 +379,18 @@ extension FileUtils {
         
         do {
             progressBinding.wrappedValue = 0    // 重制打包进度
-            showDownloadsProgressBinding.wrappedValue = true    // 显示打包进度
+            downloadsStatus.wrappedValue = .loading    // 显示打包进度
             // 调用 Zip 库保存图片
             try Zip.zipFiles(paths: ImagesURL, zipFilePath: destinationURL, password: nil) { progress in
                 progressBinding.wrappedValue = progress // 更新打包进度
                 if progress == 1 {
-                    showDownloadsProgressBinding.wrappedValue = false   // 隐藏打包进度
+                    downloadsStatus.wrappedValue = .complete   // 隐藏打包进度
                 }
             }
             print("打包完成")
             return true
         } catch {
-            showDownloadsProgressBinding.wrappedValue = false
+            downloadsStatus.wrappedValue = .error
             print("在SaveZip方法中崩溃")
             return false
         }
@@ -520,5 +520,5 @@ enum CleanTempFolderError: Error {
 
 enum askUserForSaveLocationEnum {
     case image(image:CustomImages)
-    case images(ImagesURL:[URL],showDownloadsProgress:Binding<Bool>,progress: Binding<Double>)
+    case images(ImagesURL:[URL],downloadsStatus:Binding<DownloadStatus>,progress: Binding<Double>)
 }

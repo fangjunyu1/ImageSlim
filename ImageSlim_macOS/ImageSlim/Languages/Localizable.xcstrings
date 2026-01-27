@@ -6710,6 +6710,18 @@
         }
       }
     },
+    "Download Failed" : {
+      "comment" : "下载失败",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载失败"
+          }
+        }
+      }
+    },
     "Email feedback" : {
       "comment" : "邮件反馈",
       "extractionState" : "manual",

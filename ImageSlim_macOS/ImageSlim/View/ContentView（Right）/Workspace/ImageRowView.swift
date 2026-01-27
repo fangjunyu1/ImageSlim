@@ -16,6 +16,7 @@ struct ImageRowView: View {
     @EnvironmentObject var imageArray: ImageArrayViewModel
     @ObservedObject var item: CustomImages
     @State private var shakeOffset: CGFloat = 0
+    @State private var showSponsorUs = false
     var imageType: WorkTaskType
     let rightButtonWidth = 70.0
     let rightButtonHeight = 30.0
@@ -118,16 +119,16 @@ struct ImageRowView: View {
                 
                 // 赞助应用，显示下载按钮，未赞助应用，超过5MB的图片显示 锁图标
                 if !appStorage.inAppPurchaseMembership && item.inputSize > imageArray.limitImageSize {
-                    VStack {
+                    Button(action: {
+                        // 弹出赞助我们的页面
+                        showSponsorUs.toggle()
+                    }, label: {
                         Image(systemName:"lock.fill")
-                            .offset(x: shakeOffset)
-                    }
+                                .offset(x: shakeOffset)
+                    })
+                    .buttonStyle(.plain)
                     .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
                     .modifier(HoverModifier())
-                    .onTapGesture {
-                        print("抖动锁图标")
-                        triggerShake()
-                    }
                     .cornerRadius(20)
                 } else {
                     // 下载按钮
@@ -201,6 +202,9 @@ struct ImageRowView: View {
                     .labelsHidden()
             }
             
+        }
+        .sheet(isPresented: $showSponsorUs) {
+            SponsorUsView()
         }
     }
 }

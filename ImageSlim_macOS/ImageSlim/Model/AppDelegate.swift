@@ -95,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.isReleasedWhenClosed = false
         window.contentViewController = splitVC
-        window.minSize = NSSize(width: 600, height: 475)
+        window.minSize = NSSize(width: 600, height: 450)
         window.maxSize = NSSize(width: 1200, height: 800)
         window.makeKeyAndOrderFront(nil)
         
@@ -115,5 +115,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("应用即将退出，清除状态栏图标")
         statusBarController?.removeFromStatusBar()
         statusBarController = nil
+    }
+    
+    // 接收打开的图片文件
+    func application(_ application: NSApplication, open urls: [URL]) {
+        Task {
+            await FileProcessingService.shared.fileImporter(urls)
+        }
     }
 }
