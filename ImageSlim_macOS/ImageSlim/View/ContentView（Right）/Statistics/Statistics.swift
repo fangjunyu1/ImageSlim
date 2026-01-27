@@ -135,10 +135,18 @@ struct Statistics: View {
                     }
                     .modifier(GeneralVSModifier())
                 }
-                
-                
-                Spacer().frame(height:20)
             }
+            Spacer().frame(height:20)
+            
+            Button(action:{
+                // 重置统计数据
+                StatisticsManager.ResetStatistics()
+            }, label:  {
+                Text("Reset Statistics")
+                    .foregroundColor(.gray)
+            })
+            .buttonStyle(.plain)
+            .modifier(HoverModifier())
         }
         .modifier(WindowsModifier())
     }

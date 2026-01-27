@@ -22,5 +22,5 @@ enum GeneralItemType {
     case Int64(Int64)
     case IntSize(Int64)
     case Double(Double)
-    case Date(Date?)
+    case Date(Date)
 }

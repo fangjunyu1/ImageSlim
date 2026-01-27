@@ -29,6 +29,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             await IAPManager.shared.handleTransactions()
         }
         
+        // 计算统计中的使用记录
+        StatisticsManager.StatisticsDate()
+        
         // 根据设置中的菜单栏选项，创建菜单栏
         if AppStorage.shared.displayMenuBarIcon {
             statusBarController = StatusBarController()

@@ -84,10 +84,18 @@ class AppStorage:ObservableObject {
     }
     
     // 平均压缩率
-    @Published var avgCompressionRatio: Double = 0.0 { didSet { updateValue(key: "avgCompressionRatio", newValue: avgCompressionRatio, oldValue: oldValue)}}
+    var avgCompressionRatio: Double {
+        guard originalSize > 0 else { return 0 }
+        // 压缩后总大小 / 原始图片总大小
+        return Double(compressedSize) / Double(originalSize)
+    }
     
     // 平均压缩后大小
-    @Published var avgCompressedSize: Int64 = 0 { didSet { updateValue(key: "avgCompressedSize", newValue: avgCompressedSize, oldValue: oldValue)}}
+    var avgCompressedSize: Int64 {
+        guard imagesCompressed > 0 else { return 0 }
+        // 压缩后的大小 / 已压缩图片的数量
+        return compressedSize / imagesCompressed
+    }
     
     // 最大单张节省空间
     @Published var maxSizeSaved: Int64 = 0 { didSet { updateValue(key: "maxSizeSaved", newValue: maxSizeSaved, oldValue: oldValue)}}
@@ -96,10 +104,13 @@ class AppStorage:ObservableObject {
     @Published var maxCompressionRatio: Double = 0.0 { didSet { updateValue(key: "maxCompressionRatio", newValue: maxCompressionRatio, oldValue: oldValue)}}
     
     // 最近一次处理时间
-    @Published var lastProcessed: Date? { didSet { updateValue(key: "lastProcessed", newValue: lastProcessed, oldValue: oldValue)}}
+    @Published var lastProcessed: Date = Date.distantPast { didSet { updateValue(key: "lastProcessed", newValue: lastProcessed, oldValue: oldValue)}}
     
     // 首次使用时间
-    @Published var firstUsed: Date? { didSet { updateValue(key: "firstUsed", newValue: firstUsed, oldValue: oldValue)}}
+    @Published var firstUsed: Date = Date.distantPast { didSet { updateValue(key: "firstUsed", newValue: firstUsed, oldValue: oldValue)}}
+    
+    // 最近一次计算的累计使用时间
+    @Published var lastDaysUsed:Date = Date.distantPast { didSet { updateValue(key: "lastDaysUsed", newValue: lastDaysUsed, oldValue: oldValue)}}
     
     // 累计使用天数
     @Published var daysUsed: Int = 0 { didSet { updateValue(key: "daysUsed", newValue: daysUsed, oldValue: oldValue)}}
@@ -147,8 +158,6 @@ extension AppStorage {
         imagesConverted = Int64(UserDefaults.standard.integer(forKey: "imagesConverted")) // 已转换图片数量
         originalSize = Int64(UserDefaults.standard.integer(forKey: "originalSize")) // 原始图片总大小
         compressedSize = Int64(UserDefaults.standard.integer(forKey: "compressedSize")) // 压缩后总大小
-        avgCompressionRatio = UserDefaults.standard.double(forKey: "avgCompressionRatio") // 平均压缩率
-        avgCompressedSize = Int64(UserDefaults.standard.integer(forKey: "avgCompressedSize")) // 平均压缩后大小
         maxSizeSaved = Int64(UserDefaults.standard.integer(forKey: "maxSizeSaved")) // 最大单张节省空间
         maxCompressionRatio = UserDefaults.standard.double(forKey: "maxCompressionRatio") // 最大压缩率
         daysUsed = UserDefaults.standard.integer(forKey: "daysUsed") // 累计使用天数
@@ -156,7 +165,7 @@ extension AppStorage {
         // 日期类型 - 设置 nil
         //最近一次处理时间
         if defaults.object(forKey: "lastProcessed") == nil {
-            lastProcessed = nil
+            lastProcessed = Date.distantPast
         } else {
             let timestamp = defaults.double(forKey: "lastProcessed")
             lastProcessed = Date(timeIntervalSince1970: timestamp)
@@ -164,10 +173,18 @@ extension AppStorage {
         
         // 首次使用时间
         if defaults.object(forKey: "firstUsed") == nil {
-            firstUsed = nil
+            firstUsed = Date.distantPast
         } else {
             let timestamp = defaults.double(forKey: "firstUsed")
             firstUsed = Date(timeIntervalSince1970: timestamp)
+        }
+        
+        // 最近一次累计使用时间
+        if defaults.object(forKey: "lastDaysUsed") == nil {
+            lastDaysUsed = Date.distantPast
+        } else {
+            let timestamp = defaults.double(forKey: "lastDaysUsed")
+            lastDaysUsed = Date(timeIntervalSince1970: timestamp)
         }
     }
 }

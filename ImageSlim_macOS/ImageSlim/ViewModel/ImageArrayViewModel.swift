@@ -154,6 +154,12 @@ class ImageArrayViewModel: ObservableObject {
                 
                 // 计算输出文件大小
                 task.loadOutputSizeIfNeeded()
+                
+                // 更新统计中的压缩数据
+                let taskModel = StatisticsModel(imagesCompressed: 1, imagesConverted: 0, originalSize: Int64(task.inputSize), compressedSize: Int64(task.outputSize))
+                print("taskModel:\(taskModel)")
+                StatisticsManager.StatisticsMethods(taskModel)
+                
                 // 释放图片
                 task.releaseImage()
                 // 移除已处理的任务
@@ -186,6 +192,12 @@ class ImageArrayViewModel: ObservableObject {
                 
                 // 计算输出文件大小
                 task.loadOutputSizeIfNeeded()
+                
+                // 更新统计中的转换数据
+                let taskModel = StatisticsModel(imagesCompressed: 0, imagesConverted: 1, originalSize: Int64(task.inputSize), compressedSize: Int64(task.outputSize))
+                print("taskModel:\(taskModel)")
+                StatisticsManager.StatisticsMethods(taskModel)
+                
                 // 释放图片
                 task.releaseImage()
                 // 移除已处理的任务

@@ -152,12 +152,12 @@ struct GeneralItemTypeView: View {
                 .foregroundColor(.gray)
             
         case .Double(let double):
-            Text(double.formatted(.percent))
+            Text(double.percentageFormattedWithTwoDecimalPlaces())
                 .foregroundColor(.gray)
             
         case .Date(let date):
-            if let date = date {
-                Text("\(date)")
+            if date != Date.distantPast {
+                Text(date, format: .dateTime.year().month().day().hour().minute())
                     .foregroundColor(.gray)
             } else {
                 Text("--")

@@ -14028,6 +14028,18 @@
         }
       }
     },
+    "Reset Statistics" : {
+      "comment" : "重置统计数据",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置统计数据"
+          }
+        }
+      }
+    },
     "Restore in-app purchases" : {
       "comment" : "恢复内购",
       "extractionState" : "manual",
