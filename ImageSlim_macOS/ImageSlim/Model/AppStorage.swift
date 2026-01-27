@@ -87,7 +87,7 @@ class AppStorage:ObservableObject {
     @Published var avgCompressionRatio: Double = 0.0 { didSet { updateValue(key: "avgCompressionRatio", newValue: avgCompressionRatio, oldValue: oldValue)}}
     
     // 平均压缩后大小
-    @Published var avgCompressedSize: Double = 0.0 { didSet { updateValue(key: "avgCompressedSize", newValue: avgCompressedSize, oldValue: oldValue)}}
+    @Published var avgCompressedSize: Int64 = 0 { didSet { updateValue(key: "avgCompressedSize", newValue: avgCompressedSize, oldValue: oldValue)}}
     
     // 最大单张节省空间
     @Published var maxSizeSaved: Int64 = 0 { didSet { updateValue(key: "maxSizeSaved", newValue: maxSizeSaved, oldValue: oldValue)}}
@@ -148,7 +148,7 @@ extension AppStorage {
         originalSize = Int64(UserDefaults.standard.integer(forKey: "originalSize")) // 原始图片总大小
         compressedSize = Int64(UserDefaults.standard.integer(forKey: "compressedSize")) // 压缩后总大小
         avgCompressionRatio = UserDefaults.standard.double(forKey: "avgCompressionRatio") // 平均压缩率
-        avgCompressedSize = UserDefaults.standard.double(forKey: "avgCompressedSize") // 平均压缩后大小
+        avgCompressedSize = Int64(UserDefaults.standard.integer(forKey: "avgCompressedSize")) // 平均压缩后大小
         maxSizeSaved = Int64(UserDefaults.standard.integer(forKey: "maxSizeSaved")) // 最大单张节省空间
         maxCompressionRatio = UserDefaults.standard.double(forKey: "maxCompressionRatio") // 最大压缩率
         daysUsed = UserDefaults.standard.integer(forKey: "daysUsed") // 累计使用天数
@@ -177,27 +177,21 @@ extension AppStorage {
     private func updateValue<T:Equatable>(key: String, newValue: T, oldValue: T) {
         guard newValue != oldValue, !isLoading else { return }
         
-        if newValue is Date {
-            
-            let dateDouble = newValue as? Date
-            let dateDoubleValue = dateDouble?.timeIntervalSince1970
-            // 同步保存到本地
-            let defaults = UserDefaults.standard
-            defaults.set(dateDoubleValue, forKey: key)
-            
-            // iCloud
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(dateDoubleValue, forKey: key)
-            store.synchronize()
-        } else {
-            // 同步保存到本地
-            let defaults = UserDefaults.standard
-            defaults.set(newValue, forKey: key)
-            
-            // iCloud
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(newValue, forKey: key)
-            store.synchronize()
+        let defaults = UserDefaults.standard
+        let store = NSUbiquitousKeyValueStore.default
+        
+        // 处理 Date? 类型
+        if let dateValue = newValue as? Date {
+            let timestamp = dateValue.timeIntervalSince1970
+            defaults.set(timestamp, forKey: key)
+            store.set(timestamp, forKey: key)
         }
+        // 处理其他类型
+        else {
+            defaults.set(newValue, forKey: key)
+            store.set(newValue, forKey: key)
+        }
+        
+        store.synchronize()
     }
 }

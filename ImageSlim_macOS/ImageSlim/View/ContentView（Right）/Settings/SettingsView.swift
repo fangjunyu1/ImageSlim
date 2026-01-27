@@ -26,21 +26,21 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         
                         // 在菜单栏中显示图标
-                        SettingsItemView(
+                        GeneralItemView(
                             icon:"macwindow",
                             title: "Show in Menu Bar",
                             type: .PickerIcon($appStorage.displayMenuBarIcon))
                         Divider().padding(.leading,25)
                         
                         // 图片压缩率
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "arrow.down.forward.and.arrow.up.backward",
                             title: "Compression Ratio",
                             type: .CompressionSlider($appStorage.imageCompressionRate))
                         Divider().padding(.leading,25)
                         
                         // 图片预览方式
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "plus.magnifyingglass",
                             title: "Preview Mode",
                             type: .PickerPreview($appStorage.imagePreviewMode))
@@ -48,7 +48,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 图片保存目录
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "square.and.arrow.down",
                             title: "Save Location",
                             type: .SaveLocationButton)
@@ -56,7 +56,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 启用第三方库压缩
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "square.stack.3d.down.right",
                             title: "Use Third-Party Libraries",
                             type: .ToggleThirdParty(
@@ -69,7 +69,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 保持原文件名
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "ellipsis.curlybraces",
                             title: "Keep Original Name",
                             type: .Toggle("Keep Original Name",
@@ -79,7 +79,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 启用图片转换
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "repeat",
                             title: "Enable Image Conversion",
                             type: .Toggle("Enable Image Conversion",$appStorage.EnableImageConversion)
@@ -88,7 +88,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 启用统计功能
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "chart.bar",
                             title: "Enable Statistics",
                             type: .Toggle("Enable Statistics",$appStorage.enableStatistics)
@@ -97,13 +97,13 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 临时文件占用
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "tray",
                             title: "Temp Storage Used",
                             type: .TempStorageUsed
                         )
                     }
-                    .modifier(SettingsVSModifier())
+                    .modifier(GeneralVSModifier())
                 }
                 
                 Spacer().frame(height:20)
@@ -114,7 +114,7 @@ struct SettingsView: View {
                 ) {
                     VStack(alignment: .leading, spacing: 10) {
                         // 使用条例
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "text.justify",
                             title: "Terms of use",
                             type: .Link(
@@ -124,7 +124,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 隐私政策
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "lock",
                             title: "Privacy policy",
                             type: .Link(
@@ -134,7 +134,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 问题反馈
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "exclamationmark.bubble",
                             title: "Issue feedback",
                             type: .SendEmail("Email feedback"))
@@ -142,7 +142,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 开源
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "checkmark.seal",
                             title: "Open source",
                             type: .Link(
@@ -152,7 +152,7 @@ struct SettingsView: View {
                         Divider().padding(.leading,25)
                         
                         // 鸣谢
-                        SettingsItemView(
+                        GeneralItemView(
                             icon: "leaf",
                             title: "Acknowledgements",
                             type: .Thanks(
@@ -165,7 +165,7 @@ struct SettingsView: View {
                                 ])
                         )
                     }
-                    .modifier(SettingsVSModifier())
+                    .modifier(GeneralVSModifier())
                 }
                 
                 Spacer().frame(height:20)

@@ -14,11 +14,11 @@ private enum SettingsCleanStatus {
     case error
 }
 
-struct SettingsItemTypeView: View {
+struct GeneralItemTypeView: View {
     @Environment(\.openURL) var openURL
     @State var saveName: String = AppStorage.shared.saveName
     @State private var cleanStatus = SettingsCleanStatus.clean
-    let type: SettingsItemType
+    let type: GeneralItemType
     // 临时文件大小
     @State private var tempStorageUsed = FileUtils.calculateTempFolderSize()
     
@@ -111,6 +111,7 @@ struct SettingsItemTypeView: View {
                 }
                 .foregroundColor(.gray)
             }
+            
         case .TempStorageUsed:
             Button(action: {
                 let url = FileManager.default.temporaryDirectory
@@ -129,6 +130,7 @@ struct SettingsItemTypeView: View {
                     Image(systemName: "trash")
                 case .loading:
                     ProgressView()
+                        .controlSize(.mini)
                 case .success:
                     Image(systemName: "checkmark")
                 case .error:
@@ -136,6 +138,31 @@ struct SettingsItemTypeView: View {
                 }
             })
             .disabled(cleanStatus == .loading)
+            
+        case .Int(let int):
+            Text("\(int)")
+                .foregroundColor(.gray)
+            
+        case .Int64(let int):
+            Text("\(int)")
+                .foregroundColor(.gray)
+            
+        case .IntSize(let int):
+            Text("\(FileUtils.TranslateSize(fileSize: Int(int)))")
+                .foregroundColor(.gray)
+            
+        case .Double(let double):
+            Text(double.formatted(.percent))
+                .foregroundColor(.gray)
+            
+        case .Date(let date):
+            if let date = date {
+                Text("\(date)")
+                    .foregroundColor(.gray)
+            } else {
+                Text("--")
+                    .foregroundColor(.gray)
+            }
         }
     }
     

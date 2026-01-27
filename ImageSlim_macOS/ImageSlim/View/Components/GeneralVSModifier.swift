@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsVSModifier: ViewModifier {
+struct GeneralVSModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     func body(content: Content) -> some View {
         content

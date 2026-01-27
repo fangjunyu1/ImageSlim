@@ -1,5 +1,5 @@
 //
-//  SettingsItemView.swift
+//  GeneralItemView.swift
 //  ImageSlim
 //
 //  Created by 方君宇 on 2025/12/31.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct SettingsItemView: View {
+struct GeneralItemView: View {
     let icon: String
     let title: String
-    let type: SettingsItemType
+    let type: GeneralItemType
     
-    init(icon: String, title: String, type: SettingsItemType) {
+    init(icon: String, title: String, type: GeneralItemType) {
         self.icon = icon
         self.title = title
         self.type = type
@@ -23,7 +23,7 @@ struct SettingsItemView: View {
             Image(systemName: icon)
             Text(LocalizedStringKey(title))
             Spacer()
-            SettingsItemTypeView(type: type)
+            GeneralItemTypeView(type: type)
         }
     }
 }
