@@ -57,19 +57,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // content 为左侧显示的轻压图片 TabView
         let menuVC = NSHostingController(rootView:
-            MenuView()
-                .environmentObject(appStorage)
-                .environmentObject(iapManager)
-                .environmentObject(sound)
-                .environmentObject(imageArray)
+                                            MenuView()
+            .environmentObject(appStorage)
+            .environmentObject(iapManager)
+            .environmentObject(sound)
+            .environmentObject(imageArray)
         )
         // workspace 为右侧显示的主视图内容
         let workspaceVC = NSHostingController(rootView:
-             ContentView()
-                .environmentObject(appStorage)
-                .environmentObject(iapManager)
-                .environmentObject(sound)
-                .environmentObject(imageArray)
+                                                ContentView()
+            .environmentObject(appStorage)
+            .environmentObject(iapManager)
+            .environmentObject(sound)
+            .environmentObject(imageArray)
         )
         
         // 创建 NSSplitViewController(分栏界面) 并添加子项
@@ -95,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.center()
         window.isReleasedWhenClosed = false
         window.contentViewController = splitVC
-        window.minSize = NSSize(width: 600, height: 450)
+        window.minSize = NSSize(width: 650, height: 450)
         window.maxSize = NSSize(width: 1200, height: 800)
         window.makeKeyAndOrderFront(nil)
         
@@ -119,8 +119,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // 接收打开的图片文件
     func application(_ application: NSApplication, open urls: [URL]) {
-        Task {
-            await FileProcessingService.shared.fileImporter(urls)
+        print("通过 application(_:open:) 接收到 URL")
+        for url in urls {
+            // URL Scheme 分发的事件,例如：ImageSlim://open-shared-images
+            if url.scheme == "ImageSlim", url.host == "open-shared-images" {
+                print("URL Scheme分发的事件")
+                Task {
+                    await FileProcessingService.shared.retrieveSharedImageURLs()
+                }
+            } else {
+                // 其他分发的事件
+                print("其他分发的事件")
+                Task {
+                    await FileProcessingService.shared.fileImporter(urls)
+                }
+            }
         }
     }
 }

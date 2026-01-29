@@ -26,5 +26,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(AppStorage.shared)
-        // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
+    // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
 }

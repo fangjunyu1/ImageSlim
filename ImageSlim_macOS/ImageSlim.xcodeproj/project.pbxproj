@@ -7,18 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D7828002F1FCE9500FE36A5 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1D7827FF2F1FCE9500FE36A5 /* Zip */; };
-		1D7828032F1FCEA900FE36A5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1D7828022F1FCEA900FE36A5 /* Lottie */; };
+		1D3F1BB82F2907AF00C60A65 /* ImageSlimShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1D3F1BAB2F2907AF00C60A65 /* ImageSlimShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1DA949092F29B4A700987879 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = 1DA949082F29B4A700987879 /* Zip */; };
+		1DA9490C2F29B4B500987879 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1DA9490B2F29B4B500987879 /* Lottie */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D3F1BB62F2907AF00C60A65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1D0111072E02791C00D9718B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D3F1BAA2F2907AF00C60A65;
+			remoteInfo = ImageSlimShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1D3F1B9C2F28F89700C60A65 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1D3F1BB82F2907AF00C60A65 /* ImageSlimShare.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D01110F2E02791C00D9718B /* ImageSlim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSlim.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D3F1BAB2F2907AF00C60A65 /* ImageSlimShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageSlimShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1D3F1BB92F2907AF00C60A65 /* Exceptions for "ImageSlimShare" folder in "ImageSlimShare" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1D3F1BAA2F2907AF00C60A65 /* ImageSlimShare */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1D0111112E02791C00D9718B /* ImageSlim */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = ImageSlim;
+			sourceTree = "<group>";
+		};
+		1D3F1BAC2F2907AF00C60A65 /* ImageSlimShare */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1D3F1BB92F2907AF00C60A65 /* Exceptions for "ImageSlimShare" folder in "ImageSlimShare" target */,
+			);
+			path = ImageSlimShare;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -28,8 +72,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7828002F1FCE9500FE36A5 /* Zip in Frameworks */,
-				1D7828032F1FCEA900FE36A5 /* Lottie in Frameworks */,
+				1DA949092F29B4A700987879 /* Zip in Frameworks */,
+				1DA9490C2F29B4B500987879 /* Lottie in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D3F1BA82F2907AF00C60A65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				1D0111112E02791C00D9718B /* ImageSlim */,
+				1D3F1BAC2F2907AF00C60A65 /* ImageSlimShare */,
 				1D0111102E02791C00D9718B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				1D01110F2E02791C00D9718B /* ImageSlim.app */,
+				1D3F1BAB2F2907AF00C60A65 /* ImageSlimShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,22 +115,46 @@
 				1D01110B2E02791C00D9718B /* Sources */,
 				1D01110C2E02791C00D9718B /* Frameworks */,
 				1D01110D2E02791C00D9718B /* Resources */,
+				1D3F1B9C2F28F89700C60A65 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1D3F1BB72F2907AF00C60A65 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1D0111112E02791C00D9718B /* ImageSlim */,
 			);
 			name = ImageSlim;
 			packageProductDependencies = (
-				1D7827FF2F1FCE9500FE36A5 /* Zip */,
-				1D7828022F1FCEA900FE36A5 /* Lottie */,
+				1DA949082F29B4A700987879 /* Zip */,
+				1DA9490B2F29B4B500987879 /* Lottie */,
 			);
 			productName = ImageSlim;
 			productReference = 1D01110F2E02791C00D9718B /* ImageSlim.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1D3F1BAA2F2907AF00C60A65 /* ImageSlimShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D3F1BBA2F2907AF00C60A65 /* Build configuration list for PBXNativeTarget "ImageSlimShare" */;
+			buildPhases = (
+				1D3F1BA72F2907AF00C60A65 /* Sources */,
+				1D3F1BA82F2907AF00C60A65 /* Frameworks */,
+				1D3F1BA92F2907AF00C60A65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1D3F1BAC2F2907AF00C60A65 /* ImageSlimShare */,
+			);
+			name = ImageSlimShare;
+			packageProductDependencies = (
+			);
+			productName = ImageSlimShare;
+			productReference = 1D3F1BAB2F2907AF00C60A65 /* ImageSlimShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -90,6 +167,9 @@
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					1D01110E2E02791C00D9718B = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					1D3F1BAA2F2907AF00C60A65 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 				};
@@ -175,8 +255,8 @@
 			mainGroup = 1D0111062E02791C00D9718B;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				1D7827FE2F1FCE9500FE36A5 /* XCRemoteSwiftPackageReference "Zip" */,
-				1D7828012F1FCEA900FE36A5 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				1DA949072F29B4A700987879 /* XCRemoteSwiftPackageReference "Zip" */,
+				1DA9490A2F29B4B500987879 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1D0111102E02791C00D9718B /* Products */;
@@ -184,12 +264,20 @@
 			projectRoot = "";
 			targets = (
 				1D01110E2E02791C00D9718B /* ImageSlim */,
+				1D3F1BAA2F2907AF00C60A65 /* ImageSlimShare */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D01110D2E02791C00D9718B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1D3F1BA92F2907AF00C60A65 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -206,7 +294,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1D3F1BA72F2907AF00C60A65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1D3F1BB72F2907AF00C60A65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D3F1BAA2F2907AF00C60A65 /* ImageSlimShare */;
+			targetProxy = 1D3F1BB62F2907AF00C60A65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D0111192E02791E00D9718B /* Debug */ = {
@@ -405,6 +508,62 @@
 			};
 			name = Release;
 		};
+		1D3F1BBB2F2907AF00C60A65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ImageSlimShare/ImageSlimShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RRMSD743UQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageSlimShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ImageSlimShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fangjunyu.ImageSlim.ImageSlimShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1D3F1BBC2F2907AF00C60A65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ImageSlimShare/ImageSlimShare.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RRMSD743UQ;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageSlimShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ImageSlimShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fangjunyu.ImageSlim.ImageSlimShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -426,10 +585,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1D3F1BBA2F2907AF00C60A65 /* Build configuration list for PBXNativeTarget "ImageSlimShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D3F1BBB2F2907AF00C60A65 /* Debug */,
+				1D3F1BBC2F2907AF00C60A65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1D7827FE2F1FCE9500FE36A5 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		1DA949072F29B4A700987879 /* XCRemoteSwiftPackageReference "Zip" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/Zip";
 			requirement = {
@@ -437,7 +605,7 @@
 				minimumVersion = 2.1.2;
 			};
 		};
-		1D7828012F1FCEA900FE36A5 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		1DA9490A2F29B4B500987879 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
@@ -448,14 +616,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1D7827FF2F1FCE9500FE36A5 /* Zip */ = {
+		1DA949082F29B4A700987879 /* Zip */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1D7827FE2F1FCE9500FE36A5 /* XCRemoteSwiftPackageReference "Zip" */;
+			package = 1DA949072F29B4A700987879 /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
 		};
-		1D7828022F1FCEA900FE36A5 /* Lottie */ = {
+		1DA9490B2F29B4B500987879 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1D7828012F1FCEA900FE36A5 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 1DA9490A2F29B4B500987879 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */

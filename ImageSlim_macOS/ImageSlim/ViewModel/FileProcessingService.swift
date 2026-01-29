@@ -250,5 +250,84 @@ extension FileProcessingService {
             }
         }
     }
+}
+
+extension FileProcessingService {
     
+    // MARK: 共享扩展中读取文件
+    func retrieveSharedImageURLs() async {
+        
+        // App Group ID
+        let appGroupIdentifier = "group.com.fangjunyu.ImageSlim"
+        // 共享文件夹路径
+        let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier)!
+        // 共享文件夹的临时目录
+        let sharedDir = containerURL.appendingPathComponent("SharedImages", isDirectory: true)
+        
+        // 检查目录是否存在
+        guard FileManager.default.fileExists(atPath: sharedDir.path) else {
+            print("共享目录不存在")
+            return
+        }
+        
+        // 共享文件夹中的文件URL
+        var imagesURLs:[URL] = []
+        do {
+            // 尝试读取共享目录中的文件
+            let fileURLs = try FileManager.default.contentsOfDirectory(
+                at: sharedDir,
+                includingPropertiesForKeys: nil,
+                options: .skipsHiddenFiles
+            )
+            imagesURLs = fileURLs.filter { url in
+                let ext = url.pathExtension.lowercased()
+                return ["jpg", "jpeg", "png", "tif", "tiff", "gif", "bmp", "webp", "heic", "heif", "jp2", "j2k", "jpf", "jpx", "jpm", "pdf"].contains(ext)
+            }
+        } catch {
+            print("读取共享目录失败: \(error)")
+            return
+        }
+        
+        print("图片数量:\(imagesURLs.count)")
+        
+        // 输出图片格式
+        let outputType = appStorage.convertTypeState.rawValue
+        
+        // 获取可用的 NSItemProvider 数组
+        let limitProviders = getLimitedArray(from: imagesURLs, for: .compression)
+        
+        // TaskGroup 可以实现 I/O 并行排队执行
+        await withTaskGroup(of: CustomImages?.self) { group in
+            
+            // 沙盒权限权限请求
+            for url in limitProviders {
+                group.addTask {
+                    // 当 url 不为 nil， 则创建 CustomImages 对象
+                    let customImages = self.createCustomImages(type: .compression, url: url,outputType: outputType)
+                    return customImages
+                }
+            }
+            
+            // 获取所有的 CustomImage 对象，并插入显示队列，执行队列任务
+            for await image in group {
+                imageArray.addViewQueue(type: .compression,image: image)
+            }
+            print("完成withTaskGroupwithTaskGroup")
+        }
+        
+        // 清理共享目录
+        do {
+            let fileURLs = try FileManager.default.contentsOfDirectory(
+                at: sharedDir,
+                includingPropertiesForKeys: nil
+            )
+            
+            for fileURL in fileURLs {
+                try FileManager.default.removeItem(at: fileURL)
+            }
+            print("共享目录已清理")
+        } catch {
+            print("清理共享目录失败: \(error)")
+        }
+    }
 }

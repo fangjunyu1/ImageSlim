@@ -16,5 +16,6 @@ struct ImageSlimApp: App {
         Settings {
             SettingsView()
         }  // 占位，不弹出任何窗口
+        
     }
 }
