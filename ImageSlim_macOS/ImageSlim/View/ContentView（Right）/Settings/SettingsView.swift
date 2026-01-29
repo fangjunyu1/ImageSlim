@@ -99,7 +99,7 @@ struct SettingsView: View {
                         // 临时文件占用
                         GeneralItemView(
                             icon: "tray",
-                            title: "Temp Storage Used",
+                            title: "Temp Storage",
                             type: .TempStorageUsed
                         )
                     }
@@ -116,9 +116,9 @@ struct SettingsView: View {
                         // 使用条例
                         GeneralItemView(
                             icon: "text.justify",
-                            title: "Terms of use",
+                            title: "Terms of Use",
                             type: .Link(
-                                "Web page (Chinese)",
+                                "Website (CN)",
                                 url: "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e4%bd%bf%e7%94%a8%e6%9d%a1%e6%ac%be/"))
                         
                         Divider().padding(.leading,25)
@@ -126,9 +126,9 @@ struct SettingsView: View {
                         // 隐私政策
                         GeneralItemView(
                             icon: "lock",
-                            title: "Privacy policy",
+                            title: "Privacy Policy",
                             type: .Link(
-                                "Web page (Chinese)",
+                                "Website (CN)",
                                 url: "https://fangjunyu.com/2025/07/11/%e8%bd%bb%e5%8e%8b%e5%9b%be%e7%89%87%e9%9a%90%e7%a7%81%e6%94%bf%e7%ad%96/"))
                         
                         Divider().padding(.leading,25)
@@ -136,15 +136,15 @@ struct SettingsView: View {
                         // 问题反馈
                         GeneralItemView(
                             icon: "exclamationmark.bubble",
-                            title: "Issue feedback",
-                            type: .SendEmail("Email feedback"))
+                            title: "Issue Feedback",
+                            type: .SendEmail("Email Feedback"))
                         
                         Divider().padding(.leading,25)
                         
                         // 开源
                         GeneralItemView(
                             icon: "checkmark.seal",
-                            title: "Open source",
+                            title: "Open Source",
                             type: .Link(
                                 "GitHub",
                                 url: "https://github.com/fangjunyu1/ImageSlim"))

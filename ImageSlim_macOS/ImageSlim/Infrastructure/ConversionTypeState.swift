@@ -29,11 +29,11 @@ enum ConversionTypeState:String, CaseIterable, Hashable, Identifiable {
     
     /// BMP 位图
     /// 常见扩展名: .bmp
-    case bmp    // BMP 位图
+//    case bmp    // BMP 位图
     
     // HEIF 图像容器
     /// 常见扩展名: .heif
-    case heif   // HEIF 图像容器
+//    case heif   // HEIF 图像容器
     
     /// HEIC (HEIF + HEVC 编码)
     /// 常见扩展名: .heic

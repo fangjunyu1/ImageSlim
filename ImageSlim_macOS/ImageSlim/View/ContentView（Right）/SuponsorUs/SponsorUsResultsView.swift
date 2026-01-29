@@ -18,7 +18,7 @@ struct SponsorUsResultsView: View {
                 .scaledToFit()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100, height: 100)
-            Text("All features have been successfully unlocked. Thank you for your support.")
+            Text("All features unlocked. Thanks for your support!")
                 .foregroundColor(.gray)
             Button(action: {
                 iapManager.successTips = false

@@ -16,16 +16,16 @@ struct WorkspaceTitle: View {
         case .compression:
             if isHovering {
                 // 释放文件，添加压缩
-                Text("Release the file and add compression")
+                Text("Drop to compress")
                     .font(.title)
             } else {
                 // 上传图片，即刻压缩
-                Text("Upload pictures and compress them instantly")
+                Text("Upload to Compress")
                     .font(.title)
             }
         case .conversion:
             if isHovering {
-                Text("Free files and convert them immediately")
+                Text("Drop to convert")
                     .font(.title)
             } else {
                 HStack {

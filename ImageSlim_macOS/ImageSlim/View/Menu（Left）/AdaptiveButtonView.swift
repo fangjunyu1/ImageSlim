@@ -44,7 +44,7 @@ struct AdaptiveButtonView: View {
                         .frame(width: 120,height: 35)
                         .foregroundColor(Color(hex: "FF4343"))
                         .cornerRadius(10)
-                    Text("Clear the queue")
+                    Text("Clear Queue")
                         .foregroundColor(.white)
                 }
             })

@@ -38,8 +38,8 @@ struct GeneralItemTypeView: View {
             
         case .PickerPreview(let binding):
             Picker("预览方式", selection: binding) {
-                Text("Window preview").tag(PreviewMode.window)
-                Text("Use Quick Look to preview").tag(PreviewMode.quickLook)
+                Text("Window Preview").tag(PreviewMode.window)
+                Text("Use Quick Look").tag(PreviewMode.quickLook)
             }
             .pickerStyle(.menu)
             .labelsHidden()
@@ -193,11 +193,11 @@ struct GeneralItemTypeView: View {
                 cleanStatus = .error
             }
             
-            // 延迟后重置状态
-            try? await Task.sleep(nanoseconds: 2_000_000_000)
-            
             // 重新计算临时文件大小
             tempStorageUsed = FileUtils.calculateTempFolderSize()
+            
+            // 延迟后重置状态
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
             
             // 重置状态
             cleanStatus = .clean

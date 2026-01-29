@@ -180,16 +180,16 @@ struct ImageRowView: View {
                 
             } else if item.isState == .pending{
                 if imageType == .compression {
-                    tipState(name: "Waiting for compression")
+                    tipState(name: "Pending Compression")
                 } else if imageType == .conversion {
-                    tipState(name: "Waiting for conversion")
+                    tipState(name: "Pending Conversion")
                 }
                 
             } else if item.isState == .failed {
                 if imageType == .compression {
-                    tipState(name: "Compression failed")
+                    tipState(name: "Compression Failed")
                 } else if imageType == .conversion {
-                    tipState(name: "Conversion failed")
+                    tipState(name: "Conversion Failed")
                 }
             } else if item.isState == .running {
                 ProgressView("")

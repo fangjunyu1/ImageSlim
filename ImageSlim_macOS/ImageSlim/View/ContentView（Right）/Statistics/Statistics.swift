@@ -38,28 +38,28 @@ struct Statistics: View {
                         // 已处理图片总数数量
                         GeneralItemView(
                             icon: "photo.on.rectangle",
-                            title: "Total Images Processed",
+                            title: "Total Processed",
                             type: .Int64(appStorage.totalImagesProcessed))
                         Divider().padding(.leading,25)
                         
                         // 原始图片总大小
                         GeneralItemView(
                             icon: "tray.full",
-                            title: "Original Size",
+                            title: "Original Total Size",
                             type: .IntSize(appStorage.originalSize))
                         Divider().padding(.leading,25)
                         
                         // 压缩后总大小
                         GeneralItemView(
                             icon: "tray",
-                            title: "Compressed Size",
+                            title: "Compressed Total Size",
                             type: .IntSize(appStorage.compressedSize))
                         Divider().padding(.leading,25)
                         
                         // 节省硬盘空间
                         GeneralItemView(
                             icon: "externaldrive",
-                            title: "Disk Space Saved",
+                            title: "Space Saved",
                             type: .IntSize(appStorage.diskSpaceSaved))
                     }
                     .modifier(GeneralVSModifier())
@@ -69,14 +69,14 @@ struct Statistics: View {
                 
                 // 压缩效果
                 Section(header:
-                            Text("Compression Stats")
+                            Text("Compression Results")
                     .font(.headline)
                 ) {
                     VStack(alignment: .leading, spacing: 10) {
                         // 平均压缩率
                         GeneralItemView(
                             icon: "line.3.horizontal.decrease",
-                            title: "Avg. Compression Ratio",
+                            title: "Avg. Ratio",
                             type: .Double(appStorage.avgCompressionRatio))
                         Divider().padding(.leading,25)
                         
@@ -90,14 +90,14 @@ struct Statistics: View {
                         // 最大单张节省空间
                         GeneralItemView(
                             icon: "slider.horizontal.below.rectangle",
-                            title: "Max Size Saved",
+                            title: "Max Space Saved",
                             type: .IntSize(appStorage.maxSizeSaved))
                         Divider().padding(.leading,25)
                         
                         // 最大压缩率
                         GeneralItemView(
                             icon: "square.grid.4x3.fill",
-                            title: "Max Compression Ratio",
+                            title: "Max Ratio",
                             type: .Double(appStorage.maxCompressionRatio))
                     }
                     .modifier(GeneralVSModifier())
@@ -129,7 +129,7 @@ struct Statistics: View {
                         // 累计使用天数
                         GeneralItemView(
                             icon: "chart.pie",
-                            title: "Days Used",
+                            title: "Days Active",
                             type: .Int(appStorage.daysUsed))
                         
                     }

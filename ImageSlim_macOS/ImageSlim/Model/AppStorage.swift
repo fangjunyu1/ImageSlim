@@ -21,7 +21,7 @@ class AppStorage:ObservableObject {
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
     // 默认选择保存文件夹的提示
-    @Published var saveName = "Select Save Location"
+    @Published var saveName = "Select Location"
 
     // 菜单栏显示图标，true为显示
     @Published var displayMenuBarIcon = true { didSet { updateValue(key: "displayMenuBarIcon", newValue: displayMenuBarIcon, oldValue: oldValue)}}

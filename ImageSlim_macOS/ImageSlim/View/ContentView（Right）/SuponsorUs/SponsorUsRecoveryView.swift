@@ -12,7 +12,7 @@ struct SponsorUsRecoveryView: View {
     @EnvironmentObject var sound: SoundManager
     @Environment(\.dismiss) var dismiss
     var body: some View {
-        let recoveryText = appStorage.inAppPurchaseMembership ? "Recovery successful" : "No recovery records found"
+        let recoveryText = appStorage.inAppPurchaseMembership ? "Restored Successfully" : "No records to restore"
         let lottieName = appStorage.inAppPurchaseMembership ? "check" : "NoEntry"
         let soundName = appStorage.inAppPurchaseMembership ? "success" : "errorSound"
         

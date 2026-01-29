@@ -15,10 +15,10 @@ struct SponsorUsView: View {
     @State private var showRecovery = false
     
     private var suponsorList: [SuponsorStruct] = [
-        SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Sponsor us a cup of coffee", subtitle: "Develop motivation to work overtime late at night", price: 1.0),
-        SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Sponsor us a burger", subtitle: "Don't let developers starve to death in Xcode", price: 2.99),
-        SuponsorStruct(id: "SponsorUsABook", icon: "📖", title: "Sponsor us a book", subtitle: "We may be able to solve the next problem with it", price: 6.0),
-        SuponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source business", subtitle: "Because of you, we can insist on bringing good tools to more people", price: 9.99)
+        SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Buy us a coffee", subtitle: "Motivation for late-night development", price: 1.0),
+        SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Buy us a burger", subtitle: "Keep developers alive in Xcode.", price: 2.99),
+        SuponsorStruct(id: "SponsorUsABook", icon: "📖", title: "Buy us a book", subtitle: "Helping us solve the next challenge", price: 6.0),
+        SuponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source mission", subtitle: "Because of you, we can keep bringing good tools to more people", price: 9.99)
     ]
     
     var body: some View {
@@ -26,7 +26,7 @@ struct SponsorUsView: View {
                 // 赞助我们-图片
                 ZStack {
                     let topImgName = !appStorage.inAppPurchaseMembership ? "supportUs" : "thanks"
-                    let topImgTitle = !appStorage.inAppPurchaseMembership ? "Sponsor Us" : "Thank you for your support"
+                    let topImgTitle = !appStorage.inAppPurchaseMembership ? "Sponsor Us" : "Thank you for your support!"
                     let topImgSubTitle = !appStorage.inAppPurchaseMembership ? "Give someone a rose, and the fragrance will linger on your hands" : "Your support keeps free software alive."
                     Image(topImgName)
                         .resizable()
@@ -54,7 +54,7 @@ struct SponsorUsView: View {
                 // 赞助列表
                 VStack {
                     HStack{
-                        Text("Sponsorship List")
+                        Text("Sponsors")
                         Spacer()
                     }
                     ForEach(suponsorList) { item in
@@ -64,7 +64,7 @@ struct SponsorUsView: View {
                     
                     Spacer().frame(height:10)
                     
-                    Text("This sponsorship project is a one-time consumable in-app purchase. It only unlocks the upload limit when you purchase it for the first time. The service will not be repeated in the future, and it does not support recovery.")
+                    Text("This sponsorship is a consumable in-app purchase. It unlocks the upload limit upon your first support. Please ensure iCloud is enabled for status syncing, as it does not support the standard system recovery.")
                         .foregroundColor(.gray)
                         .font(.footnote)
                     

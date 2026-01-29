@@ -20,7 +20,7 @@ struct MenuView: View {
                 .fontWeight(.bold)
             Spacer()
                 .frame(height: 14)
-            Text("Open source image compression tool")
+            Text("Open source image compressor")
                 .foregroundColor(.gray)
             
             Spacer().frame(height: 20)
@@ -35,7 +35,7 @@ struct MenuView: View {
                             .imageScale(.large)
                             .frame(width: 20)
                         Spacer().frame(width: 14)
-                        Text("Compression")
+                        Text("Compress")
                             .font(.title3)
                             .fontWeight(.semibold)
                     }
@@ -61,7 +61,7 @@ struct MenuView: View {
                                 .imageScale(.large)
                                 .frame(width: 20)
                             Spacer().frame(width: 14)
-                            Text("Conversion")
+                            Text("Convert")
                                 .font(.title3)
                                 .fontWeight(.semibold)
                         }
@@ -138,7 +138,7 @@ struct MenuView: View {
                 showSponsorUs = true
             }, label: {
                 if appStorage.inAppPurchaseMembership {
-                    Text("Thank you for your support")
+                    Text("Thank you for your support!")
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .modifier(HoverModifier())
