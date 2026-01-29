@@ -4,16 +4,10 @@
     "" : {
 
     },
-    "--" : {
-
-    },
     "-%lld%%" : {
 
     },
     "," : {
-
-    },
-    "(iCloud)" : {
 
     },
     "%@" : {
@@ -30,9 +24,6 @@
       }
     },
     "%lld" : {
-
-    },
-    "$ --" : {
 
     },
     "About" : {
@@ -2879,18 +2870,6 @@
         }
       }
     },
-    "ChatGPT" : {
-      "comment" : "ChatGPT",
-      "extractionState" : "manual",
-      "localizations" : {
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ChatGPT"
-          }
-        }
-      }
-    },
     "Clear Queue" : {
       "comment" : "清除队列",
       "extractionState" : "manual",
@@ -5110,9 +5089,6 @@
           }
         }
       }
-    },
-    "Cwebp" : {
-
     },
     "Days Active" : {
       "comment" : "累计使用天数",
@@ -7357,17 +7333,6 @@
           }
         }
       }
-    },
-    "Freepik" : {
-      "comment" : "Freepik",
-      "extractionState" : "manual"
-    },
-    "Gifsicle" : {
-      "comment" : "Gifsicle"
-    },
-    "GitHub" : {
-      "comment" : "GitHub",
-      "extractionState" : "manual"
     },
     "Give someone a rose, and the fragrance will linger on your hands" : {
       "comment" : "赠人玫瑰，手有余香",
@@ -13064,18 +13029,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "等待轉換"
-          }
-        }
-      }
-    },
-    "Pngquant" : {
-      "comment" : "pngquant",
-      "extractionState" : "manual",
-      "localizations" : {
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "pngquant"
           }
         }
       }
@@ -20027,22 +19980,6 @@
           }
         }
       }
-    },
-    "Zip" : {
-      "comment" : "Zip",
-      "extractionState" : "manual"
-    },
-    "新增内购标识" : {
-
-    },
-    "显示图标" : {
-
-    },
-    "移除内购标识" : {
-
-    },
-    "预览方式" : {
-
     }
   },
   "version" : "1.0"

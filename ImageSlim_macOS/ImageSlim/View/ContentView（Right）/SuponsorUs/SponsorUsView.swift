@@ -81,7 +81,7 @@ struct SponsorUsView: View {
                         HStack(spacing:3) {
                             Text("Restore in-app purchases")
                                 .fontWeight(.bold)
-                            Text("(iCloud)")
+                            Text(verbatim: "(iCloud)")
                                 .fontWeight(.bold)
                         }
                     })
@@ -105,14 +105,18 @@ struct SponsorUsView: View {
                 
 #if DEBUG
                 HStack(spacing:10) {
-                    Button("新增内购标识") {
+                    Button(action: {
                         appStorage.inAppPurchaseMembership = true
                         showRecovery = true
-                    }
-                    Button("移除内购标识") {
+                    }, label: {
+                        Text(verbatim: "新增内购标识")
+                    })
+                    Button(action: {
                         appStorage.inAppPurchaseMembership = false
                         showRecovery = true
-                    }
+                    }, label: {
+                        Text(verbatim: "移除内购标识")
+                    })
                 }
                 .font(.footnote)
                 .buttonStyle(.plain)

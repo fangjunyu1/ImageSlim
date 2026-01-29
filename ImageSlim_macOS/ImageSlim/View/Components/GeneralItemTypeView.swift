@@ -25,7 +25,7 @@ struct GeneralItemTypeView: View {
     var body: some View {
         switch type {
         case .PickerIcon(let binding):
-            Picker("显示图标", selection: binding) {
+            Picker("", selection: binding) {
                 Text("Always show").tag(true)
                 Text("Off").tag(false)
             }
@@ -37,7 +37,7 @@ struct GeneralItemTypeView: View {
             CompressionSliderView(value: binding)
             
         case .PickerPreview(let binding):
-            Picker("预览方式", selection: binding) {
+            Picker("", selection: binding) {
                 Text("Window Preview").tag(PreviewMode.window)
                 Text("Use Quick Look").tag(PreviewMode.quickLook)
             }
@@ -58,19 +58,19 @@ struct GeneralItemTypeView: View {
             }
             
         case .ToggleThirdParty(let pngquant, let gifsicle, let cwebp):
-            Text("Pngquant")
+            Text(verbatim: "Pngquant")
                 .foregroundColor(.gray)
-            Toggle("Pngquant",isOn: pngquant)
+            Toggle("",isOn: pngquant)
                 .labelsHidden()
             
-            Text("Gifsicle")
+            Text(verbatim: "Gifsicle")
                 .foregroundColor(.gray)
-            Toggle("Gifsicle",isOn: gifsicle)
+            Toggle("",isOn: gifsicle)
                 .labelsHidden()
             
-            Text("Cwebp")
+            Text(verbatim:"Cwebp")
                 .foregroundColor(.gray)
-            Toggle("Cwebp",isOn: cwebp)
+            Toggle("",isOn: cwebp)
                 .labelsHidden()
             
         case .Toggle(let string, let binding):
@@ -78,7 +78,7 @@ struct GeneralItemTypeView: View {
                 .labelsHidden()
             
         case .Link(let string, let url):
-            Text(LocalizedStringKey(string))
+            Text(verbatim: string)
                 .foregroundColor(.gray)
                 .onTapGesture {
                     if let url = URL(string: url) {
@@ -98,7 +98,7 @@ struct GeneralItemTypeView: View {
         case .Thanks(let tuple):
             HStack(spacing:0) {
                 ForEach(tuple.indices, id:\.self) { index in
-                    Text(tuple[index].0)
+                    Text(verbatim:tuple[index].0)
                         .onTapGesture {
                             if let url = URL(string: tuple[index].1) {
                                 openURL(url)
@@ -160,7 +160,7 @@ struct GeneralItemTypeView: View {
                 Text(date, format: .dateTime.year().month().day().hour().minute())
                     .foregroundColor(.gray)
             } else {
-                Text("--")
+                Text(verbatim:"--")
                     .foregroundColor(.gray)
             }
         }

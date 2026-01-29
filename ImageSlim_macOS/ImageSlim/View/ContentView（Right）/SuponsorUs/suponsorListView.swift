@@ -44,7 +44,7 @@ struct suponsorListView: View {
                     Text("\(product.displayPrice)")
                     .foregroundColor(onHover ? .white : colorScheme == .light ? .black : .white)
                 } else {
-                    Text("$ --")
+                    Text(verbatim: "$ --")
                         .foregroundColor(onHover ? .white : .black)
                 }
             }
