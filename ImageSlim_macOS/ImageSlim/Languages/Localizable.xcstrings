@@ -348,6 +348,12 @@
             "value" : "Om"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kuhusu"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -375,13 +381,19 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Про нас"
+            "value" : "Про програму"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کے بارے میں"
+            "value" : "متعلق"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haqida"
           }
         },
         "vi" : {
@@ -477,19 +489,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias"
+            "value" : "Agradecimientos"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias"
+            "value" : "Agradecimientos"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias"
+            "value" : "Agradecimientos"
           }
         },
         "et" : {
@@ -729,25 +741,31 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tack"
+            "value" : "Tack till"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shukrani"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "நன்றி"
+            "value" : "நன்றிகள்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ధన్యవాదాలు"
+            "value" : "కృతజ్ఞతలు"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ขอบคุณ"
+            "value" : "กิตติกรรมประกาศ"
           }
         },
         "tr" : {
@@ -759,7 +777,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дякую"
+            "value" : "Подяки"
           }
         },
         "ur" : {
@@ -768,10 +786,16 @@
             "value" : "شکریہ"
           }
         },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minnatdorchilik"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cảm ơn"
+            "value" : "Ghi nhận"
           }
         },
         "zh-Hans" : {
@@ -856,6 +880,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Όλες οι λειτουργίες ξεκλειδώθηκαν. Ευχαριστούμε!"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones desbloqueadas. ¡Gracias por su apoyo!"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones desbloqueadas. ¡Gracias por su apoyo!"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funciones desbloqueadas. ¡Gracias por su apoyo!"
           }
         },
         "et" : {
@@ -1090,6 +1132,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gjithçka u zhbllokua. Faleminderit!"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alla funktioner upplåsta. Tack för ditt stöd!"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vipengele vyote vimefunguliwa. Asante kwa msaada wako"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "அனைத்து அம்சங்களும் திறக்கப்பட்டன, உங்கள் ஆதரவிற்கு நன்றி"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "అన్ని ఫీచర్లు అన్‌లాక్ చేయబడ్డాయి, మీ మద్దతుకు ధన్యవాదాలు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปลดล็อกฟีเจอร์ทั้งหมดแล้ว ขอบคุณที่สนับสนุน"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm özellikler açıldı, desteğiniz için teşekkürler"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Усі функції розблоковано. Дякуємо за підтримку!"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تمام فیچرز کامیابی سے ان لاک ہو گئے، آپ کے تعاون کا شکریہ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Barcha funksiyalar ochildi, qoʻllab-quvvatlaganingiz uchun rahmat!"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đã mở khóa tất cả tính năng, cảm ơn bạn đã ủng hộ!"
           }
         },
         "zh-Hans" : {
@@ -1434,6 +1536,12 @@
             "value" : "Visa alltid"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onyesha kila wakati"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1449,7 +1557,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "แสดงเสมอ"
+            "value" : "แสดงตลอดเวลา"
           }
         },
         "tr" : {
@@ -1461,13 +1569,19 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завжди показувати"
+            "value" : "Показувати завжди"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہمیشہ دکھائیں۔"
+            "value" : "ہمیشہ دکھائیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doim koʻrsatish"
           }
         },
         "vi" : {
@@ -1563,19 +1677,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aplicaciones"
+            "value" : "Aplicación"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aplicaciones"
+            "value" : "Aplicación"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aplicaciones"
+            "value" : "Aplicación"
           }
         },
         "et" : {
@@ -1815,19 +1929,25 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Applikationer"
+            "value" : "Applikation"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programu"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பயன்பாடுகள்"
+            "value" : "செயலி"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "అప్లికేషన్లు"
+            "value" : "అప్లికేషన్"
           }
         },
         "th" : {
@@ -1839,19 +1959,25 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uygulamalar"
+            "value" : "Uygulama"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Програми"
+            "value" : "Програма"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ایپلی کیشنز"
+            "value" : "ایپلی کیشن"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ilova"
           }
         },
         "vi" : {
@@ -1942,6 +2068,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Μέσο μέγεθος μετά τη συμπίεση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño promedio tras compresión"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño promedio tras compresión"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño promedio tras compresión"
           }
         },
         "et" : {
@@ -2178,6 +2322,66 @@
             "value" : "Madhësia mesatare pas kompresimit"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genomsnittlig storlek efter komprimering"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukubwa wa wastani baada ya mgandamizo"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "சராசரி சுருக்கப்பட்ட அளவு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "కంప్రెషన్ తర్వాత సగటు పరిమాణం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ขนาดเฉลี่ยหลังบีบอัด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıkıştırma sonrası ort. boyut"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сер. розмір після стиснення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کمپریشن کے بعد اوسط سائز"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqilgandan keyingi oʻrtacha hajmi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kích thước trung bình sau nén"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2260,6 +2464,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Μέσο ποσοστό συμπίεσης"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasa media de compresión"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasa media de compresión"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasa media de compresión"
           }
         },
         "et" : {
@@ -2496,6 +2718,66 @@
             "value" : "Raporti mesatar i kompresimit"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genomsnittlig komprimeringsgrad"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiwango cha wastani cha mgandamizo"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "சராசரி சுருக்க விகிதம்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "సగటు కంప్రెషన్ రేటు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อัตราบีบอัดเฉลี่ย"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ortalama sıkıştırma oranı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Середній рівень стиснення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اوسط کمپریشن ریٹ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oʻrtacha siqish darajasi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tỷ lệ nén trung bình"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2583,19 +2865,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saldo"
+            "value" : "Equilibrado"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saldo"
+            "value" : "Equilibrado"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saldo"
+            "value" : "Equilibrado"
           }
         },
         "et" : {
@@ -2835,49 +3117,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Balans"
+            "value" : "Balanserad"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uwiano"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "இருப்பு"
+            "value" : "சமநிலை"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "బ్యాలెన్స్"
+            "value" : "సమతుల్యత"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ยอดคงเหลือ"
+            "value" : "สมดุล"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bakiye"
+            "value" : "Dengeli"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Баланс"
+            "value" : "Збалансовано"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "توازن"
+            "value" : "متوازن"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muvozanatli"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Số dư"
+            "value" : "Cân bằng"
           }
         },
         "zh-Hans" : {
@@ -2967,19 +3261,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias a ti, podemos insistir en ofrecer buenas herramientas a más personas"
+            "value" : "Gracias a ti, podemos llevar grandes herramientas a más personas."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias a ti, podemos insistir en ofrecer buenas herramientas a más personas"
+            "value" : "Gracias a ti, podemos llevar grandes herramientas a más personas."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias a ti, podemos insistir en ofrecer buenas herramientas a más personas"
+            "value" : "Gracias a ti, podemos llevar grandes herramientas a más personas."
           }
         },
         "et" : {
@@ -3219,49 +3513,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tack vare dig kan vi insistera på att ge fler människor bra verktyg"
+            "value" : "Tack vare dig kan vi fortsätta erbjuda bra verktyg till fler."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kwa sababu yako, tunaweza kuendelea kuleta zana bora kwa watu wengi zaidi"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "உங்கள் காரணமாக, நல்ல கருவிகளை அதிகமான மக்களுக்கு கொண்டு வருவதை நாங்கள் வலியுறுத்த முடியும்"
+            "value" : "உங்களால் தான் எங்களால் சிறந்த கருவிகளை பலருக்கு வழங்க முடிகிறது"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మీ కారణంగా, మంచి సాధనాలను ఎక్కువ మందికి తీసుకురావాలని మేము పట్టుబట్టగలము"
+            "value" : "మీ కారణంగానే మేము మంచి సాధనాలను అందరికీ అందించగలుగుతున్నాము"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เพราะคุณ เราจึงสามารถยืนยันที่จะนำเสนอเครื่องมือที่ดีให้กับผู้คนได้มากขึ้น"
+            "value" : "เพราะคุณ เราจึงสามารถส่งต่อเครื่องมือดีๆ ให้กับผู้คนได้มากขึ้น"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sizin sayenizde, daha fazla kişiye iyi araçlar sunmakta ısrarcı olabiliyoruz"
+            "value" : "Sizin sayenizde harika araçları daha fazla kişiye ulaştırabiliyoruz"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завдяки вам ми можемо наполягати на тому, щоб хороші інструменти стали доступні більшій кількості людей"
+            "value" : "Завдяки вам ми продовжуємо створювати круті інструменти для всіх."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "آپ کی وجہ سے، ہم زیادہ سے زیادہ لوگوں تک اچھے اوزار لانے پر اصرار کر سکتے ہیں۔"
+            "value" : "آپ کی بدولت ہم بہترین ٹولز زیادہ لوگوں تک پہنچا سکتے ہیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siz tufayli biz yaxshi vositalarni koʻproq odamlarga yetkazmoqdamiz."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nhờ bạn, chúng tôi có thể tiếp tục mang đến những công cụ tốt cho nhiều người hơn nữa"
+            "value" : "Nhờ có bạn, chúng tôi có thể mang công cụ tốt đến với mọi người."
           }
         },
         "zh-Hans" : {
@@ -3351,19 +3657,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina un libro"
+            "value" : "Donar un libro"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina un libro"
+            "value" : "Donar un libro"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina un libro"
+            "value" : "Donar un libro"
           }
         },
         "et" : {
@@ -3603,13 +3909,19 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sponsra oss en bok"
+            "value" : "Sponsra en bok"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tununulie kitabu"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எங்களுக்கு ஒரு புத்தகத்தை நிதியுதவி செய்யுங்கள்"
+            "value" : "ஒரு புத்தகம் வழங்கவும்"
           }
         },
         "te" : {
@@ -3621,31 +3933,37 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "สนับสนุนหนังสือให้เรา"
+            "value" : "สนับสนุนหนังสือให้เราสักเล่ม"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bize bir kitap sponsor olun"
+            "value" : "Bize bir kitap ısmarla"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спонсоруйте нам книгу"
+            "value" : "Купити нам книгу"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہمیں ایک کتاب سپانسر کریں۔"
+            "value" : "ہمیں ایک کتاب سپانسر کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizga kitob sovgʻa qiling"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tài trợ một cuốn sách"
+            "value" : "Tặng chúng tôi một cuốn sách"
           }
         },
         "zh-Hans" : {
@@ -3735,19 +4053,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina una hamburguesa"
+            "value" : "Donar una hamburguesa"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina una hamburguesa"
+            "value" : "Donar una hamburguesa"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina una hamburguesa"
+            "value" : "Donar una hamburguesa"
           }
         },
         "et" : {
@@ -3987,13 +4305,19 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sponsra oss en hamburgare"
+            "value" : "Sponsra en hamburgare"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tununulie baga"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எங்களுக்கு ஒரு பர்கரை நிதியுதவி செய்யுங்கள்"
+            "value" : "ஒரு பர்கர் வழங்கவும்"
           }
         },
         "te" : {
@@ -4005,31 +4329,37 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "สนับสนุนเบอร์เกอร์ให้เรา"
+            "value" : "เลี้ยงแฮมเบอร์เกอร์เราสักชิ้น"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bize bir burger sponsor olun"
+            "value" : "Bize bir burger ısmarla"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спонсоруйте нам бургер"
+            "value" : "Купити нам гамбургер"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہمیں ایک برگر سپانسر کریں۔"
+            "value" : "ہمیں ایک برگر سپانسر کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizga burger olib bering"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tài trợ một chiếc burger"
+            "value" : "Tặng chúng tôi một chiếc burger"
           }
         },
         "zh-Hans" : {
@@ -4119,19 +4449,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina un café"
+            "value" : "Donar un café"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina un café"
+            "value" : "Donar un café"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina un café"
+            "value" : "Donar un café"
           }
         },
         "et" : {
@@ -4371,49 +4701,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sponsra oss en kopp kaffe"
+            "value" : "Sponsra en kaffe"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tununulie kahawa"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எங்களுக்கு ஒரு கப் காபியை நிதியுதவி செய்யுங்கள்"
+            "value" : "ஒரு காபி வழங்கவும்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మాకు ఒక కప్పు కాఫీని స్పాన్సర్ చేయండి"
+            "value" : "మాకు ఒక కాఫీని స్పాన్సర్ చేయండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "สนับสนุนกาแฟให้เรา"
+            "value" : "เลี้ยงกาแฟเราสักแก้ว"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bize bir fincan kahve sponsor olun"
+            "value" : "Bize bir kahve ısmarla"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спонсоруйте нам чашку кави"
+            "value" : "Купити нам каву"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہمیں ایک کپ کافی سپانسر کریں۔"
+            "value" : "ہمیں ایک کافی سپانسر کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizga kofe sovgʻa qiling"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tài trợ một tách cà phê"
+            "value" : "Tặng chúng tôi một ly cà phê"
           }
         },
         "zh-Hans" : {
@@ -4503,19 +4845,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Borrar cola"
+            "value" : "Limpiar cola"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Borrar cola"
+            "value" : "Limpiar cola"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Borrar cola"
+            "value" : "Limpiar cola"
           }
         },
         "et" : {
@@ -4758,28 +5100,34 @@
             "value" : "Rensa kö"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safisha foleni"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "வரிசையை அழிக்கவும்"
+            "value" : "வரிசையை நீக்கு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "క్యూ క్లియర్ చేయండి"
+            "value" : "క్యూని క్లియర్ చేయండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ล้างคิว"
+            "value" : "ล้างรายการ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sırayı temizle"
+            "value" : "Kuyruğu temizle"
           }
         },
         "uk" : {
@@ -4791,13 +5139,19 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "قطار صاف کریں۔"
+            "value" : "فہرست صاف کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navbatni tozalash"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xóa hàng đợi"
+            "value" : "Xóa danh sách chờ"
           }
         },
         "zh-Hans" : {
@@ -4887,19 +5241,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compresión"
+            "value" : "Comprimir"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compresión"
+            "value" : "Comprimir"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compresión"
+            "value" : "Comprimir"
           }
         },
         "et" : {
@@ -5139,43 +5493,55 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Komprimering"
+            "value" : "Komprimera"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gandamiza"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "சுருக்கவும்"
+            "value" : "சுருக்கு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "కంప్రెషన్"
+            "value" : "కంప్రెస్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "การบีบอัด"
+            "value" : "บีบอัด"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıkıştırma"
+            "value" : "Sıkıştır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Стиснення"
+            "value" : "Стиснути"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کمپریشن"
+            "value" : "کمپریس"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqish"
           }
         },
         "vi" : {
@@ -5266,6 +5632,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Συνολικό μέγεθος μετά τη συμπίεση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño total tras compresión"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño total tras compresión"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño total tras compresión"
           }
         },
         "et" : {
@@ -5500,6 +5884,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Madhësia totale pas kompresimit"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total storlek efter komprimering"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukubwa wa jumla baada ya mgandamizo"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "சுருக்கப்பட்ட மொத்த அளவு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "కంప్రెషన్ తర్వాత మొత్తం పరిమాణం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ขนาดรวมหลังบีบอัด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıkıştırma sonrası toplam boyut"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загальний розмір після стиснення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کمپریشن کے بعد کل سائز"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqilgandan keyingi umumiy hajm"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tổng kích thước sau nén"
           }
         },
         "zh-Hans" : {
@@ -5844,10 +6288,16 @@
             "value" : "Komprimering misslyckades"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mgandamizo umefeli"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "சுருக்கம் தோல்வியடைந்தது"
+            "value" : "சுருக்கம் தோல்வி"
           }
         },
         "te" : {
@@ -5859,31 +6309,37 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "การบีบอัดล้มเหลว"
+            "value" : "บีบอัดล้มเหลว"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıkıştırma başarısız oldu"
+            "value" : "Sıkıştırma başarısız"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Стиснення не вдалося"
+            "value" : "Помилка стиснення"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کمپریشن ناکام ہو گیا۔"
+            "value" : "کمپریشن ناکام"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqish muvaffaqiyatsiz tugadi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nén không thành công"
+            "value" : "Nén thất bại"
           }
         },
         "zh-Hans" : {
@@ -5973,19 +6429,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasa de compresión de imágenes"
+            "value" : "Tasa de compresión de imagen"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasa de compresión de imágenes"
+            "value" : "Tasa de compresión de imagen"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasa de compresión de imágenes"
+            "value" : "Tasa de compresión de imagen"
           }
         },
         "et" : {
@@ -6228,28 +6684,34 @@
             "value" : "Bildkomprimeringsgrad"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiwango cha mgandamizo wa picha"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பட சுருக்க விகிதம்"
+            "value" : "படச் சுருக்க விகிதம்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "చిత్ర కుదింపు రేటు"
+            "value" : "చిత్ర కంప్రెషన్ రేటు"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "อัตราการบีบอัดภาพ"
+            "value" : "อัตราบีบอัดรูปภาพ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görüntü sıkıştırma oranı"
+            "value" : "Resim sıkıştırma oranı"
           }
         },
         "uk" : {
@@ -6261,13 +6723,19 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تصویر کمپریشن کی شرح"
+            "value" : "تصویر کی کمپریشن شرح"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasmni siqish darajasi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tỷ lệ nén hình ảnh"
+            "value" : "Tỷ lệ nén ảnh"
           }
         },
         "zh-Hans" : {
@@ -6352,6 +6820,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Αποτέλεσμα συμπίεσης"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efecto de compresión"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efecto de compresión"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efecto de compresión"
           }
         },
         "et" : {
@@ -6588,6 +7074,66 @@
             "value" : "Efekti i kompresimit"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komprimeringseffekt"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matokeo ya mgandamizo"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "சுருக்க விளைவு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "కంప్రెషన్ ప్రభావం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ผลการบีบอัด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıkıştırma etkisi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ефект стиснення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کمپریشن کا اثر"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqish samarasi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiệu quả nén"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6675,19 +7221,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conversión fallida"
+            "value" : "Error de conversión"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conversión fallida"
+            "value" : "Error de conversión"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conversión fallida"
+            "value" : "Error de conversión"
           }
         },
         "et" : {
@@ -6930,6 +7476,12 @@
             "value" : "Konvertering misslyckades"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubadilishaji umefeli"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6939,19 +7491,19 @@
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మార్చడం విఫలమైంది"
+            "value" : "మార్పిడి విఫలమైంది"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "การแปลงล้มเหลว"
+            "value" : "แปลงไฟล์ล้มเหลว"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dönüştürme Başarısız"
+            "value" : "Dönüştürme başarısız"
           }
         },
         "uk" : {
@@ -6964,6 +7516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تبدیلی ناکام"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oʻtkazish muvaffaqiyatsiz tugadi"
           }
         },
         "vi" : {
@@ -7314,10 +7872,16 @@
             "value" : "Konvertera"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badilisha"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "மாற்றம்"
+            "value" : "மாற்று"
           }
         },
         "te" : {
@@ -7329,7 +7893,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "แปลง"
+            "value" : "แปลงไฟล์"
           }
         },
         "tr" : {
@@ -7348,6 +7912,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تبدیل کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oʻtkazish"
           }
         },
         "vi" : {
@@ -7695,31 +8265,37 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertera bild"
+            "value" : "Konvertera bilder"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Badilisha picha"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "படம் மாற்றம்"
+            "value" : "படங்களை மாற்று"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "చిత్రం మార్చు"
+            "value" : "చిత్రాలను మార్చు"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "แปลงภาพ"
+            "value" : "แปลงรูปภาพ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görüntüyü Dönüştür"
+            "value" : "Resimleri dönüştür"
           }
         },
         "uk" : {
@@ -7731,13 +8307,19 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تصویر تبدیل کریں"
+            "value" : "تصاویر تبدیل کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasmlarni oʻtkazish"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chuyển đổi hình ảnh"
+            "value" : "Chuyển đổi ảnh"
           }
         },
         "zh-Hans" : {
@@ -7822,6 +8404,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Βασικά στατιστικά"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas principales"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas principales"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas principales"
           }
         },
         "et" : {
@@ -8058,6 +8658,66 @@
             "value" : "Statistikat bazë"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kärnstatistik"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takwimu kuu"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "முக்கிய புள்ளிவிவரங்கள்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ప్రధాన గణాంకాలు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สถิติหลัก"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temel istatistikler"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Основна статистика"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اہم اعداد و شمار"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asosiy statistika"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thống kê chính"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8140,6 +8800,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Συνολικές ημέρες χρήσης"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Días totales de uso"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Días totales de uso"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Días totales de uso"
           }
         },
         "et" : {
@@ -8376,6 +9054,66 @@
             "value" : "Ditët totale të përdorimit"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antal dagar använd"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jumla ya siku za matumizi"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "பயன்படுத்திய மொத்த நாட்கள்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "మొత్తం ఉపయోగించిన రోజులు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จำนวนวันที่ใช้งานรวม"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam kullanım günü"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загальна кількість днів використання"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعمال کے کل دن"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jami foydalanilgan kunlar"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tổng số ngày sử dụng"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8458,6 +9196,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ολοκληρώθηκε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
           }
         },
         "et" : {
@@ -8692,6 +9448,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Përfunduar"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klar"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imekamilika"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "முடிந்தது"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "పూర్తయింది"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เสร็จสิ้น"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamamlandı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مکمل"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tayyor"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hoàn thành"
           }
         },
         "zh-Hans" : {
@@ -9036,6 +9852,12 @@
             "value" : "Ladda ner"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakua"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9045,7 +9867,7 @@
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "డౌన్‌లోడ్ చేయండి"
+            "value" : "డౌన్‌లోడ్"
           }
         },
         "th" : {
@@ -9069,7 +9891,13 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ڈاؤن لوڈ کریں۔"
+            "value" : "ڈاؤن لوڈ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuklab olish"
           }
         },
         "vi" : {
@@ -9171,7 +9999,7 @@
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descargar todo"
+            "value" : "Descargar todo "
           }
         },
         "es-US" : {
@@ -9420,10 +10248,16 @@
             "value" : "Ladda ner alla"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakua zote"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "அனைத்தையும் பதிவிறக்கவும்"
+            "value" : "அனைத்தும் பதிவிறக்கு"
           }
         },
         "te" : {
@@ -9453,7 +10287,13 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تمام ڈاؤن لوڈ کریں۔"
+            "value" : "سب ڈاؤن لوڈ کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hammasini yuklab olish"
           }
         },
         "vi" : {
@@ -9801,7 +10641,13 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nedladdning slutförd"
+            "value" : "Nedladdning klar"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upakuaji umekamilika"
           }
         },
         "ta" : {
@@ -9837,7 +10683,13 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ڈاؤن لوڈ مکمل ہو گیا۔"
+            "value" : "ڈاؤن لوڈ مکمل"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuklab olish yakunlandi"
           }
         },
         "vi" : {
@@ -9928,6 +10780,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Η λήψη απέτυχε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de descarga"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de descarga"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error de descarga"
           }
         },
         "et" : {
@@ -10164,6 +11034,66 @@
             "value" : "Shkarkimi dështoi"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nedladdning misslyckades"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upakuaji umefeli"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "பதிவிறக்கம் தோல்வி"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "డౌన్‌లోడ్ విఫలమైంది"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ดาวน์โหลดล้มเหลว"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İndirme başarısız"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помилка завантаження"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ڈاؤن لوڈ ناکام"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuklab olish muvaffaqiyatsiz tugadi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tải xuống thất bại"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10251,19 +11181,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liberar archivos, añadir compresión"
+            "value" : "Suelte los archivos para comprimir"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liberar archivos, añadir compresión"
+            "value" : "Suelte los archivos para comprimir"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liberar archivos, añadir compresión"
+            "value" : "Suelte los archivos para comprimir"
           }
         },
         "et" : {
@@ -10503,49 +11433,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Släpp filer, lägg till komprimering"
+            "value" : "Släpp filer för att komprimera"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achia faili ili kugandamiza"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "கோப்புகளை வெளியிடவும், சுருக்கத்தைச் சேர்க்கவும்"
+            "value" : "கோப்புகளை விடுவிக்கவும், சுருக்கத்தைச் சேர்க்கவும்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఫైళ్లను విడుదల చేయండి, కుదింపును జోడించండి"
+            "value" : "ఫైళ్లను ఇక్కడ వదలండి, కంప్రెషన్ ప్రారంభించండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ปล่อยไฟล์ เพิ่มการบีบอัด"
+            "value" : "วางไฟล์เพื่อเพิ่มการบีบอัด"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosyaları yayınla, sıkıştırma ekle"
+            "value" : "Dosyaları bırak ve sıkıştır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Випустити файли, додати стиснення"
+            "value" : "Перетягніть файли для стиснення"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فائلیں ریلیز کریں، کمپریشن شامل کریں۔"
+            "value" : "فائلیں چھوڑیں، کمپریشن شروع کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayllarni tashlang va siqing"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Phát hành tệp, thêm nén"
+            "value" : "Thả tệp để nén"
           }
         },
         "zh-Hans" : {
@@ -10635,19 +11577,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liberar archivo, convertir ahora"
+            "value" : "Suelte los archivos para convertir"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liberar archivo, convertir ahora"
+            "value" : "Suelte los archivos para convertir"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liberar archivo, convertir ahora"
+            "value" : "Suelte los archivos para convertir"
           }
         },
         "et" : {
@@ -10887,49 +11829,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frigör fil, konvertera nu"
+            "value" : "Släpp filer för att konvertera direkt"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achia faili ili kubadilisha sasa"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "கோப்பை விடுவிக்கவும், இ"
+            "value" : "கோப்புகளை விடுவிக்கவும், உடனே மாற்றவும்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఫైల్ రిలీజ్ చేయండి, వెంటనే మార్చండి"
+            "value" : "ఫైళ్లను ఇక్కడ వదలండి, వెంటనే మార్చండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ปล่อยไฟล์ แปลงทันที"
+            "value" : "วางไฟล์เพื่อเริ่มการแปลงทันที"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosyayı Serbest Bırak, Şimdi Dönüştür"
+            "value" : "Dosyaları bırak ve dönüştür"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Звільнити файл, конвертувати зараз"
+            "value" : "Перетягніть файли для конвертації"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فائل جاری کریں، اب تبدیل کریں"
+            "value" : "فائلیں چھوڑیں، فوراً تبدیل کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fayllarni tashlang va oʻtkazing"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Giải phóng tệp, chuyển đổi ngay"
+            "value" : "Thả tệp để chuyển đổi ngay"
           }
         },
         "zh-Hans" : {
@@ -11019,19 +11973,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comentarios por correo electrónico"
+            "value" : "Comentarios por email"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comentarios por correo electrónico"
+            "value" : "Comentarios por email"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comentarios por correo electrónico"
+            "value" : "Comentarios por email"
           }
         },
         "et" : {
@@ -11274,6 +12228,12 @@
             "value" : "E-postfeedback"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maoni kupitia barua pepe"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11283,13 +12243,13 @@
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఇమెయిల్ ఫీడ్‌బ్యాక్"
+            "value" : "ఈమెయిల్ ఫీడ్‌బ్యాక్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ส่งคำติชมทางอีเมล"
+            "value" : "คำแนะนำทางอีเมล"
           }
         },
         "tr" : {
@@ -11301,13 +12261,19 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відгук електронною поштою"
+            "value" : "Відгук через e-mail"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ای میل فیڈ بیک"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email orqali aloqa"
           }
         },
         "vi" : {
@@ -11403,19 +12369,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Habilitar conversión de imagen"
+            "value" : "Activar conversión de imagen"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Habilitar conversión de imagen"
+            "value" : "Activar conversión de imagen"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Habilitar conversión de imagen"
+            "value" : "Activar conversión de imagen"
           }
         },
         "et" : {
@@ -11658,34 +12624,40 @@
             "value" : "Aktivera bildkonvertering"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wezesha ubadilishaji wa picha"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "படம் மாற்றத்தை இயக்கவும்"
+            "value" : "பட மாற்றத்தை இயக்கு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "చిత్రం మార్పును ప్రారంభించండి"
+            "value" : "చిత్ర మార్పిడిని ప్రారంభించండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เปิดใช้งานการแปลงภาพ"
+            "value" : "เปิดใช้งานการแปลงรูปภาพ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görüntü Dönüştürmeyi Etkinleştir"
+            "value" : "Resim dönüştürmeyi etkinleştir"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Увімкнути конвертацію зображень"
+            "value" : "Увімкнути конвертацію"
           }
         },
         "ur" : {
@@ -11694,10 +12666,16 @@
             "value" : "تصویر کی تبدیلی فعال کریں"
           }
         },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasm oʻtkazishni yoqish"
+          }
+        },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bật chuyển đổi hình ảnh"
+            "value" : "Bật chuyển đổi ảnh"
           }
         },
         "zh-Hans" : {
@@ -11782,6 +12760,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ενεργοποίηση στατιστικών"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar estadísticas"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar estadísticas"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activar estadísticas"
           }
         },
         "et" : {
@@ -12018,6 +13014,66 @@
             "value" : "Aktivizo statistikat"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivera statistik"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wezesha takwimu"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "புள்ளிவிவரங்களை இயக்கு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "గణాంకాలను ప్రారంభించండి"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เปิดใช้งานสถิติ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistikleri etkinleştir"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Увімкнути статистику"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اعداد و شمار فعال کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistikani yoqish"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bật tính năng thống kê"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12100,6 +13156,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Πρώτη χρήση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de primer uso"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de primer uso"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de primer uso"
           }
         },
         "et" : {
@@ -12336,6 +13410,66 @@
             "value" : "Përdorimi i parë"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Första användning"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muda wa matumizi ya kwanza"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "முதல் பயன்பாட்டு நேரம்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "మొదటిసారి ఉపయోగించిన సమయం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ใช้งานครั้งแรกเมื่อ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk kullanım zamanı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата першого використання"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پہلی بار استعمال کا وقت"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birinchi foydalanish vaqti"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thời gian sử dụng lần đầu"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12423,19 +13557,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regala una rosa y la mano estará fragante"
+            "value" : "Quien da una rosa, conserva su fragancia."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regala una rosa y la mano estará fragante"
+            "value" : "Quien da una rosa, conserva su fragancia."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regala una rosa y la mano estará fragante"
+            "value" : "Quien da una rosa, conserva su fragancia."
           }
         },
         "et" : {
@@ -12675,49 +13809,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ge någon en ros, handen kommer att vara väldoftande"
+            "value" : "Att ge en ros lämnar doft kvar på handen"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aliyetoa waridi, harufu hubaki mkononi mwake"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ஒருவருக்கு ஒரு ரோஜாவைக் கொடுங்கள், கை மணம் மிக்கதாக இருக்கும்"
+            "value" : "ரோஜா கொடுப்பவர் கையில் வாசனை தங்கும்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఎవరికైనా గులాబీని ఇవ్వండి, చేయి సువాసనగా ఉంటుంది"
+            "value" : "ఇతరులకు సాయం చేస్తే ఆ సంతోషం మనకూ మిగులుతుంది"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ให้ดอกกุหลาบใครสักคน มือของคุณจะหอมกรุ่น"
+            "value" : "การให้คือความสุขที่หอมหวน"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Birine bir gül verin, eli güzel kokar"
+            "value" : "Gül veren elde güzel koku kalır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Подаруйте комусь троянду, рука буде ароматною"
+            "value" : "Той, хто дарує троянди, завжди зберігає їхній аромат."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کسی کو گلاب دے دو ہاتھ خوشبودار ہو جائے گا۔"
+            "value" : "خوشبو بانٹنے والے کے ہاتھ ہمیشہ مہکتے ہیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atirgul sovgʻa qilgan qoʻlda ifori qoladi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tặng ai đó một bông hồng, tay sẽ thơm ngát"
+            "value" : "Tặng hoa hồng cho người, hương thơm còn vương trên tay"
           }
         },
         "zh-Hans" : {
@@ -12807,19 +13953,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quizás podamos solucionar el siguiente problema"
+            "value" : "Quizás con esto podamos resolver el próximo problema."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quizás podamos solucionar el siguiente problema"
+            "value" : "Quizás con esto podamos resolver el próximo problema."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quizás podamos solucionar el siguiente problema"
+            "value" : "Quizás con esto podamos resolver el próximo problema."
           }
         },
         "et" : {
@@ -13059,49 +14205,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vi kanske kan lösa nästa problem med den"
+            "value" : "Vi kanske kan lösa nästa problem tack vare detta"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Labda tunaweza kutatua tatizo linalofuata kupitia hili"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "அதன் அடுத்த சிக்கலை நாம் தீர்க்க முடியும்"
+            "value" : "இதன் மூலம் அடுத்த சிக்கலை எங்களால் தீர்க்க முடியும்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మేము దానితో తదుపరి సమస్యను పరిష్కరించగలము"
+            "value" : "దీనితో మేము తదుపరి సమస్యను పరిష్కరించగలము"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เราอาจแก้ไขปัญหาถัดไปได้"
+            "value" : "เราอาจจะแก้ปัญหาก้าวต่อไปได้ด้วยสิ่งนี้"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bir sonraki sorunu çözebiliriz"
+            "value" : "Bununla bir sonraki sorunu çözebiliriz"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ми можемо вирішити наступну проблему за його допомогою"
+            "value" : "Можливо, це допоможе нам вирішити наступну задачу."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہم اس کے ساتھ اگلا مسئلہ حل کرنے کے قابل ہو سکتے ہیں۔"
+            "value" : "شاید ہم اس کے ذریعے اگلا مسئلہ حل کر سکیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balki bu bilan keyingi muammoni hal qila olarmiz"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chúng tôi có thể giải quyết vấn đề tiếp theo"
+            "value" : "Chúng tôi có thể giải quyết vấn đề tiếp theo nhờ vào nó"
           }
         },
         "zh-Hans" : {
@@ -13446,6 +14604,12 @@
             "value" : "Hög kvalitet"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubora wa juu"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13480,6 +14644,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اعلیٰ معیار"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuqori sifat"
           }
         },
         "vi" : {
@@ -13570,6 +14740,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Συμπιεσμένες εικόνες"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imágenes comprimidas"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imágenes comprimidas"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imágenes comprimidas"
           }
         },
         "et" : {
@@ -13806,6 +14994,66 @@
             "value" : "Imazhe të kompresuara"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antal komprimerade bilder"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idadi ya picha zilizogandamizwa"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "சுருக்கப்பட்ட படங்களின் எண்ணிக்கை"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "కంప్రెస్ చేసిన చిత్రాల సంఖ్య"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จำนวนรูปภาพที่บีบอัดแล้ว"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıkıştırılan resim sayısı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стиснуто зображень"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "کمپریس شدہ تصاویر کی تعداد"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqilgan rasmlar soni"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Số lượng ảnh đã nén"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13888,6 +15136,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Μετατραπείσες εικόνες"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imágenes convertidas"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imágenes convertidas"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imágenes convertidas"
           }
         },
         "et" : {
@@ -14124,6 +15390,66 @@
             "value" : "Imazhe të konvertuara"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Antal konverterade bilder"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idadi ya picha zilizobadilishwa"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "மாற்றப்பட்ட படங்களின் எண்ணிக்கை"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "మార్చిన చిత్రాల సంఖ్య"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จำนวนรูปภาพที่แปลงแล้ว"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dönüştürülen resim sayısı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Конвертовано зображень"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تبدیل شدہ تصاویر کی تعداد"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oʻtkazilgan rasmlar soni"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Số lượng ảnh đã chuyển đổi"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14211,19 +15537,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comentarios sobre el problema"
+            "value" : "Reportar un problema"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comentarios sobre el problema"
+            "value" : "Reportar un problema"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comentarios sobre el problema"
+            "value" : "Reportar un problema"
           }
         },
         "et" : {
@@ -14463,49 +15789,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Problemfeedback"
+            "value" : "Rapportera problem"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripoti tatizo"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "சிக்கல் கருத்து"
+            "value" : "சிக்கல் குறித்து தெரிவிக்க"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "సమస్య అభిప్రాయం"
+            "value" : "సమస్యపై అభిప్రాయం"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "คำติชมปัญหา"
+            "value" : "รายงานปัญหา"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sorun geri bildirimi"
+            "value" : "Sorun bildirimi"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відгук про проблему"
+            "value" : "Повідомити про проблему"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "مسئلہ کی رائے"
+            "value" : "مسئلہ رپورٹ کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muammo haqida xabar berish"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Phản hồi sự cố"
+            "value" : "Phản hồi vấn đề"
           }
         },
         "zh-Hans" : {
@@ -14595,19 +15933,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No dejes que los desarrolladores se mueran de hambre en Xcode"
+            "value" : "Que el desarrollador no muera de hambre en Xcode."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No dejes que los desarrolladores se mueran de hambre en Xcode"
+            "value" : "Que el desarrollador no muera de hambre en Xcode."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No dejes que los desarrolladores se mueran de hambre en Xcode"
+            "value" : "Que el desarrollador no muera de hambre en Xcode."
           }
         },
         "et" : {
@@ -14847,49 +16185,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Låt inte utvecklare svälta ihjäl i Xcode"
+            "value" : "Låt inte utvecklaren svälta i Xcode"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kumzuia msanidi programu asife njaa ndani ya Xcode"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எக்ஸ்கோடில் டெவலப்பர்கள் பட்டினியால் இறக்க விடாதீர்கள்"
+            "value" : "டெவலப்பரை Xcode-க்குள் பசியால் வாட விடாதீர்கள்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "డెవలపర్‌లు Xcodeలో ఆకలితో చనిపోనివ్వవద్దు"
+            "value" : "డెవలపర్ ఆకలితో అలమటించకుండా మద్దతు ఇవ్వండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "อย่าปล่อยให้นักพัฒนาต้องอดตายใน Xcode"
+            "value" : "ช่วยให้ผู้พัฒนาไม่ต้องอดตายใน Xcode"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geliştiricilerin Xcode'da açlıktan ölmesine izin vermeyin"
+            "value" : "Geliştiricinin Xcode başında aç kalmasını önle"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Не дозволяйте розробникам помирати з голоду в Xcode"
+            "value" : "Не дайте розробнику померти з голоду в Xcode."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ایکس کوڈ میں ڈویلپرز کو بھوک سے مرنے نہ دیں۔"
+            "value" : "ڈویلپر کو Xcode میں بھوکا نہ مرنے دیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dasturchi Xcode ichida och qolmasin"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đừng để các nhà phát triển chết đói trong Xcode"
+            "value" : "Đừng để nhà phát triển phải chết đói trong Xcode"
           }
         },
         "zh-Hans" : {
@@ -14979,19 +16329,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conservar nombre de archivo original"
+            "value" : "Mantener nombre original"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conservar nombre de archivo original"
+            "value" : "Mantener nombre original"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conservar nombre de archivo original"
+            "value" : "Mantener nombre original"
           }
         },
         "et" : {
@@ -15231,13 +16581,19 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Behåll det ursprungliga filnamnet"
+            "value" : "Behåll ursprungligt filnamn"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tunza jina la asili la faili"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "அசல் கோப்பு பெயரை வைத்திருங்கள்"
+            "value" : "அசல் கோப்பு பெயரை வைத்திரு"
           }
         },
         "te" : {
@@ -15249,7 +16605,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "คงชื่อไฟล์เดิม"
+            "value" : "ใช้ชื่อไฟล์เดิม"
           }
         },
         "tr" : {
@@ -15261,19 +16617,25 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зберегти оригінальну назву файлу"
+            "value" : "Зберегти оригінальну назву"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اردو"
+            "value" : "اصل فائل کا نام برقرار رکھیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asl fayl nomini saqlash"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Giữ tên tệp gốc"
+            "value" : "Giữ nguyên tên tệp gốc"
           }
         },
         "zh-Hans" : {
@@ -15358,6 +16720,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Τελευταία επεξεργασία"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último procesamiento"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último procesamiento"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último procesamiento"
           }
         },
         "et" : {
@@ -15592,6 +16972,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Përpunimi i fundit"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste bearbetning"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muda wa mwisho wa kushughulikia"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "கடைசியாக கையாண்ட நேரம்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "చివరిగా ప్రాసెస్ చేసిన సమయం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประมวลผลล่าสุดเมื่อ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son işlem zamanı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Останній запуск"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آخری بار پروسیسنگ کا وقت"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oxirgi ishlov berish vaqti"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thời gian xử lý gần nhất"
           }
         },
         "zh-Hans" : {
@@ -15935,10 +17375,16 @@
             "value" : "Laddar..."
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inapakia..."
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ஏற்றுகிறது..."
+            "value" : "ஏற்றப்படுகிறது..."
           }
         },
         "te" : {
@@ -15969,6 +17415,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "لوڈ ہو رہا ہے..."
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuklanmoqda..."
           }
         },
         "vi" : {
@@ -16319,22 +17771,28 @@
             "value" : "Förlustfri"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bila upotevu wa ubora"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "இழப்பற்றது"
+            "value" : "தரம் குறையாதது"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "లాస్‌లెస్"
+            "value" : "నష్టం లేని"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ไม่สูญเสียข้อมูล"
+            "value" : "ไร้การสูญเสีย"
           }
         },
         "tr" : {
@@ -16352,13 +17810,19 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "بے نقصان"
+            "value" : "بغیر نقصان"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sifat yoʻqolishisiz"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Không mất dữ liệu"
+            "value" : "Không giảm chất lượng"
           }
         },
         "zh-Hans" : {
@@ -16703,6 +18167,12 @@
             "value" : "Låg kvalitet"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ubora wa chini"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16737,6 +18207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "کم معیار"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Past sifat"
           }
         },
         "vi" : {
@@ -17084,49 +18560,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Minsta"
+            "value" : "Lägsta"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiwango cha chini kabisa"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "குறைந்தபட்சம்"
+            "value" : "மிகக் குறைந்த"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "కనిష్ట"
+            "value" : "అతి తక్కువ"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ขั้นต่ำ"
+            "value" : "ต่ำสุด"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Minimum"
+            "value" : "En düşük"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Мінімум"
+            "value" : "Найнижча"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کم از کم"
+            "value" : "کم ترین"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eng past"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tối thiểu"
+            "value" : "Thấp nhất"
           }
         },
         "zh-Hans" : {
@@ -17211,6 +18699,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Μέγιστη συμπίεση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compresión máxima"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compresión máxima"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compresión máxima"
           }
         },
         "et" : {
@@ -17447,6 +18953,66 @@
             "value" : "Kompresimi maksimal"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximal komprimeringsgrad"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mgandamizo wa juu zaidi"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "அதிகபட்ச சுருக்க விகிதம்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "గరిష్ట కంప్రెషన్ రేటు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "อัตราบีบอัดสูงสุด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maksimum sıkıştırma oranı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Макс. рівень стиснення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "زیادہ سے زیادہ کمپریشن شرح"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maksimal siqish darajasi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tỷ lệ nén tối đa"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17529,6 +19095,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Μέγιστη εξοικονόμηση ανά αρχείο"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máximo ahorro por imagen"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máximo ahorro por imagen"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máximo ahorro por imagen"
           }
         },
         "et" : {
@@ -17765,6 +19349,66 @@
             "value" : "Kursimi maksimal"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximal besparing per bild"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nafasi kubwa zaidi iliyookolewa kwa picha moja"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ஒரு படத்தில் மிச்சமான அதிகபட்ச இடம்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ఒక చిత్రంలో ఆదా అయిన గరిష్ట స్థలం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พื้นที่ที่ประหยัดได้สูงสุดต่อภาพ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek resimde maks. tasarruf"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Макс. економія на одному файлі"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فی تصویر بچائی گئی زیادہ سے زیادہ جگہ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitta rasmda tejalgan maks. joy"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiết kiệm tối đa trên mỗi ảnh"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17852,19 +19496,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La motivación para trabajar horas extras"
+            "value" : "La motivación para trasnochar programando."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La motivación para trabajar horas extras"
+            "value" : "La motivación para trasnochar programando."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La motivación para trabajar horas extras"
+            "value" : "La motivación para trasnochar programando."
           }
         },
         "et" : {
@@ -18104,49 +19748,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Motivationen för övertid sent på kvällen"
+            "value" : "Drivkraft för sena nätter med utveckling"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nguvu ya kuendelea kufanya kazi usiku wa manane"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "இரவு நேர ஓவர் டைமிற்கான உந்துதல்"
+            "value" : "நள்ளிரவு வரை வேலை செய்வதற்கான ஊக்கம்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "రాత్రిపూట ఓవర్‌టైమ్ కోసం ప్రేరణ"
+            "value" : "అర్ధరాత్రి వరకు పని చేయడానికి ప్రేరణ"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "แรงจูงใจในการทำงานล่วงเวลาดึก"
+            "value" : "แรงผลักดันในการทำงานล่วงเวลาตอนดึก"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gece mesaisinin motivasyonu"
+            "value" : "Gece mesaisinin motivasyon kaynağı"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Мотивація для понаднормової роботи пізно вночі"
+            "value" : "Мотивація для нічної розробки"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "دیر رات اوور ٹائم کے لئے حوصلہ افزائی"
+            "value" : "دیر رات تک کام کرنے کا حوصلہ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tun boʻyi ishlash uchun motivatsiya"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Động lực làm thêm giờ đêm"
+            "value" : "Động lực để thức khuya lập trình"
           }
         },
         "zh-Hans" : {
@@ -18231,6 +19887,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Δεν υπάρχουν εγγραφές προς επαναφορά"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay registros para restaurar"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay registros para restaurar"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay registros para restaurar"
           }
         },
         "et" : {
@@ -18465,6 +20139,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nuk ka të dhëna për rikthim"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inga poster att återställa"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakuna kumbukumbu za kurejesha kwa sasa"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "மீட்டெடுக்க எந்தப் பதிவுகளும் இல்லை"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "పునరుద్ధరించడానికి రికార్డులు లేవు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีบันทึกที่สามารถกู้คืนได้"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yüklenecek kayıt yok"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Немає записів для відновлення"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بحال کرنے کے لیے کوئی ریکارڈ نہیں ہے"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiklash uchun yozuvlar mavjud emas"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có bản ghi để khôi phục"
           }
         },
         "zh-Hans" : {
@@ -18809,6 +20543,12 @@
             "value" : "Stäng"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funga"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18842,7 +20582,13 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "بند"
+            "value" : "بند کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yopish"
           }
         },
         "vi" : {
@@ -19193,16 +20939,22 @@
             "value" : "Öppna"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fungua"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "திறக்கவும்"
+            "value" : "திற"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఓపెన్"
+            "value" : "తెరువు"
           }
         },
         "th" : {
@@ -19214,7 +20966,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açık"
+            "value" : "Aç"
           }
         },
         "uk" : {
@@ -19226,7 +20978,13 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کھولیں۔"
+            "value" : "کھولیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochish"
           }
         },
         "vi" : {
@@ -19577,10 +21335,16 @@
             "value" : "Öppen källkod"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chanzo huru"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "திறந்த மூல"
+            "value" : "திறந்த மூல மென்பொருள்"
           }
         },
         "te" : {
@@ -19611,6 +21375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اوپن سورس"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochiq kodli"
           }
         },
         "vi" : {
@@ -19706,19 +21476,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herramienta de compresión de imágenes de código abierto"
+            "value" : "Herramienta de compresión de código abierto"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herramienta de compresión de imágenes de código abierto"
+            "value" : "Herramienta de compresión de código abierto"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herramienta de compresión de imágenes de código abierto"
+            "value" : "Herramienta de compresión de código abierto"
           }
         },
         "et" : {
@@ -19958,49 +21728,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öppen källkodsverktyg för bildkomprimering"
+            "value" : "Bildkomprimeringsverktyg med öppen källkod"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zana huru ya kugandamiza picha"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "திறந்த மூல சுருக்க பட கருவி"
+            "value" : "திறந்த மூல படச் சுருக்கக் கருவி"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఓపెన్ సోర్స్ కంప్రెషన్ ఇమేజ్ టూల్"
+            "value" : "ఓపెన్ సోర్స్ చిత్ర కంప్రెషన్ సాధనం"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เครื่องมือบีบอัดภาพโอเพนซอร์ส"
+            "value" : "เครื่องมือบีบอัดภาพแบบโอเพนซอร์ส"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açık kaynak sıkıştırma görüntü aracı"
+            "value" : "Açık kaynaklı resim sıkıştırma aracı"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Інструмент стиснення зображень з відкритим кодом"
+            "value" : "Інструмент для стиснення з відкритим кодом"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اوپن سورس کمپریشن امیج ٹول"
+            "value" : "اوپن سورس امیج کمپریشن ٹول"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochiq kodli rasm siqish vositasi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Công cụ nén hình ảnh mã nguồn mở"
+            "value" : "Công cụ nén ảnh mã nguồn mở"
           }
         },
         "zh-Hans" : {
@@ -20085,6 +21867,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Αρχικό συνολικό μέγεθος"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño original total"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño original total"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamaño original total"
           }
         },
         "et" : {
@@ -20321,6 +22121,66 @@
             "value" : "Madhësia origjinale totale"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ursprunglig totalstorlek"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jumla ya ukubwa wa picha asili"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "அசல் படத்தின் மொத்த அளவு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "అసలు చిత్రాల మొత్తం పరిమాణం"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ขนาดรวมของรูปภาพต้นฉบับ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orijinal toplam boyut"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Початковий загальний розмір"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اصل تصاویر کا کل سائز"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asl rasmlarning umumiy hajmi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tổng kích thước ảnh gốc"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20408,19 +22268,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Espera a que se comprima"
+            "value" : "Esperando compresión"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Espera a que se comprima"
+            "value" : "Esperando compresión"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Espera a que se comprima"
+            "value" : "Esperando compresión"
           }
         },
         "et" : {
@@ -20660,19 +22520,25 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vänta på komprimering"
+            "value" : "Väntar på komprimering"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inasubiri kugandamizwa"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "சுருக்கத்திற்காக காத்திருங்கள்"
+            "value" : "சுருக்கக் காத்திருக்கிறது"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "కంప్రెషన్ కోసం వేచి ఉండండి"
+            "value" : "కంప్రెషన్ కోసం వేచి ఉంది"
           }
         },
         "th" : {
@@ -20684,25 +22550,31 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıkıştırmayı bekleyin"
+            "value" : "Sıkıştırma bekleniyor"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зачекайте на стиснення"
+            "value" : "Очікує стиснення"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کمپریشن کا انتظار کریں۔"
+            "value" : "کمپریشن کا انتظار"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siqish kutilmoqda"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chờ nén"
+            "value" : "Đang chờ nén"
           }
         },
         "zh-Hans" : {
@@ -21047,40 +22919,52 @@
             "value" : "Väntar på konvertering"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inasubiri kubadilishwa"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "மாற்றத்திற்காகக் காத்திருக்கிறது"
+            "value" : "மாற்றக் காத்திருக்கிறது"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మార్పుకు ఎదురుచూస్తోంది"
+            "value" : "మార్పిడి కోసం వేచి ఉంది"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "รอการแปลง"
+            "value" : "รอการแปลงไฟล์"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dönüştürme Bekleniyor"
+            "value" : "Dönüştürme bekleniyor"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Очікування конвертації"
+            "value" : "Очікує конвертації"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تبدیلی کا انتظار ہے"
+            "value" : "تبدیلی کا انتظار"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oʻtkazish kutilmoqda"
           }
         },
         "vi" : {
@@ -21176,19 +23060,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Método de vista previa de imágenes"
+            "value" : "Modo de vista previa"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Método de vista previa de imágenes"
+            "value" : "Modo de vista previa"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Método de vista previa de imágenes"
+            "value" : "Modo de vista previa"
           }
         },
         "et" : {
@@ -21428,7 +23312,13 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Metod för förhandsgranskning av bilder"
+            "value" : "Förhandsvisningsläge"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Njia ya kuhakiki picha"
           }
         },
         "ta" : {
@@ -21440,37 +23330,43 @@
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "చిత్ర ప్రివ్యూ పద్ధతి"
+            "value" : "చిత్ర ప్రివ్యూ మోడ్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "วิธีการดูตัวอย่างภาพ"
+            "value" : "รูปแบบการแสดงตัวอย่าง"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görüntü önizleme yöntemi"
+            "value" : "Resim önizleme modu"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спосіб попереднього перегляду зображень"
+            "value" : "Режим перегляду"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تصویری پیش نظارہ کا طریقہ"
+            "value" : "تصویر کا پیش نظارہ طریقہ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasm koʻrinishi rejimi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Phương pháp xem trước hình ảnh"
+            "value" : "Chế độ xem trước ảnh"
           }
         },
         "zh-Hans" : {
@@ -21815,6 +23711,12 @@
             "value" : "Integritetspolicy"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sera ya Faragha"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21848,7 +23750,13 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "رازداری کی پالیسی"
+            "value" : "پرائیویسی پالیسی"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maxfiylik siyosati"
           }
         },
         "vi" : {
@@ -22199,6 +24107,12 @@
             "value" : "Avsluta"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ondoka"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22226,13 +24140,19 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вихід"
+            "value" : "Вийти"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "باہر نکلیں۔"
+            "value" : "باہر نکلیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiqish"
           }
         },
         "vi" : {
@@ -22323,6 +24243,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Επαναφορά στατιστικών"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer estadísticas"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer estadísticas"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restablecer estadísticas"
           }
         },
         "et" : {
@@ -22559,6 +24497,66 @@
             "value" : "Rivendos statistikat"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställ statistik"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anza upya takwimu"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "புள்ளிவிவரங்களை மீட்டமை"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "గణాంకాలను రీసెట్ చేయండి"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รีเซ็ตข้อมูลสถิติ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistikleri sıfırla"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скинути статистику"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اعداد و شمار ری سیٹ کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistikani tozalash"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt lại thống kê"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22646,19 +24644,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restaurar compras integradas"
+            "value" : "Restaurar compras"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restaurar compras integradas"
+            "value" : "Restaurar compras"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Restaurar compras integradas"
+            "value" : "Restaurar compras"
           }
         },
         "et" : {
@@ -22898,49 +24896,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Återställ köp i appen"
+            "value" : "Återställ köp"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejesha manunuzi ya ndani ya programu"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பயன்பாட்டில் உள்ள வாங்குதல்களை மீட்டெடுக்கவும்"
+            "value" : "வாங்கியதை மீட்டெடு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "యాప్‌లో కొనుగోళ్లను పునరుద్ధరించండి"
+            "value" : "కొనుగోళ్లను పునరుద్ధరించండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "คืนค่าการซื้อภายในแอป"
+            "value" : "กู้คืนรายการซื้อ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uygulama içi satın alımları geri yükle"
+            "value" : "Satın alımları geri yükle"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Відновити покупки в додатку"
+            "value" : "Відновити покупки"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "درون ایپ خریداریوں کو بحال کریں۔"
+            "value" : "خریداری بحال کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xaridlarni tiklash"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Khôi phục giao dịch mua trong ứng dụng"
+            "value" : "Khôi phục giao dịch"
           }
         },
         "zh-Hans" : {
@@ -23025,6 +25035,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Η επαναφορά πέτυχε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurado con éxito"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurado con éxito"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurado con éxito"
           }
         },
         "et" : {
@@ -23261,6 +25289,66 @@
             "value" : "Rikthimi arritur"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återställning lyckades"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imerejeshwa kwa mafanikio"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "மீட்பு வெற்றி"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "పునరుద్ధరణ విజయవంతమైంది"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กู้คืนสำเร็จ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri yükleme başarılı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Відновлено успішно"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بحالی کامیاب"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muvaffaqiyatli tiklandi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khôi phục thành công"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23348,19 +25436,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar ubicación"
+            "value" : "Ubicación de guardado"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar ubicación"
+            "value" : "Ubicación de guardado"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Guardar ubicación"
+            "value" : "Ubicación de guardado"
           }
         },
         "et" : {
@@ -23600,49 +25688,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spara plats"
+            "value" : "Spara på"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mahali pa kuhifadhi"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "இடத்தை சேமிக்கவும்"
+            "value" : "சேமிக்கும் இடம்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "స్థానాన్ని సేవ్ చేయండి"
+            "value" : "సేవ్ చేసే ప్రదేశం"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "บันทึกตำแหน่ง"
+            "value" : "ตำแหน่งที่จัดเก็บ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konumu kaydet"
+            "value" : "Kayıt konumu"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Зберегти місцезнаходження"
+            "value" : "Де зберегти"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "مقام محفوظ کریں"
+            "value" : "محفوظ کرنے کی جگہ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saqlash joyi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lưu vị trí"
+            "value" : "Vị trí lưu"
           }
         },
         "zh-Hans" : {
@@ -23732,19 +25832,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar ubicación de guardado"
+            "value" : "Seleccionar ubicación"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar ubicación de guardado"
+            "value" : "Seleccionar ubicación"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar ubicación de guardado"
+            "value" : "Seleccionar ubicación"
           }
         },
         "et" : {
@@ -23984,43 +26084,55 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Välj lagringsplats"
+            "value" : "Välj plats att spara på"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chagua mahali pa kuhifadhi"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "சேமிப்பு இடத்தைத் தேர்ந்தெடுக்கவும்"
+            "value" : "சேமிக்கும் இடத்தை தேர்வு செய்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "భద్రపరిచే స్థానాన్ని ఎంచుకోండి"
+            "value" : "సేవ్ చేసే ప్రదేశాన్ని ఎంచుకోండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เลือกตำแหน่งบันทึก"
+            "value" : "เลือกตำแหน่งที่จัดเก็บ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaydetme konumunu seçin"
+            "value" : "Kayıt konumunu seç"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть місце збереження"
+            "value" : "Вибрати папку для збереження"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "محفوظ کرنے کی جگہ منتخب کریں"
+            "value" : "جگہ منتخب کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saqlash joyini tanlang"
           }
         },
         "vi" : {
@@ -24116,19 +26228,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar hasta 20 Imágenes, cada una con un tamaño máximo de 5 MB."
+            "value" : "Máx. 20 imágenes, hasta 5MB cada una."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar hasta 20 Imágenes, cada una con un tamaño máximo de 5 MB."
+            "value" : "Máx. 20 imágenes, hasta 5MB cada una."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seleccionar hasta 20 Imágenes, cada una con un tamaño máximo de 5 MB."
+            "value" : "Máx. 20 imágenes, hasta 5MB cada una."
           }
         },
         "et" : {
@@ -24368,49 +26480,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Välj upp till 20 bilder, varje storlek överstiger inte 5 MB."
+            "value" : "Välj upp till 20 bilder, max 5 MB per styck."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chagua hadi picha 20, kila moja isizidi 5MB."
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "20 படங்கள் வரை தேர்ந்தெடுக்கவும், ஒவ்வொரு அளவும் 5MB ஐ விட அதிகமாக இல்லை."
+            "value" : "அதிகபட்சம் 20 படங்கள், ஒவ்வொன்றும் 5MB-க்குள் இருக்க வேண்டும்."
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "గరిష్టంగా 20 చిత్రాలను ఎంచుకోండి, ప్రతి పరిమాణం 5MB మించకూడదు."
+            "value" : "గరిష్టంగా 20 చిత్రాలు, ఒక్కొక్కటి 5MB లోపు ఉండాలి."
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เลือกภาพได้สูงสุด 20 ภาพ แต่ละภาพต้องมีขนาดไม่เกิน 5MB"
+            "value" : "เลือกได้สูงสุด 20 รูป ขนาดไม่เกิน 5MB ต่อรูป"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En fazla seç 20 resim, her birinin boyutu 5 MB'ı geçmemelidir."
+            "value" : "En fazla 20 resim seçin, her biri 5 MB'ı geçmemelidir."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Виберіть до 20 зображень, розмір кожного не перевищує 5 МБ."
+            "value" : "Макс. 20 зображень, кожне до 5 МБ."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "20 تصاویر تک منتخب کریں، ہر سائز 5MB سے زیادہ نہیں ہے۔"
+            "value" : "زیادہ سے زیادہ 20 تصاویر، ہر تصویر 5MB سے کم ہو۔"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maksimal 20 ta rasm, har biri 5MB dan oshmasligi kerak."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Chọn tối đa 20 hình ảnh, mỗi kích thước không quá 5MB."
+            "value" : "Chọn tối đa 20 ảnh, mỗi ảnh không quá 5MB."
           }
         },
         "zh-Hans" : {
@@ -24500,19 +26624,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuración"
+            "value" : "Ajustes"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuración"
+            "value" : "Ajustes"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuración"
+            "value" : "Ajustes"
           }
         },
         "et" : {
@@ -24755,6 +26879,12 @@
             "value" : "Inställningar"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mipangilio"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24764,13 +26894,13 @@
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "సెట్టింగ్‌లు"
+            "value" : "సెట్టింగ్స్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "การตั้งค่า"
+            "value" : "ตั้งค่า"
           }
         },
         "tr" : {
@@ -24782,13 +26912,19 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Налаштування"
+            "value" : "Параметри"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ترتیبات"
+            "value" : "سیٹنگز"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sozlamalar"
           }
         },
         "vi" : {
@@ -25139,6 +27275,12 @@
             "value" : "Visa ikon i menyraden"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onyesha ikoni kwenye mwamba wa menyu"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25166,13 +27308,19 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Показати значок у рядку меню"
+            "value" : "Показувати іконку в рядку меню"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "مینو بار میں آئیکن دکھائیں۔"
+            "value" : "مینو بار میں آئیکن دکھائیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menyu panelida belgini koʻrsatish"
           }
         },
         "vi" : {
@@ -25263,6 +27411,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Εξοικονόμηση χώρου στον δίσκο"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrar espacio en disco"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrar espacio en disco"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahorrar espacio en disco"
           }
         },
         "et" : {
@@ -25497,6 +27663,66 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kurse hapësirë"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spara diskutrymme"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okoa nafasi ya diski"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "வட்டு இடத்தை சேமி"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "డిస్క్ స్థలాన్ని ఆదా చేయండి"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประหยัดพื้นที่ดิสก์"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disk alanından tasarruf et"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Економія місця на диску"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ڈسک کی جگہ بچائیں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diskda joy tejash"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiết kiệm dung lượng đĩa"
           }
         },
         "zh-Hans" : {
@@ -25841,16 +28067,22 @@
             "value" : "Sponsra oss"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tufadhili"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எங்களுக்கு நிதியுதவி செய்யுங்கள்"
+            "value" : "எங்களுக்கு ஆதரவு தர"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మాకు స్పాన్సర్ చేయండి"
+            "value" : "మాకు మద్దతు ఇవ్వండి"
           }
         },
         "th" : {
@@ -25862,25 +28094,31 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bize sponsor olun"
+            "value" : "Bize destek ol"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Спонсоруйте нас"
+            "value" : "Підтримати нас"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہمیں سپانسر کریں۔"
+            "value" : "ہماری حمایت کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bizni qoʻllab-quvvatlang"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tài trợ cho chúng tôi"
+            "value" : "Ủng hộ chúng tôi"
           }
         },
         "zh-Hans" : {
@@ -26225,16 +28463,22 @@
             "value" : "Sponsorlista"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orodha ya wafadhili"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பட்டியலை நிதியுதவி செய்யுங்கள்"
+            "value" : "ஆதரவாளர் பட்டியல்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "జాబితాను స్పాన్సర్ చేయండి"
+            "value" : "స్పాన్సర్ల జాబితా"
           }
         },
         "th" : {
@@ -26246,7 +28490,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sponsor listesi"
+            "value" : "Destekçi listesi"
           }
         },
         "uk" : {
@@ -26258,13 +28502,19 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اسپانسر کی فہرست"
+            "value" : "سپانسرز کی فہرست"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homiylar roʻyxati"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Danh sách tài trợ"
+            "value" : "Danh sách ủng hộ"
           }
         },
         "zh-Hans" : {
@@ -26349,6 +28599,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Στατιστικά"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas"
           }
         },
         "et" : {
@@ -26585,6 +28853,66 @@
             "value" : "Statistikat"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistik"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takwimu"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "புள்ளிவிவரங்கள்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "గణాంకాలు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สถิติ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İstatistikler"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Список спонсорів"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اعداد و شمار"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistika"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thống kê"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26672,19 +29000,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apoya nuestra causa de código abierto"
+            "value" : "Apoye nuestro proyecto de código abierto"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apoya nuestra causa de código abierto"
+            "value" : "Apoye nuestro proyecto de código abierto"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apoya nuestra causa de código abierto"
+            "value" : "Apoye nuestro proyecto de código abierto"
           }
         },
         "et" : {
@@ -26924,43 +29252,55 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stöd vår öppen källkods-sak"
+            "value" : "Stöd vårt arbete med öppen källkod"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unga mkono mradi wetu wa chanzo huru"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எங்கள் திறந்த மூல நோக்கத்தை ஆதரிக்கவும்"
+            "value" : "எங்கள் திறந்த மூல பணிக்கு ஆதரவு தருக"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మా ఓపెన్ సోర్స్ కాజ్‌కు మద్దతు ఇవ్వండి"
+            "value" : "మా ఓపెన్ సోర్స్ పనికి మద్దతు ఇవ్వండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "สนับสนุนโครงการโอเพนซอร์สของเรา"
+            "value" : "สนับสนุนงานโอเพนซอร์สของเรา"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açık kaynak kodlu projemizi destekleyin"
+            "value" : "Açık kaynak çalışmalarımızı destekleyin"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Підтримайте нашу справу відкритого коду"
+            "value" : "Підтримайте наш open-source проєкт"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہمارے اوپن سورس کاز کی حمایت کریں۔"
+            "value" : "ہمارے اوپن سورس کام کی حمایت کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ochiq kodli loyihamizni qoʻllang"
           }
         },
         "vi" : {
@@ -27056,19 +29396,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compatible con .png, .jpeg, .bmp, .tiff y otros formatos."
+            "value" : "Soporta PNG, JPEG, WEBP y más."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compatible con .png, .jpeg, .bmp, .tiff y otros formatos."
+            "value" : "Soporta PNG, JPEG, WEBP y más."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compatible con .png, .jpeg, .bmp, .tiff y otros formatos."
+            "value" : "Soporta PNG, JPEG, WEBP y más."
           }
         },
         "et" : {
@@ -27308,49 +29648,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stöd .png, .jpeg, .bmp, .tiff och andra format."
+            "value" : "Stöder PNG, JPEG, WEBP och andra format."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inasaidia miundo mbalimbali kama PNG, JPEG, WEBP n.k."
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ".png, .jpeg, .bmp, .tiff மற்றும் பிற வடிவங்களை ஆதரிக்கவும்."
+            "value" : "PNG, JPEG, WEBP போன்ற பல வடிவங்களை ஆதரிக்கிறது."
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ".png, .jpeg, .bmp, .tiff మరియు ఇతర ఫార్మాట్‌లకు మద్దతు ఇవ్వండి."
+            "value" : "PNG, JPEG, WEBP వంటి అనేక ఫార్మాట్‌లకు మద్దతు ఇస్తుంది."
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "สนับสนุนไฟล์ .png, .jpeg, .bmp, .tiff และรูปแบบอื่นๆ"
+            "value" : "รองรับหลายรูปแบบ เช่น PNG, JPEG, WEBP"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ".png, .jpeg, .bmp, .tiff ve diğer formatları destekleyin."
+            "value" : "PNG, JPEG, WEBP ve daha fazlasını destekler."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Підтримуйте .png, .jpeg, .bmp, .tiff та інші формати."
+            "value" : "Підтримка PNG, JPEG, WEBP та інших форматів."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "سپورٹ .png, .jpeg, .bmp, .tiff اور دیگر فارمیٹس۔"
+            "value" : "ویب پی، جے پی ای جی، پی این جی اور دیگر فارمیٹس سپورٹڈ ہیں۔"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PNG, JPEG, WEBP va boshqa formatlarni qoʻllaydi."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hỗ trợ .png, .jpeg, .bmp, .tiff và các định dạng khác."
+            "value" : "Hỗ trợ các định dạng PNG, JPEG, WEBP và nhiều loại khác."
           }
         },
         "zh-Hans" : {
@@ -27435,6 +29787,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Χώρος προσωρινών αρχείων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espacio de archivos temporales"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espacio de archivos temporales"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espacio de archivos temporales"
           }
         },
         "et" : {
@@ -27671,6 +30041,66 @@
             "value" : "Hapësira e skedarëve të përkohshëm"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagring av temporära filer"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nafasi inayotumiwa na faili za muda"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "தற்காலிக கோப்புகளின் அளவு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "తాత్కాలిక ఫైళ్ల నిల్వ"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พื้นที่ไฟล์ชั่วคราว"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçici dosya boyutu"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тимчасові файли займають"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عارضی فائلوں کی جگہ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vaqtinchalik fayllar hajmi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dung lượng tệp tạm thời"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27758,19 +30188,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Condiciones de uso"
+            "value" : "Términos de uso"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Condiciones de uso"
+            "value" : "Términos de uso"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Condiciones de uso"
+            "value" : "Términos de uso"
           }
         },
         "et" : {
@@ -28013,10 +30443,16 @@
             "value" : "Användarvillkor"
           }
         },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masharti ya Matumizi"
+          }
+        },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பயன்பாட்டு விதிமுறைகள்"
+            "value" : "பயன்பாட்டு நிபந்தனைகள்"
           }
         },
         "te" : {
@@ -28028,13 +30464,13 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เงื่อนไขการใช้งาน"
+            "value" : "ข้อกำหนดการใช้งาน"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kullanım Şartları"
+            "value" : "Kullanım koşulları"
           }
         },
         "uk" : {
@@ -28047,6 +30483,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "استعمال کی شرائط"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foydalanish shartlari"
           }
         },
         "vi" : {
@@ -28142,19 +30584,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias por tu apoyo"
+            "value" : "¡Gracias por su apoyo!"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias por tu apoyo"
+            "value" : "¡Gracias por su apoyo!"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gracias por tu apoyo"
+            "value" : "¡Gracias por su apoyo!"
           }
         },
         "et" : {
@@ -28394,49 +30836,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tack för ditt stöd"
+            "value" : "Tack för ditt stöd!"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asante kwa msaada wako!"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "உங்கள் ஆதரவிற்கு நன்றி"
+            "value" : "உங்கள் ஆதரவிற்கு நன்றி!"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మీ మద్దతుకు ధన్యవాదాలు"
+            "value" : "మీ మద్దతుకు ధన్యవాదాలు!"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ขอบคุณสำหรับการสนับสนุนของคุณ"
+            "value" : "ขอบคุณที่สนับสนุนเรา!"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desteğiniz için teşekkür ederiz"
+            "value" : "Desteğiniz için teşekkürler!"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дякуємо за вашу підтримку"
+            "value" : "Дякуємо за вашу підтримку!"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "آپ کے تعاون کا شکریہ"
+            "value" : "آپ کے تعاون کا شکریہ!"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qoʻllab-quvvatlaganingiz uchun rahmat!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cảm ơn sự ủng hộ của bạn"
+            "value" : "Cảm ơn bạn đã ủng hộ!"
           }
         },
         "zh-Hans" : {
@@ -28526,19 +30980,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este proyecto de patrocinio es una compra única dentro de la aplicación. El límite de carga se desbloquea solo al realizar la primera compra. El servicio no se volverá a proporcionar en el futuro y no se admite la restauración."
+            "value" : "Este patrocinio es una compra integrada \"consumible\". Desbloqueará los límites de subida en su primer apoyo. Asegúrese de activar iCloud para sincronizar el estado, ya que no admite la restauración estándar del sistema."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este proyecto de patrocinio es una compra única dentro de la aplicación. El límite de carga se desbloquea solo al realizar la primera compra. El servicio no se volverá a proporcionar en el futuro y no se admite la restauración."
+            "value" : "Este patrocinio es una compra integrada \"consumible\". Desbloqueará los límites de subida en su primer apoyo. Asegúrese de activar iCloud para sincronizar el estado, ya que no admite la restauración estándar del sistema."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Este proyecto de patrocinio es una compra única dentro de la aplicación. El límite de carga se desbloquea solo al realizar la primera compra. El servicio no se volverá a proporcionar en el futuro y no se admite la restauración."
+            "value" : "Este patrocinio es una compra integrada \"consumible\". Desbloqueará los límites de subida en su primer apoyo. Asegúrese de activar iCloud para sincronizar el estado, ya que no admite la restauración estándar del sistema."
           }
         },
         "et" : {
@@ -28778,49 +31232,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Detta sponsorprojekt är ett engångsköp i appen. Uppladdningsgränsen låses upp endast när det första köpet görs. Tjänsten kommer inte att tillhandahållas igen i framtiden, och återställning stöds inte."
+            "value" : "Denna sponsring är ett förbrukningsbart köp i appen. Den låser upp uppladdningsgränser vid ditt första stöd. Se till att iCloud är aktiverat för att synkronisera statusen, då den inte stöder standard systemåterställning."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ufadhili huu ni ununuzi wa ndani ya programu wa \"matumizi\". Utaondoa vikwazo vya kupakia utakapofadhili mara ya kwanza. Hakikisha iCloud imewashwa ili kusawazisha hali ya ufunguzi, kwani haiauni urejeshaji wa kawaida wa mfumo."
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "இந்த ஸ்பான்சர்ஷிப் திட்டம் ஒரு முறை மட்டுமே பயன்படுத்தக்கூடிய பயன்பாட்டில் வாங்கக்கூடியது. முதல் கொள்முதல் செய்யப்படும்போது மட்டுமே பதிவேற்ற வரம்பு திறக்கப்படும். எதிர்காலத்தில் சேவை மீண்டும் வழங்கப்படாது, மேலும் மீட்டெடுப்பு ஆதரிக்கப்படாது."
+            "value" : "இந்த ஆதரவு 'நுகர்வு' வகை சார்ந்த செயலிவழி வாங்கலாகும். முதல் ஆதரவின் போது பதிவேற்ற வரம்புகள் நீக்கப்படும். ஒத்திசைக்க iCloud இயக்கப்பட்டிருப்பதை உறுதி செய்யவும், ஏனெனில் இது சாதாரண கணினி மீட்பு செயல்பாட்டை ஆதரிக்காது."
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఈ స్పాన్సర్‌షిప్ ప్రాజెక్ట్ ఒక సారి వినియోగించదగిన యాప్‌లో కొనుగోలు. మొదటి కొనుగోలు చేసినప్పుడు మాత్రమే అప్‌లోడ్ పరిమితి అన్‌లాక్ చేయబడుతుంది. భవిష్యత్తులో సేవ మళ్లీ అందించబడదు మరియు పునరుద్ధరణకు మద్దతు లేదు."
+            "value" : "ఈ స్పాన్సర్‌షిప్ ఒక 'వినియోగించదగిన' ఇన్-యాప్ కొనుగోలు. ఇది మీ మొదటి మద్దతుతో అప్‌లోడ్ పరిమితులను తొలగిస్తుంది. అన్‌లాక్ స్థితిని సింక్ చేయడానికి iCloud ఆన్‌లో ఉందో లేదో తనిఖీ చేయండి, ఎందుకంటే ఇది సాధారణ సిస్టమ్ రీస్టోర్‌కు మద్దతు ఇవ్వదు."
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "โครงการสนับสนุนนี้เป็นการซื้อภายในแอปแบบครั้งเดียว ขีดจำกัดการอัปโหลดจะถูกปลดล็อกเฉพาะเมื่อทำการซื้อครั้งแรกเท่านั้น บริการนี้จะไม่สามารถใช้งานได้อีกในอนาคต และไม่รองรับการกู้คืน"
+            "value" : "การสนับสนุนนี้เป็นการซื้อภายในแอปแบบ 'ใช้ไป' ซึ่งจะปลดล็อกขีดจำกัดการอัปโหลดเมื่อสนับสนุนครั้งแรก โปรดเปิดใช้งาน iCloud เพื่อซิงค์สถานะการปลดล็อก เนื่องจากไม่รองรับการกู้คืนระบบแบบมาตรฐาน"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu sponsorluk projesi, tek seferlik, tüketilebilir bir uygulama içi satın alma işlemidir. Yükleme sınırı yalnızca ilk satın alma işlemi yapıldığında açılır. Hizmet gelecekte tekrar sunulmayacak ve geri yükleme desteklenmemektedir."
+            "value" : "Bu destek 'tüketilebilir' bir uygulama içi satın alımdır. İlk desteğinizde yükleme sınırlarını kaldırır. Durumu senkronize etmek için lütfen iCloud'un açık olduğundan emin olun, çünkü standart sistem geri yükleme özelliğini desteklemez."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Цей спонсорський проект є одноразовою покупкою в додатку. Ліміт завантаження розблоковується лише після здійснення першої покупки. Послуга більше не надаватиметься в майбутньому, а відновлення не підтримується."
+            "value" : "Ця підтримка є «витратною» внутрішньою покупкою. Вона знімає обмеження на завантаження при першій оплаті. Переконайтеся, що iCloud увімкнено для синхронізації статусу, оскільки стандартна функція відновлення покупок тут не діє."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "یہ اسپانسرشپ پروجیکٹ ایک بار استعمال کے قابل درون ایپ خریداری ہے۔ اپ لوڈ کی حد صرف اس وقت کھل جاتی ہے جب پہلی خریداری کی جاتی ہے۔ سروس مستقبل میں دوبارہ فراہم نہیں کی جائے گی، اور بحالی تعاون یافتہ نہیں ہے۔"
+            "value" : "یہ سپورٹ ایک 'استعمال ہونے والی' ان ایپ خریداری ہے۔ یہ پہلی بار تعاون پر اپ لوڈ کی حد ختم کر دے گی۔ براہ کرم یقینی بنائیں کہ iCloud آن ہے تاکہ ان لاک کی صورتحال مطابقت پذیر رہے، کیونکہ یہ سسٹم کی معیاری بحالی کو سپورٹ نہیں کرتا۔"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ushbu homiylik \"bir martalik\" ilova ichidagi xarid hisoblanadi. U birinchi yordamingizda cheklovlarni olib tashlaydi. Holatni sinxronlash uchun iCloud yoqilganligiga ishonch hosil qiling, chunki u standart tizimni tiklash funksiyasini qoʻllamaydi."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dự án tài trợ này là một giao dịch mua hàng trong ứng dụng, có thể tiêu thụ một lần. Giới hạn tải lên chỉ được mở khóa khi thực hiện giao dịch mua đầu tiên. Dịch vụ sẽ không được cung cấp lại trong tương lai và không hỗ trợ khôi phục."
+            "value" : "Khoản ủng hộ này là một giao dịch mua trong ứng dụng \"tiêu dùng\". Nó sẽ gỡ bỏ giới hạn tải lên ngay lần đầu bạn ủng hộ. Vui lòng bật iCloud để đồng bộ trạng thái mở khóa, vì nó không hỗ trợ tính năng khôi phục hệ thống tiêu chuẩn."
           }
         },
         "zh-Hans" : {
@@ -28905,6 +31371,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Συνολικές εικόνες που επεξεργάστηκαν"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de imágenes procesadas"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de imágenes procesadas"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de imágenes procesadas"
           }
         },
         "et" : {
@@ -29141,6 +31625,66 @@
             "value" : "Imazhe totale të përpunuara"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totalt antal bearbetade bilder"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jumla ya picha zilizoshughulikiwa"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "கையாளப்பட்ட மொத்த படங்கள்"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ప్రాసెస్ చేసిన మొత్తం చిత్రాలు"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จำนวนรูปภาพที่ประมวลผลทั้งหมด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toplam işlenen resim"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оброблено зображень загалом"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "پروسیس شدہ تصاویر کی کل تعداد"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ishlov berilgan jami rasmlar"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tổng số ảnh đã xử lý"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29228,19 +31772,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sube la imagen y comprímela inmediatamente"
+            "value" : "Suba imágenes para comprimir al instante"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sube la imagen y comprímela inmediatamente"
+            "value" : "Suba imágenes para comprimir al instante"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sube la imagen y comprímela inmediatamente"
+            "value" : "Suba imágenes para comprimir al instante"
           }
         },
         "et" : {
@@ -29480,49 +32024,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ladda upp bilden och komprimera den omedelbart"
+            "value" : "Ladda upp bilder för direkt komprimering"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pakia picha, gandamiza sasa hivi"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "படத்தைப் பதிவேற்றி உடனடியாக சுருக்கவும்"
+            "value" : "படத்தைப் பதிவேற்றி, உடனே சுருக்குக"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "చిత్రాన్ని అప్‌లోడ్ చేసి వెంటనే కుదించండి"
+            "value" : "చిత్రాన్ని అప్‌లోడ్ చేయండి, వెంటనే కంప్రెస్ చేయండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "อัปโหลดภาพและบีบอัดทันที"
+            "value" : "อัปโหลดรูปภาพเพื่อบีบอัดทันที"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görüntüyü yükleyin ve hemen sıkıştırın"
+            "value" : "Resmi yükle ve hemen sıkıştır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завантажте зображення та негайно стисніть його"
+            "value" : "Завантажте фото для миттєвого стиснення"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تصویر اپ لوڈ کریں اور اسے فوری طور پر کمپریس کریں۔"
+            "value" : "تصویر اپ لوڈ کریں، فوراً کمپریس کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rasmni yuklang va darhol siqing"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tải ảnh lên và nén ngay lập tức"
+            "value" : "Tải ảnh lên để nén ngay"
           }
         },
         "zh-Hans" : {
@@ -29607,6 +32163,24 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ιστορικό χρήσης"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial de uso"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial de uso"
+          }
+        },
+        "es-US" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historial de uso"
           }
         },
         "et" : {
@@ -29843,6 +32417,66 @@
             "value" : "Historia e përdorimit"
           }
         },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Användningshistorik"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kumbukumbu za matumizi"
+          }
+        },
+        "ta" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "பயன்பாட்டு வரலாறு"
+          }
+        },
+        "te" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "వినియోగ చరిత్ర"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ประวัติการใช้งาน"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanım geçmişi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Історія використання"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "استعمال کا ریکارڈ"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foydalanish tarixi"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhật ký sử dụng"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29930,19 +32564,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vista previa con Vista rápida"
+            "value" : "Usar Quick Look"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vista previa con Vista rápida"
+            "value" : "Usar Quick Look"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vista previa con Vista rápida"
+            "value" : "Usar Quick Look"
           }
         },
         "et" : {
@@ -30182,49 +32816,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Förhandsgranska med Quick Look"
+            "value" : "Använd Quick Look"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tumia Quick Look"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "விரைவுத் தோற்றத்துடன் முன்னோட்டமிடவும்"
+            "value" : "Quick Look பயன்படுத்து"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "క్విక్ లుక్‌తో ప్రివ్యూ చేయండి"
+            "value" : "Quick Look ఉపయోగించండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ดูตัวอย่างด้วย Quick Look"
+            "value" : "ใช้ Quick Look"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hızlı Bakış ile Önizleme"
+            "value" : "Quick Look kullan"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Попередній перегляд за допомогою швидкого перегляду"
+            "value" : "Використовувати Quick Look"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فوری نظر کے ساتھ پیش نظارہ"
+            "value" : "Quick Look استعمال کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Look-dan foydalanish"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xem trước bằng Quick Look"
+            "value" : "Sử dụng Quick Look"
           }
         },
         "zh-Hans" : {
@@ -30314,19 +32960,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Habilitar la compresión de bibliotecas de terceros"
+            "value" : "Activar librerías de terceros"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Habilitar la compresión de bibliotecas de terceros"
+            "value" : "Activar librerías de terceros"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Habilitar la compresión de bibliotecas de terceros"
+            "value" : "Activar librerías de terceros"
           }
         },
         "et" : {
@@ -30566,49 +33212,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aktivera tredjepartsbibliotekskomprimering"
+            "value" : "Aktivera tredjepartsbibliotek"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wezesha maktaba za watu wa nje"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "மூன்றாம் தரப்பு நூலக சுருக்கத்தை இயக்கவும்"
+            "value" : "மூன்றாம் தரப்பு நூலகங்களை இயக்கு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "థర్డ్-పార్టీ లైబ్రరీ కంప్రెషన్‌ను ప్రారంభించండి"
+            "value" : "థర్డ్-పార్టీ లైబ్రరీలను ప్రారంభించండి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เปิดใช้งานการบีบอัดไลบรารีของบุคคลที่สาม"
+            "value" : "เปิดใช้งานคลังโปรแกรมภายนอก"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Üçüncü taraf kütüphane sıkıştırmasını etkinleştir"
+            "value" : "Üçüncü taraf kütüphaneleri etkinleştir"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Увімкнути стиснення сторонніх бібліотек"
+            "value" : "Увімкнути сторонні бібліотеки"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تھرڈ پارٹی لائبریری کمپریشن کو فعال کریں۔"
+            "value" : "تھرڈ پارٹی لائبریریز فعال کریں"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tashqi kutubxonalarni yoqish"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kích hoạt nén thư viện của bên thứ ba"
+            "value" : "Bật thư viện bên thứ ba"
           }
         },
         "zh-Hans" : {
@@ -30698,19 +33356,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Página web (chino)"
+            "value" : "Web (Chino)"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Página web (chino)"
+            "value" : "Web (Chino)"
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Página web (chino)"
+            "value" : "Web (Chino)"
           }
         },
         "et" : {
@@ -30950,49 +33608,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Webbsida (kinesiska)"
+            "value" : "Webbplats (Kinesiska)"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukurasa wa wavuti (Kichina)"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "வலைப்பக்கம் (சீன)"
+            "value" : "இணையதளம் (சீனம்)"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "వెబ్‌పేజీ (చైనీస్)"
+            "value" : "వెబ్‌సైట్ (చైనీస్)"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "หน้าเว็บ (ภาษาจีน)"
+            "value" : "เว็บไซต์ (ภาษาจีน)"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Web Sayfası (Çince)"
+            "value" : "Web sitesi (Çince)"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Веб-сторінка (китайською)"
+            "value" : "Вебсайт (китайською)"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ویب صفحہ (چینی)"
+            "value" : "ویب سائٹ (چینی)"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veb-sayt (Xitoycha)"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trang web (tiếng Trung)"
+            "value" : "Trang web (Tiếng Trung)"
           }
         },
         "zh-Hans" : {
@@ -31334,7 +34004,13 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Förhandsgranskning av fönster"
+            "value" : "Fönsterförhandsvisning"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakiki ya dirisha"
           }
         },
         "ta" : {
@@ -31352,13 +34028,13 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ตัวอย่างหน้าต่าง"
+            "value" : "หน้าต่างแสดงตัวอย่าง"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pencere Önizlemesi"
+            "value" : "Pencere önizleme"
           }
         },
         "uk" : {
@@ -31370,13 +34046,19 @@
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ونڈو کا پیش نظارہ"
+            "value" : "ونڈو پری ویو"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oyna koʻrinishida koʻrish"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xem trước cửa sổ"
+            "value" : "Xem trước trong cửa sổ"
           }
         },
         "zh-Hans" : {
@@ -31466,19 +34148,19 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu apoyo hace que el software libre sea más que un ideal."
+            "value" : "Su apoyo hace que el software libre sea más que un ideal."
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu apoyo hace que el software libre sea más que un ideal."
+            "value" : "Su apoyo hace que el software libre sea más que un ideal."
           }
         },
         "es-US" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tu apoyo hace que el software libre sea más que un ideal."
+            "value" : "Su apoyo hace que el software libre sea más que un ideal."
           }
         },
         "et" : {
@@ -31718,49 +34400,61 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ditt stöd gör fri programvara till mer än ett ideal."
+            "value" : "Ditt stöd gör att fri programvara förblir mer än bara en dröm."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Msaada wako unafanya programu huru iwe zaidi ya ndoto tu."
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "உங்கள் ஆதரவு இலவச மென்பொருளை ஒரு சிறந்ததை விட அதிகமாக ஆக்குகிறது."
+            "value" : "உங்கள் ஆதரவு இலவச மென்பொருளை ஒரு கனவாக மட்டும் வைக்காமல் நிஜமாக்குகிறது."
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మీ మద్దతు ఉచిత సాఫ్ట్‌వేర్‌ను ఆదర్శం కంటే ఎక్కువగా చేస్తుంది."
+            "value" : "మీ మద్దతు ఉచిత సాఫ్ట్‌వేర్‌ను కేవలం ఒక కలగా మిగల్చదు."
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "การสนับสนุนของคุณทำให้ซอฟต์แวร์ฟรีเป็นมากกว่าแค่อุดมคติ"
+            "value" : "การสนับสนุนของคุณทำให้ซอฟต์แวร์เสรีเป็นมากกว่าแค่ความฝัน"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desteğiniz, özgür yazılımı bir idealden daha fazlası haline getiriyor."
+            "value" : "Desteğiniz, özgür yazılımı bir idealden daha fazlası yapar."
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ваша підтримка робить безкоштовне програмне забезпечення більш ніж ідеальним."
+            "value" : "Ваша підтримка робить вільне ПЗ чимось більшим, ніж просто мрія."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "آپ کا تعاون مفت سافٹ ویئر کو ایک مثالی سے زیادہ بناتا ہے۔"
+            "value" : "آپ کا تعاون آزاد سافٹ ویئر کو محض ایک خواب رہنے سے بچاتا ہے۔"
+          }
+        },
+        "uz" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sizning yordamingiz erkin dasturiy ta'minotni orzudan haqiqatga aylantiradi."
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sự hỗ trợ của bạn giúp phần mềm miễn phí trở nên lý tưởng hơn."
+            "value" : "Sự ủng hộ của bạn giúp phần mềm tự do không chỉ là lý tưởng."
           }
         },
         "zh-Hans" : {
