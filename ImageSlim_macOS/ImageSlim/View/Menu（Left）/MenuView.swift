@@ -21,7 +21,11 @@ struct MenuView: View {
             Spacer()
                 .frame(height: 14)
             Text("Open source image compressor")
+                .font(.subheadline)
+                .lineLimit(2)
+                .minimumScaleFactor(0.8)
                 .foregroundColor(.gray)
+                .fixedSize(horizontal: false, vertical: true)
             
             Spacer().frame(height: 20)
             
@@ -30,17 +34,7 @@ struct MenuView: View {
                 Button(action: {
                     appStorage.selectedView = .compression
                 }, label: {
-                    HStack {
-                        Image(systemName: "photo")
-                            .imageScale(.large)
-                            .frame(width: 20)
-                        Spacer().frame(width: 14)
-                        Text("Compress")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                    }
-                    .contentShape(Rectangle())
-                    .fixedSize()
+                    MenuViewButton(image: "photo", text: "Compress")
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(appStorage.selectedView == .compression ?
@@ -56,17 +50,7 @@ struct MenuView: View {
                     Button(action: {
                         appStorage.selectedView = .conversion
                     }, label: {
-                        HStack {
-                            Image(systemName: "photo.on.rectangle.angled")
-                                .imageScale(.large)
-                                .frame(width: 20)
-                            Spacer().frame(width: 14)
-                            Text("Convert")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                        }
-                        .contentShape(Rectangle())
-                        .fixedSize()
+                        MenuViewButton(image: "photo.on.rectangle.angled", text: "Convert")
                     })
                     .buttonStyle(.plain)
                     .foregroundColor(appStorage.selectedView == .conversion ?
@@ -83,17 +67,7 @@ struct MenuView: View {
                     Button(action: {
                         appStorage.selectedView = .statistics
                     }, label: {
-                        HStack {
-                            Image(systemName: "chart.bar")
-                                .imageScale(.large)
-                                .frame(width: 20)
-                            Spacer().frame(width: 14)
-                            Text("Statistics")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                        }
-                        .contentShape(Rectangle())
-                        .fixedSize()
+                        MenuViewButton(image: "chart.bar", text: "Statistics")
                     })
                     .buttonStyle(.plain)
                     .foregroundColor(appStorage.selectedView == .statistics ?
@@ -107,17 +81,7 @@ struct MenuView: View {
                 Button(action: {
                     appStorage.selectedView = .settings
                 }, label: {
-                    HStack {
-                        Image(systemName: "slider.vertical.3")
-                            .imageScale(.large)
-                            .frame(width: 20)
-                        Spacer().frame(width: 14)
-                        Text("Settings")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                    }
-                    .contentShape(Rectangle())
-                    .fixedSize()
+                    MenuViewButton(image: "slider.vertical.3", text: "Settings")
                 })
                 .buttonStyle(.plain)
                 .foregroundColor(appStorage.selectedView == .settings ?
@@ -141,16 +105,19 @@ struct MenuView: View {
                     Text("Thank you for your support!")
                         .font(.footnote)
                         .foregroundColor(.gray)
-                        .modifier(HoverModifier())
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8) // 最多缩小到原始字体大小的 50%
                 } else {
                     Text("Sponsor Us")
                         .font(.footnote)
                         .foregroundColor(.gray)
-                        .modifier(HoverModifier())
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.8) // 最多缩小到原始字体大小的 50%
                 }
             })
             .buttonStyle(.plain)
             .multilineTextAlignment(.center)
+            .modifier(HoverModifier())
             
             Spacer().frame(height:10)
             Text("\(Bundle.main.version) (\(Bundle.main.build))")
@@ -165,11 +132,30 @@ struct MenuView: View {
     }
 }
 
+private struct MenuViewButton: View {
+    let image: String
+    let text: String
+    var body: some View {
+        HStack {
+            Image(systemName: image)
+                .imageScale(.large)
+                .frame(width: 20)
+            Spacer().frame(width: 14)
+            Text(LocalizedStringKey(text))
+                .font(.title3)
+                .fontWeight(.semibold)
+        }
+        .lineLimit(2)
+        .minimumScaleFactor(0.8)
+        .contentShape(Rectangle())
+        .fixedSize()
+    }
+}
 
 #Preview {
     MenuView()
         .frame(width:200)
         .environmentObject(AppStorage.shared)
         .environmentObject(ImageArrayViewModel.shared)
-    // .environment(\.locale, .init(identifier: "ml")) // 设置为德语
+        .environment(\.locale, .init(identifier: "ml")) // 设置为德语
 }

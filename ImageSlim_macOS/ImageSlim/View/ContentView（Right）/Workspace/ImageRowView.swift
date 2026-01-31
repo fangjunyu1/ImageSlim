@@ -215,6 +215,9 @@ private struct ImageRowViewButton: ViewModifier {
     let rightButtonHeight: Double
     func body(content: Content) -> some View {
         content
+            .padding(5)
+            .lineLimit(2)
+            .minimumScaleFactor(0.5)
             .contentShape(Rectangle())
             .foregroundColor(colorScheme == .light ? Color(hex: "3679F6") : .white)
             .frame(width: rightButtonWidth,height: rightButtonHeight)
@@ -268,7 +271,7 @@ extension ImageRowView {
         .environmentObject(AppStorage.shared)
         .environmentObject(WorkSpaceViewModel.shared)
         .environmentObject(ImageArrayViewModel.shared)
-        // .environment(\.locale, .init(identifier: "de")) // 设置为德语
+        .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
         .onAppear {
             print("\(CustomImages.isPreview ? "预览模式" : "正式环境")")
         }

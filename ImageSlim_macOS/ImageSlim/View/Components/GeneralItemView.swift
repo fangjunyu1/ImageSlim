@@ -22,6 +22,8 @@ struct GeneralItemView: View {
         HStack {
             Image(systemName: icon)
             Text(LocalizedStringKey(title))
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
             Spacer()
             GeneralItemTypeView(type: type)
         }

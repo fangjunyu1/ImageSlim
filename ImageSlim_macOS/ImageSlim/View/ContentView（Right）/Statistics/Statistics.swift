@@ -154,5 +154,7 @@ struct Statistics: View {
 
 #Preview {
     Statistics()
+        .frame(width: 450)
         .environmentObject(AppStorage.shared)
+        .environment(\.locale, .init(identifier: "sv")) // 设置为马拉雅拉姆语
 }

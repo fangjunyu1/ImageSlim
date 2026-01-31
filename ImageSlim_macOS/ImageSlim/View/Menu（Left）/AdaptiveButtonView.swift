@@ -46,6 +46,8 @@ struct AdaptiveButtonView: View {
                         .cornerRadius(10)
                     Text("Clear Queue")
                         .foregroundColor(.white)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%
                 }
             })
             .buttonStyle(.plain)
@@ -83,6 +85,8 @@ struct AdaptiveButtonView: View {
                             .cornerRadius(10)
                         Text("Download All")
                             .foregroundColor(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%
                         
                         // 下载中
                     case .loading:
@@ -102,6 +106,8 @@ struct AdaptiveButtonView: View {
                             .cornerRadius(10)
                         Text("Download Complete")
                             .foregroundColor(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%
                         
                         // 下载失败
                     case .error:
@@ -111,6 +117,8 @@ struct AdaptiveButtonView: View {
                             .cornerRadius(10)
                         Text("Download Failed")
                             .foregroundColor(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%
                     }
                 }
             })
