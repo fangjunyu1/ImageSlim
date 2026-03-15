@@ -28,8 +28,10 @@ struct AdaptiveButtonView: View {
         var images: [CustomImages] {
             if appStorage.selectedView == .compression {
                 imageArray.compressedImages
-            } else {
+            } else if appStorage.selectedView == .conversion {
                 imageArray.conversionImages
+            } else {
+                []
             }
         }
         

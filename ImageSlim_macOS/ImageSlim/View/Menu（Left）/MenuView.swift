@@ -96,7 +96,9 @@ struct MenuView: View {
             Spacer()
             
             // 清除队列和下载全部视图
-            AdaptiveButtonView()
+            if [.compression, .conversion].contains( appStorage.selectedView) {
+                AdaptiveButtonView()
+            }
             
             Button(action:{
                 showSponsorUs = true
