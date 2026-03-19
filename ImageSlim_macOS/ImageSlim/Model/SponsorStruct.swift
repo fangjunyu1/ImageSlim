@@ -1,5 +1,5 @@
 //
-//  SuponsorStruct.swift
+//  SponsorStruct.swift
 //  ImageSlim
 //
 //  Created by 方君宇 on 2025/7/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SuponsorStruct: Identifiable{
+struct SponsorStruct: Identifiable{
     var id:String
     var icon: String
     var title: LocalizedStringKey

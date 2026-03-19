@@ -14,11 +14,11 @@ struct SponsorUsView: View {
     @EnvironmentObject var appStorage: AppStorage
     @State private var showRecovery = false
     
-    private var suponsorList: [SuponsorStruct] = [
-        SuponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Buy us a coffee", subtitle: "Motivation for late-night development", price: 1.0),
-        SuponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Buy us a burger", subtitle: "Keep developers alive in Xcode.", price: 2.99),
-        SuponsorStruct(id: "SponsorUsABook", icon: "📖", title: "Buy us a book", subtitle: "Helping us solve the next challenge", price: 6.0),
-        SuponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source mission", subtitle: "Because of you, we can keep bringing good tools to more people", price: 9.99)
+    private var sponsorList: [SponsorStruct] = [
+        SponsorStruct(id: "SponsoredCoffee", icon: "☕️", title: "Buy us a coffee", subtitle: "Motivation for late-night development", price: 1.0),
+        SponsorStruct(id: "SponsorUsABurger", icon: "🍔", title: "Buy us a burger", subtitle: "Keep developers alive in Xcode.", price: 2.99),
+        SponsorStruct(id: "SponsorUsABook", icon: "📖", title: "Buy us a book", subtitle: "Helping us solve the next challenge", price: 6.0),
+        SponsorStruct(id: "SupportOurOpenSourceWork", icon: "🧑‍💻", title: "Support our open source mission", subtitle: "Because of you, we can keep bringing good tools to more people", price: 9.99)
     ]
     
     var body: some View {
@@ -57,8 +57,8 @@ struct SponsorUsView: View {
                         Text("Sponsors")
                         Spacer()
                     }
-                    ForEach(suponsorList) { item in
-                        suponsorListView(item:item)
+                    ForEach(sponsorList) { item in
+                        sponsorListView(item:item)
                     }
                     .padding(.vertical,2)
                     

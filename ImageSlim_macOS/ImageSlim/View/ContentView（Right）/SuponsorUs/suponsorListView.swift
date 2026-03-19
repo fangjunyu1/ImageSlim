@@ -1,5 +1,5 @@
 //
-//  suponsorListView.swift
+//  sponsorListView.swift
 //  ImageSlim
 //
 //  Created by 方君宇 on 2025/7/16.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct suponsorListView: View {
+struct sponsorListView: View {
     @Environment(\.colorScheme) var colorScheme
     var iapManager = IAPManager.shared
-    var item: SuponsorStruct
+    var item: SponsorStruct
     @State var onHover: Bool = false
     
     var body: some View {
@@ -65,7 +65,7 @@ struct suponsorListView: View {
 
 #Preview {
     VStack {
-        suponsorListView(iapManager: IAPManager.shared, item: SuponsorStruct(id: "SponsoredCoffees", icon: "☕️", title: "Buy us a coffee", subtitle: "Motivation for late-night development", price: 1.0))
+        sponsorListView(iapManager: IAPManager.shared, item: SponsorStruct(id: "SponsoredCoffees", icon: "☕️", title: "Buy us a coffee", subtitle: "Motivation for late-night development", price: 1.0))
             // .environment(\.locale, .init(identifier: "ml")) // 设置为马拉雅拉姆语
     }
     .frame(width: 300)
