@@ -358,6 +358,12 @@
             "state" : "translated",
             "value" : "關於"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre"
+          }
         }
       }
     },
@@ -717,6 +723,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "鳴謝"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agradecimentos"
           }
         }
       }
@@ -1078,6 +1090,12 @@
             "state" : "translated",
             "value" : "已成功解鎖全部功能，感謝您的支持"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas as funcionalidades foram desbloqueadas. Obrigado pelo seu apoio!"
+          }
         }
       }
     },
@@ -1437,6 +1455,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "始終顯示"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar sempre"
           }
         }
       }
@@ -1798,6 +1822,12 @@
             "state" : "translated",
             "value" : "應用程式"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplicação"
+          }
         }
       }
     },
@@ -2157,6 +2187,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "平均壓縮後大小"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamanho médio comprimido"
           }
         }
       }
@@ -2518,6 +2554,12 @@
             "state" : "translated",
             "value" : "平均壓縮率"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa média"
+          }
         }
       }
     },
@@ -2877,6 +2919,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "均衡"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equilibrado"
           }
         }
       }
@@ -3238,6 +3286,12 @@
             "state" : "translated",
             "value" : "因為有你，我們才能堅持將好工具帶給更多人"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graças a si, podemos continuar a levar boas ferramentas a mais pessoas"
+          }
         }
       }
     },
@@ -3597,6 +3651,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助我們一本書"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça-nos um livro"
           }
         }
       }
@@ -3958,6 +4018,12 @@
             "state" : "translated",
             "value" : "贊助我們一個漢堡"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça-nos um hambúrguer"
+          }
         }
       }
     },
@@ -4317,6 +4383,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助我們一杯咖啡"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça-nos um café"
           }
         }
       }
@@ -4678,6 +4750,12 @@
             "state" : "translated",
             "value" : "清除隊列"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar fila"
+          }
         }
       }
     },
@@ -5037,6 +5115,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprimir"
           }
         }
       }
@@ -5398,6 +5482,12 @@
             "state" : "translated",
             "value" : "壓縮後總大小"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamanho total comprimido"
+          }
         }
       }
     },
@@ -5757,6 +5847,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮失敗"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na compressão"
           }
         }
       }
@@ -6118,6 +6214,12 @@
             "state" : "translated",
             "value" : "圖片壓縮率"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de compressão"
+          }
         }
       }
     },
@@ -6477,6 +6579,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮效果"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados da compressão"
           }
         }
       }
@@ -6838,6 +6946,12 @@
             "state" : "translated",
             "value" : "轉換失敗"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na conversão"
+          }
         }
       }
     },
@@ -7197,6 +7311,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "轉換"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Converter"
           }
         }
       }
@@ -7558,6 +7678,12 @@
             "state" : "translated",
             "value" : "轉換圖片"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A converter imagens"
+          }
         }
       }
     },
@@ -7917,6 +8043,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "核心統計"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatísticas principais"
           }
         }
       }
@@ -8278,6 +8410,12 @@
             "state" : "translated",
             "value" : "累計使用天數"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dias ativos"
+          }
         }
       }
     },
@@ -8637,6 +8775,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完成"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concluído"
           }
         }
       }
@@ -8998,6 +9142,12 @@
             "state" : "translated",
             "value" : "下載"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir"
+          }
         }
       }
     },
@@ -9357,6 +9507,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載全部"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir tudo"
           }
         }
       }
@@ -9718,6 +9874,12 @@
             "state" : "translated",
             "value" : "下載完成"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferência concluída"
+          }
         }
       }
     },
@@ -10077,6 +10239,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載失敗"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na transferência"
           }
         }
       }
@@ -10438,6 +10606,12 @@
             "state" : "translated",
             "value" : "釋放文件，添加壓縮"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largue para comprimir"
+          }
         }
       }
     },
@@ -10797,6 +10971,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "釋放檔案，立即轉換"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largue para converter"
           }
         }
       }
@@ -11158,6 +11338,12 @@
             "state" : "translated",
             "value" : "郵件回饋"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback por e-mail"
+          }
         }
       }
     },
@@ -11517,6 +11703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用圖片轉換"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar conversão de imagens"
           }
         }
       }
@@ -11878,6 +12070,12 @@
             "state" : "translated",
             "value" : "啟用統計功能"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar estatísticas"
+          }
         }
       }
     },
@@ -12237,6 +12435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "首次使用時間"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primeira utilização"
           }
         }
       }
@@ -12598,6 +12802,12 @@
             "state" : "translated",
             "value" : "贈人玫瑰，手有餘香"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça uma rosa a alguém, e a fragrância ficará nas suas mãos"
+          }
         }
       }
     },
@@ -12957,6 +13167,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "我們也許能靠它解決下一個問題"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajude-nos a resolver o próximo desafio"
           }
         }
       }
@@ -13318,6 +13534,12 @@
             "state" : "translated",
             "value" : "高品質"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alta qualidade"
+          }
         }
       }
     },
@@ -13677,6 +13899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已壓縮圖片數量"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagens comprimidas"
           }
         }
       }
@@ -14038,6 +14266,12 @@
             "state" : "translated",
             "value" : "已轉換圖片數量"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagens convertidas"
+          }
         }
       }
     },
@@ -14397,6 +14631,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "問題回饋"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comunicar problema"
           }
         }
       }
@@ -14758,6 +14998,12 @@
             "state" : "translated",
             "value" : "不讓開發者餓死在 Xcode 裡"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantenha os programadores vivos no Xcode."
+          }
         }
       }
     },
@@ -15117,6 +15363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保留原檔案名稱"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manter nome original"
           }
         }
       }
@@ -15478,6 +15730,12 @@
             "state" : "translated",
             "value" : "最近處理時間"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último processamento"
+          }
         }
       }
     },
@@ -15836,6 +16094,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "載入中..."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A carregar..."
           }
         }
       }
@@ -16197,6 +16461,12 @@
             "state" : "translated",
             "value" : "無損"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem perdas"
+          }
         }
       }
     },
@@ -16556,6 +16826,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "低品質"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baixa qualidade"
           }
         }
       }
@@ -16917,6 +17193,12 @@
             "state" : "translated",
             "value" : "最低"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mínimo"
+          }
         }
       }
     },
@@ -17276,6 +17558,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最大壓縮率"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa máxima"
           }
         }
       }
@@ -17637,6 +17925,12 @@
             "state" : "translated",
             "value" : "最大單張節省空間"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maior poupança de espaço"
+          }
         }
       }
     },
@@ -17996,6 +18290,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開發深夜加班的動力"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motivação para programar pela noite dentro"
           }
         }
       }
@@ -18357,6 +18657,12 @@
             "state" : "translated",
             "value" : "暫無可恢復紀錄"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não há registos para restaurar"
+          }
         }
       }
     },
@@ -18716,6 +19022,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關閉"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado"
           }
         }
       }
@@ -19077,6 +19389,12 @@
             "state" : "translated",
             "value" : "開啟"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir"
+          }
         }
       }
     },
@@ -19436,6 +19754,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開源"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código aberto"
           }
         }
       }
@@ -19797,6 +20121,12 @@
             "state" : "translated",
             "value" : "開源圖片壓縮工具"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressor de imagens de código aberto"
+          }
         }
       }
     },
@@ -20156,6 +20486,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "原始圖片總大小"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamanho total original"
           }
         }
       }
@@ -20517,6 +20853,12 @@
             "state" : "translated",
             "value" : "等待壓縮"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressão pendente"
+          }
         }
       }
     },
@@ -20876,6 +21218,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "等待轉換"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conversão pendente"
           }
         }
       }
@@ -21237,6 +21585,12 @@
             "state" : "translated",
             "value" : "圖片預覽方式"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo de pré-visualização"
+          }
         }
       }
     },
@@ -21596,6 +21950,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隱私權政策"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidade"
           }
         }
       }
@@ -21957,6 +22317,12 @@
             "state" : "translated",
             "value" : "退出"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sair"
+          }
         }
       }
     },
@@ -22316,6 +22682,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重設統計數據"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repor estatísticas"
           }
         }
       }
@@ -22677,6 +23049,12 @@
             "state" : "translated",
             "value" : "恢復內購"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar compras na app"
+          }
         }
       }
     },
@@ -23036,6 +23414,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "恢復成功"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurado com sucesso"
           }
         }
       }
@@ -23397,6 +23781,12 @@
             "state" : "translated",
             "value" : "儲存位置"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local de gravação"
+          }
         }
       }
     },
@@ -23756,6 +24146,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "選擇儲存位置"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar local"
           }
         }
       }
@@ -24117,6 +24513,12 @@
             "state" : "translated",
             "value" : "最多選擇 20 張圖片，每張大小不超過 5MB。"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione até 20 imagens, até 5 MB cada."
+          }
         }
       }
     },
@@ -24476,6 +24878,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definições"
           }
         }
       }
@@ -24837,6 +25245,12 @@
             "state" : "translated",
             "value" : "在選單列顯示圖示"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar na barra de menus"
+          }
         }
       }
     },
@@ -25196,6 +25610,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "節省磁碟空間"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espaço poupado"
           }
         }
       }
@@ -25557,6 +25977,12 @@
             "state" : "translated",
             "value" : "贊助我們"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patrocine-nos"
+          }
         }
       }
     },
@@ -25916,6 +26342,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助名單"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patrocinadores"
           }
         }
       }
@@ -26277,6 +26709,12 @@
             "state" : "translated",
             "value" : "統計"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatísticas"
+          }
         }
       }
     },
@@ -26636,6 +27074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "支持我們的開源計畫"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apoie a nossa missão de código aberto"
           }
         }
       }
@@ -26997,6 +27441,12 @@
             "state" : "translated",
             "value" : "支援 PNG, JPEG, WEBP 等多種格式。"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suporta PNG, JPEG, WEBP, etc."
+          }
         }
       }
     },
@@ -27356,6 +27806,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "暫存檔案佔用"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armazenamento temporário"
           }
         }
       }
@@ -27717,6 +28173,12 @@
             "state" : "translated",
             "value" : "使用條款"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos de utilização"
+          }
         }
       }
     },
@@ -28076,6 +28538,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "感謝您的支持！"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obrigado pelo seu apoio!"
           }
         }
       }
@@ -28437,6 +28905,12 @@
             "state" : "translated",
             "value" : "此贊助項目屬於「消耗型」App 內購買。它會在您首次支持時解鎖上傳限制。請確保已開啟 iCloud 以同步解鎖狀態，因為它不支援標準的系統恢復功能。"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este patrocínio é uma compra consumível na app. Desbloqueia o limite de carregamento no seu primeiro apoio. Certifique-se de que o iCloud está ativado para sincronizar o estado, pois não suporta a recuperação padrão do sistema."
+          }
         }
       }
     },
@@ -28796,6 +29270,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已處理圖片總數"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total processado"
           }
         }
       }
@@ -29157,6 +29637,12 @@
             "state" : "translated",
             "value" : "上傳圖片，即刻壓縮"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregar para comprimir"
+          }
         }
       }
     },
@@ -29516,6 +30002,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用紀錄"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações de utilização"
           }
         }
       }
@@ -29877,6 +30369,12 @@
             "state" : "translated",
             "value" : "使用快速查看"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar Quick Look"
+          }
         }
       }
     },
@@ -30236,6 +30734,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用第三方函式庫"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar bibliotecas de terceiros"
           }
         }
       }
@@ -30597,6 +31101,12 @@
             "state" : "translated",
             "value" : "網頁（中文）"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Site (CN)"
+          }
         }
       }
     },
@@ -30957,6 +31467,12 @@
             "state" : "translated",
             "value" : "視窗預覽"
           }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pré-visualização da janela"
+          }
         }
       }
     },
@@ -31316,6 +31832,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您的支持讓自由軟體不止於理想。"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O seu apoio mantém o software livre vivo."
           }
         }
       }

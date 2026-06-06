@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  ImageSlim
+
+  Created by Fang Junyu on 2025/6/18.
+  
+*/
+
+"CFBundleName" = "ImageSlim";
+
+"CFBundleDisplayName" = "ImageSlim";
