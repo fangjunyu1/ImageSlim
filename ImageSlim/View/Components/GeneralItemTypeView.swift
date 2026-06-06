@@ -88,7 +88,7 @@ struct GeneralItemTypeView: View {
                 .labelsHidden()
             
         case .Link(let string, let url):
-            Text(verbatim: string)
+            Text(LocalizedStringKey(string))
                 .foregroundColor(.gray)
                 .onTapGesture {
                     if let url = URL(string: url) {

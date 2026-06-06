@@ -257,6 +257,12 @@
             "value" : "O programie"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sobre"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -357,12 +363,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關於"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sobre"
           }
         }
       }
@@ -623,6 +623,12 @@
             "value" : "Podziękowania"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agradecimentos"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -723,12 +729,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "鳴謝"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Agradecimentos"
           }
         }
       }
@@ -989,6 +989,12 @@
             "value" : "Odblokowano wszystkie funkcje. Dziękujemy za wsparcie!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas as funcionalidades foram desbloqueadas. Obrigado pelo seu apoio!"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1089,12 +1095,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已成功解鎖全部功能，感謝您的支持"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todas as funcionalidades foram desbloqueadas. Obrigado pelo seu apoio!"
           }
         }
       }
@@ -1355,6 +1355,12 @@
             "value" : "Zawsze pokazuj"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar sempre"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1455,12 +1461,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "始終顯示"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar sempre"
           }
         }
       }
@@ -1721,6 +1721,12 @@
             "value" : "Aplikacja"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplicação"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1821,12 +1827,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "應用程式"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aplicação"
           }
         }
       }
@@ -2087,6 +2087,12 @@
             "value" : "Średni rozmiar po kompresji"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamanho médio comprimido"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2187,12 +2193,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "平均壓縮後大小"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamanho médio comprimido"
           }
         }
       }
@@ -2453,6 +2453,12 @@
             "value" : "Średni stopień kompresji"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa média"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2553,12 +2559,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "平均壓縮率"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taxa média"
           }
         }
       }
@@ -2819,6 +2819,12 @@
             "value" : "Zrównoważony"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Equilibrado"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2919,12 +2925,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "均衡"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Equilibrado"
           }
         }
       }
@@ -3185,6 +3185,12 @@
             "value" : "Dzięki Tobie możemy dostarczać świetne narzędzia kolejnym osobom"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graças a si, podemos continuar a levar boas ferramentas a mais pessoas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3285,12 +3291,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "因為有你，我們才能堅持將好工具帶給更多人"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Graças a si, podemos continuar a levar boas ferramentas a mais pessoas"
           }
         }
       }
@@ -3551,6 +3551,12 @@
             "value" : "Postaw nam książkę"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça-nos um livro"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3651,12 +3657,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助我們一本書"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ofereça-nos um livro"
           }
         }
       }
@@ -3917,6 +3917,12 @@
             "value" : "Postaw nam burgera"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça-nos um hambúrguer"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4017,12 +4023,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助我們一個漢堡"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ofereça-nos um hambúrguer"
           }
         }
       }
@@ -4283,6 +4283,12 @@
             "value" : "Postaw nam kawę"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça-nos um café"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4383,12 +4389,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助我們一杯咖啡"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ofereça-nos um café"
           }
         }
       }
@@ -4649,6 +4649,12 @@
             "value" : "Wyczyść kolejkę"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar fila"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4749,12 +4755,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "清除隊列"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpar fila"
           }
         }
       }
@@ -5015,6 +5015,12 @@
             "value" : "Kompresuj"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprimir"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5115,12 +5121,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comprimir"
           }
         }
       }
@@ -5381,6 +5381,12 @@
             "value" : "Całkowity rozmiar po kompresji"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamanho total comprimido"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5481,12 +5487,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮後總大小"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamanho total comprimido"
           }
         }
       }
@@ -5747,6 +5747,12 @@
             "value" : "Kompresja nieudana"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na compressão"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5847,12 +5853,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮失敗"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Falha na compressão"
           }
         }
       }
@@ -6113,6 +6113,12 @@
             "value" : "Stopień kompresji obrazu"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de compressão"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6213,12 +6219,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "圖片壓縮率"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taxa de compressão"
           }
         }
       }
@@ -6479,6 +6479,12 @@
             "value" : "Efekt kompresji"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados da compressão"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6579,12 +6585,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "壓縮效果"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resultados da compressão"
           }
         }
       }
@@ -6845,6 +6845,12 @@
             "value" : "Konwersja nieudana"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na conversão"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6945,12 +6951,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "轉換失敗"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Falha na conversão"
           }
         }
       }
@@ -7211,6 +7211,12 @@
             "value" : "Konwertuj"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Converter"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7311,12 +7317,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "轉換"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Converter"
           }
         }
       }
@@ -7577,6 +7577,12 @@
             "value" : "Konwertuj obrazy"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A converter imagens"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7677,12 +7683,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "轉換圖片"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A converter imagens"
           }
         }
       }
@@ -7943,6 +7943,12 @@
             "value" : "Statystyki główne"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatísticas principais"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8043,12 +8049,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "核心統計"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estatísticas principais"
           }
         }
       }
@@ -8309,6 +8309,12 @@
             "value" : "Łączna liczba dni użytkowania"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dias ativos"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8409,12 +8415,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "累計使用天數"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dias ativos"
           }
         }
       }
@@ -8675,6 +8675,12 @@
             "value" : "Gotowe"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concluído"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8775,12 +8781,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完成"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Concluído"
           }
         }
       }
@@ -9041,6 +9041,12 @@
             "value" : "Pobierz"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9141,12 +9147,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transferir"
           }
         }
       }
@@ -9407,6 +9407,12 @@
             "value" : "Pobierz wszystko"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir tudo"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9507,12 +9513,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載全部"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transferir tudo"
           }
         }
       }
@@ -9773,6 +9773,12 @@
             "value" : "Pobieranie zakończone"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferência concluída"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9873,12 +9879,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載完成"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transferência concluída"
           }
         }
       }
@@ -10139,6 +10139,12 @@
             "value" : "Pobieranie nieudane"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha na transferência"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10239,12 +10245,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載失敗"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Falha na transferência"
           }
         }
       }
@@ -10505,6 +10505,12 @@
             "value" : "Upuść pliki, aby skompresować"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largue para comprimir"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10605,12 +10611,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "釋放文件，添加壓縮"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Largue para comprimir"
           }
         }
       }
@@ -10871,6 +10871,12 @@
             "value" : "Upuść pliki, aby przekonwertować"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Largue para converter"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10971,12 +10977,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "釋放檔案，立即轉換"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Largue para converter"
           }
         }
       }
@@ -11237,6 +11237,12 @@
             "value" : "Opinia e-mail"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback por e-mail"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11337,12 +11343,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "郵件回饋"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feedback por e-mail"
           }
         }
       }
@@ -11603,6 +11603,12 @@
             "value" : "Włącz konwersję obrazu"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar conversão de imagens"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11703,12 +11709,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用圖片轉換"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ativar conversão de imagens"
           }
         }
       }
@@ -11969,6 +11969,12 @@
             "value" : "Włącz statystyki"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar estatísticas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12069,12 +12075,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用統計功能"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ativar estatísticas"
           }
         }
       }
@@ -12335,6 +12335,12 @@
             "value" : "Czas pierwszego użycia"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primeira utilização"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12435,12 +12441,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "首次使用時間"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Primeira utilização"
           }
         }
       }
@@ -12701,6 +12701,12 @@
             "value" : "Dzieląc się z innymi, sam zyskujesz najwięcej"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ofereça uma rosa a alguém, e a fragrância ficará nas suas mãos"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12801,12 +12807,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贈人玫瑰，手有餘香"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ofereça uma rosa a alguém, e a fragrância ficará nas suas mãos"
           }
         }
       }
@@ -13067,6 +13067,12 @@
             "value" : "Być może dzięki temu rozwiążemy kolejny problem"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajude-nos a resolver o próximo desafio"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13167,12 +13173,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "我們也許能靠它解決下一個問題"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajude-nos a resolver o próximo desafio"
           }
         }
       }
@@ -13433,6 +13433,12 @@
             "value" : "Wysoka jakość"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alta qualidade"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13533,12 +13539,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "高品質"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alta qualidade"
           }
         }
       }
@@ -13799,6 +13799,12 @@
             "value" : "Liczba skompresowanych obrazów"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagens comprimidas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13899,12 +13905,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已壓縮圖片數量"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagens comprimidas"
           }
         }
       }
@@ -14165,6 +14165,12 @@
             "value" : "Liczba przekonwertowanych obrazów"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagens convertidas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14265,12 +14271,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已轉換圖片數量"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagens convertidas"
           }
         }
       }
@@ -14531,6 +14531,12 @@
             "value" : "Zgłoś problem"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comunicar problema"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14631,12 +14637,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "問題回饋"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comunicar problema"
           }
         }
       }
@@ -14897,6 +14897,12 @@
             "value" : "Nie pozwól deweloperowi zginąć w Xcode"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantenha os programadores vivos no Xcode."
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14997,12 +15003,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "不讓開發者餓死在 Xcode 裡"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mantenha os programadores vivos no Xcode."
           }
         }
       }
@@ -15263,6 +15263,12 @@
             "value" : "Zachowaj oryginalną nazwę pliku"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manter nome original"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15363,12 +15369,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "保留原檔案名稱"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manter nome original"
           }
         }
       }
@@ -15629,6 +15629,12 @@
             "value" : "Czas ostatniego przetwarzania"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Último processamento"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15729,12 +15735,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最近處理時間"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Último processamento"
           }
         }
       }
@@ -15994,6 +15994,12 @@
             "value" : "wczytywanie..."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A carregar..."
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16094,12 +16100,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "載入中..."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A carregar..."
           }
         }
       }
@@ -16360,6 +16360,12 @@
             "value" : "Bezstratnie"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem perdas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16460,12 +16466,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "無損"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sem perdas"
           }
         }
       }
@@ -16726,6 +16726,12 @@
             "value" : "Niska jakość"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baixa qualidade"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16826,12 +16832,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "低品質"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Baixa qualidade"
           }
         }
       }
@@ -17092,6 +17092,12 @@
             "value" : "Najniższa"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mínimo"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17192,12 +17198,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最低"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mínimo"
           }
         }
       }
@@ -17458,6 +17458,12 @@
             "value" : "Maksymalny stopień kompresji"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa máxima"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17558,12 +17564,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最大壓縮率"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taxa máxima"
           }
         }
       }
@@ -17824,6 +17824,12 @@
             "value" : "Maks. oszczędność na jednym pliku"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maior poupança de espaço"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17924,12 +17930,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最大單張節省空間"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maior poupança de espaço"
           }
         }
       }
@@ -18190,6 +18190,12 @@
             "value" : "Motywacja do pracy po nocach"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motivação para programar pela noite dentro"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18290,12 +18296,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開發深夜加班的動力"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Motivação para programar pela noite dentro"
           }
         }
       }
@@ -18556,6 +18556,12 @@
             "value" : "Brak rekordów do przywrócenia"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não há registos para restaurar"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18656,12 +18662,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "暫無可恢復紀錄"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não há registos para restaurar"
           }
         }
       }
@@ -18922,6 +18922,12 @@
             "value" : "Zamknij"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativado"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19022,12 +19028,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關閉"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Desativado"
           }
         }
       }
@@ -19288,6 +19288,12 @@
             "value" : "Otwórz"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19388,12 +19394,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開啟"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abrir"
           }
         }
       }
@@ -19654,6 +19654,12 @@
             "value" : "Open Source"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código aberto"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -19754,12 +19760,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開源"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Código aberto"
           }
         }
       }
@@ -20020,6 +20020,12 @@
             "value" : "Narzędzie open source do kompresji obrazów"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressor de imagens de código aberto"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20120,12 +20126,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開源圖片壓縮工具"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compressor de imagens de código aberto"
           }
         }
       }
@@ -20386,6 +20386,12 @@
             "value" : "Całkowity rozmiar oryginałów"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamanho total original"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20486,12 +20492,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "原始圖片總大小"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tamanho total original"
           }
         }
       }
@@ -20752,6 +20752,12 @@
             "value" : "Oczekiwanie na kompresję"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressão pendente"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -20852,12 +20858,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "等待壓縮"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compressão pendente"
           }
         }
       }
@@ -21118,6 +21118,12 @@
             "value" : "Oczekiwanie na konwersję"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conversão pendente"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21218,12 +21224,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "等待轉換"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conversão pendente"
           }
         }
       }
@@ -21484,6 +21484,12 @@
             "value" : "Tryb podglądu obrazu"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo de pré-visualização"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21584,12 +21590,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "圖片預覽方式"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modo de pré-visualização"
           }
         }
       }
@@ -21850,6 +21850,12 @@
             "value" : "Polityka prywatności"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de privacidade"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21950,12 +21956,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隱私權政策"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Política de privacidade"
           }
         }
       }
@@ -22216,6 +22216,12 @@
             "value" : "Wyjdź"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sair"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22316,12 +22322,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sair"
           }
         }
       }
@@ -22582,6 +22582,12 @@
             "value" : "Resetuj statystyki"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repor estatísticas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -22682,12 +22688,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重設統計數據"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Repor estatísticas"
           }
         }
       }
@@ -22948,6 +22948,12 @@
             "value" : "Przywróć zakupy"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurar compras na app"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23048,12 +23054,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "恢復內購"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurar compras na app"
           }
         }
       }
@@ -23314,6 +23314,12 @@
             "value" : "Przywracanie udane"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurado com sucesso"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23414,12 +23420,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "恢復成功"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurado com sucesso"
           }
         }
       }
@@ -23680,6 +23680,12 @@
             "value" : "Miejsce zapisu"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local de gravação"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -23780,12 +23786,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "儲存位置"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Local de gravação"
           }
         }
       }
@@ -24046,6 +24046,12 @@
             "value" : "Wybierz miejsce zapisu"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar local"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24146,12 +24152,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "選擇儲存位置"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar local"
           }
         }
       }
@@ -24412,6 +24412,12 @@
             "value" : "Wybierz do 20 obrazów, maks. 5MB każdy."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione até 20 imagens, até 5 MB cada."
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24512,12 +24518,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "最多選擇 20 張圖片，每張大小不超過 5MB。"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecione até 20 imagens, até 5 MB cada."
           }
         }
       }
@@ -24778,6 +24778,12 @@
             "value" : "Ustawienia"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definições"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -24878,12 +24884,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Definições"
           }
         }
       }
@@ -25144,6 +25144,12 @@
             "value" : "Pokaż ikonę w pasku menu"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar na barra de menus"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25244,12 +25250,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "在選單列顯示圖示"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mostrar na barra de menus"
           }
         }
       }
@@ -25510,6 +25510,12 @@
             "value" : "Oszczędzaj miejsce na dysku"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Espaço poupado"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25610,12 +25616,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "節省磁碟空間"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Espaço poupado"
           }
         }
       }
@@ -25876,6 +25876,12 @@
             "value" : "Wesprzyj nas"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patrocine-nos"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -25976,12 +25982,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助我們"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Patrocine-nos"
           }
         }
       }
@@ -26242,6 +26242,12 @@
             "value" : "Lista darczyńców"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patrocinadores"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26342,12 +26348,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "贊助名單"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Patrocinadores"
           }
         }
       }
@@ -26608,6 +26608,12 @@
             "value" : "Statystyki"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatísticas"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -26708,12 +26714,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "統計"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estatísticas"
           }
         }
       }
@@ -26974,6 +26974,12 @@
             "value" : "Wspieraj nasz projekt open source"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apoie a nossa missão de código aberto"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27074,12 +27080,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "支持我們的開源計畫"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apoie a nossa missão de código aberto"
           }
         }
       }
@@ -27340,6 +27340,12 @@
             "value" : "Wspiera formaty PNG, JPEG, WEBP i inne."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suporta PNG, JPEG, WEBP, etc."
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27440,12 +27446,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "支援 PNG, JPEG, WEBP 等多種格式。"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suporta PNG, JPEG, WEBP, etc."
           }
         }
       }
@@ -27706,6 +27706,12 @@
             "value" : "Miejsce zajmowane przez pliki tymcz."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armazenamento temporário"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27806,12 +27812,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "暫存檔案佔用"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Armazenamento temporário"
           }
         }
       }
@@ -28072,6 +28072,12 @@
             "value" : "Warunki użytkowania"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos de utilização"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28172,12 +28178,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用條款"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Termos de utilização"
           }
         }
       }
@@ -28438,6 +28438,12 @@
             "value" : "Dziękujemy za wsparcie!"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obrigado pelo seu apoio!"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28538,12 +28544,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "感謝您的支持！"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obrigado pelo seu apoio!"
           }
         }
       }
@@ -28804,6 +28804,12 @@
             "value" : "To wsparcie jest zakupem „eksploatacyjnym”. Odblokuje limity przesyłania przy pierwszym wsparciu. Upewnij się, że iCloud jest włączony, aby zsynchronizować stan, ponieważ standardowe przywracanie systemu nie jest obsługiwane."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este patrocínio é uma compra consumível na app. Desbloqueia o limite de carregamento no seu primeiro apoio. Certifique-se de que o iCloud está ativado para sincronizar o estado, pois não suporta a recuperação padrão do sistema."
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -28904,12 +28910,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此贊助項目屬於「消耗型」App 內購買。它會在您首次支持時解鎖上傳限制。請確保已開啟 iCloud 以同步解鎖狀態，因為它不支援標準的系統恢復功能。"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Este patrocínio é uma compra consumível na app. Desbloqueia o limite de carregamento no seu primeiro apoio. Certifique-se de que o iCloud está ativado para sincronizar o estado, pois não suporta a recuperação padrão do sistema."
           }
         }
       }
@@ -29170,6 +29170,12 @@
             "value" : "Łączna liczba przetworzonych obrazów"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total processado"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29270,12 +29276,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已處理圖片總數"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total processado"
           }
         }
       }
@@ -29536,6 +29536,12 @@
             "value" : "Prześlij obrazy, aby skompresować"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregar para comprimir"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29636,12 +29642,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "上傳圖片，即刻壓縮"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Carregar para comprimir"
           }
         }
       }
@@ -29902,6 +29902,12 @@
             "value" : "Historia użycia"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações de utilização"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30002,12 +30008,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用紀錄"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Informações de utilização"
           }
         }
       }
@@ -30268,6 +30268,12 @@
             "value" : "Użyj Quick Look"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar Quick Look"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30368,12 +30374,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用快速查看"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usar Quick Look"
           }
         }
       }
@@ -30634,6 +30634,12 @@
             "value" : "Włącz biblioteki zewnętrzne"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usar bibliotecas de terceiros"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -30734,12 +30740,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "啟用第三方函式庫"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usar bibliotecas de terceiros"
           }
         }
       }
@@ -31000,6 +31000,12 @@
             "value" : "Witryna (chiński)"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Site (CN)"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31100,12 +31106,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "網頁（中文）"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Site (CN)"
           }
         }
       }
@@ -31366,6 +31366,12 @@
             "value" : "Podgląd w oknie"
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pré-visualização da janela"
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31466,12 +31472,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "視窗預覽"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pré-visualização da janela"
           }
         }
       }
@@ -31732,6 +31732,12 @@
             "value" : "Twoje wsparcie sprawia, że wolne oprogramowanie to coś więcej niż ideał."
           }
         },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O seu apoio mantém o software livre vivo."
+          }
+        },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
@@ -31832,12 +31838,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "您的支持讓自由軟體不止於理想。"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O seu apoio mantém o software livre vivo."
           }
         }
       }
