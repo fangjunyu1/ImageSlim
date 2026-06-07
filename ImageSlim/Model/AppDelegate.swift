@@ -84,8 +84,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         splitVC.addSplitViewItem(sidebarItem)
         splitVC.addSplitViewItem(viewItem)
         
-        // MARK: 分栏视图创建完成
-        
         // MARK: 创建 Window 窗口
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 900, height: 550),

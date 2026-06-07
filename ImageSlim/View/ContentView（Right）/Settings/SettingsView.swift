@@ -29,7 +29,7 @@ struct SettingsView: View {
                         GeneralItemView(
                             icon:"macwindow",
                             title: "Show in Menu Bar",
-                            type: .PickerIcon($appStorage.displayMenuBarIcon))
+                            type: .Toggle("Show in Menu Bar", $appStorage.displayMenuBarIcon))
                         Divider().padding(.leading,25)
                         
                         // 图片压缩率

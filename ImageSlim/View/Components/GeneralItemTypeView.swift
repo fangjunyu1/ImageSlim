@@ -138,13 +138,17 @@ struct GeneralItemTypeView: View {
                 switch cleanStatus {
                 case .clean:
                     Image(systemName: "trash")
+                        .frame(width: 14, height: 14)
                 case .loading:
                     ProgressView()
                         .controlSize(.mini)
+                        .frame(width: 14, height: 14)
                 case .success:
                     Image(systemName: "checkmark")
+                        .frame(width: 14, height: 14)
                 case .error:
                     Image(systemName: "xmark")
+                        .frame(width: 14, height: 14)
                 }
             })
             .disabled(cleanStatus == .loading)
