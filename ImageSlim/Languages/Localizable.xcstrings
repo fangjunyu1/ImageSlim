@@ -5510,7 +5510,7 @@
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Компресирай"
+            "value" : "Компр."
           }
         },
         "bn" : {
@@ -5522,7 +5522,7 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comprimeix"
+            "value" : "Comprimir"
           }
         },
         "ceb" : {
@@ -5534,7 +5534,7 @@
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Komprimovat"
+            "value" : "Kompr."
           }
         },
         "da" : {
@@ -5546,7 +5546,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Komprimieren"
+            "value" : "Kompr."
           }
         },
         "el" : {
@@ -5594,7 +5594,7 @@
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comhbhrúigh"
+            "value" : "Comhbhrú"
           }
         },
         "gu" : {
@@ -5612,7 +5612,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कंप्रेस करें"
+            "value" : "कंप्रेस"
           }
         },
         "hr" : {
@@ -5624,7 +5624,7 @@
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tömörítés"
+            "value" : "Tömörít"
           }
         },
         "id" : {
@@ -5684,7 +5684,7 @@
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suspausti"
+            "value" : "Spausti"
           }
         },
         "lv" : {
@@ -5696,7 +5696,7 @@
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "കംപ്രസ് ചെയ്യുക"
+            "value" : "കംപ്രസ്"
           }
         },
         "mr" : {
@@ -5726,7 +5726,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Comprimeren"
+            "value" : "Comprimeer"
           }
         },
         "or" : {
@@ -5768,7 +5768,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Komprimovať"
+            "value" : "Kompr."
           }
         },
         "sl" : {
@@ -7706,7 +7706,7 @@
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Конвертирай"
+            "value" : "Конв."
           }
         },
         "bn" : {
@@ -7742,7 +7742,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertieren"
+            "value" : "Konvert."
           }
         },
         "el" : {
@@ -7796,7 +7796,7 @@
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "રૂપાંતરિત કરો"
+            "value" : "રૂપાંતર"
           }
         },
         "he" : {
@@ -7808,7 +7808,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कन्वर्ट करें"
+            "value" : "कन्वर्ट"
           }
         },
         "hr" : {
@@ -7820,7 +7820,7 @@
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertálás"
+            "value" : "Konvert."
           }
         },
         "id" : {
@@ -7856,7 +7856,7 @@
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Түрлендіру"
+            "value" : "Түрлен."
           }
         },
         "km" : {
@@ -7880,13 +7880,13 @@
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertuoti"
+            "value" : "Keisti"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertēt"
+            "value" : "Mainīt"
           }
         },
         "ml" : {
@@ -7898,7 +7898,7 @@
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "रूपांतरित करा"
+            "value" : "रूपांतर"
           }
         },
         "ms" : {
@@ -7922,7 +7922,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Converteren"
+            "value" : "Converteer"
           }
         },
         "or" : {
@@ -7934,7 +7934,7 @@
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਪਰਿਵਰਤਿਤ ਕਰੋ"
+            "value" : "ਬਦਲੋ"
           }
         },
         "pl" : {
@@ -7952,19 +7952,19 @@
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Convertește"
+            "value" : "Conversie"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Конвертировать"
+            "value" : "Конверт."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertovať"
+            "value" : "Konvert."
           }
         },
         "sl" : {
@@ -7982,7 +7982,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertera"
+            "value" : "Konvert."
           }
         },
         "sw" : {
@@ -8018,13 +8018,13 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Конвертувати"
+            "value" : "Конверт."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تبدیل کریں"
+            "value" : "تبدیل"
           }
         },
         "uz" : {
@@ -25651,7 +25651,7 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Configuració"
+            "value" : "Config."
           }
         },
         "ceb" : {
@@ -25669,13 +25669,13 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Indstillinger"
+            "value" : "Indstil."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Einstellungen"
+            "value" : "Optionen"
           }
         },
         "el" : {
@@ -25711,7 +25711,7 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mga Setting"
+            "value" : "Settings"
           }
         },
         "fr" : {
@@ -25753,7 +25753,7 @@
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beállítások"
+            "value" : "Beállít."
           }
         },
         "id" : {
@@ -25771,7 +25771,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Impostazioni"
+            "value" : "Opzioni"
           }
         },
         "ja" : {
@@ -25801,7 +25801,7 @@
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
+            "value" : "ಸೆಟ್ಟಿಂಗ್"
           }
         },
         "ko" : {
@@ -25819,13 +25819,13 @@
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Iestatījumi"
+            "value" : "Iest."
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ക്രമീകരണങ്ങൾ"
+            "value" : "സജ്ജീകരണം"
           }
         },
         "mr" : {
@@ -25849,13 +25849,13 @@
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Innstillinger"
+            "value" : "Innstill."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instellingen"
+            "value" : "Instellen"
           }
         },
         "or" : {
@@ -25915,7 +25915,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inställningar"
+            "value" : "Inställ."
           }
         },
         "sw" : {
@@ -25927,13 +25927,13 @@
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "அமைப்புகள்"
+            "value" : "அமைப்பு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "సెట్టింగ్స్"
+            "value" : "సెట్టింగ్"
           }
         },
         "th" : {
@@ -27481,13 +27481,13 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estadístiques"
+            "value" : "Stats"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estadistika"
+            "value" : "Stats"
           }
         },
         "cs" : {
@@ -27505,7 +27505,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statistiken"
+            "value" : "Statistik"
           }
         },
         "el" : {
@@ -27517,7 +27517,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estadísticas"
+            "value" : "Stats"
           }
         },
         "et" : {
@@ -27541,19 +27541,19 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Istatistika"
+            "value" : "Stats"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statistiques"
+            "value" : "Stats"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Staitisticí"
+            "value" : "Stats"
           }
         },
         "gu" : {
@@ -27583,7 +27583,7 @@
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statisztika"
+            "value" : "Statiszt."
           }
         },
         "id" : {
@@ -27601,7 +27601,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statistiche"
+            "value" : "Stats"
           }
         },
         "ja" : {
@@ -27655,7 +27655,7 @@
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "സ്ഥിതിവിവരം"
+            "value" : "സ്റ്റാറ്റ്"
           }
         },
         "mr" : {
@@ -27685,7 +27685,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statistieken"
+            "value" : "Stats"
           }
         },
         "or" : {
@@ -27709,7 +27709,7 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Estatísticas"
+            "value" : "Stats"
           }
         },
         "ro" : {
@@ -27739,7 +27739,7 @@
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Statistikat"
+            "value" : "Stats"
           }
         },
         "sv" : {
@@ -27757,7 +27757,7 @@
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "புள்ளிவிவரங்கள்"
+            "value" : "புள்ளி"
           }
         },
         "te" : {
@@ -27775,19 +27775,19 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İstatistikler"
+            "value" : "Stats"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Список спонсорів"
+            "value" : "Стат."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اعداد و شمار"
+            "value" : "اعداد"
           }
         },
         "uz" : {

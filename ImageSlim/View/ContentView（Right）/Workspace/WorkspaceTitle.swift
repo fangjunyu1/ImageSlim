@@ -18,19 +18,23 @@ struct WorkspaceTitle: View {
                 // 释放文件，添加压缩
                 Text("Drop to compress")
                     .font(.title)
+                    .multilineTextAlignment(.center)
             } else {
                 // 上传图片，即刻压缩
                 Text("Upload to Compress")
                     .font(.title)
+                    .multilineTextAlignment(.center)
             }
         case .conversion:
             if isHovering {
                 Text("Drop to convert")
                     .font(.title)
+                    .multilineTextAlignment(.center)
             } else {
                 HStack {
                     Text("Converting images")
                         .font(.title)
+                        .multilineTextAlignment(.center)
                     Menu {
                         ForEach(ConversionTypeState.allCases) { option in
                             Button(option.rawValue) {
