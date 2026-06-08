@@ -18,6 +18,11 @@ class AppStorage:ObservableObject {
     // 防止循环写入标志
     private var isLoading = false
     
+    // 压缩图片占位符 - 图片名称
+    static let compressionImageName = "compressionImagePlaceholder.jpg"
+    // 转换图片占位符 - 图片名称
+    static let conversionImageName = "conversionImagePlaceholder.jpg"
+    
     // 选择的视图
     @Published var selectedView:SelectedView = .compression
     // 默认选择保存文件夹的提示

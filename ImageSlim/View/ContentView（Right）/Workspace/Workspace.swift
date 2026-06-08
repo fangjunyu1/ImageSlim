@@ -20,15 +20,16 @@ struct Workspace: View {
     @State private var showImporter = false
     var type: WorkTaskType
     
-    var body: some View {
-        var images: [CustomImages] {
-            switch type {
-            case .compression:
-                imageArray.compressedImages
-            case .conversion:
-                imageArray.conversionImages
-            }
+    var images: [CustomImages] {
+        switch type {
+        case .compression:
+            imageArray.compressedImages
+        case .conversion:
+            imageArray.conversionImages
         }
+    }
+    
+    var body: some View {
         VStack {
             AdaptiveContentView(isEmpty: images.isEmpty, title: {
                 WorkspaceTitle(type: type, isHovering: isHovering)
