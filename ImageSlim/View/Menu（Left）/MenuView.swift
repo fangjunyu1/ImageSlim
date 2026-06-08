@@ -15,17 +15,18 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
-            Text(verbatim: "\(Bundle.main.appName)")
-                .font(.title)
-                .fontWeight(.bold)
-            Spacer()
-                .frame(height: 14)
-            Text("Open source image compressor")
-                .font(.subheadline)
-                .lineLimit(2)
-                .minimumScaleFactor(0.8)
-                .foregroundColor(.gray)
-                .fixedSize(horizontal: false, vertical: true)
+            VStack(spacing: 14) {
+                Text(verbatim: "\(Bundle.main.appName)")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Text("Open source image compressor")
+                    .font(.subheadline)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
+                    .foregroundColor(.gray)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+            }
             
             Spacer().frame(height: 20)
             

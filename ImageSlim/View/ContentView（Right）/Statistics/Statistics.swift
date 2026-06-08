@@ -13,8 +13,8 @@ struct Statistics: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
+            Spacer().frame(height: 30)
             VStack(alignment: .leading) {
-                
                 // 核心统计
                 Section(header:
                             Text("Core Stats")

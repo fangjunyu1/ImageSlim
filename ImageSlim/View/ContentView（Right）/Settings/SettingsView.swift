@@ -16,6 +16,7 @@ struct SettingsView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
+            Spacer().frame(height: 30)
             // 应用程序
             VStack(alignment: .leading) {
                 Section(header:
