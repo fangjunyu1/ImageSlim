@@ -53,50 +53,53 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             .store(in: &cancellables)
         
-        // MARK: 创建分栏视图
-        
-        // content 为左侧显示的轻压图片 TabView
-        let menuVC = NSHostingController(rootView:
-                                            MenuView()
-            .environmentObject(appStorage)
-            .environmentObject(iapManager)
-            .environmentObject(sound)
-            .environmentObject(imageArray)
-        )
-        // workspace 为右侧显示的主视图内容
-        let workspaceVC = NSHostingController(rootView:
-                                                ContentView()
-            .environmentObject(appStorage)
-            .environmentObject(iapManager)
-            .environmentObject(sound)
-            .environmentObject(imageArray)
-        )
-        
-        // 创建 NSSplitViewController(分栏界面) 并添加子项
-        let splitVC = NSSplitViewController()
-        
-        // 创建 NSSplitViewItem
-        let sidebarItem = NSSplitViewItem(sidebarWithViewController: menuVC)
-        sidebarItem.canCollapse = false // 不允许用户折叠
-        let viewItem = NSSplitViewItem(viewController: workspaceVC)
-        
-        // 添加到控制器
-        splitVC.addSplitViewItem(sidebarItem)
-        splitVC.addSplitViewItem(viewItem)
-        
         // MARK: 创建 Window 窗口
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 900, height: 550),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView], // 可以调大小
+            styleMask: [
+                .titled,
+                .closable,
+                .miniaturizable,
+                .resizable,
+                .fullSizeContentView],
             backing: .buffered,
             defer: false)
+        
         window.center()
         window.isReleasedWhenClosed = false
-        window.contentViewController = splitVC
-        window.minSize = NSSize(width: 650, height: 450)
-        window.maxSize = NSSize(width: 1200, height: 800)
-        window.makeKeyAndOrderFront(nil)
         
+        // 将标题栏改为透明样式
+        window.titleVisibility = .hidden
+        window.titlebarAppearsTransparent = true
+        
+        // 不能移动背景
+        window.isMovableByWindowBackground = false
+        window.minSize = NSSize(width: 650, height: 450)
+        
+        let rootVC = NSHostingController(rootView:
+                                            MainWindowRootView(
+                                                closeWindow: { [weak window] in
+                                                    window?.performClose(nil)
+                                                },
+                                                minimizeWindow: { [weak window] in
+                                                    window?.performMiniaturize(nil)
+                                                },
+                                                zoomWindow: { [weak window] in
+                                                    window?.performZoom(nil)
+                                                }
+                                            )
+                                                .environmentObject(appStorage)
+                                                .environmentObject(iapManager)
+                                                .environmentObject(sound)
+                                                .environmentObject(imageArray)
+        )
+        
+        window.standardWindowButton(.closeButton)?.isHidden = true
+        window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        window.standardWindowButton(.zoomButton)?.isHidden = true
+        
+        window.contentViewController = rootVC
+        window.makeKeyAndOrderFront(nil)
         WindowManager.shared.mainWindow = window
         print("window完成初始化")
     }
@@ -133,5 +136,106 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+    }
+}
+
+
+struct MainWindowRootView: View {
+    let closeWindow: () -> Void
+    let minimizeWindow: () -> Void
+    let zoomWindow: () -> Void
+    
+    @State private var sidebarWidth: CGFloat = 180
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            VStack {
+                HStack {
+                    WindowControlButtons(
+                        closeWindow: closeWindow,
+                        minimizeWindow: minimizeWindow,
+                        zoomWindow: zoomWindow
+                    )
+                    .padding(.leading, 18)
+                    .padding(.top, 16)
+                    Spacer()
+                }
+                MenuView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .frame(width: sidebarWidth)
+            .frame(maxHeight: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(Color(nsColor: .windowBackgroundColor))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(Color.white.opacity(0.85), lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.06), radius: 24, x: 10, y: 0)
+            .padding(10)
+            
+            ContentView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Color(nsColor: .windowBackgroundColor)
+                .ignoresSafeArea()
+        )
+        .ignoresSafeArea()
+    }
+}
+
+struct WindowControlButtons: View {
+    let closeWindow: () -> Void
+    let minimizeWindow: () -> Void
+    let zoomWindow: () -> Void
+    
+    @State private var isHovering = false
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            windowButton(
+                color: Color(nsColor: .systemRed),
+                systemImage: "xmark",
+                action: closeWindow
+            )
+            
+            windowButton(
+                color: Color(nsColor: .systemYellow),
+                systemImage: "minus",
+                action: minimizeWindow
+            )
+            
+            windowButton(
+                color: Color(nsColor: .systemGreen),
+                systemImage: "arrow.up.left.and.arrow.down.right",
+                action: zoomWindow
+            )
+        }
+        .onHover { hovering in
+            isHovering = hovering
+        }
+    }
+    
+    private func windowButton(
+        color: Color,
+        systemImage: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            ZStack {
+                Circle()
+                    .fill(color)
+                    .frame(width: 14, height: 14)
+                
+                Image(systemName: systemImage)
+                    .font(.system(size: 8, weight: .black))
+                    .opacity(isHovering ? 1 : 0)
+            }
+        }
+        .buttonStyle(.plain)
     }
 }
