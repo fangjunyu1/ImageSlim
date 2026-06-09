@@ -8072,7 +8072,7 @@
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Конвертирай изображения"
+            "value" : "Конв. снимки"
           }
         },
         "bn" : {
@@ -8084,13 +8084,13 @@
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Converteix imatges"
+            "value" : "Conv. imatge"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-convert ang mga hulagway"
+            "value" : "Convert hulagway"
           }
         },
         "cs" : {
@@ -8102,19 +8102,19 @@
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konverter billeder"
+            "value" : "Konvert. billede"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bilder konvertieren"
+            "value" : "Bild konvert."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Μετατροπή εικόνων"
+            "value" : "Μετατρ. εικόνας"
           }
         },
         "es" : {
@@ -8144,25 +8144,25 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-convert ang mga imahe"
+            "value" : "Convert imahe"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Convertir les images"
+            "value" : "Convertir image"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tiontaigh íomhánna"
+            "value" : "Tiontaigh íomhá"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "છબીઓ રૂપાંતરિત કરો"
+            "value" : "છબી રૂપાંતર"
           }
         },
         "he" : {
@@ -8174,7 +8174,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "इमेज कन्वर्ट करें"
+            "value" : "इमेज कन्वर्ट"
           }
         },
         "hr" : {
@@ -8186,7 +8186,7 @@
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Képek konvertálása"
+            "value" : "Kép konvert."
           }
         },
         "id" : {
@@ -8204,7 +8204,7 @@
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Converti immagini"
+            "value" : "Converti foto"
           }
         },
         "ja" : {
@@ -8222,7 +8222,7 @@
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Суреттерді түрлендіру"
+            "value" : "Суретті түрлен."
           }
         },
         "km" : {
@@ -8234,7 +8234,7 @@
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಚಿತ್ರಗಳನ್ನು ಪರಿವರ್ತಿಸಿ"
+            "value" : "ಚಿತ್ರ ಪರಿವರ್ತಿಸು"
           }
         },
         "ko" : {
@@ -8246,25 +8246,25 @@
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertuoti nuotraukas"
+            "value" : "Keisti nuotrauką"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertēt attēlus"
+            "value" : "Mainīt attēlu"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ചിത്രങ്ങൾ മാറ്റുക"
+            "value" : "ചിത്രം മാറ്റുക"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "चित्रे रूपांतरित करा"
+            "value" : "चित्र रूपांतर"
           }
         },
         "ms" : {
@@ -8276,7 +8276,7 @@
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ပုံများကို ပြောင်းရန်"
+            "value" : "ပုံပြောင်းရန်"
           }
         },
         "nb" : {
@@ -8288,13 +8288,13 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afbeeldingen converteren"
+            "value" : "Converteer beeld"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଫଟୋ ରୂପାନ୍ତର କରନ୍ତୁ"
+            "value" : "ଫଟୋ ରୂପାନ୍ତର"
           }
         },
         "pa" : {
@@ -8312,25 +8312,25 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A converter imagens"
+            "value" : "Converter imagem"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Convertește imagini"
+            "value" : "Conversie foto"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Конвертация изображений"
+            "value" : "Конверт. фото"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertovať obrázky"
+            "value" : "Konvert. obrázok"
           }
         },
         "sl" : {
@@ -8348,7 +8348,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konvertera bilder"
+            "value" : "Konvert. bild"
           }
         },
         "sw" : {
@@ -8378,25 +8378,25 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resimleri dönüştür"
+            "value" : "Resmi dönüştür"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Конвертувати зображення"
+            "value" : "Конверт. фото"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تصاویر تبدیل کریں"
+            "value" : "تصویر تبدیل"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rasmlarni oʻtkazish"
+            "value" : "Rasmni oʻtkazish"
           }
         },
         "vi" : {
@@ -30385,349 +30385,349 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ارفع الصور واضغطها فور"
+            "value" : "ضغط الصور"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Şəkil yükləyin və dərhal sıxın"
+            "value" : "Şəkilləri sıx"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Качете снимки за незабавна компресия"
+            "value" : "Стисни снимки"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ছবি আপলোড করুন এবং দ্রুত কম্প্রেস করুন"
+            "value" : "ছবি কম্প্রেস"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Puja imatges i comprimeix-les a l'instant"
+            "value" : "Comprimeix imatges"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-upload ang hulagway, i-compress dayon"
+            "value" : "Compress hulagway"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nahrajte obrázky pro okamžitou kompresi"
+            "value" : "Kompr. obrázky"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upload billeder og komprimer med det samme"
+            "value" : "Komprimer billeder"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bilder hochladen und sofort komprimieren"
+            "value" : "Bilder kompr."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ανεβάστε εικόνες για άμεση συμπίεση"
+            "value" : "Συμπίεση εικόνων"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suba imágenes para comprimir al instante"
+            "value" : "Comprimir imágenes"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laadi pildid üles ja paki kohe"
+            "value" : "Paki pildid"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "آپلود تصویر برای فشرده‌سازی فوری"
+            "value" : "فشرده‌سازی تصویر"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lataa kuvat ja pakkaa heti"
+            "value" : "Pakkaa kuvat"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mag-upload ng imahe para i-compress agad"
+            "value" : "Compress imahe"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importez vos images et compressez-les aussitôt"
+            "value" : "Compresser images"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uaslódáil íomhánna le haghaidh comhbhrú láithreach"
+            "value" : "Comhbhrú íomhánna"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "છબી અપલોડ કરો અને તરત જ સંકોચો"
+            "value" : "છબી સંકોચો"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "העלה תמונות לדחיסה מיידית"
+            "value" : "דחוס תמונות"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "इमेज अपलोड करें और तुरंत कंप्रेस करें"
+            "value" : "इमेज कंप्रेस"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prenesite slike za brzo sažimanje"
+            "value" : "Sažmi slike"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Töltse fel a képeket az azonnali tömörítéshez"
+            "value" : "Képek tömörítése"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unggah gambar, kompres segera"
+            "value" : "Kompres gambar"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hladdu upp myndum til að þjappa strax"
+            "value" : "Þjappa myndum"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carica immagini per comprimere"
+            "value" : "Comprimi immagini"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "画像をアップロードして圧縮"
+            "value" : "画像を圧縮"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unggah gambar, langsung dikompres"
+            "value" : "Kompres gambar"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сурет жүктеп, бірден сығу"
+            "value" : "Суретті сығу"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "បង្ហោះរូបភាព ដើម្បីបង្រួមភ្លាមៗ"
+            "value" : "បង្រួមរូបភាព"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಚಿತ್ರಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ, ತಕ್ಷಣ ಕುಗ್ಗಿಸಿ"
+            "value" : "ಚಿತ್ರ ಕುಗ್ಗಿಸು"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이미지를 업로드하여 즉시 압축"
+            "value" : "이미지 압축"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Įkelkite nuotraukas momentiniam suspaudimui"
+            "value" : "Spausti nuotraukas"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Augšupielādējiet attēlus tūlītējai saspiešanai"
+            "value" : "Saspiest attēlus"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ചിത്രങ്ങൾ അപ്‌ലോഡ് ചെയ്ത് ഉടൻ കംപ്രസ് ചെയ്യുക"
+            "value" : "ചിത്രം കംപ്രസ്"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "चित्रे अपलोड करा, लगेच कॉम्प्रेशन करा"
+            "value" : "चित्रे काँप्रेस"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muat naik imej, mampat segera"
+            "value" : "Mampat imej"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ပုံတင်ပြီး ချက်ချင်းချုံ့ပါ"
+            "value" : "ပုံချုံ့ရန်"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Last opp bilder for umiddelbar komprimering"
+            "value" : "Komprimer bilder"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upload afbeeldingen voor directe compressie"
+            "value" : "Comprimeer beelden"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଫଟୋ ଅପଲୋଡ୍ କରନ୍ତୁ ଏବଂ ତୁରନ୍ତ ସଙ୍କୁଚିତ କରନ୍ତୁ"
+            "value" : "ଫଟୋ ସଙ୍କୁଚିତ"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਚਿੱਤਰ ਅਪਲੋਡ ਕਰੋ ਅਤੇ ਤੁਰੰਤ ਕੰਪਰੈੱਸ ਕਰੋ"
+            "value" : "ਚਿੱਤਰ ਕੰਪਰੈੱਸ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prześlij obrazy, aby skompresować"
+            "value" : "Kompresuj obrazy"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carregar para comprimir"
+            "value" : "Comprimir imagens"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Încarcă imagini pentru compresie imediată"
+            "value" : "Comprimă imagini"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Загрузите для мгновенного сжатия"
+            "value" : "Сжать изображения"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nahrajte obrázky na okamžitú kompresiu"
+            "value" : "Kompr. obrázky"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Naloži slike za takojšnje stiskanje"
+            "value" : "Stisni slike"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ngarko për kompresim"
+            "value" : "Kompreso imazhe"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ladda upp bilder för direkt komprimering"
+            "value" : "Komprimera bilder"
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pakia picha, gandamiza sasa hivi"
+            "value" : "Gandamiza picha"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "படத்தைப் பதிவேற்றி, உடனே சுருக்குக"
+            "value" : "படம் சுருக்கு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "చిత్రాన్ని అప్‌లోడ్ చేయండి, వెంటనే కంప్రెస్ చేయండి"
+            "value" : "చిత్రం కంప్రెస్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "อัปโหลดรูปภาพเพื่อบีบอัดทันที"
+            "value" : "บีบอัดรูปภาพ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resmi yükle ve hemen sıkıştır"
+            "value" : "Resmi sıkıştır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завантажте фото для миттєвого стиснення"
+            "value" : "Стиснути фото"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تصویر اپ لوڈ کریں، فوراً کمپریس کریں"
+            "value" : "تصویر کمپریس"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rasmni yuklang va darhol siqing"
+            "value" : "Rasmni siqish"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tải ảnh lên để nén ngay"
+            "value" : "Nén ảnh"
           }
         },
         "zh-Hans" : {
