@@ -105,11 +105,16 @@ struct MenuView: View {
                 showSponsorUs = true
             }, label: {
                 if appStorage.inAppPurchaseMembership {
-                    Text("Thank you for your support!")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.8) // 最多缩小到原始字体大小的 50%
+                    HStack(spacing: 2) {
+                        Text("Thank you for your support!")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.8) // 最多缩小到原始字体大小的 50%
+                        Image(systemName: "heart.fill")
+                            .foregroundStyle(Color.blue)
+                            .imageScale(.small)
+                    }
                 } else {
                     Text("Sponsor Us")
                         .font(.footnote)
