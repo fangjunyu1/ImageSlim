@@ -5132,43 +5132,43 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "مسح القائمة"
+            "value" : "مسح الكل"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Növbəni təmizlə"
+            "value" : "Sıfırla"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изчисти опашката"
+            "value" : "Изчисти"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "তালিকা মুছুন"
+            "value" : "কিউ মুছ"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Neteja la cua"
+            "value" : "Neteja"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Papasa ang listahan"
+            "value" : "Papasa"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vymazat frontu"
+            "value" : "Smazat"
           }
         },
         "da" : {
@@ -5180,61 +5180,61 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Liste leeren"
+            "value" : "Leeren"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Καθαρισμός λίστας"
+            "value" : "Σβήσιμο"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limpiar cola"
+            "value" : "Limpiar"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tühjenda järjekord"
+            "value" : "Tühj."
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "پاکسازی لیست"
+            "value" : "پاکسازی"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tyhjennä jono"
+            "value" : "Tyhj."
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-clear ang queue"
+            "value" : "I-clear"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Effacer la file d'attente"
+            "value" : "Effacer"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Glan an scuaine"
+            "value" : "Glan sc."
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "કતાર સાફ કરો"
+            "value" : "ક્યુ સાફ"
           }
         },
         "he" : {
@@ -5246,109 +5246,109 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कतार साफ करें"
+            "value" : "क्यू साफ"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Očisti listu"
+            "value" : "Očisti"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Várólista ürítése"
+            "value" : "Ürítés"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bersihkan antrean"
+            "value" : "Bersih"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hreinsa biðröð"
+            "value" : "Hreinsa"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Svuota coda"
+            "value" : "Svuota"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キューをクリア"
+            "value" : "全削除"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Busak antrean"
+            "value" : "Busak"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Кезектегіні тазалау"
+            "value" : "Тазалау"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "សម្អាតជួររង់ចាំ"
+            "value" : "សម្អាត"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಸರದಿಯನ್ನು ಅಳಿಸು"
+            "value" : "ಕ್ಯೂ ಅಳಿ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "대기열 비우기"
+            "value" : "비우기"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Valyti eilę"
+            "value" : "Valyti"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Notīrīt rindu"
+            "value" : "Notīrīt"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ക്യൂ ഒഴിവാക്കുക"
+            "value" : "നീക്കം"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "रांग साफ करा"
+            "value" : "रांग साफ"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kosongkan barisan"
+            "value" : "Kosong"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "အစီအစဉ်ကို ရှင်းလင်းရန်"
+            "value" : "ရှင်းရန်"
           }
         },
         "nb" : {
@@ -5360,61 +5360,61 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wachtrij wissen"
+            "value" : "Wissen"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "କ୍ୟୁ ସଫା କରନ୍ତୁ"
+            "value" : "କ୍ୟୁ ସଫା"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਕਤਾਰ ਸਾਫ਼ ਕਰੋ"
+            "value" : "ਕਿਊ ਸਾਫ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wyczyść kolejkę"
+            "value" : "Wyczyść"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Limpar fila"
+            "value" : "Limpar"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Golește coada"
+            "value" : "Golește"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Очистить очередь"
+            "value" : "Очистить"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vymazať poradie"
+            "value" : "Vymazať"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Počisti vrsto"
+            "value" : "Počisti"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pastro radhën"
+            "value" : "Pastro"
           }
         },
         "sv" : {
@@ -5426,55 +5426,55 @@
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Safisha foleni"
+            "value" : "Safisha"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "வரிசையை நீக்கு"
+            "value" : "க்யூ அழி"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "క్యూని క్లియర్ చేయండి"
+            "value" : "ఖాళీ"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ล้างรายการ"
+            "value" : "ล้างคิว"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kuyruğu temizle"
+            "value" : "Temizle"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Очистити чергу"
+            "value" : "Очистити"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فہرست صاف کریں"
+            "value" : "قطار صاف"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Navbatni tozalash"
+            "value" : "Tozalash"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Xóa danh sách chờ"
+            "value" : "Xóa hàng"
           }
         },
         "zh-Hans" : {
@@ -9554,7 +9554,7 @@
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-download"
+            "value" : "Download"
           }
         },
         "cs" : {
@@ -9572,7 +9572,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herunterladen"
+            "value" : "Laden"
           }
         },
         "el" : {
@@ -9584,13 +9584,13 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descargar"
+            "value" : "Bajar"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laadi alla"
+            "value" : "Laadi"
           }
         },
         "fa" : {
@@ -9608,19 +9608,19 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-download"
+            "value" : "Download"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Télécharger"
+            "value" : "Charger"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Íoslódáil"
+            "value" : "Sábháil"
           }
         },
         "gu" : {
@@ -9674,7 +9674,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ダウンロード"
+            "value" : "保存"
           }
         },
         "jv" : {
@@ -9698,7 +9698,7 @@
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಡೌನ್‌ಲೋಡ್"
+            "value" : "ಇಳಿಸು"
           }
         },
         "ko" : {
@@ -9710,13 +9710,13 @@
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atsisiųsti"
+            "value" : "Siųsti"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lejupielādēt"
+            "value" : "Lejupiel"
           }
         },
         "ml" : {
@@ -9734,13 +9734,13 @@
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muat turun"
+            "value" : "Muat"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ဒေါင်းလုဒ်"
+            "value" : "သိမ်းရန်"
           }
         },
         "nb" : {
@@ -9752,7 +9752,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Downloaden"
+            "value" : "Download"
           }
         },
         "or" : {
@@ -9776,7 +9776,7 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transferir"
+            "value" : "Baixar"
           }
         },
         "ro" : {
@@ -9812,7 +9812,7 @@
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ladda ner"
+            "value" : "Hämta"
           }
         },
         "sw" : {
@@ -9824,19 +9824,19 @@
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பதிவிறக்கு"
+            "value" : "சேமி"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "డౌన్‌లోడ్"
+            "value" : "దించు"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ดาวน์โหลด"
+            "value" : "บันทึก"
           }
         },
         "tr" : {
@@ -9848,7 +9848,7 @@
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завантажити"
+            "value" : "Завантаж"
           }
         },
         "ur" : {
@@ -9860,13 +9860,13 @@
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yuklab olish"
+            "value" : "Yukla"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tải xuống"
+            "value" : "Tải về"
           }
         },
         "zh-Hans" : {
@@ -9890,109 +9890,109 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تنزيل الكل"
+            "value" : "نزّل كل"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hamısını yüklə"
+            "value" : "Hamısı"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изтегли всички"
+            "value" : "Всички"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "সব ডাউনলোড করুন"
+            "value" : "সব নামাও"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Baixa-ho tot"
+            "value" : "Baixa"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-download tanan"
+            "value" : "Tanan"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stáhnout vše"
+            "value" : "Stáhnout"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Download alle"
+            "value" : "Hent alt"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle herunterladen"
+            "value" : "Alle DL"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Λήψη όλων"
+            "value" : "Λήψη"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descargar todo"
+            "value" : "Bajar"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laadi kõik alla"
+            "value" : "Kõik"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "دانلود همه"
+            "value" : "دانلود"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lataa kaikki"
+            "value" : "Lataa"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-download lahat"
+            "value" : "Lahat"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tout télécharger"
+            "value" : "Tout DL"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Íoslódáil gach rud"
+            "value" : "Uile"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "બધું ડાઉનલોડ કરો"
+            "value" : "બધું લો"
           }
         },
         "he" : {
@@ -10004,235 +10004,235 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "सभी डाउनलोड करें"
+            "value" : "सब लें"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preuzmi sve"
+            "value" : "Preuzmi"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Összes letöltése"
+            "value" : "Letölt"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unduh semua"
+            "value" : "Unduh"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sækja allt"
+            "value" : "Sækja"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scarica tutto"
+            "value" : "Scarica"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "すべてダウンロード"
+            "value" : "全保存"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Undhuh kabeh"
+            "value" : "Undhuh"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Барлығын жүктеу"
+            "value" : "Жүктеу"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ទាញយកទាំងអស់"
+            "value" : "ទាញយក"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಎಲ್ಲವನ್ನೂ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+            "value" : "ಎಲ್ಲ ಇಳಿ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "모두 다운로드"
+            "value" : "전체저장"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atsisiųsti viską"
+            "value" : "Visus"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lejupielādēt visu"
+            "value" : "Lejupiel"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "എല്ലാം ഡൗൺലോഡ് ചെയ്യുക"
+            "value" : "എല്ലാം"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "सर्व डाउनलोड करा"
+            "value" : "सर्व"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muat turun semua"
+            "value" : "Semua"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "အားလုံးကို ဒေါင်းလုဒ်လုပ်ရန်"
+            "value" : "အားလုံး"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Last ned alle"
+            "value" : "Last ned"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alles downloaden"
+            "value" : "Download"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ସବୁ ଡାଉନଲୋଡ୍ କରନ୍ତୁ"
+            "value" : "ସବୁ ନିଅ"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਸਭ ਡਾਊਨਲੋਡ ਕਰੋ"
+            "value" : "ਸਭ ਡਾਊਨ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pobierz wszystko"
+            "value" : "Pobierz"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transferir tudo"
+            "value" : "Baixar"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descarcă tot"
+            "value" : "Descarcă"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Скачать всё"
+            "value" : "Скачать"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prevziať všetko"
+            "value" : "Prevziať"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prenesi vse"
+            "value" : "Prenesi"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Shkarko të gjitha"
+            "value" : "Shkarko"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ladda ner alla"
+            "value" : "Hämta"
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pakua zote"
+            "value" : "Pakua"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "அனைத்தும் பதிவிறக்கு"
+            "value" : "எல்லாம்"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "అన్నీ డౌన్‌లోడ్ చేయండి"
+            "value" : "అన్నీ"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ดาวน์โหลดทั้งหมด"
+            "value" : "โหลดหมด"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tümünü indir"
+            "value" : "Tümünü"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завантажити все"
+            "value" : "Завантаж"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "سب ڈاؤن لوڈ کریں"
+            "value" : "سب ڈاؤن"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hammasini yuklab olish"
+            "value" : "Hammasi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tải xuống tất cả"
+            "value" : "Tải hết"
           }
         },
         "zh-Hans" : {
@@ -10994,103 +10994,103 @@
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faylları buraxın və sıxın"
+            "value" : "Burax, sıx"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пуснете файловете за компресиране"
+            "value" : "Пусни и стисни"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ফাইল ছেড়ে দিন এবং কম্প্রেস করুন"
+            "value" : "ফাইল কম্প্রেস"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deixa els fitxers per comprimir"
+            "value" : "Deixa i compr."
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-release ang file para i-compress"
+            "value" : "Drop ug compress"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Přetáhněte soubory ke kompresi"
+            "value" : "Pusť a kompr."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slip filer for at komprimere"
+            "value" : "Slip og komprim."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dateien loslassen zum Komprimieren"
+            "value" : "Ablegen & kompr."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Σύρετε αρχεία για συμπίεση"
+            "value" : "Άφησε & συμπίεσε"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suelte los archivos para comprimir"
+            "value" : "Suelta y comprime"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lohista failid pakkimiseks"
+            "value" : "Paki failid"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فایل را رها کنید تا فشرده شود"
+            "value" : "رها و فشرده"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vedä tiedostot tähän pakattavaksi"
+            "value" : "Pudota ja pakkaa"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-drop ang file para i-compress"
+            "value" : "Drop at compress"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Déposer les fichiers pour compresser"
+            "value" : "Déposer & comp."
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scaoil comhaid chun comhbhrú"
+            "value" : "Scaoil & comhbhrú"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ફાઇલ છોડો, સંકોચન શરૂ કરો"
+            "value" : "ફાઇલ સંકોચો"
           }
         },
         "he" : {
@@ -11102,235 +11102,235 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कंप्रेस करने के लिए फाइल छोड़ें"
+            "value" : "फाइल कंप्रेस"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ispustite datoteke za sažimanje"
+            "value" : "Pusti i sažmi"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Húzza ide a fájlokat a tömörítéshez"
+            "value" : "Dobd és tömörít"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lepas file untuk mengompres"
+            "value" : "Lepas & kompres"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slepptu skrám hér til að þjappa"
+            "value" : "Slepptu & þjappa"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rilascia i file per comprimere"
+            "value" : "Rilascia e compr."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ファイルをドロップして圧縮"
+            "value" : "ドロップして圧縮"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selehake berkas, tambah kompres"
+            "value" : "Selehake, kompres"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файлды тастап, сығуды бастау"
+            "value" : "Тастап, сығу"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ទម្លាក់ឯកសារ ដើម្បីបន្ថែមការបង្រួម"
+            "value" : "ទម្លាក់ បង្រួម"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಫೈಲ್‌ಗಳನ್ನು ಇಲ್ಲಿ ಬಿಡಿ, ಕುಗ್ಗಿಸಲು ಸೇರಿಸಿ"
+            "value" : "ಬಿಟ್ಟು ಕುಗ್ಗಿಸು"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "파일을 드롭하여 압축 추가"
+            "value" : "드롭해 압축"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Įmeskite failus suspaudimui"
+            "value" : "Mesk ir spausk"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nometiet failus, lai saspiestu"
+            "value" : "Nomet un sasp."
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ഫയലുകൾ ഇവിടെ ഇടുക, കംപ്രസ് ചെയ്യാൻ ചേർക്കുക"
+            "value" : "ഇട്ട് കംപ്രസ്"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "फाईल्स इथे सोडा, कॉम्प्रेशनसाठी जोडा"
+            "value" : "सोडा, काँप्रेस"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lepaskan fail untuk mampat"
+            "value" : "Lepas & mampat"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ဖိုင်များကို လွှတ်ချ၍ ချုံ့ရန်"
+            "value" : "ချပြီး ချုံ့"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slipp filer for å legge til komprimering"
+            "value" : "Slipp & kompr."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sleep bestanden hier om te comprimeren"
+            "value" : "Sleep & compr."
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଫାଇଲ୍ ଛାଡନ୍ତୁ, ସଙ୍କୁଚିତ ପାଇଁ ଯୋଡନ୍ତୁ"
+            "value" : "ଛାଡି ସଙ୍କୁଚିତ"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਫਾਈਲਾਂ ਇੱਥੇ ਛੱਡੋ, ਕੰਪਰੈੱਸ ਕਰਨ ਲਈ ਜੋੜੋ"
+            "value" : "ਛੱਡੋ, ਕੰਪਰੈੱਸ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upuść pliki, aby skompresować"
+            "value" : "Upuść i kompr."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Largue para comprimir"
+            "value" : "Solte e comprima"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trage fișierele pentru a le comprima"
+            "value" : "Lasă și comprimă"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перетащите файлы для сжатия"
+            "value" : "Отпустите и сожм."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Presuňte súbory na kompresiu"
+            "value" : "Pustiť a kompr."
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spusti datoteke za stiskanje"
+            "value" : "Spusti in stisni"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lësho skedarët për kompresim"
+            "value" : "Lësho & kompreso"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Släpp filer för att komprimera"
+            "value" : "Släpp & kompr."
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Achia faili ili kugandamiza"
+            "value" : "Achia & gandamiza"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "கோப்புகளை விடுவிக்கவும், சுருக்கத்தைச் சேர்க்கவும்"
+            "value" : "விட்டு சுருக்கு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఫైళ్లను ఇక్కడ వదలండి, కంప్రెషన్ ప్రారంభించండి"
+            "value" : "వదిలి కంప్రెస్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "วางไฟล์เพื่อเพิ่มการบีบอัด"
+            "value" : "วางแล้วบีบอัด"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosyaları bırak ve sıkıştır"
+            "value" : "Bırak ve sıkıştır"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перетягніть файли для стиснення"
+            "value" : "Киньте й стисн."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فائلیں چھوڑیں، کمپریشن شروع کریں"
+            "value" : "چھوڑیں، کمپریس"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fayllarni tashlang va siqing"
+            "value" : "Tashla va siq"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thả tệp để nén"
+            "value" : "Thả để nén"
           }
         },
         "zh-Hans" : {
@@ -11354,109 +11354,109 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "أفلت الملفات للتحويل"
+            "value" : "أفلت وحوّل"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faylları buraxın və çevirin"
+            "value" : "Burax, çevir"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Пуснете файловете за конвертиране"
+            "value" : "Пусни и конв."
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ফাইল ছেড়ে দিন এবং কনভার্ট করুন"
+            "value" : "ফাইল কনভার্ট"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deixa els fitxers per convertir"
+            "value" : "Deixa i conv."
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-release ang file para i-convert dayon"
+            "value" : "Drop ug convert"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Přetáhněte soubory k převodu"
+            "value" : "Pusť a přev."
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slip filer for at konvertere nu"
+            "value" : "Slip og konv."
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dateien loslassen zum Konvertieren"
+            "value" : "Ablegen & konv."
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Σύρετε αρχεία για μετατροπή"
+            "value" : "Άφησε & άλλαξε"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suelte los archivos para convertir"
+            "value" : "Suelta y convierte"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lohista failid teisendamiseks"
+            "value" : "Teisenda failid"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فایل را رها کنید تا تبدیل شود"
+            "value" : "رها و تبدیل"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vedä tiedostot tähän muunnettavaksi"
+            "value" : "Pudota ja muunna"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I-drop ang file para i-convert agad"
+            "value" : "Drop at convert"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Déposer les fichiers pour convertir"
+            "value" : "Déposer & conv."
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Scaoil comhaid chun tiontú anois"
+            "value" : "Scaoil & tiontaigh"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ફાઇલ છોડો, તરત રૂપાંતર કરો"
+            "value" : "ફાઇલ રૂપાંતર"
           }
         },
         "he" : {
@@ -11468,235 +11468,235 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कन्वर्ट करने के लिए फाइल छोड़ें"
+            "value" : "फाइल कन्वर्ट"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ispustite datoteke za pretvorbu"
+            "value" : "Pusti i pretv."
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Húzza ide a fájlokat a konvertáláshoz"
+            "value" : "Dobd és konv."
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lepas file untuk konversi instan"
+            "value" : "Lepas & konversi"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slepptu skrám hér til að umbreyta"
+            "value" : "Slepptu & umbreyta"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rilascia i file per convertire"
+            "value" : "Rilascia e conv."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ファイルをドロップして変換"
+            "value" : "ドロップして変換"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selehake berkas, konversi saiki"
+            "value" : "Selehake, konv."
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Файлды тастап, түрлендіруді бастау"
+            "value" : "Тастап, түрлен."
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ទម្លាក់ឯកសារ ដើម្បីបំប្លែងភ្លាមៗ"
+            "value" : "ទម្លាក់ បំប្លែង"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಫೈಲ್‌ಗಳನ್ನು ಇಲ್ಲಿ ಬಿಡಿ, ತಕ್ಷಣ ಪರಿವರ್ತಿಸಿ"
+            "value" : "ಬಿಟ್ಟು ಪರಿವರ್ತಿಸಿ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "파일을 드롭하여 즉시 변환"
+            "value" : "드롭해 변환"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Įmeskite failus konvertavimui"
+            "value" : "Mesk ir keisk"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nometiet failus, lai konvertētu"
+            "value" : "Nomet un maini"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ഫയലുകൾ ഇവിടെ ഇടുക, ഉടൻ മാറ്റുക"
+            "value" : "ഇട്ട് മാറ്റുക"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "फाईल्स इथे सोडा, लगेच रूपांतरित करा"
+            "value" : "सोडा, रूपांतर"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lepaskan fail untuk tukar"
+            "value" : "Lepas & tukar"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ဖိုင်များကို လွှတ်ချ၍ ပြောင်းရန်"
+            "value" : "ချပြီး ပြောင်း"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Slipp filer for å konvertere nå"
+            "value" : "Slipp & konv."
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sleep bestanden hier om direct te converteren"
+            "value" : "Sleep & conv."
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଫାଇଲ୍ ଛାଡନ୍ତୁ, ତୁରନ୍ତ ରୂପାନ୍ତର କରନ୍ତୁ"
+            "value" : "ଛାଡି ରୂପାନ୍ତର"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਫਾਈਲਾਂ ਇੱਥੇ ਛੱਡੋ, ਤੁਰੰਤ ਪਰਿਵਰਤਿਤ ਕਰੋ"
+            "value" : "ਛੱਡੋ, ਬਦਲੋ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upuść pliki, aby przekonwertować"
+            "value" : "Upuść i konw."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Largue para converter"
+            "value" : "Solte e converta"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trage fișierele pentru a le converti"
+            "value" : "Lasă și conversie"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перетащите файлы для конвертации"
+            "value" : "Отпустите и конв."
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Presuňte súbory na konverziu"
+            "value" : "Pustiť a konv."
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Spusti datoteke za pretvorbo"
+            "value" : "Spusti in pretv."
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lësho skedarët për konvertim"
+            "value" : "Lësho & konverto"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Släpp filer för att konvertera direkt"
+            "value" : "Släpp & konv."
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Achia faili ili kubadilisha sasa"
+            "value" : "Achia & badili"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "கோப்புகளை விடுவிக்கவும், உடனே மாற்றவும்"
+            "value" : "விட்டு மாற்று"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఫైళ్లను ఇక్కడ వదలండి, వెంటనే మార్చండి"
+            "value" : "వదిలి మార్చు"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "วางไฟล์เพื่อเริ่มการแปลงทันที"
+            "value" : "วางแล้วแปลง"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dosyaları bırak ve dönüştür"
+            "value" : "Bırak ve dönüştür"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Перетягніть файли для конвертації"
+            "value" : "Киньте й конв."
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "فائلیں چھوڑیں، فوراً تبدیل کریں"
+            "value" : "چھوڑیں، تبدیل"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fayllarni tashlang va oʻtkazing"
+            "value" : "Tashla, oʻtkaz"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thả tệp để chuyển đổi ngay"
+            "value" : "Thả để đổi"
           }
         },
         "zh-Hans" : {

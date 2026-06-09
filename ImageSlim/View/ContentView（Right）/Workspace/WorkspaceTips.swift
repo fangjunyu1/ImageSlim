@@ -16,11 +16,13 @@ struct WorkspaceTips: View {
             Text("Supports PNG, JPEG, WEBP, etc.")
                 .font(.footnote)
                 .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
         } else {
             // 最多选择 20 张图片，每张大小不超过 5MB。
             Text("Select up to 20 images, up to 5 MB each.")
                 .font(.footnote)
                 .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
         }
     }
 }

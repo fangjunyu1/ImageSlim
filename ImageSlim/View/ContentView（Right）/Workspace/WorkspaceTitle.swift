@@ -27,11 +27,13 @@ struct WorkspaceTitle: View {
             }
         case .conversion:
             if isHovering {
+                // 释放文件，立即转换
                 Text("Drop to convert")
                     .font(.title)
                     .multilineTextAlignment(.center)
             } else {
                 HStack {
+                    // 转换图片
                     Text("Converting images")
                         .font(.title)
                         .multilineTextAlignment(.center)

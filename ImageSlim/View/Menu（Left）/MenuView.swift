@@ -28,9 +28,9 @@ struct MenuView: View {
                     .multilineTextAlignment(.center)
             }
             
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 16)
             
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 16) {
                 // 压缩菜单-按钮
                 Button(action: {
                     appStorage.selectedView = .compression
@@ -45,8 +45,6 @@ struct MenuView: View {
                 
                 // 转换功能
                 if appStorage.EnableImageConversion {
-                    Spacer().frame(height: 20)
-                    
                     // 转换菜单-按钮
                     Button(action: {
                         appStorage.selectedView = .conversion
@@ -62,8 +60,6 @@ struct MenuView: View {
                 
                 // 统计功能
                 if appStorage.enableStatistics {
-                    Spacer().frame(height: 20)
-                    
                     // 统计菜单-按钮
                     Button(action: {
                         appStorage.selectedView = .statistics
@@ -76,7 +72,6 @@ struct MenuView: View {
                             .gray)
                     .modifier(HoverModifier())
                 }
-                Spacer().frame(height: 20)
                 
                 // 设置菜单-按钮
                 Button(action: {
