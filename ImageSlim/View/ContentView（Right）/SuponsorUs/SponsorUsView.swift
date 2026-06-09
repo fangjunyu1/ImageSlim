@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SponsorUsView: View {
+    @Environment(\.layoutDirection) var layoutDirection
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var iapManager: IAPManager
@@ -26,22 +27,25 @@ struct SponsorUsView: View {
                 // 赞助我们-图片
                 ZStack {
                     let topImgName = !appStorage.inAppPurchaseMembership ? "supportUs" : "thanks"
-                    let topImgTitle = !appStorage.inAppPurchaseMembership ? "Sponsor Us" : "Thank you for your support!"
+                    let topImgTitle = !appStorage.inAppPurchaseMembership ? "Sponsor Us" : "Thanks!"
                     let topImgSubTitle = !appStorage.inAppPurchaseMembership ? "Give someone a rose, and the fragrance will linger on your hands" : "Your support keeps free software alive."
                     Image(topImgName)
                         .resizable()
                         .scaledToFill()
                         .cornerRadius(10)
                         .opacity(colorScheme == .light ? 1 : 0.3)
+                        .scaleEffect(x: layoutDirection == .leftToRight ? 1 : -1)
                     HStack {
                         if appStorage.inAppPurchaseMembership { Spacer()}
                         VStack {
                             Text(LocalizedStringKey(topImgTitle))
                                 .font(.title2)
+                                .multilineTextAlignment(.center)
                             Spacer().frame(height:10)
                             Text(LocalizedStringKey(topImgSubTitle))
                                 .foregroundColor(.gray)
                                 .font(.footnote)
+                                .multilineTextAlignment(.center)
                         }
                         .frame(width: 150)
                         if !appStorage.inAppPurchaseMembership { Spacer() }
@@ -80,8 +84,6 @@ struct SponsorUsView: View {
                     }, label: {
                         HStack(spacing:3) {
                             Text("Restore in-app purchases")
-                                .fontWeight(.bold)
-                            Text(verbatim: "(iCloud)")
                                 .fontWeight(.bold)
                         }
                     })

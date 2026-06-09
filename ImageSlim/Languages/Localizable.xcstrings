@@ -26731,37 +26731,37 @@
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bizə dəstək olun"
+            "value" : "Dəstək ol"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Подкрепете ни"
+            "value" : "Подкрепи"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "স্পনসর করুন"
+            "value" : "সমর্থন"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocina'ns"
+            "value" : "Ajuda'ns"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suportahi kami"
+            "value" : "Suporta"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podpořte nás"
+            "value" : "Podpořit"
           }
         },
         "da" : {
@@ -26773,31 +26773,31 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unterstützen Sie uns"
+            "value" : "Fördern"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Υποστηρίξτε μας"
+            "value" : "Στήριξη"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocinanos"
+            "value" : "Apóyanos"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Toeta meid"
+            "value" : "Toeta"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "حمایت از ما"
+            "value" : "حمایت"
           }
         },
         "fi" : {
@@ -26809,43 +26809,43 @@
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suportahan kami"
+            "value" : "Suporta"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Soutenez-nous"
+            "value" : "Soutenir"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tacaigh linn"
+            "value" : "Tacaigh"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "અમને સપોર્ટ કરો"
+            "value" : "સહયોગ"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "תמכו בנו"
+            "value" : "תמיכה"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "हमें सपोर्ट करें"
+            "value" : "समर्थन"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podržite nas"
+            "value" : "Podrži"
           }
         },
         "hu" : {
@@ -26857,163 +26857,163 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dukung kami"
+            "value" : "Dukung"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Styrkja okkur"
+            "value" : "Styrkja"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sostienici"
+            "value" : "Sostieni"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "支援する"
+            "value" : "支援"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nyengkuyung kita"
+            "value" : "Dukung"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Бізге демеуші болу"
+            "value" : "Қолдау"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ឧបត្ថម្ភយើងខ្ញុំ"
+            "value" : "គាំទ្រ"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ನಮಗೆ ಬೆಂಬಲ ನೀಡಿ"
+            "value" : "ಬೆಂಬಲ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "후원하기"
+            "value" : "후원"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paremkite mus"
+            "value" : "Paremti"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atbalstīt mūs"
+            "value" : "Atbalsts"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ഞങ്ങളെ സഹായിക്കുക"
+            "value" : "സഹായം"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "आम्हाला सहकार्य करा"
+            "value" : "पाठिंबा"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sokong kami"
+            "value" : "Sokong"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ကျွန်ုပ်တို့ကို ပံ့ပိုးရန်"
+            "value" : "ပံ့ပိုးရန်"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Støtt oss"
+            "value" : "Støtt"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Steun ons"
+            "value" : "Steun"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଆମକୁ ସହଯୋଗ କରନ୍ତୁ"
+            "value" : "ସହଯୋଗ"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਸਾਨੂੰ ਸਪਾਂਸਰ ਕਰੋ"
+            "value" : "ਸਹਿਯੋਗ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wesprzyj nas"
+            "value" : "Wesprzyj"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Patrocine-nos"
+            "value" : "Apoie"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Susține-ne"
+            "value" : "Susține"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Поддержать нас"
+            "value" : "Поддержать"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podporte nás"
+            "value" : "Podporiť"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Podpri nas"
+            "value" : "Podpri"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Na mbështetni"
+            "value" : "Mbështet"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sponsra oss"
+            "value" : "Stöd"
           }
         },
         "sw" : {
@@ -27025,49 +27025,49 @@
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "எங்களுக்கு ஆதரவு தர"
+            "value" : "ஆதரவு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మాకు మద్దతు ఇవ్వండి"
+            "value" : "మద్దతు"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "สนับสนุนเรา"
+            "value" : "สนับสนุน"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bize destek ol"
+            "value" : "Destek"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Підтримати нас"
+            "value" : "Підтримати"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ہماری حمایت کریں"
+            "value" : "حمایت"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bizni qoʻllab-quvvatlang"
+            "value" : "Qoʻllash"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ủng hộ chúng tôi"
+            "value" : "Ủng hộ"
           }
         },
         "zh-Hans" : {
@@ -29280,356 +29280,356 @@
         }
       }
     },
-    "Thank you for your support!" : {
+    "Thanks!" : {
       "comment" : "感谢您的支持!",
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "شكراً لدعمكم!"
+            "value" : "شكراً!"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dəstəyiniz üçün təşəkkürlər!"
+            "value" : "Sağ olun!"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Благодарим за подкрепата!"
+            "value" : "Благодаря!"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "আপনার সমর্থনের জন্য ধন্যবাদ!"
+            "value" : "ধন্যবাদ!"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gràcies pel vostre suport!"
+            "value" : "Gràcies!"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salamat sa imong suporta!"
+            "value" : "Salamat!"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Děkujeme za vaši podporu!"
+            "value" : "Děkujeme!"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tak for din støtte!"
+            "value" : "Tak!"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Danke für Ihre Unterstützung!"
+            "value" : "Danke!"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ευχαριστούμε για την υποστήριξη!"
+            "value" : "Ευχαριστώ!"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "¡Gracias por su apoyo!"
+            "value" : "¡Gracias!"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Täname toetuse eest!"
+            "value" : "Aitäh!"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ممنون از حمایت شما!"
+            "value" : "متشکریم!"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kiitos tuestasi!"
+            "value" : "Kiitos!"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salamat sa iyong suporta!"
+            "value" : "Salamat!"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Merci de votre soutien !"
+            "value" : "Merci !"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Go raibh maith agat as do thacaíocht!"
+            "value" : "Buíochas!"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "તમારા સમર્થન બદલ આભાર!"
+            "value" : "આભાર!"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "תודה על תמיכתכם!"
+            "value" : "תודה!"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "आपके समर्थन के लिए धन्यवाद!"
+            "value" : "धन्यवाद!"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hvala na podršci!"
+            "value" : "Hvala!"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Köszönjük a támogatást!"
+            "value" : "Köszönjük!"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terima kasih atas dukungan Anda!"
+            "value" : "Makasih!"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Takk fyrir stuðninginn!"
+            "value" : "Takk!"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Grazie per il tuo supporto!"
+            "value" : "Grazie!"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ご支援ありがとうございます！"
+            "value" : "ありがとう！"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Matur nuwun panyengkuyungipun!"
+            "value" : "Nuwun!"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Қолдауыңызға рақмет!"
+            "value" : "Рақмет!"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "សូមអរគុណចំពោះការគាំទ្រ!"
+            "value" : "អរគុណ!"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ನಿಮ್ಮ ಬೆಂಬಲಕ್ಕೆ ಧನ್ಯವಾದಗಳು!"
+            "value" : "ಧನ್ಯವಾದಗಳು!"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "지원해 주셔서 감사합니다!"
+            "value" : "감사합니다!"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dėkojame už jūsų palaikymą!"
+            "value" : "Ačiū!"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Paldies par jūsu atbalstu!"
+            "value" : "Paldies!"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "നിങ്ങളുടെ പിന്തുണയ്ക്ക് നന്ദി!"
+            "value" : "നന്ദി!"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "तुमच्या समर्थनाबद्दल धन्यवाद!"
+            "value" : "धन्यवाद!"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Terima kasih atas sokongan anda!"
+            "value" : "Terima kasih!"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "အားပေးမှုအတွက် ကျေးဇူးတင်ပါသည်!"
+            "value" : "ကျေးဇူးပါ!"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Takk for støtten din!"
+            "value" : "Takk!"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bedankt voor je steun!"
+            "value" : "Bedankt!"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଆପଣଙ୍କ ସମର୍ଥନ ପାଇଁ ଧନ୍ୟବାଦ!"
+            "value" : "ଧନ୍ୟବାଦ!"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਤੁਹਾਡੇ ਸਮਰਥਨ ਲਈ ਧੰਨਵਾਦ!"
+            "value" : "ਧੰਨਵਾਦ!"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dziękujemy za wsparcie!"
+            "value" : "Dziękujemy!"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Obrigado pelo seu apoio!"
+            "value" : "Obrigado!"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vă mulțumim pentru sprijin!"
+            "value" : "Mulțumim!"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Благодарим за поддержку!"
+            "value" : "Спасибо!"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ďakujeme za vašu podporu!"
+            "value" : "Ďakujeme!"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hvala za vašo podporo!"
+            "value" : "Hvala!"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Faleminderit për mbështetjen!"
+            "value" : "Faleminderit!"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tack för ditt stöd!"
+            "value" : "Tack!"
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asante kwa msaada wako!"
+            "value" : "Asante!"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "உங்கள் ஆதரவிற்கு நன்றி!"
+            "value" : "நன்றி!"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "మీ మద్దతుకు ధన్యవాదాలు!"
+            "value" : "ధన్యవాదాలు!"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ขอบคุณที่สนับสนุนเรา!"
+            "value" : "ขอบคุณ!"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Desteğiniz için teşekkürler!"
+            "value" : "Teşekkürler!"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Дякуємо за вашу підтримку!"
+            "value" : "Дякуємо!"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "آپ کے تعاون کا شکریہ!"
+            "value" : "شکریہ!"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Qoʻllab-quvvatlaganingiz uchun rahmat!"
+            "value" : "Rahmat!"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cảm ơn bạn đã ủng hộ!"
+            "value" : "Cảm ơn!"
           }
         },
         "zh-Hans" : {

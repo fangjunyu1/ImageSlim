@@ -106,7 +106,7 @@ struct MenuView: View {
             }, label: {
                 if appStorage.inAppPurchaseMembership {
                     HStack(spacing: 2) {
-                        Text("Thank you for your support!")
+                        Text("Thanks!")
                             .font(.footnote)
                             .foregroundColor(.gray)
                             .lineLimit(2)
