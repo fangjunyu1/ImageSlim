@@ -125,10 +125,10 @@ struct ImageRowView: View {
                     }, label: {
                         Image(systemName:"lock.fill")
                                 .offset(x: shakeOffset)
+                                .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
+                                .modifier(HoverModifier())
                     })
                     .buttonStyle(.plain)
-                    .modifier(ImageRowViewButton(rightButtonWidth: rightButtonWidth,rightButtonHeight: rightButtonHeight))
-                    .modifier(HoverModifier())
                     .cornerRadius(20)
                 } else {
                     // 下载按钮
