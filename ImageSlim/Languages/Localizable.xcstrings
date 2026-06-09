@@ -21228,734 +21228,368 @@
         }
       }
     },
-    "Pending Compression" : {
-      "comment" : "等待压缩",
+    "Queued" : {
+      "comment" : "排队中",
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "بانتظار الضغط"
+            "value" : "بالدور"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıxılma gözlənilir"
+            "value" : "Sıra"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изчакване за компресия"
+            "value" : "Чака"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "কম্প্রেশনের অপেক্ষায়"
+            "value" : "সারিতে"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esperant compressió"
+            "value" : "En cua"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Naghulat nga i-compress"
+            "value" : "Pila"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Čeká na kompresi"
+            "value" : "Čeká"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Venter på komprimering"
+            "value" : "I kø"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Warten auf Kompression"
+            "value" : "Wartet"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Αναμονή για συμπίεση"
+            "value" : "Ουρά"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Esperando compresión"
+            "value" : "Espera"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ootab pakkimist"
+            "value" : "Ootel"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "در انتظار فشرده‌سازی"
+            "value" : "در صف"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Odottaa pakkausta"
+            "value" : "Jono"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Naghihintay na i-compress"
+            "value" : "Pila"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "En attente de compression"
+            "value" : "Attend"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ag fanacht ar chomhbhrú"
+            "value" : "Ciú"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "સંકોચનની રાહ જોવાઈ રહી છે"
+            "value" : "રાહ"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ממתין לדחיסה"
+            "value" : "בתור"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कंप्रेसन की प्रतीक्षा है"
+            "value" : "कतार"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Čeka se sažimanje"
+            "value" : "U redu"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tömörítésre vár"
+            "value" : "Sorban"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menunggu kompresi"
+            "value" : "Antre"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bíður þjöppunar"
+            "value" : "Í röð"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In attesa di compressione"
+            "value" : "Attesa"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "圧縮待ち"
+            "value" : "待機中"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ngenteni dikompres"
+            "value" : "Antre"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сығу күтілуде"
+            "value" : "Күтуде"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "រង់ចាំការបង្រួម"
+            "value" : "រង់ចាំ"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಕುಗ್ಗಿಸಲು ಕಾಯಲಾಗುತ್ತಿದೆ"
+            "value" : "ಕಾಯು"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "압축 대기 중"
+            "value" : "대기"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laukiama suspaudimo"
+            "value" : "Eilėje"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gaida saspiešanu"
+            "value" : "Rindā"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "കംപ്രഷനായി കാത്തിരിക്കുന്നു"
+            "value" : "കാത്ത്"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "कॉम्प्रेशनची प्रतीक्षा करत आहे"
+            "value" : "रांगेत"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menunggu mampatan"
+            "value" : "Tunggu"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ချုံ့ရန် စောင့်ဆိုင်းနေသည်"
+            "value" : "တန်းစီ"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Venter på komprimering"
+            "value" : "I kø"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wachten op compressie"
+            "value" : "In rij"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ସଙ୍କୋଚନ ପାଇଁ ଅପେକ୍ଷା"
+            "value" : "କ୍ୟୁରେ"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਕੰਪਰੈਸ਼ਨ ਦੀ ਉਡੀਕ"
+            "value" : "ਉਡੀਕ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Oczekiwanie na kompresję"
+            "value" : "Czeka"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compressão pendente"
+            "value" : "Espera"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "În așteptarea compresiei"
+            "value" : "Rând"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "В очереди на сжатие"
+            "value" : "Ждёт"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Čaká na kompresiu"
+            "value" : "Čaká"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Čakanje na stiskanje"
+            "value" : "Čaka"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pret kompresimin"
+            "value" : "Pret"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Väntar på komprimering"
+            "value" : "I kö"
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Inasubiri kugandamizwa"
+            "value" : "Foleni"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "சுருக்கக் காத்திருக்கிறது"
+            "value" : "வரிசை"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "కంప్రెషన్ కోసం వేచి ఉంది"
+            "value" : "క్యూలో"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "รอการบีบอัด"
+            "value" : "รอคิว"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıkıştırma bekleniyor"
+            "value" : "Sırada"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Очікує стиснення"
+            "value" : "Очікує"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "کمپریشن کا انتظار"
+            "value" : "انتظار"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Siqish kutilmoqda"
+            "value" : "Navbat"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Đang chờ nén"
+            "value" : "Chờ"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "等待压缩"
+            "value" : "排队中"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "等待壓縮"
-          }
-        }
-      }
-    },
-    "Pending Conversion" : {
-      "comment" : "等待转换",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "بانتظار التحويل"
-          }
-        },
-        "az" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çevrilmə gözlənilir"
-          }
-        },
-        "bg" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Изчакване за конвертиране"
-          }
-        },
-        "bn" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "কনভার্টের অপেক্ষায়"
-          }
-        },
-        "ca" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esperant conversió"
-          }
-        },
-        "ceb" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Naghulat nga i-convert"
-          }
-        },
-        "cs" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Čeká na převod"
-          }
-        },
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Venter på konvertering"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warten auf Konvertierung"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Αναμονή για μετατροπή"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esperando conversión"
-          }
-        },
-        "et" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ootab teisendamist"
-          }
-        },
-        "fa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "در انتظار تبدیل"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Odottaa muunnosta"
-          }
-        },
-        "fil" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Naghihintay na i-convert"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "En attente de conversion"
-          }
-        },
-        "ga" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ag fanacht ar thiontú"
-          }
-        },
-        "gu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "રૂપાંતરની રાહ જોવાઈ રહી છે"
-          }
-        },
-        "he" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ממתין להמרה"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "कन्वर्जन की प्रतीक्षा है"
-          }
-        },
-        "hr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Čeka se pretvorba"
-          }
-        },
-        "hu" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konvertálásra vár"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menunggu konversi"
-          }
-        },
-        "is" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bíður umbreytingar"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In attesa di conversione"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "変換待ち"
-          }
-        },
-        "jv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ngenteni dikonversi"
-          }
-        },
-        "kk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Түрлендіру күтілуде"
-          }
-        },
-        "km" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "រង់ចាំការបំប្លែង"
-          }
-        },
-        "kn" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ಪರಿವರ್ತಿಸಲು ಕಾಯಲಾಗುತ್ತಿದೆ"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "변환 대기 중"
-          }
-        },
-        "lt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Laukiama konvertavimo"
-          }
-        },
-        "lv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gaida konvertēšanu"
-          }
-        },
-        "ml" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "മാറ്റത്തിനായി കാത്തിരിക്കുന്നു"
-          }
-        },
-        "mr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "रूपांतरणाची प्रतीक्षा करत आहे"
-          }
-        },
-        "ms" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menunggu penukaran"
-          }
-        },
-        "my" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ပြောင်းရန် စောင့်ဆိုင်းနေသည်"
-          }
-        },
-        "nb" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Venter på konvertering"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wachten op conversie"
-          }
-        },
-        "or" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ରୂପାନ୍ତର ପାଇଁ ଅପେକ୍ଷା"
-          }
-        },
-        "pa" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ਪਰਿਵਰਤਨ ਦੀ ਉਡੀਕ"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oczekiwanie na konwersję"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conversão pendente"
-          }
-        },
-        "ro" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "În așteptarea conversiei"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "В очереди на конвертацию"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Čaká na konverziu"
-          }
-        },
-        "sl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Čakanje na pretvorbo"
-          }
-        },
-        "sq" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pret konvertimin"
-          }
-        },
-        "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Väntar på konvertering"
-          }
-        },
-        "sw" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inasubiri kubadilishwa"
-          }
-        },
-        "ta" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "மாற்றக் காத்திருக்கிறது"
-          }
-        },
-        "te" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "మార్పిడి కోసం వేచి ఉంది"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "รอการแปลงไฟล์"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dönüştürme bekleniyor"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Очікує конвертації"
-          }
-        },
-        "ur" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تبدیلی کا انتظار"
-          }
-        },
-        "uz" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oʻtkazish kutilmoqda"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Đang chờ chuyển đổi"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "等待转换"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "等待轉換"
+            "value" : "排隊中"
           }
         }
       }

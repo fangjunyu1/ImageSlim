@@ -182,9 +182,9 @@ struct ImageRowView: View {
                 
             } else if item.isState == .pending{
                 if imageType == .compression {
-                    tipState(name: "Pending Compression")
+                    tipState(name: "Queued")
                 } else if imageType == .conversion {
-                    tipState(name: "Pending Conversion")
+                    tipState(name: "Queued")
                 }
                 
             } else if item.isState == .failed {
