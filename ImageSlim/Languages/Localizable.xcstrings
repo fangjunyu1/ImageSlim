@@ -20496,356 +20496,356 @@
         }
       }
     },
-    "Open source image compressor" : {
+    "Image Compressor" : {
       "comment" : "开源压缩图片工具",
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "أداة ضغط مفتوحة المصدر"
+            "value" : "ضاغط الصور"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açıq mənbəli şəkil sıxma aləti"
+            "value" : "Şəkil sıxıcı"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Инструмент за компресия с отворен код"
+            "value" : "Компресор"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ওপেন সোর্স ছবি কম্প্রেস টুল"
+            "value" : "ছবি কম্প্রেসর"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eina de compressió d'imatges de codi obert"
+            "value" : "Compressor"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source nga himan sa pag-compress og hulagway"
+            "value" : "Image compressor"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source nástroj pro kompresi obrázků"
+            "value" : "Kompresor"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source billedkomprimeringsværktøj"
+            "value" : "Billedkompressor"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open-Source-Bildkompressionstool"
+            "value" : "Bildkompressor"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Εργαλείο συμπίεσης εικόνων ανοιχτού κώδικα"
+            "value" : "Συμπιεστής"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Herramienta de compresión de código abierto"
+            "value" : "Compresor imagen"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avatud lähtekoodiga pildipakkija"
+            "value" : "Pildipakkija"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ابزار متن‌باز فشرده‌سازی تصویر"
+            "value" : "فشرده‌ساز تصویر"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Avoin kuvien pakkaustyökalu"
+            "value" : "Kuvapakkaaja"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source na tool sa pag-compress ng imahe"
+            "value" : "Image compressor"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Outil de compression d'images Open Source"
+            "value" : "Compresseur"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uirlis chomhbhrú íomhá foinse oscailte"
+            "value" : "Comhbhrú íomhá"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ઓપન સોર્સ ઇમેજ કમ્પ્રેસર"
+            "value" : "છબી કમ્પ્રેસર"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "כלי דחיסת תמונות בקוד פתוח"
+            "value" : "מדחס תמונות"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ओपन सोर्स इमेज कंप्रेसर टूल"
+            "value" : "इमेज कंप्रेसर"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source alat za sažimanje slika"
+            "value" : "Kompresor slika"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nyílt forráskódú képtömörítő"
+            "value" : "Képtömörítő"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alat kompresi gambar sumber terbuka"
+            "value" : "Kompresor gambar"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Opið myndþjöppunartól"
+            "value" : "Myndþjappari"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Strumento di compressione immagini open source"
+            "value" : "Compressore foto"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "オープンソース画像圧縮ツール"
+            "value" : "画像圧縮ツール"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Piranti kompres gambar sumber terbuka"
+            "value" : "Kompresor gambar"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ашық кодты сурет сығу құралы"
+            "value" : "Сурет сығу"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ឧបករណ៍បង្រួមរូបភាពកូដចំហ"
+            "value" : "បង្រួមរូបភាព"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಮುಕ್ತ ಆಕರ ಚಿತ್ರ ಕುಗ್ಗಿಸುವ ಸಾಧನ"
+            "value" : "ಚಿತ್ರ ಕುಗ್ಗಿಸು"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "오픈 소스 이미지 압축 도구"
+            "value" : "이미지 압축 도구"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atvirojo kodo nuotraukų suspaudimo įrankis"
+            "value" : "Spaustuvas"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atvērtā pirmkoda attēlu saspiešanas rīks"
+            "value" : "Saspiedējs"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ഓപ്പൺ സോഴ്സ് ചിത്ര കംപ്രഷൻ ഉപകരണം"
+            "value" : "ചിത്രം കംപ്രസ്"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ओपन सोर्स चित्र कॉम्प्रेशन साधन"
+            "value" : "चित्र काँप्रेसर"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alat mampatan imej sumber terbuka"
+            "value" : "Kompresor imej"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "အိုးပန်းဆော့စ် ပုံချုံ့ကိရိယာ"
+            "value" : "ပုံချုံ့ကိရိယာ"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verktøy for bildekomprimering med åpen kildekode"
+            "value" : "Bildekompressor"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source tool voor beeldcompressie"
+            "value" : "Beeldcompressor"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଓପନ୍ ସୋର୍ସ ଫଟୋ ସଙ୍କୋଚନ ଟୁଲ୍"
+            "value" : "ଫଟୋ ସଙ୍କୋଚନ"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਓਪਨ ਸੋਰਸ ਚਿੱਤਰ ਕੰਪਰੈਸ਼ਨ ਟੂਲ"
+            "value" : "ਚਿੱਤਰ ਕੰਪਰੈੱਸਰ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Narzędzie open source do kompresji obrazów"
+            "value" : "Kompresor"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Compressor de imagens de código aberto"
+            "value" : "Compressor"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instrument open source pentru compresia imaginilor"
+            "value" : "Compresor"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Инструмент сжатия с открытым кодом"
+            "value" : "Компрессор"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open source nástroj na kompresiu obrázkov"
+            "value" : "Kompresor"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Odprtokodno orodje za stiskanje slik"
+            "value" : "Stiskalnik slik"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mjet kompresimi Open Source"
+            "value" : "Kompresor imazhi"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bildkomprimeringsverktyg med öppen källkod"
+            "value" : "Bildkompressor"
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zana huru ya kugandamiza picha"
+            "value" : "Gandamizi"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "திறந்த மூல படச் சுருக்கக் கருவி"
+            "value" : "படச் சுருக்கி"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ఓపెన్ సోర్స్ చిత్ర కంప్రెషన్ సాధనం"
+            "value" : "చిత్ర కంప్రెసర్"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เครื่องมือบีบอัดภาพแบบโอเพนซอร์ส"
+            "value" : "บีบอัดรูปภาพ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açık kaynaklı resim sıkıştırma aracı"
+            "value" : "Sıkıştırıcı"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Інструмент для стиснення з відкритим кодом"
+            "value" : "Стиснення фото"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "اوپن سورس امیج کمپریشن ٹول"
+            "value" : "امیج کمپریسر"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ochiq kodli rasm siqish vositasi"
+            "value" : "Rasm siqgich"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Công cụ nén ảnh mã nguồn mở"
+            "value" : "Bộ nén ảnh"
           }
         },
         "zh-Hans" : {

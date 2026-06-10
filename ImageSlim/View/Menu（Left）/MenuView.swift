@@ -19,7 +19,7 @@ struct MenuView: View {
                 Text(verbatim: "\(Bundle.main.appName)")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("Open source image compressor")
+                Text("Image Compressor")
                     .font(.subheadline)
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
