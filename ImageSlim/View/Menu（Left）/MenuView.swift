@@ -15,7 +15,7 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
-            VStack(spacing: 14) {
+            VStack(spacing: 8) {
                 Text(verbatim: "\(Bundle.main.appName)")
                     .font(.title)
                     .fontWeight(.bold)
@@ -30,7 +30,7 @@ struct MenuView: View {
             
             Spacer().frame(height: 16)
             
-            VStack(alignment: .leading, spacing: 16) {
+            VStack(alignment: .leading, spacing: 15) {
                 // 压缩菜单-按钮
                 Button(action: {
                     appStorage.selectedView = .compression
@@ -122,13 +122,13 @@ struct MenuView: View {
             .multilineTextAlignment(.center)
             .modifier(HoverModifier())
             
-            Spacer().frame(height:10)
+            Spacer().frame(height:8)
             Text(verbatim: "\(Bundle.main.version) (\(Bundle.main.build))")
                 .foregroundColor(.gray)
                 .font(.footnote)
         }
         .frame(minWidth: 140,minHeight: 340)    // 限制最小尺寸
-        .padding(30)
+        .padding(20)
         .sheet(isPresented: $showSponsorUs) {
             SponsorUsView()
         }
