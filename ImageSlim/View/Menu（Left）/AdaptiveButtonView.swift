@@ -120,7 +120,7 @@ struct AdaptiveButtonView: View {
                         .frame(width: 120,height: 35)
                         .foregroundColor(Color(hex: "CC7C5E"))
                         .cornerRadius(10)
-                    Text("Download Complete")
+                        Text("Saved")
                         .foregroundColor(.white)
                         .lineLimit(1)
                         .minimumScaleFactor(0.5) // 最多缩小到原始字体大小的 50%

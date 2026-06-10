@@ -10249,356 +10249,356 @@
         }
       }
     },
-    "Download Complete" : {
+    "Saved" : {
       "comment" : "下载完成",
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تم التنزيل"
+            "value" : "محفوظ"
           }
         },
         "az" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yükləmə tamamlandı"
+            "value" : "Saxlandı"
           }
         },
         "bg" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изтеглянето завърши"
+            "value" : "Готово"
           }
         },
         "bn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ডাউনলোড সম্পন্ন"
+            "value" : "সংরক্ষিত"
           }
         },
         "ca" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Baixada completada"
+            "value" : "Desat"
           }
         },
         "ceb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Human na og download"
+            "value" : "Nahuman"
           }
         },
         "cs" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stahování dokončeno"
+            "value" : "Hotovo"
           }
         },
         "da" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Download færdig"
+            "value" : "Gemt"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Download abgeschlossen"
+            "value" : "Fertig"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Η λήψη ολοκληρώθηκε"
+            "value" : "Έτοιμο"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descarga completada"
+            "value" : "Guardado"
           }
         },
         "et" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Allalaadimine lõpetatud"
+            "value" : "Valmis"
           }
         },
         "fa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "دانلود انجام شد"
+            "value" : "ذخیره شد"
           }
         },
         "fi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lataus valmis"
+            "value" : "Valmis"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tapos na ang pag-download"
+            "value" : "Tapos"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Téléchargement terminé"
+            "value" : "Terminé"
           }
         },
         "ga" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Íoslódáil críochnaithe"
+            "value" : "Déanta"
           }
         },
         "gu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ડાઉનલોડ પૂર્ણ થયું"
+            "value" : "સાચવ્યું"
           }
         },
         "he" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ההורדה הושלמה"
+            "value" : "נשמר"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "डाउनलोड पूरा हुआ"
+            "value" : "सहेजा"
           }
         },
         "hr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Preuzimanje završeno"
+            "value" : "Gotovo"
           }
         },
         "hu" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Letöltés befejezve"
+            "value" : "Kész"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unduhan selesai"
+            "value" : "Selesai"
           }
         },
         "is" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Niðurhali lokið"
+            "value" : "Lokið"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Download completato"
+            "value" : "Salvato"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ダウンロード完了"
+            "value" : "保存済み"
           }
         },
         "jv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Undhuh rampung"
+            "value" : "Rampung"
           }
         },
         "kk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Жүктеу аяқталды"
+            "value" : "Сақталды"
           }
         },
         "km" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ទាញយកចប់សព្វគ្រប់"
+            "value" : "រួចរាល់"
           }
         },
         "kn" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ಡೌನ್‌ಲೋಡ್ ಪೂರ್ಣಗೊಂಡಿದೆ"
+            "value" : "ಮುಗಿದಿದೆ"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "다운로드 완료"
+            "value" : "저장됨"
           }
         },
         "lt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Atsisiuntimas baigtas"
+            "value" : "Įrašyta"
           }
         },
         "lv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lejupielāde pabeigta"
+            "value" : "Gatavs"
           }
         },
         "ml" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ഡൗൺലോഡ് പൂർത്തിയായി"
+            "value" : "കഴിഞ്ഞു"
           }
         },
         "mr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "डाउनलोड पूर्ण"
+            "value" : "जतन"
           }
         },
         "ms" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Muat turun selesai"
+            "value" : "Selesai"
           }
         },
         "my" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ဒေါင်းလုဒ် ပြီးပါပြီ"
+            "value" : "ပြီးပြီ"
           }
         },
         "nb" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nedlasting fullført"
+            "value" : "Lagret"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Download voltooid"
+            "value" : "Klaar"
           }
         },
         "or" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ଡାଉନଲୋଡ୍ ସରିଲା"
+            "value" : "ସରିଲା"
           }
         },
         "pa" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ਡਾਊਨਲੋਡ ਪੂਰਾ ਹੋਇਆ"
+            "value" : "ਮੁਕੰਮਲ"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pobieranie zakończone"
+            "value" : "Gotowe"
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Transferência concluída"
+            "value" : "Salvo"
           }
         },
         "ro" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Descărcare finalizată"
+            "value" : "Gata"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Загрузка завершена"
+            "value" : "Готово"
           }
         },
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prevzatie dokončené"
+            "value" : "Hotovo"
           }
         },
         "sl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prenos končan"
+            "value" : "Končano"
           }
         },
         "sq" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Shkarkimi u krye"
+            "value" : "U ruajt"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nedladdning klar"
+            "value" : "Sparad"
           }
         },
         "sw" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Upakuaji umekamilika"
+            "value" : "Tayari"
           }
         },
         "ta" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "பதிவிறக்கம் முடிந்தது"
+            "value" : "முடிவு"
           }
         },
         "te" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "డౌన్‌లోడ్ పూర్తయింది"
+            "value" : "పూర్తి"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ดาวน์โหลดเสร็จสมบูรณ์"
+            "value" : "เสร็จ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İndirme tamamlandı"
+            "value" : "Bitti"
           }
         },
         "uk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Завантаження завершено"
+            "value" : "Готово"
           }
         },
         "ur" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ڈاؤن لوڈ مکمل"
+            "value" : "محفوظ"
           }
         },
         "uz" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yuklab olish yakunlandi"
+            "value" : "Saqlandi"
           }
         },
         "vi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tải xuống hoàn tất"
+            "value" : "Đã lưu"
           }
         },
         "zh-Hans" : {
